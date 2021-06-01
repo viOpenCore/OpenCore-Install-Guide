@@ -1,32 +1,34 @@
-# Why OpenCore over Clover and others
+# Tại sao nên chọn OpenCor
 
 This section contains a brief rundown as to why the community has been transitioning over to OpenCore, and aims to dispel a few common myths in the community. Those who just want a macOS machine can skip this page.
 
-* [Why OpenCore over Clover and others](#why-opencore-over-clover-and-others)
-  * OpenCore features
-  * Software support
+Phần này tóm tắt ngắn gọn về lý do tại sao cộng đồng lại chuyển đổi sang OpenCore và nhằm mục đích xóa tan một vài lầm tưởng phổ biến trong cộng đồng. Ai không cần thì có thể bỏ qua trang này.
+
+* [Tại sao nên chọn OpenCore](#why-opencore-over-clover-and-others)
+  * Các tính năng của OpenCore 
+  * Nhiều phần mềm hỗ trợ
   * Kext injection
-* [OpenCore's shortcomings](#opencore-s-shortcomings)
-* [Common Myths](#common-myths)
-  * Is OpenCore unstable as it's a beta?
-  * Does OpenCore always inject SMBIOS and ACPI data into other OSes?
-  * Does OpenCore require a fresh install?
-  * Does OpenCore only support limited versions of macOS?
+* [Khiếm khuyết của OpenCore](#opencore-s-shortcomings)
+* [Lầm tưởng chung](#common-myths)
+  * Có phải OpenCore không ổn định vì nó là bản không?
+  * Có phải OpenCore luôn inject SMBIOS và ACPI vào các hệ điều hành (OSes) khác phải không?
+  * Có phải OpenCore yêu cầu phải cài mới, cài vanilla không?
+  * Có OpenCore chỉ hỗ trợ rất ít phiên bản (versions) macOS?
 
-## OpenCore features
+## Tính năng của OpenCore
 
-* More OS Support!
-  * OpenCore now supports more versions of OS X and macOS natively without painful hacks Clover and Chameleon had to implement
-  * This includes OSes as far back as 10.4, Tiger, and even the latest builds of 11, Big Sur!
-* On average, OpenCore systems boot faster than those using Clover as less unnecessary patching is done
-* Better overall stability as patches can be much more precise:
+* Hỗ trợ nhiều OSes hơn!
+  * OpenCore hiện hỗ trợ nhiều versions của OS X and macOS một cách tự nhiên mà không cần các vụ hack khó khăn của Clover và Chameleon
+  * OpenCore hỗ trợ các OSes từ 10.4, Tiger trở lại đây, thâm chs là phiên bản mới nhất 11, Big Sur!
+* Trung bình, các hệ thống chạy OpenCore boot nhanh hơn Clover vì ít các patch không cần thiết hơn
+* Tính ổn định tổng thể tốt hơn vì các bản patches chính xác hơn nhiều
   * [macOS 10.15.4 update](https://www.reddit.com/r/hackintosh/comments/fo9bfv/macos_10154_update/)
-  * AMD OSX patches not needing to update with every minor security update
-* Better overall security in many forms:
-  * No need to disable System Integrity Protection (SIP)
-  * Built-in FileVault 2 support
-  * [Vaulting](https://dortania.github.io/OpenCore-Post-Install/universal/security.html#Vault) allowing to create EFI snapshots preventing unwanted modifications
-  * True secure-boot support
+  * AMD OSX patches không cần phải được cập với mọi bản Secủity update nhỏ
+* Tổng quan thì bảo mật tốt hơn ở nhiều mặt:
+  * Không cần tắt System Integrity Protection (SIP)
+  * Hỗ trợ FileVault 2
+  * [Vaulting](https://dortania.github.io/OpenCore-Post-Install/universal/security.html#Vault) giúp tạo "ảnh chụp" của EFI để ngăn những sửa đổi không mong muốn
+  * Thực sư hỗ trợ secure-boot
     * Both UEFI and Apple's variant
 * BootCamp switching and boot device selection are supported by reading NVRAM variables set by Startup Disk, just like a real Mac.
 * Supports boot hotkey via `boot.efi` - hold `Option` or `ESC` at startup to choose a boot device, `Cmd+R` to enter Recovery or `Cmd+Opt+P+R` to reset NVRAM.
