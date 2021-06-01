@@ -40,7 +40,7 @@ Some guidelines when contributing via PRs:
 
 ### How to Contribute
 
-Best way to test your commits and make sure they are formatted correctly is by downloading Node.js then running `npm install` to install dependencies. When you run `npm run dev`, it will set up a local webserver which you can connect to view the changes you made. `npm test` will throw any errors at you about formatting and spellchecking as well. If you want `markdownlint` to automatically attempt to fix linting, run `npm run fix-lint`.
+Best way to test your commits and make sure they are formatted correctly is by downloading Node.js then running `yarn install` to install dependencies. When you run `yarn dev`, it will set up a local webserver which you can connect to view the changes you made. `yarn test` will throw any errors at you about formatting and spellchecking as well. If you want `markdownlint` to automatically attempt to fix linting, run `yarn fix-lint`.
 
 Simple step-by-steps:
 
@@ -49,14 +49,14 @@ Simple step-by-steps:
   * [Node.js](https://nodejs.org/)
 * Make your changes.
 * Build the site:
-  * `npm install` (To install all the required plugins)
-  * `npm run dev` (Preview the site)
+  * `yarn install` (To install all the required plugins)
+  * `yarn dev` (Preview the site)
     * Can be found at `http://localhost:8080`
 * Check linting and spellcheck:
-  * `npm test`
-  * `npm run lint` and `npm run spellcheck` (to run the tests individually)
-  * `npm run fix-lint` (To fix any potential issues)
-  * For words not supported by the default spellcheck, please add them to the [dictionary.txt](./dictionary/dictionary.txt) and run `npm run sort-dict`
+  * `yarn test`
+  * `yarn lint` and `yarn spellcheck` (to run the tests individually)
+  * `yarn fix-lint` (To fix any potential issues)
+  * For words not supported by the default spellcheck, please add them to the [dictionary.txt](./dictionary/dictionary.txt) and run `yarn sort-dict`
 
 ### Tips
 

@@ -20,12 +20,12 @@ jobs:
           persist-credentials: false
           submodules: 'recursive'
       - name: Install
-        run: npm install
+        run: yarn install
       - name: Build
-        run: npm run build
+        run: yarn build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master'}}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/vietnamese'}}
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
@@ -44,9 +44,9 @@ jobs:
           fetch-depth: '0'
           submodules: 'recursive'
       - name: Install
-        run: npm install
+        run: yarn install
       - name: Lint
-        run: npm run lint-ci
+        run: yarn lint-ci
   spellcheck:
     name: Spellcheck
     runs-on: ubuntu-latest
@@ -60,6 +60,6 @@ jobs:
           fetch-depth: '0'
           submodules: 'recursive'
       - name: Install
-        run: npm install
+        run: yarn install
       - name: Spellcheck
-        run: npm run spellcheck
+        run: yarn spellcheck
