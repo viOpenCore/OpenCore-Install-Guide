@@ -1,10 +1,8 @@
-# Tại sao nên chọn OpenCor
-
-This section contains a brief rundown as to why the community has been transitioning over to OpenCore, and aims to dispel a few common myths in the community. Those who just want a macOS machine can skip this page.
+# Tại sao nên chọn OpenCore
 
 Phần này tóm tắt ngắn gọn về lý do tại sao cộng đồng lại chuyển đổi sang OpenCore và nhằm mục đích xóa tan một vài lầm tưởng phổ biến trong cộng đồng. Ai không cần thì có thể bỏ qua trang này.
 
-* [Tại sao nên chọn OpenCore](#why-opencore-over-clover-and-others)
+* [Tại sao nên chọn OpenCore](#tai-sao-nen-chon-openCore)
   * Các tính năng của OpenCore
   * Nhiều phần mềm hỗ trợ
   * Kext injection
@@ -33,52 +31,52 @@ Phần này tóm tắt ngắn gọn về lý do tại sao cộng đồng lại c
 * BootCamp switching and boot device selection are supported by reading NVRAM variables set by Startup Disk, just like a real Mac.
 * Supports boot hotkey via `boot.efi` - hold `Option` or `ESC` at startup to choose a boot device, `Cmd+R` to enter Recovery or `Cmd+Opt+P+R` to reset NVRAM.
 
-## Software Support
+## Nhiều phần mềm hỗ trợ
 
-The biggest reason someone may want to switch from other boot loaders is actually software support:
+Đây chính là nguyên nhân chính làm cho ai đó chuyển qua OpenCore từ các bootloaders khác chính là vì OpenCore có nhiều phần mềm hỗ trợ hơn:
 
-* Kexts no longer testing for Clover:
-  * Got a bug with a kext? Many developers including the organization [Acidanthera](https://github.com/acidanthera) (maker of most of your favorite kexts) won't provide support unless on OpenCore
-* Many firmware drivers being merged into OpenCore:
+* Kexts không còn được test cho Clover:
+  * Gặp lỗi với 1 kext? Một developers bao gồm nhóm [Acidanthera](https://github.com/acidanthera) (người viết hầu hết những kexts yêu thích nhất của bạn) sẽ không hỗ trợ trừ khi bạn sử dụng OpenCore
+* Một số firmware drivers đã được gộp vào OpenCore:
   * [APFS Support](https://github.com/acidanthera/AppleSupportPkg)
   * [FileVault support](https://github.com/acidanthera/AppleSupportPkg)
   * [Firmware patches](https://github.com/acidanthera/AptioFixPkg)
 * [AMD OSX patches](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore):
-  * Have AMD-based hardware? The kernel patches required to boot macOS no longer support Clover – they now only support OpenCore.
+  * Bạn đang sử máy chạy AMD? The kernel patches phục vụ việc boot macOS không còn hỗ trợ Clover – chúng chỉ còn hỗ trợ OpenCore.
 
 ## Kext Injection
 
-To better understand OpenCore's kext injection system, we should first look at how Clover works:
+Để hiểu rõ hơn hệ thống kext injection của OpenCore, chúng ta trước tiên nên tìm hiểu cách Clover hoạt động:
 
-1. Patches SIP open
-2. Patches to enable XNU's zombie code for kext injection
+1. Patches SIP tắt đi
+2. Patches để kích hoạt zombie code của XNU để inject kext injection
 3. Patches race condition with kext injection
 4. Injects kexts
-5. Patches SIP back in
+5. Patches SIP mở trở lại
 
 Things to note with Clover's method:
 
-* Calling XNU's zombie code that hasn't been used since 10.7, it's seriously impressive Apple hasn't removed this code yet
-  * OS updates commonly break this patch, like recently with 10.14.4 and 10.15
-* Disables SIP and attempts to re-enable it, don't think much needs to be said
-* Likely to break with macOS 11.0 (Big Sur)
-* Supports OS X all the way back to 10.5
+* Sử dụng zombie code của XNU (đã không được sử dụng từ 10.7, điều này thật là ấn tượng khi Apple đã không loại bỏ code này
+  * OS updates thường phá vỡ patch này, gần nhất là 10.14.4 và 10.15
+* Tắt SIP and attempts to mở nỏ lại, don't think much needs to be said
+* Likely to bị thất bại bại macOS 11.0 (Big Sur)
+* Hỗ trợ tất cả OS X đến 10.5
 
-Now let's take a look at OpenCore's method:
+Bây giờ thì hãy xem phương pháp của OpenCore:
 
 1. Takes existing prelinked kernel and kexts ready to inject
 2. Rebuilds the cache in the EFI environment with the new kexts
 3. Adds this new cache in
 
-Things to note with OpenCore's method:
+Những điều cần lưu ý với phương pháp của OpenCore:
 
 * OS agnostic as the prelinked kernel format has stayed the same since 10.6 (v2), far harder to break support.
   * OpenCore also supports prelinked kernel (v1, found in 10.4 and 10.5), cacheless, Mkext and KernelCollections, meaning it also has proper support for all Intel versions of OS X/macOS
 * Far better stability as there is far less patching involved
 
-# OpenCore's shortcomings
+# Khiếm khuyết của OpenCore
 
-The majority of Clover's functionality is actually supported in OpenCore in the form of some quirk, however when transitioning you should pay close attention to OpenCore's missing features as this may or may not affect yourself:
+Hầu hết các Clover's functionality is actually supported in OpenCore in the form of some quirk, however when transitioning you should pay close attention to OpenCore's missing features as this may or may not affect yourself:
 
 * Does not support booting MBR-based operating systems
   * Work around is to chain-load rEFInd once in OpenCore

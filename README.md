@@ -1,26 +1,26 @@
 ---
 home: true
 heroImage: /dortania-logo-clear.png
-heroText: Dortania's OpenCore Install Guide
-actionText: Getting Started→
+heroText: Hướng Dẫn Thiết Lập OpenCore
+actionText: Bắt đầu→
 actionLink: prerequisites.md
 
 meta:
 - name: description
-  content: Current supported version 0.6.9
+  content: Hiện tại hỗ trợ phiên bản 0.6.9
 ---
 
-# What is OpenCore and who is this guide for
+# OpenCore là gì và hướng dẫn này dành cho ai
 
-OpenCore is what we refer to as a "boot loader" – it is a complex piece of software that we use to prepare our systems for macOS – specifically by injecting new data for macOS such as SMBIOS, ACPI tables and kexts. How this tool differs from others like Clover is that it has been designed with security and quality in mind, allowing us to use many security features found on real Macs, such as [System Integrity Protection](https://support.apple.com/en-ca/HT204899) and [FileVault](https://support.apple.com/en-ca/HT204837). A more in-depth look can be found here: [Why OpenCore over Clover and others](why-oc.md)
+OpenCore được chúng ta gọi là "boot loader" – nó là một phần mềm phức tạp mà chúng ta sử dụng để chuẩn bị máy của chúng ta cho macOS – cụ thể là bằng cách inject các thông tin mới cho macOS như SMBIOS, ACPI tables và kexts. Điểm khác biệt của tool này khi so sánh với các tool khác như Clover là nó được designed với sự quan tâm rất lớn cho bảo mật và chất lượng, cho phép ta sử dụng tính năng bảo mật trên real Macs, như là [System Integrity Protection](https://support.apple.com/en-ca/HT204899) và [FileVault](https://support.apple.com/en-ca/HT204837). Bạn có thể tìm hiểu sâu hơn ở đây: [Why OpenCore over Clover and others](why-oc.md)
 
-This guide specifically focuses on two main things:
+Hướng dẫn này tập trung vào 2 điều chính
 
-* Installing macOS on an X86-based PC
-* Teaching you what makes your Hack work
+* Cài macOS trên các X86 PC
+* Hướng dẫn bạn những gì làm cho máy của bạn hoạt động
 
-Because of this, you will be expected to read, learn and even use Google. This is not a simple one-click install setup.
+Chính bởi vì vậy, bạn sẽ phải đọc, nghiên cứu và thậm chí Google. Việc cài đặt này không dễ, nhanh gọn lẹ như "mì ăn liền".
 
-Please remember that OpenCore is still new and currently in beta. While quite stable, and arguably much more stable than Clover in pretty much every way, it is still being frequently updated, so chunks of configuration change quite often (i.e. new quirks replacing old ones).
+Nên nhớ rằng OpenCore vẫn còn rất mới vẫn còn là bản beta. Dù đã khá là ổn định, và được cho là ổn định hơn rất nhiều so với Clover trong rất nhiều phương diện, nó vẫn được update thường xuyên, nên các thiết lập thay đổi khá thường xuyên(tức là các quirks mới thay thế những cái cũ).
 
-Lastly, those having issues can visit both the [r/Hackintosh subreddit](https://www.reddit.com/r/hackintosh/) and [r/Hackintosh Discord](https://discord.gg/u8V7N5C) for more help.
+Cuối cùng, những ai gặp vấn đề có thể tham gia cả [r/Hackintosh subreddit](https://www.reddit.com/r/hackintosh/) và [r/Hackintosh Discord](https://discord.gg/u8V7N5C) để được hỗ trợ nhiều hơn
