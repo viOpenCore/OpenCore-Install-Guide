@@ -5,7 +5,7 @@ This section contains a brief rundown as to why the community has been transitio
 Phần này tóm tắt ngắn gọn về lý do tại sao cộng đồng lại chuyển đổi sang OpenCore và nhằm mục đích xóa tan một vài lầm tưởng phổ biến trong cộng đồng. Ai không cần thì có thể bỏ qua trang này.
 
 * [Tại sao nên chọn OpenCore](#why-opencore-over-clover-and-others)
-  * Các tính năng của OpenCore 
+  * Các tính năng của OpenCore
   * Nhiều phần mềm hỗ trợ
   * Kext injection
 * [Khiếm khuyết của OpenCore](#opencore-s-shortcomings)
