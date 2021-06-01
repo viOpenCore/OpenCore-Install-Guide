@@ -7,7 +7,7 @@ actionLink: prerequisites.md
 
 meta:
 - name: description
-  content: Hiện tại hỗ trợ phiên bản 0.6.9
+  content: Hỗ trợ version 0.6.9
 ---
 
 # OpenCore là gì và hướng dẫn này dành cho ai
