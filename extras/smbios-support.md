@@ -7,7 +7,7 @@ The main things to consider when selecting your SMBIOS:
 * CPU Type
   * Specifically mobile vs desktop vs server, as this can greatly affect sleep and overall system stability
   * This also determines whether or not you can use Apple's XCPM and what profiles you get
-    * These 2 are mostly resolved with CPUFriend: [Fixing Power management](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html)
+    * These 2 are mostly resolved with CPUFriend: [Fixing Power management](https://viopencore.github.io/OpenCore-Post-Install/universal/pm.html)
   * Note AMD CPUs do not need to concern about this
 * GPU Type
   * Many things are affected here, like GPU power management(AGPM), display out support(AGDP), sleep(AGDC) and much more.
@@ -15,16 +15,16 @@ The main things to consider when selecting your SMBIOS:
     * Laptops should also pay very close attention, as Apple always assumes that when a dGPU is present for the SMBIOS, all display outs will be routed through it. This can become an issue when an Optimus laptop has its external displays wired through the iGPU instead, causing black screen issues which would require more patching.
   * CPUs without an iGPU need to pay very close attention, as features like Quicklook and such will be broken if the SMBIOS expects an iGPU(ie. Every single iMac SMBIOS)
     * For these situations, look closely at the iMac Pro and Mac Pro SMBIOS
-  * DRM is also tied in here as well however this is mostly resolved here: [Fixing DRM](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html)
+  * DRM is also tied in here as well however this is mostly resolved here: [Fixing DRM](https://viopencore.github.io/OpenCore-Post-Install/universal/drm.html)
   
 * OS Support
   * Mainly relevant for older hardware, as macOS may still have support for the CPU however no longer supports SMBIOS from that era
     * Arrandale CPUs are a great example, as they still have OS support even in macOS 11, Big Sur(however no iGPU support past 10.13.6)
 * USB Devices
   * Certain SMBIOS will have their own USB map which may attach to your hardware causing USB issues.
-    * See here for more info: [USB Mapping](https://dortania.github.io/OpenCore-Post-Install/usb/)
+    * See here for more info: [USB Mapping](https://viopencore.github.io/OpenCore-Post-Install/usb/)
   * Also to note, Skylake+ SMBIOS will also require a [USBX device](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EC-USBX.dsl#L54L79) to fix USB current output
-    * See here for more info: [Fixing USB Power](https://dortania.github.io/OpenCore-Post-Install/usb/misc/power.html)
+    * See here for more info: [Fixing USB Power](https://viopencore.github.io/OpenCore-Post-Install/usb/misc/power.html)
 
 ::: details XCPM Supported SMBIOS
 
@@ -51,7 +51,7 @@ Generally our recommendations with SMBIOS is as follows:
 And there's also some special notes with SMBIOS:
 
 * iMacPro1,1 and MacPro7,1 are the only 2 SMBIOS that will allow for dGPU to handle all the workload including background rendering and other tasks that the iGPU would handle
-  * We only recommend this SMBIOS if you require this, however you'll likely need to fix power management as sleep may break if your hardware isn't of this class(ie. HEDT/Server/AMD): [Fixing Power management](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html)
+  * We only recommend this SMBIOS if you require this, however you'll likely need to fix power management as sleep may break if your hardware isn't of this class(ie. HEDT/Server/AMD): [Fixing Power management](https://viopencore.github.io/OpenCore-Post-Install/universal/pm.html)
   * Note that this requires a Polaris, Vega or Navi GPU to work properly.
 * iMac20,2 is a custom SMBIOS meant only for Apple's custom i9-10910 CPU, so unless you have an i9-10900K we recommend using iMac20,1
 * MacMini SMBIOS should be avoided unless you're running mobile hardware without a built-in display

@@ -17,7 +17,7 @@ Note: For those wanting to contribute financially, we seriously appreciate it bu
 * Keep issues tab dedicated to guides issues only, **no personal hackintosh issues**. It is not a place to discuss installation issues.
 * If for a typo or better clarification, please indicate what page it was on. Would appreciate not going for a scavenger hunt on where these issues are.
 
-You can find the bugtracker here: [Bugtracker](https://github.com/dortania/bugtracker)
+You can find the bugtracker here: [Bugtracker](https://github.com/viopencore/bugtracker)
 
 ## Contributing via PRs
 
@@ -44,7 +44,7 @@ Best way to test your commits and make sure they are formatted correctly is by d
 
 Simple step-by-steps:
 
-* [Fork this repo](https://github.com/dortania/OpenCore-Install-Guide/fork/)
+* [Fork this repo](https://github.com/viopencore/OpenCore-Install-Guide/fork/)
 * Install the required tools:
   * [Node.js](https://nodejs.org/)
 * Make your changes.
@@ -69,17 +69,17 @@ Some tools that make contributing a bit easier:
 
 ## Contributing via Translations
 
-While Dortania's guide are primarily English based, we know there's plenty of other languages in the world and that not everyone is fluent in English. If you want to help translate our guides into different languages, we're more than happy to support you.
+While viOpenCore's guide are primarily English based, we know there's plenty of other languages in the world and that not everyone is fluent in English. If you want to help translate our guides into different languages, we're more than happy to support you.
 
 Main things to keep in mind:
 
-* Translations must be a dedicated fork and won't be merged into Dortania's guide
-* Forks must indicate they're translations of Dortania and are not official
+* Translations must be a dedicated fork and won't be merged into viOpenCore's guide
+* Forks must indicate they're translations of viOpenCore and are not official
 * Forks must also comply with our [License](LICENSE.md)
 
-If the above are met, you're free to host your translation without issue! Dortania's sites are built with [VuePress](https://vuepress.vuejs.org) using [Travis-CI](https://travis-ci.org) and finally hosted on [Github Pages](https://pages.github.com), so there is no cost to hosting your own translation.
+If the above are met, you're free to host your translation without issue! viOpenCore's sites are built with [VuePress](https://vuepress.vuejs.org) using [Travis-CI](https://travis-ci.org) and finally hosted on [Github Pages](https://pages.github.com), so there is no cost to hosting your own translation.
 
-If you have any questions or concerns with either translations or hosting, feel free to reach out on our [Bugtracker](https://github.com/dortania/bugtracker).
+If you have any questions or concerns with either translations or hosting, feel free to reach out on our [Bugtracker](https://github.com/viopencore/bugtracker).
 
 Current known translations:
 
@@ -89,4 +89,4 @@ Current known translations:
 * [ThrRip](https://github.com/ThrRip/OpenCore-Install-Guide)(Chinese)
 * [Shijuro](https://github.com/shijuro/OpenCore-Install-Guide)(Russian)
 
-And note that these translations are subject to authors preferences, translation changes and human errors. Please keep this in mind when reading as they're no longer official Dortania guides.
+And note that these translations are subject to authors preferences, translation changes and human errors. Please keep this in mind when reading as they're no longer official viOpenCore guides.

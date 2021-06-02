@@ -1,6 +1,6 @@
 (15|16)h
 (No)?TouchID
-.aml
+.
 .chunklist
 .dat
 .dmg
@@ -1217,6 +1217,8 @@ v5120
 v5210
 vSMC
 ver
+viOpenCore
+viOpenCore's
 vit9696
 vit9696's
 vmdk

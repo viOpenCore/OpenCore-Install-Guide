@@ -31,7 +31,7 @@ So with the transition from Clover to OpenCore we should start removing unneeded
   * change PEG0 to GFX0
   * change PEGP to GFX0
   * change SL01 to PEGP
-* EC Patches: See here on best solution: [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
+* EC Patches: See here on best solution: [Getting started with ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/)
   * change EC0 to EC
   * change H_EC to EC
   * change ECDV to EC
@@ -42,7 +42,7 @@ So with the transition from Clover to OpenCore we should start removing unneeded
   * change AZAL to HDEF
   * change ALZA to HDEF
   * change B0D3 to HDAU
-* Z390 BIOS RTC bug fix: See here on best solution: [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)(SSDT-AWAC)
+* Z390 BIOS RTC bug fix: See here on best solution: [Getting started with ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/)(SSDT-AWAC)
   * change STAS to [Blank]
   * Fix Z390 BIOS DSDT Device(RTC) bug
   * Fix 300-series RTC Bug
@@ -105,7 +105,7 @@ So with the transition from Clover to OpenCore we should start removing unneeded
   * CorpNewt's [SSDTTime](https://github.com/corpnewt/SSDTTime) to make the proper SSDT, `FixHPET - Patch out IRQ Conflicts`
 
 * **AddPNLF**:
-  * See [SSDT-PNLF](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/backlight.html)
+  * See [SSDT-PNLF](https://viopencore.github.io/Getting-Started-With-ACPI/Laptops/backlight.html)
 * **AddMCHC**:
   * [SSDT-SBUS-MCHC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl)
 * **AddIMEI**:
@@ -129,8 +129,8 @@ So with the transition from Clover to OpenCore we should start removing unneeded
 **SSDT**:
 
 * **PluginType**:
-  * [SSDT-PLUG](https://dortania.github.io/Getting-Started-With-ACPI/)
-  * See [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/Universal/plug.html) for more details
+  * [SSDT-PLUG](https://viopencore.github.io/Getting-Started-With-ACPI/)
+  * See [Getting started with ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/plug.html) for more details
 
 * **Generate P States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh)(For Sandy Bridge and IvyBridge)
 * **Generate C States**: [ssdtPRGen.sh](https://github.com/Piker-Alpha/ssdtPRGen.sh)(For Sandy Bridge and IvyBridge)
@@ -283,7 +283,7 @@ Just don't add your drivers to `UEFI -> Drivers`, alternatively add `#` in-front
 
 **InjectIntel**:
 
-* [GMA Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+* [GMA Patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
 
 **InjectAti**:
 
@@ -305,7 +305,7 @@ DUMMY                   <01 00 00 00>
 
 **InjectNvidia**:
 
-* [Nvidia Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+* [Nvidia Patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
 
 **FakeIntel**:
 
@@ -324,7 +324,7 @@ DUMMY                   <01 00 00 00>
 * `DeviceProperties -> Add -> PciRoot... -> vendor-id-> <02100000>`
 * `DeviceProperties -> Add -> PciRoot... -> ATY,VendorID -> <0210>`
 
-**Note**: See here on making an SSDT for GPU Spoofing, DeviceProperties injection via OpenCore seems to fail sometimes when trying to spoof a GPU: [Renaming GPUs](https://dortania.github.io/Getting-Started-With-ACPI/Universal/spoof.html)
+**Note**: See here on making an SSDT for GPU Spoofing, DeviceProperties injection via OpenCore seems to fail sometimes when trying to spoof a GPU: [Renaming GPUs](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/spoof.html)
 For others like InjectAti, see the [Sample.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/Sample.dsl) in the WhateverGreen docs
 
 **Custom EDID**
@@ -339,7 +339,7 @@ For others like InjectAti, see the [Sample.dsl](https://github.com/acidanthera/W
 
 **NVCAP**
 
-* [Nvidia Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+* [Nvidia Patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
 
 **display-cfg**:
 
@@ -356,7 +356,7 @@ For others like InjectAti, see the [Sample.dsl](https://github.com/acidanthera/W
 
 * `DeviceProperties -> Add -> PciRoot... -> model | string | Add the GPU name`
 
-**NvidiaSingle**: See [disabling unsupported GPUs](https://dortania.github.io/OpenCore-Post-Install/)
+**NvidiaSingle**: See [disabling unsupported GPUs](https://viopencore.github.io/OpenCore-Post-Install/)
 
 **NvidiaNoEFI**:
 

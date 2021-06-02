@@ -3,7 +3,7 @@
 Now that you've finished setting up OpenCore, you're finally able to boot, main things to keep in mind:
 
 * Enable BIOS settings optimal for macOS
-* Read up on the [OpenCore Multiboot Guide](https://dortania.github.io/OpenCore-Multiboot/) as well as [Setting up LauncherOption](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap)
+* Read up on the [OpenCore Multiboot Guide](https://viopencore.github.io/OpenCore-Multiboot/) as well as [Setting up LauncherOption](https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootstrap)
   * Mainly relevant for those running a single drive for multiple OSes
 * And a copy of the [General Troubleshooting](../troubleshooting/troubleshooting.md) page
 * Read up on the [macOS Boot Process](../troubleshooting/boot.md)
@@ -51,7 +51,7 @@ So you've finally got the installer booted, got through the verbose and hit the 
   * High Sierra on HDD and all Sierra users will need to use macOS Journaled(HFS+)
 * The drive **must** also have a 200MB partition
   * By default, macOS will setup freshly formatted drives with 200MB
-  * See the [Multiboot Guide](https://dortania.github.io/OpenCore-Multiboot/) for more info on partitioning a Windows Drive
+  * See the [Multiboot Guide](https://viopencore.github.io/OpenCore-Multiboot/) for more info on partitioning a Windows Drive
 
 Once you start the installation, you will want to wait until the system restarts. You will once again want to boot into OpenCore, but rather than selecting your USB installer/recovery - you will want to select the macOS installer on the hard drive to continue installation. You should get an apple logo, and after a few minutes you should get a timer at the bottom saying "x minutes remaining". This may be a good time to get a drink or snack as this will take a while. It may restart a couple more times, but if all goes well, it should finally plop you at the "Setup your Mac screen"
 

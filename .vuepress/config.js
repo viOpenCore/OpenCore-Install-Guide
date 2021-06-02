@@ -64,35 +64,35 @@ module.exports = {
 		editLinkText: 'Help us improve this page!',
         logo: 'homepage.png',
         nav: [{
-            text: 'Dortania Guides',
+            text: 'viOpenCore Guides',
             ariaLabel: 'Language Menu',
             items: [{
                 text: 'Trang chủ',
-                link: 'https://dortania.github.io/'
+                link: 'https://viopencore.github.io/'
             },
             {
                 text: 'Getting Started With ACPI',
-                link: 'https://dortania.github.io/Getting-Started-With-ACPI/'
+                link: 'https://viopencore.github.io/Getting-Started-With-ACPI/'
             },
             {
                 text: 'OpenCore Post-Install',
-                link: 'https://dortania.github.io/OpenCore-Post-Install/'
+                link: 'https://viopencore.github.io/OpenCore-Post-Install/'
             },
             {
                 text: 'OpenCore Multiboot',
-                link: 'https://dortania.github.io/OpenCore-Multiboot/'
+                link: 'https://viopencore.github.io/OpenCore-Multiboot/'
             },
             {
                 text: 'GPU Buyers Guide',
-                link: 'https://dortania.github.io/GPU-Buyers-Guide/'
+                link: 'https://viopencore.github.io/GPU-Buyers-Guide/'
             },
             {
                 text: 'Wireless Buyers Guide',
-                link: 'https://dortania.github.io/Wireless-Buyers-Guide/'
+                link: 'https://viopencore.github.io/Wireless-Buyers-Guide/'
             },
             {
                 text: 'Anti Buyers Guide',
-                link: 'https://dortania.github.io/Anti-Hackintosh-Buyers-Guide/'
+                link: 'https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide/'
             },
             ]
         },
@@ -127,7 +127,7 @@ module.exports = {
             },
                 '/installer-guide/opencore-efi',
                 'ktext',
-            ['https://dortania.github.io/Getting-Started-With-ACPI/', 'Getting started with ACPI'],
+            ['https://viopencore.github.io/Getting-Started-With-ACPI/', 'Getting started with ACPI'],
                 '/config.plist/',
             ]
         },
@@ -224,28 +224,28 @@ module.exports = {
             title: 'Post Install',
             collapsable: false,
             children: [
-                ['https://dortania.github.io/OpenCore-Post-Install/', 'Post-Install'],
+                ['https://viopencore.github.io/OpenCore-Post-Install/', 'Post-Install'],
                 {
                     title: 'Universal',
                     collapsable: true,
                     sidebarDepth: 1,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/security', 'Security và FileVault'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/audio', 'Fix Audio'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd', 'Boot không cần USB'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/update', 'Update OpenCore, kexts và macOS'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/drm', 'Fix DRM'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/iservices', 'Fix iServices'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/pm', 'Fix Power Management'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/sleep', 'Fix Sleep'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/usb/', 'Fix USB'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/universal/security', 'Security và FileVault'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/universal/audio', 'Fix Audio'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/universal/oc2hdd', 'Boot không cần USB'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/universal/update', 'Update OpenCore, kexts và macOS'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/universal/drm', 'Fix DRM'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/universal/iservices', 'Fix iServices'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/universal/pm', 'Fix Power Management'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/universal/sleep', 'Fix Sleep'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/usb/', 'Fix USB'],
                     ]
                 },
                 {
                     title: 'Laptop Specifics',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery', 'Fix Battery Read-outs'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/laptop-specific/battery', 'Fix Battery Read-outs'],
 
                     ]
                 },
@@ -253,26 +253,26 @@ module.exports = {
                     title: 'Cosmetics',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose', 'Fix Resolution và Verbose'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui', 'Add GUI và Boot-chime'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/cosmetic/verbose', 'Fix Resolution và Verbose'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/cosmetic/gui', 'Add GUI và Boot-chime'],
                     ]
                 },
                 {
                     title: 'Multiboot',
                     collapsable: true,
                     children: [
-						['https://dortania.github.io/OpenCore-Multiboot/', 'OpenCore Multiboot'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap', 'Set up LauncherOption'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp', 'Cài BootCamp'],
+						['https://viopencore.github.io/OpenCore-Multiboot/', 'OpenCore Multiboot'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootstrap', 'Set up LauncherOption'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootcamp', 'Cài BootCamp'],
                     ]
                 },
                 {
                     title: 'Miscellaneous',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/misc/rtc', 'Fix RTC'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock', 'Fix CFG Lock'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/misc/nvram', 'Emulated NVRAM'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/misc/rtc', 'Fix RTC'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/misc/msr-lock', 'Fix CFG Lock'],
+                        ['https://viopencore.github.io/OpenCore-Post-Install/misc/nvram', 'Emulated NVRAM'],
                     ]
                 },
             ]

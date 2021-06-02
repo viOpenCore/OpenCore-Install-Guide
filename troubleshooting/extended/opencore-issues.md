@@ -50,7 +50,7 @@ Turn off Vaulting in your config.plist under `Misc -> Security -> Vault` by sett
 
 If you have already executed the `sign.command` you will need to restore the OpenCore.efi file as the 256 byte RSA-2048 signature has been shoved in. Can grab a new copy of OpenCore.efi here: [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases)
 
-**Note**: Vault and FileVault are 2 separate things, see [Security and FileVault](https://dortania.github.io/OpenCore-Post-Install/universal/security.html) for more details
+**Note**: Vault and FileVault are 2 separate things, see [Security and FileVault](https://viopencore.github.io/OpenCore-Post-Install/universal/security.html) for more details
 
 ## Stuck on `OC: Invalid Vault mode`
 

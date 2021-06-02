@@ -14,39 +14,39 @@ The main hardware sections to verify are:
 
 And for more detailed guides on the subject, see here:
 
-* [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide/)
-  * Check if your GPU is supported and which macOS version you can run.
-* [Wireless Buyers Guide](https://dortania.github.io/Wireless-Buyers-Guide/)
-  * Check if your WiFi card is supported.
-* [Anti-Hardware Buyers Guide](https://dortania.github.io/Anti-Hackintosh-Buyers-Guide/)
+* [GPU Buyers Guide](https://viopencore.github.io/GPU-Buyers-Guide/)
+  * Kiểm tra xem nếu GPU của bạn được hỗ trợ và máy của bạn có thể chạy version macOS nào.
+* [Wireless Buyers Guide](https://viopencore.github.io/Wireless-Buyers-Guide/)
+  * Kiểm tra nếu card WiFi của bạn được hỗ trợ.
+* [Anti-Hardware Buyers Guide](https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide/)
   * Overall guide on what to avoid and what pitfalls your hardware may hit.
 
 ## CPU Support
 
 For CPU support, we have the following breakdown:
 
-* Both 32 and 64-bit CPUs are supported
+* Cả 32 và 64-bit CPUs đều được hỗ trợ
   * This however requires the OS to support your architecture, see CPU Requirements section below
 * Intel's Desktop CPUs are supported.
-  * Yonah through Comet Lake are supported by this guide.
+  * Từ Yonah đến Comet Lake đều được hỗ trợ trong guide này.
 * Intel's High-End Desktops and Server CPUs.
-  * Nehalem through Cascade Lake X are supported by this guide.
+  * Từ Nehalem đến Cascade Lake X đều được hỗ trợ trong guide này.
 * Intel's Core "i" and Xeon series laptop CPUs
-  * Arrendale through Ice Lake are supported by this guide.
-  * Note that Mobile Atoms, Celeron and Pentium CPUs are not supported
+  * Từ Arrendale đến Ice Lake đều được hỗ trợ trong guide này.
+  * Chú ý rằng Mobile Atoms, Celeron và Pentium CPUs đều không được hỗ trợ.
 * AMD's Desktop Bulldozer (15h), Jaguar (16h) and Ryzen (17h) CPUs
-  * Laptop CPUs are **not** supported
-  * Note not all features of macOS are supported with AMD, see below
+  * Laptop CPUs đều **KHÔNG ĐƯỢC** hỗ trợ
+  * Chú ý rằng không phải tất cả tính năng của macOS đều được hỗ trợ trên AMD, xem bên dưới
 
-**For more in-depth information, see here: [Anti-Hardware Buyers Guide](https://dortania.github.io/Anti-Hackintosh-Buyers-Guide/)**
+**For more in-depth information, see here: [Anti-Hardware Buyers Guide](https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide/)**
 
 ::: details CPU Requirements
 
 Architecture Requirements
 
-* 32-bit CPUs are supported from 10.4.1 to 10.6.8
-  * Note that 10.7.x requires 64-bit userspace, limiting 32-bit CPUs to 10.6
-* 64-bit CPUs are supported from 10.4.1 to current
+* 32-bit CPUs đều được hỗ trợ từ 10.4.1 đến 10.6.8
+  * Chú ý rằng 10.7.x requires 64-bit userspace, limiting 32-bit CPUs to 10.6
+* 64-bit CPUs đều được hỗ trợ từ 10.4.1 đến bản mới nhất
 
 SEE Requirements:
 
@@ -150,10 +150,10 @@ GPU support becomes much more complicated due to the near-infinite amount of GPU
   * [Nvidia's Turing(20XX,](https://en.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://en.wikipedia.org/wiki/GeForce_16_series) GPUs are **not supported in any version of macOS**
   * [Nvidia's Ampere(30XX)](https://en.wikipedia.org/wiki/GeForce_30_series) GPUs are **not supported in any version of macOS**
   * [Nvidia's Kepler(6XX,](https://en.wikipedia.org/wiki/GeForce_600_series)[7XX)](https://en.wikipedia.org/wiki/GeForce_700_series) GPUs are supported in the latest versions of macOS (including macOS 11 Big Sur)
-    * This is due to Apple still supporting a few [MacBook Pros with Nvidia GPUs](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html)
+    * This is due to Apple still supporting a few [MacBook Pros with Nvidia GPUs](https://viopencore.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html)
 * Intel's [GT2+ tier](https://en.wikipedia.org/wiki/Intel_Graphics_Technology) series iGPUs
   * Ivy Bridge through Ice Lake iGPU support is covered in this guide
-    * Info on GMA series iGPUs can be found here: [GMA Patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+    * Info on GMA series iGPUs can be found here: [GMA Patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
   * Note GT2 refers to the tier of iGPU, low-end GT1 iGPUs found on Pentiums, Celerons and Atoms are not supported in macOS
 
 And an important note for **Laptops with discrete GPUs**:
@@ -162,13 +162,13 @@ And an important note for **Laptops with discrete GPUs**:
 * However, in some cases, the discrete GPU powers any external outputs (HDMI, mini DisplayPort, etc.), which may or may not work; in the case that it will work, you will have to keep the card on and running.
 * However, there are some laptops that rarely do not have switchable graphics, so the discrete card can be used (if supported by macOS), but the wiring and setup usually cause issues.
 
-**For a full list of supported GPUs, see the [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide/)**
+**For a full list of supported GPUs, see the [GPU Buyers Guide](https://viopencore.github.io/GPU-Buyers-Guide/)**
 
 ::: details Intel GPU Support Chart
 
 | GPU Generation | Initial support | Last supported version | Notes |
 | :--- | :--- | :--- | :--- |
-| [3rd Gen GMA](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Third_generation) | 10.4.1 | 10.7.5 | [Requires 32-bit kernel and patches](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/legacy-intel/) |
+| [3rd Gen GMA](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Third_generation) | 10.4.1 | 10.7.5 | [Requires 32-bit kernel and patches](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/legacy-intel/) |
 | [4th Gen GMA](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen4) | 10.5.0 | ^^ | ^^ |
 | [Arrendale(HD Graphics)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen5) | 10.6.4 | 10.13.6 | Only LVDS is supported, eDP and external outputs are not |
 | [Sandy Bridge(HD 3000)](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen6) | 10.6.7 | ^^ | N/A |
@@ -209,8 +209,8 @@ Note: Apple has kept Ivy Bridge's iGPU drivers present in macOS 11, Big Sur, how
 
 | GPU Generation | Initial support | Last supported version | Notes |
 | :--- | :--- | :--- | :--- |
-| [GeForce 6](https://en.wikipedia.org/wiki/GeForce_6_series) | 10.2.x | 10.7.5 | Requires 32 bit kernel and [NVCAP patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/nvidia-patching/) |
-| [GeForce 7](https://en.wikipedia.org/wiki/GeForce_7_series) | 10.4.x | ^^ | [Requires NVCAP patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/nvidia-patching/) |
+| [GeForce 6](https://en.wikipedia.org/wiki/GeForce_6_series) | 10.2.x | 10.7.5 | Requires 32 bit kernel and [NVCAP patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/nvidia-patching/) |
+| [GeForce 7](https://en.wikipedia.org/wiki/GeForce_7_series) | 10.4.x | ^^ | [Requires NVCAP patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/nvidia-patching/) |
 | [Tesla](https://en.wikipedia.org/wiki/Tesla_(microarchitecture)) | 10.4.x | 10.13.6 | ^^ |
 | [Tesla V2](https://en.wikipedia.org/wiki/Tesla_(microarchitecture)#Tesla_2.0) | 10.5.x | ^^ | ^^ |
 | [Fermi](https://en.wikipedia.org/wiki/Fermi_(microarchitecture)) | 10.7.x | ^^ | ^^ |
@@ -261,9 +261,9 @@ Virtually all wired network adapters have some form of support in macOS, either 
 
 Most WiFi cards that come with laptops are not supported as they are usually Intel/Qualcomm. If you are lucky, you may have a supported Atheros card, but support only runs up to High Sierra.
 
-The best option is getting a supported Broadcom card; see the [WiFi Buyer's Guide](https://dortania.github.io/Wireless-Buyers-Guide/) for recommendations.
+The best option is getting a supported Broadcom card; see the [WiFi Buyer's Guide](https://viopencore.github.io/Wireless-Buyers-Guide/) for recommendations.
 
-Note: Intel WiFi is unofficially (3rd party driver) supported on macOS, check [WiFi Buyer's Guide](https://dortania.github.io/Wireless-Buyers-Guide/) for more information about the drivers and supported cards.
+Note: Intel WiFi is unofficially (3rd party driver) supported on macOS, check [WiFi Buyer's Guide](https://viopencore.github.io/Wireless-Buyers-Guide/) for more information about the drivers and supported cards.
 
 ## Miscellaneous
 

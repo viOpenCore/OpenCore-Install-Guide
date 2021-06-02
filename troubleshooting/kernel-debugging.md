@@ -24,7 +24,7 @@ Besides just using DEBUG variants of OpenCore and kexts, these tools can also he
   
 * [SSDT-DBG](https://gist.github.com/al3xtjames/39ebea4d615c8aed829109a9ea2cd0b5)
   * Enables debug statements from your ACPI tables, helping for in-OS ACPI event debugging
-  * Note you will need to [compile the SSDT](https://dortania.github.io/Getting-Started-With-ACPI/Manual/compile.html)
+  * Note you will need to [compile the SSDT](https://viopencore.github.io/Getting-Started-With-ACPI/Manual/compile.html)
   
 ## Config.plist Setup
 
@@ -214,7 +214,7 @@ csrutil authenticated-root disable # Big Sur+
 
 Reboot, and SIP will have been adjusted accordingly. You can run `csrutil status` in terminal to verify it worked.
 
-* <span style="color:red"> CAUTION: </span> For users relying on [OpenCore's ApECID feature](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#apecid), please be aware this **must** be disabled to use the KDK.
+* <span style="color:red"> CAUTION: </span> For users relying on [OpenCore's ApECID feature](https://viopencore.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#apecid), please be aware this **must** be disabled to use the KDK.
 
 #### 3. Mount root partition as writable
 

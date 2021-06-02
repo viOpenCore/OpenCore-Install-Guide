@@ -56,12 +56,12 @@ Make sure `Add Python to PATH`
 
 ## Incorrect resolution with OpenCore
 
-* Follow [Fixing Resolution and Verbose](https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose.html) for correct setup, set `UIScale` to `02` for HiDPI
+* Follow [Fixing Resolution and Verbose](https://viopencore.github.io/OpenCore-Post-Install/cosmetic/verbose.html) for correct setup, set `UIScale` to `02` for HiDPI
 * Users also have noticed that setting `ConsoleMode` to Max will sometimes fail, leaving it empty can help
 
 ## Can't find Windows/BootCamp drive in picker
 
-So with OpenCore, we have to note that legacy Windows installs are not supported, only UEFI. Most installs now are UEFI based but those made by BootCamp Assistant are legacy based, so you'll have to find other means to make an installer(Google's your friend). This also means MasterBootRecord/Hybrid partitions are also broken so you'll need to format the drive you want to install onto with DiskUtility. See the [Multiboot Guide](https://dortania.github.io/OpenCore-Multiboot/) on best practices
+So with OpenCore, we have to note that legacy Windows installs are not supported, only UEFI. Most installs now are UEFI based but those made by BootCamp Assistant are legacy based, so you'll have to find other means to make an installer(Google's your friend). This also means MasterBootRecord/Hybrid partitions are also broken so you'll need to format the drive you want to install onto with DiskUtility. See the [Multiboot Guide](https://viopencore.github.io/OpenCore-Multiboot/) on best practices
 
 Now to get onto troubleshooting:
 
@@ -106,5 +106,5 @@ iasl * [insert all ACPI files here]
 
 This is due to macOS using Universal Time while Windows relies on Greenwich time, so you'll need to force one OS to a different way of measuring time. We highly recommend modifying Windows instead as it's far less destructive and painful:
 
-* [Install Bootcamp utilities](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* [Install Bootcamp utilities](https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
 * [Modify Windows' registry](https://superuser.com/q/494432)

@@ -74,7 +74,7 @@ The main culprits to watch for in the Booter section are:
       * SyncRuntimePermissions -> False
     * Note: Some laptops(ex. Dell Inspiron 5370) even with MATs support will halt on boot up, in these cases you'll have two options:
       * Boot with the old firmware quirk combo(ie. With EnableWriteUnprotector and disable `RebuildAppleMemoryMap` + `SyncRuntimePermissions`)
-      * Enable `DevirtualiseMmio` and follow [MmioWhitelist guide](https://dortania.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html)
+      * Enable `DevirtualiseMmio` and follow [MmioWhitelist guide](https://viopencore.github.io/OpenCore-Install-Guide/extras/kaslr-fix.html)
 
 Regarding MATs support, firmwares built against EDK 2018 will support this and many OEMs have even added support all the way back to Skylake laptops. Issue is it's not always obvious if an OEM has updated the firmware, you can check the OpenCore logs whether yours supports it([See here how to get a log](../debug.html)):
 
@@ -100,7 +100,7 @@ This section will be split between Intel and AMD users:
     * Haswell and newer only need AppleXcpmCfgLock
     * Ivy Bridge and older only need AppleCpuPmCfgLock
       * Broadwell and older need AppleCpuPmCfgLock if running 10.10 or older
-  * Alternatively you can properly disable CFG-Lock: [Fixing CFG Lock](https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock.html)
+  * Alternatively you can properly disable CFG-Lock: [Fixing CFG Lock](https://viopencore.github.io/OpenCore-Post-Install/misc/msr-lock.html)
 * **AppleXcpmExtraMsrs**
   * May also be required, this is generally meant for Pentiums, HEDT and other odd systems not natively supported in macOS.
 
@@ -360,7 +360,7 @@ The main places to check:
 
 * **Missing EC patch**:
   * Make sure you have your EC SSDT both in EFI/OC/ACPI and ACPI -> Add, **double check it's enabled.**
-  * If you don't have one, grab it here: [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/)
+  * If you don't have one, grab it here: [Getting started with ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/)
 * **IRQ conflict**:
   * Most common on older laptops and pre-builts, run SSDTTime's FixHPET option and add the resulting SSDT-HPET.aml and ACPI patches to your config( the SSDT will not work without the ACPI patches)
 * **PCI allocation issue**:
@@ -378,12 +378,12 @@ The main places to check:
     * Ensure NVMe drives are set as NVMe mode in BIOS(some BIOS have a bug where you can set NVMe drives as SATA)
 * **NVRAM Failing**:
   * Common issue HEDT and 300 series motherboards, you have a couple paths to go down:
-    * 300 Series Consumer Intel: See [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) on making SSDT-PMC.aml
-    * HEDT(ie. X99): See [Emulating NVRAM](https://dortania.github.io/OpenCore-Post-Install/misc/nvram.html) on how to stop NVRAM write, note that for install you do not need to run the script. Just setup the config.plist
+    * 300 Series Consumer Intel: See [Getting started with ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/) on making SSDT-PMC.aml
+    * HEDT(ie. X99): See [Emulating NVRAM](https://viopencore.github.io/OpenCore-Post-Install/misc/nvram.html) on how to stop NVRAM write, note that for install you do not need to run the script. Just setup the config.plist
 
 * **RTC Missing**:
-  * Commonly found on Intel's 300+ series(ie. Z370, Z490), caused by the RTC clock being disabled by default. See [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) on creating an SSDT-AWAC.aml
-  * X99 and X299 have broken RTC devices, so will need to be fixed with SSDT-RTC0-RANGE. See [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) on creating said file
+  * Commonly found on Intel's 300+ series(ie. Z370, Z490), caused by the RTC clock being disabled by default. See [Getting started with ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/) on creating an SSDT-AWAC.aml
+  * X99 and X299 have broken RTC devices, so will need to be fixed with SSDT-RTC0-RANGE. See [Getting started with ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/) on creating said file
   * Some drunk firmware writer at HP also disabled the RTC on the HP 250 G6 with no way to actually re-enable it
     * Known affected models: `HP 15-DA0014dx`, `HP 250 G6`
     * For users cursed with such hardware you'll need to create a fake RTC clock for macOS to play with. See getting started with ACPI for more details, as well as below image example:
@@ -412,7 +412,7 @@ This is generally seen as a USB or SATA error, couple ways to fix:
 
 This assumes you're only booting the installer USB and not macOS itself.
 
-* If you're hitting the 15 port limit, you can temporarily get around this with `XhciPortLimit` but for long term use, we recommend making a [USBmap](https://dortania.github.io/OpenCore-Post-Install/usb/)
+* If you're hitting the 15 port limit, you can temporarily get around this with `XhciPortLimit` but for long term use, we recommend making a [USBmap](https://viopencore.github.io/OpenCore-Post-Install/usb/)
   * `Kernel -> Quirks -> XhciPortLimit -> True`
 
 * Another issue can be that certain firmware won't pass USB ownership to macOS
@@ -460,7 +460,7 @@ For those running the X99 platform from Intel, please go over the following:
   * AppleXcpmCfgLock
   * AppleXcpmExtraMsrs
 * You have the following SSDTs:
-  * SSDT-UNC(if not, see [Getting started with ACPI](https://dortania.github.io/Getting-Started-With-ACPI/) on creating said file)
+  * SSDT-UNC(if not, see [Getting started with ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/) on creating said file)
 
 ## Stuck on or near `IOConsoleUsers: gIOScreenLock...`/`gIOLockState (3...`
 
@@ -531,7 +531,7 @@ With macOS Catalina, dual socket support is broken, and a fun fact about AMD fir
 This is likely due to faulty or outright missing NullCPUPowerManagement. To fix the issue, remove NullCPUPowerManagement from `Kernel -> Add` and `EFI/OC/Kexts` then enable `DummyPowerManagement` under `Kernel -> Emulate`
 
 * **Note**: On older Intel CPUs(ie. Penryn and older), it may be due to IRQ conflicts or the HPET device being disabled. To resolve, you have 2 options:
-  * [SSDTTime's FixHPET Option](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html)
+  * [SSDTTime's FixHPET Option](https://viopencore.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html)
   * Forcing the HPET Device on
   
 ::: details Forcing the HPET Device on
@@ -576,7 +576,7 @@ Check the order that your kexts load - make they match what is shown under [Gath
 2. VoodooI2C
 3. Satellite/Plugin Kext
 
-Make sure you have SSDT-GPIO in EFI/OC/ACPI and in your config.plist under ACPI -> Add in your config.plist. If you are still having issues, reference the [Getting Started With ACPI GPIO page](https://dortania.github.io/Getting-Started-With-ACPI/Laptops/trackpad.html).
+Make sure you have SSDT-GPIO in EFI/OC/ACPI and in your config.plist under ACPI -> Add in your config.plist. If you are still having issues, reference the [Getting Started With ACPI GPIO page](https://viopencore.github.io/Getting-Started-With-ACPI/Laptops/trackpad.html).
 
 :::
 

@@ -6,7 +6,7 @@ It's that time of year again and with it, and a new macOS beta has been dropped.
 
 **This page will be a small discussion on exactly what you need to prepare for Big Sur, a more in depth look into what's changed on Big Sur can be found here:**
 
-* [What's new in macOS 11, Big Sur!](https://dortania.github.io/hackintosh/updates/2020/11/12/bigsur-new.html)
+* [What's new in macOS 11, Big Sur!](https://viopencore.github.io/hackintosh/updates/2020/11/12/bigsur-new.html)
 
 :::
 
@@ -83,7 +83,7 @@ Not much hardware has been dropped, though the few that have:
 * Ivy Bridge iGPUs slated for removal
   * HD 4000 and HD 2500, however currently these drivers are still present in 11.0.1
 * BCM4331 and BCM43224 based WiFi cards.
-  * See [Wireless Buyers guide](https://dortania.github.io/Wireless-Buyers-Guide/) for potential cards to upgrade to.
+  * See [Wireless Buyers guide](https://viopencore.github.io/Wireless-Buyers-Guide/) for potential cards to upgrade to.
   * Potential work-around is to inject a patched IO80211Family, see here for more details: [IO80211 Patches](https://github.com/khronokernel/IO80211-Patches)
 * Certain SATA controllers dropped
   * For some reason, Apple removed the AppleIntelPchSeriesAHCI class from AppleAHCIPort.kext. Due to the outright removal of the class, trying to spoof to another ID (generally done by SATA-unsupported.kext) can fail for many and create instability for others.
@@ -101,7 +101,7 @@ Other notable changes:
 
 Ensure that you have the latest version of OpenCore, kexts and config.plist so it won't have any odd compatibility issues. You can simply download and update OpenCore and kexts as mentioned here:
 
-* [Updating OpenCore and macOS](https://dortania.github.io/OpenCore-Post-Install/universal/update.html)
+* [Updating OpenCore and macOS](https://viopencore.github.io/OpenCore-Post-Install/universal/update.html)
 
 If you're unsure what version of OpenCore you're using, you can run the following in terminal:
 
@@ -131,7 +131,7 @@ For X79, X99 and X299 users, pay close attention to the below. Big Sur has added
 
 For those who'd like precompiled files, see here:
 
-* [Getting started with ACPI: Prebuilt SSDTs](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.html)
+* [Getting started with ACPI: Prebuilt SSDTs](https://viopencore.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-prebuilt.html)
 
 ### Known issues
 

@@ -24,15 +24,15 @@ Issues revolving around macOS once properly installed.
 
 ## Broken iMessage and Siri
 
-Refer to [Fixing iServices](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html) section
+Refer to [Fixing iServices](https://viopencore.github.io/OpenCore-Post-Install/universal/iservices.html) section
 
 ## No on-board audio
 
-Refer to [Fixing Audio with AppleALC](https://dortania.github.io/OpenCore-Post-Install/) section
+Refer to [Fixing Audio with AppleALC](https://viopencore.github.io/OpenCore-Post-Install/) section
 
 ## BIOS reset or sent into Safemode after reboot/shutdown
 
-Refer to [Fixing RTC/CMOS Resets](https://dortania.github.io/OpenCore-Post-Install/misc/rtc.html) section
+Refer to [Fixing RTC/CMOS Resets](https://viopencore.github.io/OpenCore-Post-Install/misc/rtc.html) section
 
 ## Synaptics PS2 based trackpad doesn't work
 
@@ -93,13 +93,13 @@ Verify the following:
 
 ## DRM Broken
 
-Refer to [Fixing DRM](https://dortania.github.io/OpenCore-Post-Install/universal/drm.html) section
+Refer to [Fixing DRM](https://viopencore.github.io/OpenCore-Post-Install/universal/drm.html) section
 
 ## "Memory Modules Misconfigured" on MacPro7,1
 
 Follow guide listed here:
 
-* [Fixing MacPro7,1 Memory Errors](https://dortania.github.io/OpenCore-Post-Install/universal/memory.html)
+* [Fixing MacPro7,1 Memory Errors](https://viopencore.github.io/OpenCore-Post-Install/universal/memory.html)
 
 For those who simply want to disable the notification(not the error itself) is more than enough. For these users, we recommend installing [RestrictEvents](https://github.com/acidanthera/RestrictEvents/releases)
 
@@ -225,7 +225,7 @@ Oddly enough, macOS has locked down digital audio from having control. To bring 
 
 This is due to macOS using Universal Time while Windows relies on Greenwich time, so you'll need to force one OS to a different way of measuring time. We highly recommend modifying Windows instead as it's far less destructive and painful:
 
-* [Install Bootcamp utilities](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* [Install Bootcamp utilities](https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
 * [Modify Windows' registry](https://superuser.com/q/494432)
 
 ## Disabling SIP

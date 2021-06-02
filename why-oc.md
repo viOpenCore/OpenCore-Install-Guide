@@ -25,7 +25,7 @@ Phần này tóm tắt ngắn gọn về lý do tại sao cộng đồng lại c
 * Tổng quan thì bảo mật tốt hơn ở nhiều mặt:
   * Không cần tắt System Integrity Protection (SIP)
   * Hỗ trợ FileVault 2
-  * [Vaulting](https://dortania.github.io/OpenCore-Post-Install/universal/security.html#Vault) giúp tạo "ảnh chụp" của EFI để ngăn những sửa đổi không mong muốn
+  * [Vaulting](https://viopencore.github.io/OpenCore-Post-Install/universal/security.html#Vault) giúp tạo "ảnh chụp" của EFI để ngăn những sửa đổi không mong muốn
   * Thực sư hỗ trợ secure-boot
     * Both UEFI and Apple's variant
 * BootCamp switching and boot device selection are supported by reading NVRAM variables set by Startup Disk, just like a real Mac.
@@ -84,7 +84,7 @@ Hầu hết các Clover's functionality is actually supported in OpenCore in the
   * This can be done in macOS however
 * Does not support automatic DeviceProperty injection for legacy GPUs
   * ie. InjectIntel, InjectNvidia and InjectAti
-  * This can be done manually however: [GPU patching](https://dortania.github.io/OpenCore-Post-Install/gpu-patching/)
+  * This can be done manually however: [GPU patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
 * Does not support IRQ conflict patching
   * Can be resolved with [SSDTTime](https://github.com/corpnewt/SSDTTime)
 * Does not support P and C state generation for older CPUs
@@ -125,7 +125,7 @@ So please do not see the version number as a hindrance, instead as something to 
 
 By default, OpenCore will assume that all OSes should be treated equally in regards to ACPI and SMBIOS information. The reason for this thinking consists of three parts:
 
-* This allows for proper multiboot support, like with [BootCamp](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+* This allows for proper multiboot support, like with [BootCamp](https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
 * Avoids poorly made DSDTs and encourages proper ACPI practices
 * Avoids edge cases where info is injected several times, commonly seen with Clover
   * i.e. How would you handle SMBIOS and ACPI data injection once you booted boot.efi, but then get kicked out? The changes are already in memory and so trying to undo them can be quite dangerous. This is why Clover's method is frowned upon.
@@ -200,4 +200,4 @@ Due to issues revolving around Nvidia support in newer versions of macOS, many u
 
 The main issue has to do with any newer Nvidia GPUs, as Apple stopped shipping machines with them and thus they never had official OS support from Apple. Instead, users had to rely on Nvidia for 3rd party drivers. Due to issues with Apple's newly introduced Secure Boot, they could no longer support the Web Drivers and thus Nvidia couldn't publish them for newer platforms limiting them to mac OS 10.13, High Sierra.
 
-For more info on OS support, see here: [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide/)
+For more info on OS support, see here: [GPU Buyers Guide](https://viopencore.github.io/GPU-Buyers-Guide/)
