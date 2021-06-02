@@ -20,10 +20,14 @@ module.exports = {
         ["link", {
             rel: "'stylesheet",
             href: "/styles/website.css"
-        },]
+        },],
+        ['link', {
+          rel: "shortcut icon",
+          href: "/assets/favicons/favicon.ico"
+        },],
     ],
     base: '/OpenCore-Install-Guide/',
-	
+
 	watch: {
 	    $page(newPage, oldPage) {
 	      if (newPage.key !== oldPage.key) {
@@ -39,7 +43,7 @@ module.exports = {
 	      }
 	    }
 	  },
-	
+
 	markdown: {
 		extendMarkdown: md => {
 			md.use(require('markdown-it-multimd-table'), {
@@ -47,7 +51,7 @@ module.exports = {
 			});
 		}
 	},
-	
+
     theme: 'vuepress-theme-succinct',
     globalUIComponents: [
         'ThemeManager'
@@ -63,7 +67,7 @@ module.exports = {
             text: 'Dortania Guides',
             ariaLabel: 'Language Menu',
             items: [{
-                text: 'Home Site',
+                text: 'Trang chủ',
                 link: 'https://dortania.github.io/'
             },
             {
@@ -226,15 +230,15 @@ module.exports = {
                     collapsable: true,
                     sidebarDepth: 1,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/security', 'Security and FileVault'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/security', 'Security và FileVault'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/audio', 'Fixing Audio'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd', 'Booting without USB'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/update', 'Updating OpenCore, kexts and macOS'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd', 'Boot không cần USB'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/update', 'Update OpenCore, kexts và macOS'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/drm', 'Fixing DRM'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/iservices', 'Fixing iServices'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/pm', 'Fixing Power Management'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/sleep', 'Fixing Sleep'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/usb/', 'Fixing USB'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/iservices', 'Fix iServices'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/pm', 'Fix Power Management'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/sleep', 'Fix Sleep'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/usb/', 'Fix USB'],
                     ]
                 },
                 {
