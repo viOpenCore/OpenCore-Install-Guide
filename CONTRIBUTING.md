@@ -1,92 +1,67 @@
-# Supporting the guides
+# Hỗ trợ guides
 
-**Note**: This is a community run guide which is not officially endorsed by Acidanthera. Please do not bug Acidanthera with issues about this guide.
+**Chú ý**: Guide này được viết nên bởi Dortania (không được Acidanthera xác nhận chính thức) và dịch bởi nhóm viOpenCore. Chính vì vậy đừng làm phiền Acidanthera và Dortania với các vấn đề về guide này.
 
-Want to help support the guide? Well there's some ways you can help!
+Muốn hỗ trợ guide? Vâng, đây là một số cách bạn có thể giúp đỡ!
 
-* [Contributing via Issues](#contributing-via-issues)
-* [Contributing via PRs](#contributing-via-prs)
-* [Contributing via Translations](#contributing-via-translations)
+* [Đóng góp thông qua Issues](#dong-gop-thong-qua-issues)
+* [Đóng góp thông qua PRs](#dong-gop-thong-qua-prs)
 
-Note: For those wanting to contribute financially, we seriously appreciate it but we're a non-profit organization. We do this to teach, not to make money. If you have some money left over we highly recommend donating it to a charity. [Crohn's and Colitis Canada](https://crohnsandcolitis.donorportal.ca/Donation/DonationDetails.aspx?L=en-CA&G=159&F=1097&T=GENER) is one we recommend if you have none on mind.
+Lưu ý: Đối với những người muốn donate, chúng tôi thực sự đánh giá cao điều đó nhưng chúng tôi là một tổ chức phi lợi nhuận. Chúng tôi làm điều này để hỗ trợ cộng đồng chứ không phải để kiếm tiền. Nếu bạn còn dư một số tiền, chúng tôi thực sự khuyên bạn nên đóng góp nó cho một tổ chức từ thiện. [Crohn's and Colitis Canada] (<https://crohnsandcolitis.donorportal.ca/Donation/DonationDetails.aspx?L=vi-CA&G=159&F=1097&T=GENER>) là một địa chỉ mà chúng tôi nghĩ bạn có thể lựa chọn nếu bạn chưa biết.
 
-## Contributing via Issues
+## Đóng góp thông qua Issues
 
- Contributing via Issues is pretty simple but there are some rules:
+ Đóng góp thông qua Issues khá là đơn giản nhưng nó vẫn có một số quy tắc:
 
-* Keep issues tab dedicated to guides issues only, **no personal hackintosh issues**. It is not a place to discuss installation issues.
-* If for a typo or better clarification, please indicate what page it was on. Would appreciate not going for a scavenger hunt on where these issues are.
+* Issues tab chỉ là nơi dành riêng cho những lỗi trong guides thôi, **không có những vẫn đề hackintosh của riêng bạn**. Nó không phải là nơi để thảo luận về các vấn đề cài đặt.
+* Nếu có lỗi đánh máy hoặc cần giải thích rõ hơn, vui lòng cho biết trang đó nằm ở đâu. Chúng tôi đánh giá cao việc không đi tìm kiếm những vấn đề này ở đâu.
 
-You can find the bugtracker here: [Bugtracker](https://github.com/viopencore/bugtracker)
+Bạn có thể tìm thấy bugtracker ở đây: [Bugtracker](https://github.com/viopencore/bugtracker)
 
-## Contributing via PRs
+## Đóng góp thông qua PRs
 
-Some guidelines when contributing via PRs:
+Một số nguyên tắc khi đóng góp thông qua PRs:
 
-* Use your brain (please).
+* Chịu khó suy nghĩ đi (làm ơn).
 * Proofread your submissions.
-* Pull Requests can be denied if we feel it does not fit or has inaccurate information. We will generally tell you why it is rejected though or ask for revisions.
-  * We would also appreciate sources for any bigger commits to make it easier on us to verify the info you provide is valid
-* Images must be hosted locally in the repo under the `../images/` folder
-* Your PR must be run through a markdown lint and have all issues fixed.
-* In general, try to avoid using "non-Acidanthera" tools when possible. Generally we want to avoid use of third-party tools  - though if it's impossible otherwise, then you can link it.
-  * Tools explicitly banned:
+* Pull Requests có thể bị từ chối nếu chúng tôi cảm thấy nó không phù hợp hoặc có thông tin không chính xác. Nói chung, chúng tôi sẽ cho bạn biết lý do tại sao nó bị từ chối hoặc yêu cầu bạn sửa đổi.
+  * Chúng tôi cũng đánh giá sources for any bigger commits để giúp chúng tôi dễ dàng xác minh thông tin bạn cung cấp là hợp lệ
+* Hình ảnh phải được lưu trữ trong repo trong thư mục `../ images /`
+* PR của bạn phải được run markdown lint và đã fix mọi lỗi.
+* Nói chung, cố gắng tránh sử dụng các công cụ không phải của Acidanthera nếu có thể. Nhìn chung, chúng tôi muốn tránh sử dụng các công cụ của bên thứ ba (third-party tools) - nhưng nếu điều này là bắt buộc, thì bạn có thể link nó.
+  * Các tools đã bị cấm:
     * UniBeast, MultiBeast and KextBeast
-      * More info can be found here: [Tonymacx86-stance](https://github.com/khronokernel/Tonymcx86-stance)
+      * Xem thêm tại: [Tonymacx86-stance](https://github.com/khronokernel/Tonymcx86-stance)
     * TransMac
-      * Know for creating borked USB drives
+      * Phá hỏng USB
     * Niresh Installers
-      * We'd like to avoid piracy with the guides
+      * Chúng tôi muốn tránh mọi piracy trong guide này
 
-### How to Contribute
+### Cách đóng góp
 
-Best way to test your commits and make sure they are formatted correctly is by downloading Node.js then running `yarn install` to install dependencies. When you run `yarn dev`, it will set up a local webserver which you can connect to view the changes you made. `yarn test` will throw any errors at you about formatting and spellchecking as well. If you want `markdownlint` to automatically attempt to fix linting, run `yarn fix-lint`.
+Cách tốt nhất để kiểm tra các commits của bạn và đảm bảo rằng chúng đều được format đúng là download Node.js rồi run `yarn install` để cài các dependencies. Khi bạn chạy `yarn dev`, nó sẽ thiết lập một local webserver để xem những thay đổi mà bạn đã thức thiện. `yarn test` sẽ báo cho bạn biết bất kì lỗi nào về format và chính tả. Nếu bạn muốn `markdownlint` tự động cố gắng sữa chữa lỗi format, run `yarn fix-lint`.
 
-Simple step-by-steps:
+Hướng dẫn từng bước một:
 
-* [Fork this repo](https://github.com/viopencore/OpenCore-Install-Guide/fork/)
-* Install the required tools:
-  * [Node.js](https://nodejs.org/)
-* Make your changes.
-* Build the site:
-  * `yarn install` (To install all the required plugins)
-  * `yarn dev` (Preview the site)
-    * Can be found at `http://localhost:8080`
-* Check linting and spellcheck:
+* [Fork repo này](https://github.com/viopencore/OpenCore-Install-Guide/fork/)
+* Cài đặt các phần mềm cần thiết:
+  * [Node.js](https://nodejs.org/) (Khuyên dùng bản LTS)
+* Thực hiện các thay đổi của bạn.
+* Build trang web:
+  * `yarn install` (Để cài tất cả plugins cần thiết)
+  * `yarn dev` (Xem trang website)
+    * Có thể được tìm thấy tại `http://localhost:8080`
+* Kiểm tra format và chính tả:
   * `yarn test`
-  * `yarn lint` and `yarn spellcheck` (to run the tests individually)
-  * `yarn fix-lint` (To fix any potential issues)
-  * For words not supported by the default spellcheck, please add them to the [dictionary.txt](./dictionary/dictionary.txt) and run `yarn sort-dict`
+  * `yarn lint` và `yarn spellcheck` (Để run các tests riêng lẻ)
+  * `yarn fix-lint` (Để fix mọi sự cố tiềm ẩn)
+  * Đối với những từ chưa được hỗ trợ, xin vui lòng add chúng vào [vietnamese.txt](./dictionary/vietnamese.txt) và run `yarn sort-dict`
 
 ### Tips
 
-Some tools that make contributing a bit easier:
+Một số tools giúp bạn đóng góp dễ dàng hơn:
 
 * [Visual Studio Code](https://code.visualstudio.com)
-* [Typora](https://typora.io) for real time markdown rendering.
-* [TextMate](https://macromates.com) for easy and powerful mass find/replace.
-* [Github Desktop](https://desktop.github.com) for more user friendly GUI.
-
-## Contributing via Translations
-
-While viOpenCore's guide are primarily English based, we know there's plenty of other languages in the world and that not everyone is fluent in English. If you want to help translate our guides into different languages, we're more than happy to support you.
-
-Main things to keep in mind:
-
-* Translations must be a dedicated fork and won't be merged into viOpenCore's guide
-* Forks must indicate they're translations of viOpenCore and are not official
-* Forks must also comply with our [License](LICENSE.md)
-
-If the above are met, you're free to host your translation without issue! viOpenCore's sites are built with [VuePress](https://vuepress.vuejs.org) using [Travis-CI](https://travis-ci.org) and finally hosted on [Github Pages](https://pages.github.com), so there is no cost to hosting your own translation.
-
-If you have any questions or concerns with either translations or hosting, feel free to reach out on our [Bugtracker](https://github.com/viopencore/bugtracker).
-
-Current known translations:
-
-* [InyextcionES](https://github.com/InyextcionES/OpenCore-Install-Guide)(Spanish)
-* [macOS86](https://macos86.gitbook.io/guida-opencore/)(Italian, no longer maintained)
-* [Technopat](https://www.technopat.net/sosyal/konu/opencore-ile-macos-kurulum-rehberi.963661/)(Turkish)
-* [ThrRip](https://github.com/ThrRip/OpenCore-Install-Guide)(Chinese)
-* [Shijuro](https://github.com/shijuro/OpenCore-Install-Guide)(Russian)
-
-And note that these translations are subject to authors preferences, translation changes and human errors. Please keep this in mind when reading as they're no longer official viOpenCore guides.
+* [Typora](https://typora.io) để hỗ trợ real time markdown rendering.
+* [TextMate](https://macromates.com) để tìm/thay thể từ hàng loạt dễ dàng và hiệu quả.
+* [Github Desktop](https://desktop.github.com) có GUI thân thiện với người dùng (dễ sử dụng).
