@@ -7,9 +7,9 @@ Trong khi bạn không cần phải có macOS mới có thể sử dụng OpenCo
 
 ## Tải bộ cài macOS: Modern OS
 
-* Phương pháp này cho phép bạn tải xuống macOS 10.13 và các bản mới hơn, đối với 10.12 trở lên, hãy xem [Tải xuống macOS: Legacy OS](#download-macos-inherit-os)
+* Phương pháp này cho phép bạn tải xuống macOS 10.13 và các bản mới hơn, đối với 10.12 trở lên, hãy xem [Tải xuống macOS: Legacy OS](#tai-xuong-macos-legacy-os)
 
-Đối với những máy Mac đáp ứng các yêu cầu của phiên bản macOS mà bạn muốn cài đặt, hãy truy cập vào App Store và tải xuống bộ cài macOS bạn mong muốn và tiếp tục [**Thiết lập trình cài đặt**](#setting-up-the-trình-cài-đặt).
+Đối với những máy Mac đáp ứng các yêu cầu của phiên bản macOS mà bạn muốn cài đặt, hãy truy cập vào App Store và tải xuống bộ cài macOS bạn mong muốn và tiếp tục [**Thiết lập bộ cài**](#thiet-lap-bo-cai).
 
 Đối với các máy cần bộ cài macOS cụ thể hoặc không thể tải xuống từ App Store, bạn có thể sử dụng script InstallInstallMacOS của Munki.
 
@@ -57,8 +57,8 @@ Từ đây, hãy chuyển đến [Thiết lập bộ cài](#setting-up-the-insta
 
 Bây giờ chúng tôi sẽ format USB để chuẩn bị cho quá trình cài đặt macOS và OpenCore. Chúng ta sẽ sử dụng macOS Extended (HFS+) với GUID partition map. Thao tác này sẽ tạo ra hai phân vùng: phân vùng chính là `MyVolume` và phân vùng thứ hai có tên là `EFI` được sử dụng làm phân vùng khởi động, nơi firmware của máy tính sẽ kiểm tra các tệp khởi động (boot files).
 
-* Lưu ý: Theo mặc định, Disk Utility chỉ hiển thị các phân vùng - nhấn Cmd / Win + 2 để hiển thị tất cả các thiết bị (hoặc bạn có thể nhấn nút View)
-* Note 2: Người dùng follow phần "Legacy macOS: Online method" có thể bỏ qua và đi đến phần [Thiết lập OpenCore's EFI](#setting-up-opencore-s-efi-environment)
+* Lưu ý: Theo mặc định, Disk Utility chỉ hiển thị các phân vùng - nhấn Cmd/Win+2 để hiển thị tất cả các thiết bị (hoặc bạn có thể nhấn nút View)
+* Note 2: Người dùng follow phần "Legacy macOS: Online method" có thể bỏ qua và đi đến phần [Thiết lập OpenCore EFI](#thiet-lap-opencore-efi)
 
 ![Formatting the USB](../images/installer-guide/mac-install-md/format-usb.png)
 
