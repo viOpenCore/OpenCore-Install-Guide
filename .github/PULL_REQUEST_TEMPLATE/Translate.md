@@ -2,7 +2,7 @@
 name: Dịch guide
 about: Dịch các phần của OpenCore Install Guide sang Tiếng Việt.
 title: ''
-labels: 'translate :vietnam: :vietnam: :vietnam:'
+labels: 'translate :vietnam: :vietnam: :vietnam:, documentation'
 assignees: 'Cokaps'
 ---
 
