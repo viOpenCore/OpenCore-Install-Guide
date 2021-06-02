@@ -162,8 +162,8 @@ module.exports = {
 					['/config-laptop.plist/broadwell', 'Broadwell'],
                     ['/config-laptop.plist/skylake', 'Skylake'],
                     ['/config-laptop.plist/kaby-lake', 'Kaby Lake'],
-                    ['/config-laptop.plist/coffee-lake', 'Coffee Lake and Whiskey Lake'],
-					['/config-laptop.plist/coffee-lake-plus', 'Coffee Lake Plus and Comet Lake'],
+                    ['/config-laptop.plist/coffee-lake', 'Coffee Lake và Whiskey Lake'],
+					['/config-laptop.plist/coffee-lake-plus', 'Coffee Lake Plus và Comet Lake'],
                     ['/config-laptop.plist/icelake', 'Ice Lake'],
                 ]
             },
@@ -231,10 +231,10 @@ module.exports = {
                     sidebarDepth: 1,
                     children: [
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/security', 'Security và FileVault'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/audio', 'Fixing Audio'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/audio', 'Fix Audio'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd', 'Boot không cần USB'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/update', 'Update OpenCore, kexts và macOS'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/universal/drm', 'Fixing DRM'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/universal/drm', 'Fix DRM'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/iservices', 'Fix iServices'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/pm', 'Fix Power Management'],
                         ['https://dortania.github.io/OpenCore-Post-Install/universal/sleep', 'Fix Sleep'],
@@ -245,7 +245,7 @@ module.exports = {
                     title: 'Laptop Specifics',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery', 'Fixing Battery Read-outs'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/laptop-specific/battery', 'Fix Battery Read-outs'],
 
                     ]
                 },
@@ -253,8 +253,8 @@ module.exports = {
                     title: 'Cosmetics',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose', 'Fixing Resolution and Verbose'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui', 'Add GUI and Boot-chime'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/verbose', 'Fix Resolution và Verbose'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/cosmetic/gui', 'Add GUI và Boot-chime'],
                     ]
                 },
                 {
@@ -262,16 +262,16 @@ module.exports = {
                     collapsable: true,
                     children: [
 						['https://dortania.github.io/OpenCore-Multiboot/', 'OpenCore Multiboot'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap', 'Setting up LauncherOption'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp', 'Installing BootCamp'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap', 'Set up LauncherOption'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/multiboot/bootcamp', 'Cài BootCamp'],
                     ]
                 },
                 {
                     title: 'Miscellaneous',
                     collapsable: true,
                     children: [
-                        ['https://dortania.github.io/OpenCore-Post-Install/misc/rtc', 'Fixing RTC'],
-                        ['https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock', 'Fixing CFG Lock'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/misc/rtc', 'Fix RTC'],
+                        ['https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock', 'Fix CFG Lock'],
                         ['https://dortania.github.io/OpenCore-Post-Install/misc/nvram', 'Emulated NVRAM'],
                     ]
                 },
