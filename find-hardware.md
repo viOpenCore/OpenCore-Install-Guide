@@ -1,50 +1,49 @@
-# Finding your hardware
+# Tìm hiểu phần cứng (cấu hình của bạn)
 
-This section is mostly a mini-guide on how to find what hardware you're currently running; this is mainly relevant for laptop and prebuilt users as hardware specs are a bit more difficult to obtain. You can skip this page and head to [Creating the USB](./installer-guide/) if you already know what hardware you have.
+Mục này chỉ là một hướng dẫn nhỏ cho việc bạn đang sử dụng phần cứng như thế nào. Nếu bạn đã biết thì bạn hãy chuyển qua mục [Tạo USB](./installer-guide/).
 
-For this, we'll assume you have Windows or Linux installed:
+Trước hết, chúng ta sẽ xem bạn đang sử dụng Windows hay Linux:
+* [Nếu bạn đang sử dụng Microsoft Windows](#finding-hardware-using-windows)
+* [Nếu bạn đang sử dụng Linux](#finding-hardware-using-linux)
 
-* [Finding hardware using Windows](#finding-hardware-using-windows)
-* [Finding hardware using Linux](#finding-hardware-using-linux)
+## Nếu bạn sử dụng Windows
 
-## Finding Hardware using Windows
+Chúng ta sẽ có 2 lựa chọn:
 
-For this we mainly have 2 options:
-
-* Windows' built-in Device Manager
+* Device Manager trên Windows (devmgmt.msc)
 * [AIDA64](https://www.aida64.com/downloads)
 
-Due to the easier to use GUI, we recommend downloading AIDA64 and running this as it's much easier to grab specs. However we'll show you both methods for obtaining hardware specs.
+Bởi vì AIDA64 dễ sử dụng hơn và tìm được chi tiết hơn cho nên khuyến cáo các bạn sử dụng. Tuy nhiên chúng tôi cũng sẽ chỉ cho bạn cả 2 cách.
 
-### CPU Model
+### Loại CPU
 
 | AIDA64 | Device Manager|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/cpu-model-aida64.png) | ![](./images/finding-hardware-md/cpu-model-devicemanager.png) |
 
-### GPU Model
+### Loại GPU
 
 | AIDA64 | DeviceManager|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/GPU-model-aida64.png) | ![](./images/finding-hardware-md/GPU-model-devicemanager.png) |
 
-### Chipset Model
+### Loại chipset
 
 | AIDA64 | DeviceManager|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/chipset-model-aida64.png) | ![](./images/finding-hardware-md/chipset-model-devicemanager.png) |
 
-* Note: Intel SOC based CPUs will have the chipset and other features already on the same die instead of being dedicated chips. This means trying to detect the exact chipset is a bit more difficult
+* Note: Một số loại chip Intel kiểu SoC (System on Chip) sẽ có chipset và một số thứ khác đã tích hợp sẵn trong một nhân thay vì riêng một số bộ phận, cho nên việc xác định chipset sẽ khó hơn.
 
-### Keyboard, Trackpad and Touchscreen Connection Type
+### Cổng kết nối bàn phím, trackpad, màn hình cảm ứng
 
 | DeviceManager |
 | :--- |
 | ![](./images/finding-hardware-md/trackpad-model-devicemanager.png) |
 
-AIDA64 unfortunately doesn't provide any useful info regarding pointer devices, so we recommend using DeviceManager for this.
+AIDA64 sẽ không cho bạn biết thông tin hữu ích liên quan tới những cái này, cho nên chúng tôi khuyến khích sử dụng DeviceManager
 
-* You can find these devices under the following:
+* Bạn có thể tìm thấy tại:
   * `Human Interface Devices`
   * `Keyboards`
   * `Mice and other Pointer Devices`
