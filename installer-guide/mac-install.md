@@ -7,7 +7,7 @@ Trong khi bạn không cần phải có macOS mới có thể sử dụng OpenCo
 
 ## Tải bộ cài macOS: Modern OS
 
-* Phương pháp này cho phép bạn tải xuống macOS 10.13 và các bản mới hơn, đối với 10.12 trở lên, hãy xem [Tải xuống macOS: Legacy OS](#tai-xuong-macos-legacy-os)
+* Phương pháp này cho phép bạn tải xuống macOS 10.13 và các bản mới hơn, đối với 10.12 trở xuống, hãy xem [Tải xuống macOS: Legacy OS](#tai-xuong-macos-legacy-os)
 
 Đối với những máy Mac đáp ứng các yêu cầu của phiên bản macOS mà bạn muốn cài đặt, hãy truy cập vào App Store và tải xuống bộ cài macOS bạn mong muốn và tiếp tục [**Thiết lập bộ cài**](#thiet-lap-bo-cai).
 
@@ -144,7 +144,7 @@ Thiết lập OpenCore EFI khá đơn giản – tất cả những gì bạn c�
 
 ![MountEFI](../images/installer-guide/mac-install-md/mount-efi-usb.png)
 
-Bạn sẽ nhận thấy rằng khi chúng ta mở phân vùng EFI, nó trống rỗng. Đây là nơi mọi chuyện vui vẻ bắt đầu.
+Bạn sẽ nhận thấy rằng khi chúng ta mở phân vùng EFI, nó trống rỗng. Đây là nơi mọi chuyện thú vị và vui vẻ bắt đầu.
 
 ![Empty EFI partition](../images/installer-guide/mac-install-md/base-efi.png)
 
