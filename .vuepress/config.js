@@ -59,9 +59,10 @@ module.exports = {
 
     themeConfig: {
         lastUpdated: true,
-        repo: 'https://github.com/dortania/OpenCore-Install-Guide',
+        repo: 'https://github.com/viopencore/OpenCore-Install-Guide',
 		editLinks: true,
-		editLinkText: 'Help us improve this page!',
+        docsBranch: 'vietnamese',
+		editLinkText: 'Dịch page này hộ chúng tôi!',
         logo: 'homepage.png',
         nav: [{
             text: 'viOpenCore Guides',

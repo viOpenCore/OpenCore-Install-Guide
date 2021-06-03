@@ -4,10 +4,10 @@
 
 Muốn hỗ trợ guide? Vâng, đây là một số cách bạn có thể giúp đỡ!
 
-* [Đóng góp thông qua Issues](#dong-gop-thong-qua-issues)
-* [Đóng góp thông qua PRs](#dong-gop-thong-qua-prs)
+* [Đóng góp thông qua Issues](#đong-gop-thong-qua-issues)
+* [Đóng góp thông qua PRs](#đong-gop-thong-qua-prs)
 
-Lưu ý: Đối với những người muốn donate, chúng tôi thực sự đánh giá cao điều đó nhưng chúng tôi là một tổ chức phi lợi nhuận. Chúng tôi làm điều này để hỗ trợ cộng đồng chứ không phải để kiếm tiền. Nếu bạn còn dư một số tiền, chúng tôi thực sự khuyên bạn nên đóng góp nó cho một tổ chức từ thiện. [Crohn's and Colitis Canada] (<https://crohnsandcolitis.donorportal.ca/Donation/DonationDetails.aspx?L=vi-CA&G=159&F=1097&T=GENER>) là một địa chỉ mà chúng tôi nghĩ bạn có thể lựa chọn nếu bạn chưa biết.
+Lưu ý: Đối với những người muốn donate, chúng tôi thực sự đánh giá cao điều đó nhưng chúng tôi là một tổ chức phi lợi nhuận. Chúng tôi làm điều này để hỗ trợ cộng đồng chứ không phải để kiếm tiền. Nếu bạn còn dư một số tiền, chúng tôi thực sự khuyên bạn nên đóng góp nó cho một tổ chức từ thiện. [Crohn's and Colitis Canada](<https://crohnsandcolitis.donorportal.ca/Donation/DonationDetails.aspx?L=vi-CA&G=159&F=1097&T=GENER>) là một địa chỉ mà chúng tôi nghĩ bạn có thể lựa chọn nếu bạn chưa biết.
 
 ## Đóng góp thông qua Issues
 
@@ -23,7 +23,7 @@ Bạn có thể tìm thấy bugtracker ở đây: [Bugtracker](https://github.co
 Một số nguyên tắc khi đóng góp thông qua PRs:
 
 * Chịu khó suy nghĩ đi (làm ơn).
-* Proofread your submissions.
+* Đọc thật kĩ lại PR của bạn.
 * Pull Requests có thể bị từ chối nếu chúng tôi cảm thấy nó không phù hợp hoặc có thông tin không chính xác. Nói chung, chúng tôi sẽ cho bạn biết lý do tại sao nó bị từ chối hoặc yêu cầu bạn sửa đổi.
   * Chúng tôi cũng đánh giá sources for any bigger commits để giúp chúng tôi dễ dàng xác minh thông tin bạn cung cấp là hợp lệ
 * Hình ảnh phải được lưu trữ trong repo trong thư mục `../ images /`
