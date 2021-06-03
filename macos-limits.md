@@ -1,24 +1,24 @@
 # Hardware Limitations
 
-macOS là một hệ điều hành vô cùng kén phần cứng do Apple giới hạn, cho nên một số phần cứng có thể có (hoặc không hoạt động)
+Với macOS, có rất nhiều hạn chế về phần cứng mà bạn cần nhận biết trước khi bước chân vào phần cài đặt. Đấy là do có số lượng hạn chế về phần cứng được Apple hỗ trợ, cho nên một số phần cứng có thể có (hoặc không hoạt động)
 
 Có một số phần mà chúng ta cần để ý:
 
 * [CPU](#cpu)
 * [GPU](#gpu)
-* [Bo mạch chủ](#bo-mạch-chủ)
-* [Thiết bị lưu trữ](#thiết-bị-lưu-trữ)
-* [Mạng có dây](#mạng-có-dây)
-* [Mạng không dây](#mạng-không-dây)
-* [Những cái khác](#những-cái-khác)
+* [Bo mạch chủ](#bo-mach-chu)
+* [Ổ đĩa](#o-đia)
+* [Mạng có dây](#mang-co-day)
+* [Mạng không dây](#mang-khong-day)
+* [Vài thứ khác](#vai-thu-khac)
 
 Và để chi tiết hơn, bạn hãy truy cập:
 
-* [Hướng dẫn chọn GPU](https://viopencore.github.io/GPU-Buyers-Guide/)
+* [GPU Buyers Guide](https://viopencore.github.io/GPU-Buyers-Guide/)
   * Kiểm tra xem nếu GPU của bạn được hỗ trợ và máy của bạn có thể chạy version macOS nào.
-* [Hướng dẫn chọn card Wi-Fi](https://viopencore.github.io/Wireless-Buyers-Guide/)
+* [Wireless Buyers Guide](https://viopencore.github.io/Wireless-Buyers-Guide/)
   * Kiểm tra nếu card Wi-Fi của bạn được hỗ trợ.
-* [Hướng dẫn chọn phần cứng anti Hackintosh](https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide/)
+* [Anti-Hardware Buyers Guide](https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide)
   * Kiểm tra những phần cứng cần tránh và những vấn đề có thể gặp với phần cứng của bạn
 
 ## CPU
@@ -26,16 +26,16 @@ Và để chi tiết hơn, bạn hãy truy cập:
 Với CPU chúng ta cần lưu ý:
 
 * CPU 32 và 64-bit đều được hỗ trợ
-  * Tùy thuộc vào hệ điều hành có hỗ trợ cấu trúc CPU của bạn hay không
-* CPU dành cho Máy tính để bàn của Intel đều hỗ trợ
+  * Tùy thuộc vào bản macOS đó có hỗ trợ cấu trúc CPU của bạn hay không
+* CPU dành cho Desktop của Intel đều hỗ trợ
   * Từ Yonah đến Comet Lake đều được hỗ trợ.
-* CPU dành cho Máy tính để bàn Cao cấp và CPU Máy chủ của Intel.
+* CPU dành cho High-End Desktop và Server của Intel.
   * Từ Nehalem đến Cascade Lake X đều được hỗ trợ trong guide này.
 * CPU Intel Core "i" và Xeon dành cho Laptop
   * Từ Arrendale đến Ice Lake đều được hỗ trợ.
   * Chú ý rằng CPU Atoms, Celeron và Pentium cho Laptop đều không được hỗ trợ.
-* CPU dành cho Máy tính để bàn của AMD (Bulldozer (15h), Jaguar (16h) và Ryzen (17h))
-  * CPU dành cho Laptop đều **KHÔNG ĐƯỢC** hỗ trợ
+* CPU dành cho Desktop của AMD (Bulldozer (15h), Jaguar (16h) và Ryzen (17h))
+  * Mọi CPU dành cho Laptop đều **KHÔNG ĐƯỢC** hỗ trợ
   * Chú ý rằng không phải tất cả tính năng của macOS đều được hỗ trợ trên AMD, chi tiết hãy xem bên dưới
 
 **Xem chi tiết tại đây: [Anti-Hardware Buyers Guide](https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide/)**
@@ -53,41 +53,43 @@ SEE Requirements:
 * SSE3 **BẮT BUỘC PHẢI CÓ**
 * SSSE3 phải có cho mọi phiên bản 64-bit của OS X/macOS
   * Với CPU thiếu SSSE3 (VD: CPU Pentium 64-bit), nên chạy OS X/macOS 32-bit (`i386-user32`)
-* SSE4 cần cho macOS 10.12 "Sierra" trở lên
+* SSE4 cần cho macOS 10.12 Sierra trở lên
 * SSE4.2 cần cho macOS 10.14 "Mojave" trở lên
-  * CPU SSE4.1 hỗ trợ với [telemetrap.kext](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/post-28447707)
+  * CPU SSE4.1 được hỗ trợ với [telemetrap.kext](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/post-28447707)
   * Drivers mới cho AMD cần SSE4.2 cho việc hỗ trợ Metal. Để xem chi tiết, hãy tham khảo:: [MouSSE: SSE4.2 emulation](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/)
 
 Yêu cầu Firmware:
 
-* OS X 10.4.1 tới 10.4.7 cần EFI32 (VD: Phiên bản IA32 (32-bit) của OpenCore)
+* OS X 10.4.1 tới 10.4.7 cần EFI32 (Nói cách khác là Phiên bản IA32 (32-bit) của OpenCore)
   * OS X 10.4.8 tới 10.7.5 hỗ trợ cả EFI32 và EFI64
-* OS X 10.8 và m hơn cần EFI64 (VD: Phiên bản x64 (64-bit) của OpenCore)
+* OS X 10.8 và các bản mới hơn cần EFI64 (Nói cách khác là phiên bản x64 (64-bit) của OpenCore)
 * OS X 10.7 tới 10.9 cần OpenPartitionDxe.efi để boot vào phân vùng Recovery.
 
-Yêu cầu Nhân (Kernel):
+Yêu cầu Kernel (Kexts):
 
 * OS X 10.4 và 10.5 yêu cầu kext 32-bit do chúng chỉ hỗ trợ kernelspace 32-bit
   * OS X 10.6 và 10.7 hỗ trợ cà kernelspace 32 và 64-bit
 * OS X 10.8 và mới hơn yêu cầu kext 64-bit do chúng chỉ hỗ trợ kernelspace 64-bit
-  * Dùng lệnh `lipo -archs` để biết cấu trúc kext hỗ trợ (nhớ là không chạy ở bundle của kext, phải là ở binary)
+  * Dùng lệnh `lipo -archs` để biết cấu trúc kext hỗ trợ (nhớ là không chạy ở file .kext bundle .kext, phải là ở binary)
 
 Giới hạn số nhân/luồng:
 
-* OS X 10.10 và thấp hơn không thể hoạt động với CPU có hơn 24 luồng (vì panic `mp_cpus_call_wait() timeout`)
+* OS X 10.10 và cũ hơn không thể boot với CPU có nhiều hơn 24 luồng (sẽ bị panic `mp_cpus_call_wait() timeout`)
 * OS X 10.11 và mới hơn có giới hạn lên tới 64 luồng
-* Bootarg `cpus=` có thể dùng để tắt hyperthreading hoặc dùng để làm gì đó
+* Bootarg `cpus=` có thể dùng để tắt hyperthreading hoặc dùng để giải quyết vấn đề này
+
 Notes:
 
 * Lilu và plugins của nó yêu cầu OS X 10.8 hoặc mới hơn để hoạt động
-  * Bạn nên sử dụng FakeSMC để sử dụng OS X cũ hơn
+  * Bạn nên sử dụng FakeSMC cho OS X cũ hơn
 * OS X 10.6 và cũ hơn cần bật RebuildAppleMemoryMap
+  * Dùng để giải quyết lỗi kernel ban đầu
 
 :::
 
 ::: details Bảng hỗ trợ CPU Intel
 
-Dựa theo Vanilla Kernels (không chỉnh sửa:
+Dựa theo Vanilla Kernels (không chỉnh sửa):
 
 | Thế hệ CPU | Phiên bản hỗ trợ tối thiểu | Phiên bản hỗ trợ cuối cùng | Ghi chú | CPUID |
 | :--- | :--- | :--- | :--- | :--- |
@@ -116,25 +118,25 @@ Dựa theo Vanilla Kernels (không chỉnh sửa:
 
 ::: details Giới hạn CPU AMD ở macOS
 
-Có vô cùng nhiều tính năng của macOS không hỗ trợ với CPU AMD, như:
+Có rất nhiều tính năng của macOS không được hỗ trợ với CPU AMD, như:
 
 * Máy ảo có sử dụng AppleHV
   * Bao gồm VMware, Parallels, Docker, Android Studio,...
-  * VirtualBox ngoại lệ do nó có hypervisor riêng
+  * VirtualBox là ngoại lệ do nó có hypervisor riêng
   * VMware 10 và Parallels 13.1.0 có hypervisor riêng, nhưng không nên sử dụng chúng do bảo mật (cứ dualboot đi cho lành)
-* Hỗ trợ cho CPU AMD
+* Hỗ trợ cho Adobe
   * Đa phần các phần mềm của Adobe sử dụng Intel Memfast nên app Adobe sẽ bị crash khi chạy ở CPU AMD
   * Bạn có thể vô hiệu hóa các tính năng như RAW để tránh việc bị crash: [Adobe Fixes](https://gist.github.com/naveenkrdy/26760ac5135deed6d0bb8902f6ceb6bd)
 * Hỗ trợ 32-bit
-  * Cho những ai cần những phần mềm 32-bit ở Mojave và thâos hơn, nên nhớ là patch Vanilla không hỗ trợ 32-bit
-  * Bạn có thể cài đặt [custom kernel](https://amd-osx.com/download/kernel.html), tuy nhiên bạn sẽ mất hỗ trợ iMessage.
+  * Cho những ai cần những phần mềm 32-bit ở Mojave và thấp hơn, nên nhớ là patch Vanilla không hỗ trợ 32-bit
+  * Bạn có thể cài đặt [custom kernel](https://amd-osx.com/download/kernel.html) để fix, tuy nhiên bạn sẽ mất hỗ trợ iMessage.
 * Độ ổn định ở nhiều ứng dụng
   * Một số ứng dụng liên quan tới âm thanh như Logic Pro
-  * DaVinci Resolve cũng có một số vấn đề.
+  * DaVinci Resolve cũng gặp một số vấn đề.
 
 :::
 
-## GPU Support
+## Hỗ trợ GPU
 
 GPU support becomes much more complicated due to the near-infinite amount of GPUs on the market, but the general breakdown is as follows:
 
@@ -142,29 +144,29 @@ GPU support becomes much more complicated due to the near-infinite amount of GPU
   * AMD APUs are not supported however
   * AMD's [Lexa based cores](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) from the Polaris series are also not supported
   * Special note for MSI Navi users: [Installer not working with 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901)
-    * This issue is no longer present in macOS 11 (Big Sur).
+    * Vấn đề này không còn xuất hiện trên macOS 11 (Big Sur).
 * Nvidia's GPU support is complicated:
-  * [Maxwell(9XX)](https://en.wikipedia.org/wiki/GeForce_900_series) and [Pascal(10XX)](https://en.wikipedia.org/wiki/GeForce_10_series) GPUs are limited to macOS 10.13: High Sierra
-  * [Nvidia's Turing(20XX,](https://en.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://en.wikipedia.org/wiki/GeForce_16_series) GPUs are **not supported in any version of macOS**
-  * [Nvidia's Ampere(30XX)](https://en.wikipedia.org/wiki/GeForce_30_series) GPUs are **not supported in any version of macOS**
-  * [Nvidia's Kepler(6XX,](https://en.wikipedia.org/wiki/GeForce_600_series)[7XX)](https://en.wikipedia.org/wiki/GeForce_700_series) GPUs are supported in the latest versions of macOS (including macOS 11 Big Sur)
-    * This is due to Apple still supporting a few [MacBook Pros with Nvidia GPUs](https://viopencore.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html)
+  * [Maxwell(9XX)](https://en.wikipedia.org/wiki/GeForce_900_series)và [Pascal(10XX)](https://en.wikipedia.org/wiki/GeForce_10_series) GPU chỉ được hỗ trợ tới macOS 10.13: High Sierra
+  * [Nvidia's Turing(20XX,](https://en.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://en.wikipedia.org/wiki/GeForce_16_series) GPU **không được hỗ trợ với bất kì phiên bản nào của macOS**
+  * [Nvidia's Ampere(30XX)](https://en.wikipedia.org/wiki/GeForce_30_series) GPU **không được hỗ trợ với bất kì phiên bản nào của macOS**
+  * [Nvidia's Kepler(6XX,](https://en.wikipedia.org/wiki/GeForce_600_series)[7XX)](https://en.wikipedia.org/wiki/GeForce_700_series) GPU được hỗ trợ tới phiên bản mới nhất của macOS (bao gồm macOS 11 Big Sur)
+    * Đó là do Apple vẫn hỗ trợ một vài [MacBook Pro với Nvidia GPU](https://viopencore.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html)
 * Intel's [GT2+ tier](https://en.wikipedia.org/wiki/Intel_Graphics_Technology) series iGPUs
-  * Ivy Bridge through Ice Lake iGPU support is covered in this guide
+  * Từ Ivy Bridge đến Ice Lake iGPU đều được hỗ trợ trong guide này
     * Info on GMA series iGPUs can be found here: [GMA Patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
-  * Note GT2 refers to the tier of iGPU, low-end GT1 iGPUs found on Pentiums, Celerons and Atoms are not supported in macOS
+  * Chú ý rằng GT2 đề cập đến tier của iGPU, low-end GT1 iGPUs trên Pentiums, Celerons and Atoms đều không được hỗ trợ trong macOS
 
-And an important note for **Laptops with discrete GPUs**:
+Và một lưu ý quan trọng đối với **Laptop có dGPU (GPU rời)**:
 
-* 90% of discrete GPUs will not work because they are wired in a configuration that macOS doesn't support (switchable graphics). With NVIDIA discrete GPUs, this is usually called Optimus. It is not possible to utilize these discrete GPUs for the internal display, so it is generally advised to disable them and power them off (will be covered later in this guide).
-* However, in some cases, the discrete GPU powers any external outputs (HDMI, mini DisplayPort, etc.), which may or may not work; in the case that it will work, you will have to keep the card on and running.
-* However, there are some laptops that rarely do not have switchable graphics, so the discrete card can be used (if supported by macOS), but the wiring and setup usually cause issues.
+* 90% dGPU sẽ không hoạt động vì chúng được sử dụng cấu hình mà macOS không hỗ trợ (switchable graphics). Với dGPU NVIDIA, nó thường được gọi là Optimus. Không thể sử dụng các GPU rời này cho internal display, vì vậy chúng ta nên disable chúng và power off (sẽ được đề cập ở phần sau của hướng dẫn này).
+* Tuy nhiên, trong một số trường hợp, dGPU rời có cổng kết nối bên ngoài (HDMI, mini DisplayPort, v.v.), có thể hoạt động hoặc không hoạt động; trong trường hợp nó hoạt động, bạn sẽ phải bật dGPU.
+* Tuy nhiên, có một số ít laptop không có switchable graphics, vì vậy có thể sử dụng card rời (nếu được macOS hỗ trợ), nhưng hệ thống dây và cách thiết lập thường gây ra nhiều vấn đề.
 
-**For a full list of supported GPUs, see the [GPU Buyers Guide](https://viopencore.github.io/GPU-Buyers-Guide/)**
+**Để biết danh sách đầy đủ các GPU được hỗ trợ, hãy xem [GPU Buyers Guide](https://viopencore.github.io/GPU-Buyers-Guide/)**
 
-::: details Intel GPU Support Chart
+::: details Bảng danh sách các Intel GPU được hỗ trợ
 
-| GPU Generation | Initial support | Last supported version | Notes |
+| GPU Generation | Phiên bản tối thiểu | Phiên bản cuối cùng | Notes |
 | :--- | :--- | :--- | :--- |
 | [3rd Gen GMA](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Third_generation) | 10.4.1 | 10.7.5 | [Requires 32-bit kernel and patches](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/legacy-intel/) |
 | [4th Gen GMA](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Gen4) | 10.5.0 | ^^ | ^^ |
@@ -221,60 +223,60 @@ Note: Apple has kept Ivy Bridge's iGPU drivers present in macOS 11, Big Sur, how
 
 :::
 
-## Motherboard Support
+## Bo mạch chủ
 
-For the most part, all motherboards are supported as long as the CPU is. Previously, B550 boards had issues:
+Đối với hầu hết các bo mạch chủ đều được hỗ trợ miễn là CPU được hỗ trợ. Trước đây, chipset B550 đã gặp nhiều vấn đề:
 
 * [~~AMD's B550 boards~~](https://en.wikipedia.org/wiki/List_of_AMD_chipsets)
 
-However thanks to recent developments, B550 boards are now bootable with the addition of [SSDT-CPUR](https://github.com/naveenkrdy/Misc/blob/master/SSDTs/SSDT-CPUR.dsl). More info will be provided in both [Gathering Files](./ktext.md) and [Zen's config.plist section](./AMD/zen.md)
+Tuy nhiên, nhờ những phát triển gần đây, chipset B550 hiện có thể khởi động bằng việc sử dụng [SSDT-CPUR](https://github.com/naveenkrdy/Misc/blob/master/SSDTs/SSDT-CPUR.dsl). Thông tin chi tiết sẽ được cung cấp tại [Gathering Files](./ktext.md) và [phần config.plist của Zen](./AMD/zen.md)
 
-## Storage Support
+## Ổ đĩa
 
-For the most part, all SATA based drives are supported and the majority of NVMe drives as well. There are only a few exceptions:
+Hầu hết các tất cả các ổ đĩa chuẩn SATA đều được hỗ trợ và phần lớn các ổ đĩa NVMe cũng vậy. Chỉ có một số trường hợp ngoại lệ:
 
 * **Samsung PM981, PM991 and Micron 2200S NVMe SSDs**
-  * These SSDs are not compatible out of the box (causing kernel panics) and therefore require [NVMeFix.kext](https://github.com/acidanthera/NVMeFix/releases) to fix these kernel panics. Note that these drives may still cause boot issues even with NVMeFix.kext.
-  * On a related note, Samsung 970 EVO Plus NVMe SSDs also had the same problem but it was fixed in a firmware update; get the update (Windows via Samsung Magician or bootable ISO) [here](https://www.samsung.com/semiconductor/minisite/ssd/download/tools/).
-  * Also to note, laptops that use [Intel Optane Memory](https://www.intel.com/content/www/us/en/architecture-and-technology/optane-memory.html) or [Micron 3D XPoint](https://www.micron.com/products/advanced-solutions/3d-xpoint-technology) for HDD acceleration are unsupported in macOS. Some users have reported success in Catalina with even read and write support but we highly recommend removing the drive to prevent any potential boot issues.
+  * Các SSD này không tương thích out of the box (gây ra kernel panic) và do đó bạn cần [NVMeFix.kext](https://github.com/acidanthera/NVMeFix/releases) để fix các kernel panic này. Lưu ý rằng những ổ đĩa này vẫn có thể gây ra sự cố khi khởi động ngay cả khi bạn sử dụng NVMeFix.kext.
+  * Một lưu ý nữa là SSD Samsung 970 EVO Plus NVMe cũng gặp sự cố tương tự nhưng nó đã được khắc phục trong bản firmware update; tải bản update (Windows thông qua Samsung Magician hoặc bootable ISO) [tại đây](https://www.samsung.com/semiconductor/minisite/ssd/download/tools/).
+  * Cũng cần lưu ý rằng laptop sử dụng [Intel Optane Memory](https://www.intel.com/content/www/us/en/architecture-and-technology/optane-memory.html) hoặc [Micron 3D XPoint](https://www.micron.com/products/advanced-solutions/3d-xpoint-technology) để tăng tốc HDD không được hỗ trợ trong macOS. Một số người dùng đã thành công trong Catalina và thậm chí còn hỗ trợ đọc và ghi nhưng chúng tôi thực sự khuyên bạn nên sử dụng ổ đĩa khác để ngăn chặn bất kỳ sự cố tiềm ẩn nào.
   
 * **Intel 600p**
-  * While not unbootable, please be aware this model can cause numerous problems. [Any fix for Intel 600p NVMe Drive? #1286](https://github.com/acidanthera/bugtracker/issues/1286)
+  * Mặc dù có thể khởi động được, xin lưu ý rằng ổ đĩa này có thể gây ra nhiều vấn đề. [Any fix for Intel 600p NVMe Drive? #1286](https://github.com/acidanthera/bugtracker/issues/1286)
 
-## Wired Networking
+## Mạng có dây
 
-Virtually all wired network adapters have some form of support in macOS, either by the built-in drivers or community made kexts. The main exceptions:
+Hầu như tất cả cácwired network adapters đều được hỗ trợ trong macOS, bởi các built-in drivers hoặc các kexts của cộng đồng tạo ra. Các trường hợp ngoại lệ chính:
 
 * Intel I225 2.5Gb NIC
-  * Found on high-end Desktop Comet Lake boards
-  * Workarounds are possible: [Source](https://www.hackintosh-forum.de/forum/thread/48568-i9-10900k-gigabyte-z490-vision-d-er-läuft/?postID=606059#post606059) and [Example](config.plist/comet-lake.md#deviceproperties)
+  * Tìm thấy trên các high-end Desktop Comet Lake board
+  * Có thể có giải pháp: [Source](https://www.hackintosh-forum.de/forum/thread/48568-i9-10900k-gigabyte-z490-vision-d-er-läuft/?postID=606059#post606059) và [Example](config.plist/comet-lake.md#deviceproperties)
 * Intel I350 1Gb server NIC
-  * Normally found on Intel and Supermicro server boards of various generations
-  * [Workaround](config-HEDT/ivy-bridge-e.md#deviceproperties)
+  * Thường được tìm thấy trên Intel và Supermicro server boards trên các generation khác nhau
+  * [Giải pháp](config-HEDT/ivy-bridge-e.md#deviceproperties)
 * Intel 10Gb server NICs
-  * Workarounds are possible for [X520 and X540 chipsets](https://www.tonymacx86.com/threads/how-to-build-your-own-imac-pro-successful-build-extended-guide.229353/)
+  * Các giải pháp có thể thực hiện cho [X520 and X540 chipsets](https://www.tonymacx86.com/threads/how-to-build-your-own-imac-pro-successful-build-extended-guide.229353/)
 * Mellanox and Qlogic server NICs
 
-## Wireless Networking
+## Mạng không dây
 
-Most WiFi cards that come with laptops are not supported as they are usually Intel/Qualcomm. If you are lucky, you may have a supported Atheros card, but support only runs up to High Sierra.
+Hầu hết các card WiFi đi kèm với laptop đều không được hỗ trợ vì chúng thường là của Intel/Qualcomm. Nếu đủ may mắn, bạn có thể có card Atheros nhưng chỉ được hỗ trợ chạy đến High Sierra.
 
-The best option is getting a supported Broadcom card; see the [WiFi Buyer's Guide](https://viopencore.github.io/Wireless-Buyers-Guide/) for recommendations.
+Lựa chọn tốt nhất là thay sang một card WiFi Broadcom được hỗ trợ; xem [WiFi Buyer's Guide](https://viopencore.github.io/Wireless-Buyers-Guide/) cho lời khuyên.
 
-Note: Intel WiFi is unofficially (3rd party driver) supported on macOS, check [WiFi Buyer's Guide](https://viopencore.github.io/Wireless-Buyers-Guide/) for more information about the drivers and supported cards.
+Lưu ý: Intel WiFi không được hỗ trợ chính thức (3rd party driver) trên macOS, hãy xem [WiFi Buyer's Guide](https://viopencore.github.io/Wireless-Buyers-Guide/) để biết thêm thông tin chi tiết về driver và các card được hỗ trợ.
 
-## Miscellaneous
+## Vài thứ khác
 
-* **Fingerprint sensors**
-  * There is currently no way to emulate the Touch ID sensor, so fingerprint sensors will not work.
+* **Cảm biến vân tay**
+  * Tại thời điểm hiện tại không có cách nào để giả lập lại cảm biến Touch ID, cho nên cảm biến vân tay sẽ không hoạt động.
 * **Windows Hello Face Recognition**
-  * Some laptops come with WHFR that is I2C connected (and used through your iGPU), those will not work.
-  * Some laptops come with WHFR that is USB connected, if you're lucky, you may get camera functionality, but nothing else.
+  * Một số laptop có WHFR với kết nối I2C (và được sử dụng thông qua iGPU của bạn), những laptop đó sẽ không hoạt động.
+  * Một số laptop có WHFR được kết nối bằng USB, nếu may mắn, bạn có thể có máy ảnh (webcam), nhưng không có gì hơn nữa.
 * **Intel Smart Sound Technology**
-  * Laptops with Intel SST will not have anything connected through them (usually internal mic) work, as it is not supported. You can check with Device Manager on Windows.
+  * Laptop có Intel SST sẽ không có bất kỳ kết nối nào thông qua chúng (thường là micrô bên trong) hoạt động, vì nó không được hỗ trợ. Bạn có thể kiểm tra bằng Device Manager trên Windows.
 * **Headphone Jack Combo**
-  * Some laptops with a combo headphone jack may not get audio input through them and will have to either use the built-in microphone or an external audio input device through USB.
+  * Một số máy tính xách tay có combo headphone jack có thể không nhận được đầu vào âm thanh thông qua chúng và sẽ phải sử dụng micrô tích hợp hoặc thiết bị đầu vào âm thanh bên ngoài thông qua USB.
 * **Thunderbolt USB-C ports**
-  * (Hackintosh) Thunderbolt support is currently still iffy in macOS, even more so with Alpine Ridge controllers, which most current laptops have. There have been attempts to keep the controller powered on, which allows Thunderbolt and USB-C hotplug to work, but it comes at the cost of kernel panics and/or USB-C breaking after sleep. If you want to use the USB-C side of the port and be able to sleep, you must plug it in at boot and keep it plugged in.
-  * Note: This does not apply to USB-C only ports - only Thunderbolt 3 and USB-C combined ports.
-  * Disabling Thunderbolt in the BIOS will also resolve this.
+  * (Hackintosh) Thunderbolt hiện vẫn chưa được hỗ trợ trong macOS, thậm chí còn tệ hơn thế với bộ điều khiển Alpine Ridge, mà hầu hết các laptop hiện tại đều suwr dụng. Đã có rất nhiều nỗ lực để giữ cho bộ điều khiển được bật nguồn, điều này cho phép Thunderbolt và USB-C hotplug hoạt động, nhưng nó phải trả giá bằng kernel panics và/hoặc USB-C bị hỏng sau khi sleep. Nếu bạn muốn sử dụng cổng USB-C của cổng và máy có thể sleep, bạn phải cắm nó lúc khởi động và luôn luôn cắm nó.
+  * Note: Điều này không áp dụng cho cổng USB-C - chỉ cổng kết hợp Thunderbolt 3 và USB-C.
+  * Tắt Thunderbolt trong BIOS sẽ sửa được lỗi này.

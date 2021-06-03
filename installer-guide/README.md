@@ -1,34 +1,34 @@
-# Creating the USB
+# Tạo bộ cài
 
-Requirements:
+Yêu cầu:
 
-* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), highly recommend running the debug version to show more info
-* [ProperTree](https://github.com/corpnewt/ProperTree) to edit .plist files (OpenCore Configurator is another tool but is heavily outdated and the Mackie version is known for corruption. **Please avoid these kinds of tools at all costs!**).
-* You must remove Clover from your system entirely if you wish to use OpenCore as your main boot-loader. Keep a backup of your Clover based EFI. See here on what needs to be cleaned: [Clover Conversion](https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion)
+* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), chúng tôi khuyến khích sử dụng bản debug để hiển thị thêm nhiều thông tin
+* [ProperTree](https://github.com/corpnewt/ProperTree) để chỉnh sửa file .plist (OpenCore Configurator là một tool khác nhưng nó cực kì lỗi thời và phiên bản của Mackie version sẽ làm hư file. **Hãy tránh xa công cụ này bằng mọi giá!**).
+* Bạn cần phải xoá hết Clover ra khỏi máy của mình nếu bạn muốn sử dụng OpenCore làm boot-loader chính của bạn. Lưu bản sao lưu EFI Clover của bạn. Xem những gì mà bạn cần phả xoá tại đây: [Chuyển đổi từ Clover](https://github.com/viopencore/OpenCore-Install-Guide/tree/vietnamese/clover-conversion)
 
-### Online vs Offline Installer
+### Bộ cài Online vs Offline Installer
 
-Offline installers have a complete copy of macOS, while online installers are only a recovery image (~500MB) which then download macOS from Apple servers once booted.
+Bộ cài Offline có đầy đủ những gì bạn cần để cài macOS, trong khi bộ cài Online chỉ chứa recovery image (~500MB) mà sau đổ sẽ tải về macOS từ Apple servers một khi khởi động.
 
 * Offline
-  * Can only be made in macOS
-  * Windows/Linux do not have the APFS/HFS drivers needed to assemble a full installer
+  * Chỉ có thể được tạo ra trong macOS
+  * Windows/Linux không có driver APFS/HFS dùng để tạo ra bộ cài đầy đủ
 * Online
-  * Can be made in macOS/Linux/Windows
-  * Requires a working internet connection via a macOS supported network adapter on the target machine
+  * Có thể được tạo ra trong macOS/Linux/Windows
+  * Cần có kết nối mạng thông qua adapter mạng được Apple hỗ trợ trên máy mà bạn cần cài hackintosh
 
-### Making the Installer
+### Tạo bộ cài
 
-Depending on which OS you're on, see your specific section on making the USB:
+Tuỳ thuộc vào hệ điều hành mà bạn có, xem phần củ thể phù hợp với bạn về tạo bộ cìa:
 
 * [macOS users](../installer-guide/mac-install.md)
-  * Supports OS X 10.4 to current
-  * Supports both legacy and UEFI installs
+  * Hỗ trợ từ OS X 10.4 đến bản mới nhất
+  * Hỗ trợ cả legacy and UEFI installs
 * [Windows users](../installer-guide/winblows-install.md)
-  * Supports OS X 10.7 to current
-  * Online installer only
-  * Supports both legacy and UEFI installs
+  * Hỗ trợ từ OS X 10.7 đến bản mới nhất
+  * Chỉ tạo được bộ cài Online
+  * Hỗ trợ cả legacy and UEFI installs
 * [Linux users(UEFI)](../installer-guide/linux-install.md)
-  * Supports OS X 10.7 to current
-  * Online installer only
-  * Meant for machines supporting UEFI Boot
+  * Hỗ trợ từ OS X 10.7 đến bản mới nhất
+  * Chỉ tạo được bộ cài Online
+  * Chỉ phù hợp với máy hỗ trợ UEFI Boot

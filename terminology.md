@@ -2,9 +2,9 @@
 
 Tên | Chú thích
 --- | ---
-**macOS**        | Hệ điều hành UNIX riêng của Apple và nó là "Cái biến cho Mac thành Mac".  
-**Windows**      | Hệ điều hành của Microsoft cho nhiều thiết bị máy tính khác nhau (hãy sử dụng nó nếu bạn không muốn đau đầu)
-**Linux**        | Nhân mã nguồn mở giống UNIX (Unix-like), thường sẽ đóng trong các distros. Chúng thường được đóng trong các Distro, mặc dù chúng có nhiều điểm tương đồng với macOS, nhưng chúng có điểm **KHÁC BIỆT** so với macOS
+**macOS**        | Hệ điều hành UNIX riêng của Apple và là "What makes a Mac a Mac"(Điều biến Mac thực sự là Mac).  
+**Windows**      | Hệ điều hành của Microsoft tương thích máy tính khác nhau (hãy sử dụng nó nếu bạn không muốn đau đầu).
+**Linux**        | Các hệ điều hành tương tự UNIX (Unix-like), có mã nguồn mở dựa trên Linux Kernel. Chúng thường được phát hành dưới dạng các Distro. Mặc dù Linux và macOS cùng dựa trên nhân UNIX, chúng vẫn rất **KHÁC BIỆT** so với nhau.
 **Distros**      | Viết tắt của chữ Distributions. Linux distros are how Linux is distributed. Tuy nhiên, khi nói đến macOS, distros là các bộ cài macOS được mod bằng một số tool không phải của Apple. **Đừng sử dụng các macOS Distro.**  
 **Hackintosh**   | Là quá trình cài đặt macOS trên PC, lưu ý rằng **Hackintosh KHÔNG PHẢI LÀ HỆ ĐIỀU HÀNH**, nó có thể được hiểu như là máy tính bị "hack" để macOS có thể chạy được. VD: *Ta cài macOS trên máy Windows, chính bởi vậy ta có Hackintosh. Nhưng ta đã KHÔNG cài "Hackintosh".*  
 **Bootloader**   | Phần mềm sử dụng để vào hệ điều hành, thường được viết bởi những người viết ra hệ điều hành. OpenCore không hẳn là một bootloader (xem chú thích bên dưới). Boot.efi của Apple mới là bootloader thật cho Mac hoặc Hackintosh.
