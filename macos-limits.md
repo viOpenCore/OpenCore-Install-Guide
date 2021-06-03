@@ -1,107 +1,105 @@
 # Hardware Limitations
 
-With macOS, there are numerous hardware limitations you need to be aware of before stepping foot into an installation. This is due to the limited amount of hardware Apple supports, so we're either limited by Apple or what patches the community has created.
+macOS là một hệ điều hành vô cùng kén phần cứng do Apple giới hạn, cho nên một số phần cứng có thể có (hoặc không hoạt động)
 
-The main hardware sections to verify are:
+Có một số phần mà chúng ta cần để ý:
 
-* [CPU](#cpu-support)
-* [GPU](#gpu-support)
-* [Motherboard](#motherboard-support)
-* [Storage](#storage-support)
-* [Wired Networking](#wired-networking)
-* [Wireless Networking](#wireless-networking)
-* [Miscellaneous](#miscellaneous)
+* [CPU](#cpu)
+* [GPU](#gpu)
+* [Bo mạch chủ](#bo-mạch-chủ)
+* [Thiết bị lưu trữ](#thiết-bị-lưu-trữ)
+* [Mạng có dây](#mạng-có-dây)
+* [Mạng không dây](#mạng-không-dây)
+* [Những cái khác](#những-cái-khác)
 
-And for more detailed guides on the subject, see here:
+Và để chi tiết hơn, bạn hãy truy cập:
 
-* [GPU Buyers Guide](https://viopencore.github.io/GPU-Buyers-Guide/)
+* [Hướng dẫn chọn GPU](https://viopencore.github.io/GPU-Buyers-Guide/)
   * Kiểm tra xem nếu GPU của bạn được hỗ trợ và máy của bạn có thể chạy version macOS nào.
-* [Wireless Buyers Guide](https://viopencore.github.io/Wireless-Buyers-Guide/)
-  * Kiểm tra nếu card WiFi của bạn được hỗ trợ.
-* [Anti-Hardware Buyers Guide](https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide/)
-  * Overall guide on what to avoid and what pitfalls your hardware may hit.
+* [Hướng dẫn chọn card Wi-Fi](https://viopencore.github.io/Wireless-Buyers-Guide/)
+  * Kiểm tra nếu card Wi-Fi của bạn được hỗ trợ.
+* [Hướng dẫn chọn phần cứng anti Hackintosh](https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide/)
+  * Kiểm tra những phần cứng cần tránh và những vấn đề có thể gặp với phần cứng của bạn
 
-## CPU Support
+## CPU
 
-For CPU support, we have the following breakdown:
+Với CPU chúng ta cần lưu ý:
 
-* Cả 32 và 64-bit CPUs đều được hỗ trợ
-  * This however requires the OS to support your architecture, see CPU Requirements section below
-* Intel's Desktop CPUs are supported.
-  * Từ Yonah đến Comet Lake đều được hỗ trợ trong guide này.
-* Intel's High-End Desktops and Server CPUs.
+* CPU 32 và 64-bit đều được hỗ trợ
+  * Tùy thuộc vào hệ điều hành có hỗ trợ cấu trúc CPU của bạn hay không
+* CPU dành cho Máy tính để bàn của Intel đều hỗ trợ
+  * Từ Yonah đến Comet Lake đều được hỗ trợ.
+* CPU dành cho Máy tính để bàn Cao cấp và CPU Máy chủ của Intel.
   * Từ Nehalem đến Cascade Lake X đều được hỗ trợ trong guide này.
-* Intel's Core "i" and Xeon series laptop CPUs
-  * Từ Arrendale đến Ice Lake đều được hỗ trợ trong guide này.
-  * Chú ý rằng Mobile Atoms, Celeron và Pentium CPUs đều không được hỗ trợ.
-* AMD's Desktop Bulldozer (15h), Jaguar (16h) and Ryzen (17h) CPUs
-  * Laptop CPUs đều **KHÔNG ĐƯỢC** hỗ trợ
-  * Chú ý rằng không phải tất cả tính năng của macOS đều được hỗ trợ trên AMD, xem bên dưới
+* CPU Intel Core "i" và Xeon dành cho Laptop
+  * Từ Arrendale đến Ice Lake đều được hỗ trợ.
+  * Chú ý rằng CPU Atoms, Celeron và Pentium cho Laptop đều không được hỗ trợ.
+* CPU dành cho Máy tính để bàn của AMD (Bulldozer (15h), Jaguar (16h) và Ryzen (17h))
+  * CPU dành cho Laptop đều **KHÔNG ĐƯỢC** hỗ trợ
+  * Chú ý rằng không phải tất cả tính năng của macOS đều được hỗ trợ trên AMD, chi tiết hãy xem bên dưới
 
-**For more in-depth information, see here: [Anti-Hardware Buyers Guide](https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide/)**
+**Xem chi tiết tại đây: [Anti-Hardware Buyers Guide](https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide/)**
 
-::: details CPU Requirements
+::: details Yêu cầu dành cho CPU
 
-Architecture Requirements
+Yêu cầu về mặt cấu trúc
 
-* 32-bit CPUs đều được hỗ trợ từ 10.4.1 đến 10.6.8
-  * Chú ý rằng 10.7.x requires 64-bit userspace, limiting 32-bit CPUs to 10.6
-* 64-bit CPUs đều được hỗ trợ từ 10.4.1 đến bản mới nhất
+* CPU 32-bit được hỗ trợ từ OS X 10.4.1 đến 10.6.8
+  * Chú ý rằng 10.7.x cần userspace 64-bit, cho nên CPU 32-bit bị giới hạn ở 10.6
+* CPU 64-bit được hỗ trợ từ OS X 10.4.1 đến bản mới nhất
 
 SEE Requirements:
 
-* SSE3 is required for all Intel versions of OS X/macOS
-* SSSE3 is required for all 64-bit versions of OS X/macOS
-  * For CPUs missing SSSE3 (i.e. certain 64-bit Pentiums), we recommend running 32-bit userspace (`i386-user32`)
-* SSE4 is required for macOS 10.12 and newer
-* SSE4.2 is required for macOS 10.14 and newer
-  * SSE4.1 CPUs are supported with [telemetrap.kext](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/post-28447707)
-  * Newer AMD drivers also require SSE4.2 for Metal support. To resolve this, see here: [MouSSE: SSE4.2 emulation](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/)
+* SSE3 **BẮT BUỘC PHẢI CÓ**
+* SSSE3 phải có cho mọi phiên bản 64-bit của OS X/macOS
+  * Với CPU thiếu SSSE3 (VD: CPU Pentium 64-bit), nên chạy OS X/macOS 32-bit (`i386-user32`)
+* SSE4 cần cho macOS 10.12 "Sierra" trở lên
+* SSE4.2 cần cho macOS 10.14 "Mojave" trở lên
+  * CPU SSE4.1 hỗ trợ với [telemetrap.kext](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/post-28447707)
+  * Drivers mới cho AMD cần SSE4.2 cho việc hỗ trợ Metal. Để xem chi tiết, hãy tham khảo:: [MouSSE: SSE4.2 emulation](https://forums.macrumors.com/threads/mp3-1-others-sse-4-2-emulation-to-enable-amd-metal-driver.2206682/)
 
-Firmware Requirements:
+Yêu cầu Firmware:
 
-* OS X 10.4.1 through 10.4.7 require EFI32 (i.e. IA32 (32-bit) version of OpenCore)
-  * OS X 10.4.8 through 10.7.5 support both EFI32 and EFI64
-* OS X 10.8 and newer require EFI64 (i.e. x64 (64-bit) version of OpenCore)
-* OS X 10.7 through 10.9 require OpenPartitionDxe.efi to boot the Recovery partition
+* OS X 10.4.1 tới 10.4.7 cần EFI32 (VD: Phiên bản IA32 (32-bit) của OpenCore)
+  * OS X 10.4.8 tới 10.7.5 hỗ trợ cả EFI32 và EFI64
+* OS X 10.8 và m hơn cần EFI64 (VD: Phiên bản x64 (64-bit) của OpenCore)
+* OS X 10.7 tới 10.9 cần OpenPartitionDxe.efi để boot vào phân vùng Recovery.
 
-Kernel Requirements:
+Yêu cầu Nhân (Kernel):
 
-* OS X 10.4 and 10.5 require 32-bit kexts due to only supporting 32-bit kernelspace
-  * OS X 10.6 and 10.7 support both 32 and 64-bit kernelspace
-* OS X 10.8 and newer require 64-bit kexts due to only supporting 64-bit kernelspace
-  * Run `lipo -archs` to know what architectures your kext supports (remember to run this on the binary itself and not the .kext bundle)
+* OS X 10.4 và 10.5 yêu cầu kext 32-bit do chúng chỉ hỗ trợ kernelspace 32-bit
+  * OS X 10.6 và 10.7 hỗ trợ cà kernelspace 32 và 64-bit
+* OS X 10.8 và mới hơn yêu cầu kext 64-bit do chúng chỉ hỗ trợ kernelspace 64-bit
+  * Dùng lệnh `lipo -archs` để biết cấu trúc kext hỗ trợ (nhớ là không chạy ở bundle của kext, phải là ở binary)
 
-Core/Thread Count Limits:
+Giới hạn số nhân/luồng:
 
-* OS X 10.10 and below may not boot with more than 24 threads (evident by a `mp_cpus_call_wait() timeout` panic)
-* OS X 10.11 and newer have a 64 thread limit
-* `cpus=` boot argument can be used as a workaround, or disabling hyperthreading
+* OS X 10.10 và thấp hơn không thể hoạt động với CPU có hơn 24 luồng (vì panic `mp_cpus_call_wait() timeout`)
+* OS X 10.11 và mới hơn có giới hạn lên tới 64 luồng
+* Bootarg `cpus=` có thể dùng để tắt hyperthreading hoặc dùng để làm gì đó
+Notes:
 
-Special Notes:
-
-* Lilu and plugins require 10.8 or newer to operate
-  * We recommend running FakeSMC for older versions of OS X
-* OS X 10.6 and older require RebuildAppleMemoryMap enabled
-  * This is to resolve an early kernel
+* Lilu và plugins của nó yêu cầu OS X 10.8 hoặc mới hơn để hoạt động
+  * Bạn nên sử dụng FakeSMC để sử dụng OS X cũ hơn
+* OS X 10.6 và cũ hơn cần bật RebuildAppleMemoryMap
 
 :::
 
-::: details Intel CPU Support Chart
+::: details Bảng hỗ trợ CPU Intel
 
-Support based off of Vanilla Kernels (i.e. no modifications):
+Dựa theo Vanilla Kernels (không chỉnh sửa:
 
-| CPU Generation | Initial support | Last supported version | Notes | CPUID |
+| Thế hệ CPU | Phiên bản hỗ trợ tối thiểu | Phiên bản hỗ trợ cuối cùng | Ghi chú | CPUID |
 | :--- | :--- | :--- | :--- | :--- |
-| [Pentium 4](https://en.wikipedia.org/wiki/Pentium_4) | 10.4.1 | 10.5.8 | Only used in dev kits | 0x0F41 |
+| [Pentium 4](https://en.wikipedia.org/wiki/Pentium_4) | 10.4.1 | 10.5.8 | Chỉ được sử dụng cho những bộ dev kits | 0x0F41 |
 | [Yonah](https://en.wikipedia.org/wiki/Yonah_(microprocessor)) | 10.4.4 | 10.6.8 | 32-Bit | 0x0006E6 |
-| [Conroe](https://en.wikipedia.org/wiki/Conroe_(microprocessor)), [Merom](https://en.wikipedia.org/wiki/Merom_(microprocessor)) | 10.4.7 | 10.11.6 | No SSE4 | 0x0006F2 |
-| [Penryn](https://en.wikipedia.org/wiki/Penryn_(microarchitecture)) | 10.4.10 | 10.13.6 | No SSE4.2 | 0x010676 |
+| [Conroe](https://en.wikipedia.org/wiki/Conroe_(microprocessor)), [Merom](https://en.wikipedia.org/wiki/Merom_(microprocessor)) | 10.4.7 | 10.11.6 | Không có SSE4 | 0x0006F2 |
+| [Penryn](https://en.wikipedia.org/wiki/Penryn_(microarchitecture)) | 10.4.10 | 10.13.6 | Không có SSE4.2 | 0x010676 |
 | [Nehalem](https://en.wikipedia.org/wiki/Nehalem_(microarchitecture)) | 10.5.6 | <span style="color:green"> Current </span> | N/A | 0x0106A2 |
-| [Lynnfield](https://en.wikipedia.org/wiki/Lynnfield_(microprocessor)), [Clarksfield](https://en.wikipedia.org/wiki/Clarksfield_(microprocessor)) | 10.6.3 | ^^ | No iGPU support 10.14+ | 0x0106E0 |
+| [Lynnfield](https://en.wikipedia.org/wiki/Lynnfield_(microprocessor)), [Clarksfield](https://en.wikipedia.org/wiki/Clarksfield_(microprocessor)) | 10.6.3 | ^^ | Không có iGPU hỗ trợ 10.14+ | 0x0106E0 |
 | [Westmere, Clarkdale, Arrandale](https://en.wikipedia.org/wiki/Westmere_(microarchitecture)) | 10.6.4 | ^^ | ^^ | 0x0206C0 |
 | [Sandy Bridge](https://en.wikipedia.org/wiki/Sandy_Bridge) | 10.6.7 | ^^ | ^^ | 0x0206A0(M/H) |
-| [Ivy Bridge](https://en.wikipedia.org/wiki/Ivy_Bridge_(microarchitecture)) | 10.7.3 | ^^ | No iGPU support 11+ | 0x0306A0(M/H/G) |
+| [Ivy Bridge](https://en.wikipedia.org/wiki/Ivy_Bridge_(microarchitecture)) | 10.7.3 | ^^ | Không có iGPU hỗ trợ 11+ | 0x0306A0(M/H/G) |
 | [Ivy Bridge-E5](https://en.wikipedia.org/wiki/Ivy_Bridge_(microarchitecture)) | 10.9.2 | ^^ | N/A | 0x0306E0 |
 | [Haswell](https://en.wikipedia.org/wiki/Haswell_(microarchitecture)) | 10.8.5 | ^^ | ^^ | 0x0306C0(S) |
 | [Broadwell](https://en.wikipedia.org/wiki/Broadwell_(microarchitecture)) | 10.10.0 | ^^ | ^^ | 0x0306D4(U/Y) |
@@ -111,28 +109,28 @@ Support based off of Vanilla Kernels (i.e. no modifications):
 | [Amber](https://en.wikipedia.org/wiki/Kaby_Lake#List_of_8th_generation_Amber_Lake_Y_processors), [Whiskey](https://en.wikipedia.org/wiki/Whiskey_Lake_(microarchitecture)), [Comet Lake](https://en.wikipedia.org/wiki/Comet_Lake_(microprocessor)) | 10.14.1 | ^^ | ^^ | 0x0806E0(U/Y) |
 | [Comet Lake](https://en.wikipedia.org/wiki/Comet_Lake_(microprocessor)) | 10.15.4 | ^^ | ^^ | 0x0906E0(S/H)|
 | [Ice Lake](https://en.wikipedia.org/wiki/Ice_Lake_(microprocessor)) | ^^ | ^^ | ^^ | 0x0706E5(U) |
-| [Rocket Lake](https://en.wikipedia.org/wiki/Rocket_Lake) | ^^ | ^^ | Requires Comet Lake CPUID | 0x0A0671 |
+| [Rocket Lake](https://en.wikipedia.org/wiki/Rocket_Lake) | ^^ | ^^ | Cần CPUID của Comet Lake | 0x0A0671 |
 | [Tiger Lake](https://en.wikipedia.org/wiki/Tiger_Lake_(microprocessor)) | <span style="color:red"> N/A </span> | <span style="color:red"> N/A </span> | <span style="color:red"> Untested </span> | 0x0806C0(U) |
 
 :::
 
-::: details AMD CPU Limitations in macOS
+::: details Giới hạn CPU AMD ở macOS
 
-Unfortunately many features in macOS are outright unsupported with AMD and many others being partially broken. These include:
+Có vô cùng nhiều tính năng của macOS không hỗ trợ với CPU AMD, như:
 
-* Virtual Machines relying on AppleHV
-  * This includes VMWare, Parallels, Docker, Android Studios, etc
-  * VirtualBox is the sole exception as they have their own hypervisor
-  * VMware 10 and Parallels 13.1.0 do support their own hypervisor, however using such outdated VM software poses a large security threat
-* Adobe Support
-  * Most of Adobe's suite relies on Intel's Memfast instruction set, resulting in crashes with AMD CPUs
-  * You can disable functionality like RAW support to avoid the crashing: [Adobe Fixes](https://gist.github.com/naveenkrdy/26760ac5135deed6d0bb8902f6ceb6bd)
-* 32-Bit support
-  * For those still relying on 32-Bit software in Mojave and below, note that the Vanilla patches do not support 32-bit instructions
-  * A work-around is to install a [custom kernel](https://amd-osx.com/download/kernel.html), however you lose iMessage support
-* Stability issues on many apps
-  * Audio-based apps are the most prone to issues, ie. Logic Pro
-  * DaVinci Resolve has been known to have sporadic issues as well
+* Máy ảo có sử dụng AppleHV
+  * Bao gồm VMware, Parallels, Docker, Android Studio,...
+  * VirtualBox ngoại lệ do nó có hypervisor riêng
+  * VMware 10 và Parallels 13.1.0 có hypervisor riêng, nhưng không nên sử dụng chúng do bảo mật (cứ dualboot đi cho lành)
+* Hỗ trợ cho CPU AMD
+  * Đa phần các phần mềm của Adobe sử dụng Intel Memfast nên app Adobe sẽ bị crash khi chạy ở CPU AMD
+  * Bạn có thể vô hiệu hóa các tính năng như RAW để tránh việc bị crash: [Adobe Fixes](https://gist.github.com/naveenkrdy/26760ac5135deed6d0bb8902f6ceb6bd)
+* Hỗ trợ 32-bit
+  * Cho những ai cần những phần mềm 32-bit ở Mojave và thâos hơn, nên nhớ là patch Vanilla không hỗ trợ 32-bit
+  * Bạn có thể cài đặt [custom kernel](https://amd-osx.com/download/kernel.html), tuy nhiên bạn sẽ mất hỗ trợ iMessage.
+* Độ ổn định ở nhiều ứng dụng
+  * Một số ứng dụng liên quan tới âm thanh như Logic Pro
+  * DaVinci Resolve cũng có một số vấn đề.
 
 :::
 
