@@ -3,8 +3,8 @@
 Mục này chỉ là một hướng dẫn nhỏ cho việc bạn đang sử dụng phần cứng như thế nào. Nếu bạn đã biết thì bạn hãy chuyển qua mục [Tạo USB](./installer-guide/).
 
 Trước hết, chúng ta sẽ xem bạn đang sử dụng Windows hay Linux:
-* [Nếu bạn đang sử dụng Microsoft Windows](#finding-hardware-using-windows)
-* [Nếu bạn đang sử dụng Linux](#finding-hardware-using-linux)
+* [Nếu bạn đang sử dụng Windows](#nếu-bạn-đang-sử-dụng-windows)
+* [Nếu bạn đang sử dụng Linux](#nếu-bạn-đang-sử-dụng-linux)
 
 ## Nếu bạn đang sử dụng Windows
 
