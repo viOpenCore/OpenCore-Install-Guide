@@ -1,10 +1,11 @@
-# Tìm hiểu phần cứng (cấu hình của bạn)
+# Tìm hiểu cấu hình
 
 Mục này chỉ là một hướng dẫn nhỏ cho việc bạn đang sử dụng phần cứng như thế nào. Nếu bạn đã biết thì bạn hãy chuyển qua mục [Tạo USB](./installer-guide/).
 
 Trước hết, chúng ta sẽ xem bạn đang sử dụng Windows hay Linux:
-* [Nếu bạn đang sử dụng Microsoft Windows](#finding-hardware-using-windows)
-* [Nếu bạn đang sử dụng Linux](#finding-hardware-using-linux)
+
+* [Nếu bạn đang sử dụng Windows](#neu-ban-dang-su-dung-windows)
+* [Nếu bạn đang sử dụng Linux](#neu-ban-dang-su-dung-linux)
 
 ## Nếu bạn đang sử dụng Windows
 

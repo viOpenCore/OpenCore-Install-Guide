@@ -1,23 +1,23 @@
-# Making the installer in Windows
+# Tạo bộ cài trong Windows
 
-While you don't need a fresh install of macOS to use OpenCore, some users prefer having a fresh slate with their boot manager upgrades.
+Trong khi bạn không cần phải có macOS mới có thể sử dụng OpenCore, một số người lại thích có fresh slate và update boot manager của họ.
 
-To start you'll need the following:
+Để bắt đầu bạn cần những thứ sau:
 
-* 4GB USB Stick
+* Một USB 4GB
 
-* For USB larger than 16 GB to format in FAT32 use [Rufus method](#rufus-method)
+* Đối với những USB có dung lượng lớn hơn 16 GB thì để format nó thành FAT32 hãy sử dụng [Rufus](#su-dung-rufus)
 
 * [macrecovery.py](https://github.com/acidanthera/OpenCorePkg/releases)
-  * This will require [Python installed](https://www.python.org/downloads/)
+  * Muốn chạy được script thì bạn phải cài [Python](https://www.python.org/downloads/)
 
-## Downloading macOS
+## Tải bộ cài macOS
 
-To grab legacy installers is super easy, first grab a copy of [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases) and head to `/Utilities/macrecovery/`. Next copy the folder path for the macrecovery folder:
+Để tải các bộ cài legacy cực kỳ dễ dàng, trước tiên hãy tải xuống [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases)và truy cập vào `/Utilities/macrecovery/`. Tiếp theo sao chép đường dẫn đến thư mục macrecovery:
 
 ![](../images/installer-guide/winblows-install-md/file-path.png)
 
-From here, you'll want to open up a Command Prompt and cd into the macrecovery folder that we copied earlier:
+Từ đây, bạn sẽ mở Command Prompt (cmd) và cd vào thư mục macrecovery mà chúng ta đã sao chép đường dẫn trước đó:
 
 ```sh
 cd Paste_Folder_Path
@@ -25,7 +25,7 @@ cd Paste_Folder_Path
 
 ![](../images/installer-guide/winblows-install-md/command-prompt.png)
 
-Now run one of the following depending on what version of macOS you want(Note these scripts rely on [Python](https://www.python.org/downloads/) support, please install if you haven't already):
+Bây giờ hãy chạy một trong các scripts sau tùy thuộc vào bản macOS bạn muốn (Lưu ý rằng các tập lệnh này cần có [Python](https://www.python.org/downloads/) để chạy, vui lòng cài đặt nếu bạn chưa có):
 
 ```sh
 # Lion(10.7):
@@ -62,11 +62,11 @@ python macrecovery.py -b Mac-00BE6ED71E35EB86 -m 00000000000000000 download
 python macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 download
 ```
 
-* **macOS 11, Big Sur Note**: As this OS is quite new, there's still some issues with certain systems to resolve. For more information, see here: [OpenCore and macOS 11: Big Sur](../extras/big-sur/README.md)
-  * For first time users, we recommend macOS 10.15, Catalina
-* **Nvidia GPU Note**: Reminder to verify whether your hardware support newer OSes, see [Hardware Limitations](../macos-limits.md)
+* **Lưu ý cho macOS 11, Big Sur**: Vì bản macOS này còn khá mới nên vẫn còn một số vấn đề với một số hệ thống cần giải quyết. Để biết thêm thông tin, hãy xem tại đây: [OpenCore và macOS 11: Big Sur](../extras/big-sur/README.md)
+  * Đối với newbie, chúng tôi khuyên dùng macOS 10.15, Catalina
+* **Lưu ý đối với Nvidia GPU**: Chắc chắn rằng  bạn đã xác minh xem phần cứng của bạn có hỗ trợ các bản macOS mới hơn hay không, hãy xem [Hardware Limitations](../macos-limits.md)
 
-This will take some time, however once you're finished you should get either BaseSystem or RecoveryImage files:
+Việc này sẽ mất một chút thời gian, tuy nhiên sau khi hoàn tất, bạn sẽ tìm thấy tệp BaseSystem hoặc RecoveryImage:
 
 ![](../images/installer-guide/winblows-install-md/macrecovery-done.png)
 
@@ -74,77 +74,77 @@ This will take some time, however once you're finished you should get either Bas
 | :--- | :--- |
 |![](../images/installer-guide/winblows-install-md/basesystem-example.png) | ![](../images/installer-guide/winblows-install-md/macrecovery-after.jpg) |
 
-Now with our installer downloaded, we'll next want to format out USB.
+Bây giờ sau khi chúng ta đã tải bộ cài xuống, tiếp theo chúng ta sẽ format USB.
 
-## Making the installer
+## Tạo bộ cài
 
 Here we'll be formatting our USB and adding macOS onto it, we have 2 options:
 
-* [Disk Management method](#disk-management-method)
-  * GUI Based, simplest way
-  * Only UEFI systems are supported(ex. 2012+)
-* [Rufus method](#rufus-method)
-  * GUI Based, simplest way
-  * For larger USB drives(16GB+)
-* [diskpart method](#diskpart-method)
-  * Command line based, little more work
-  * Required for legacy systems(ie. non-UEFI, pre-2012)
+* [Sử dụng Disk Management](#su-dung-disk-management)
+  * Dựa trên GUI, cách đơn giản nhất
+  * Chỉ máy UEFI mới được hỗ trợ(ex. 2012+)
+* [Sử dụng Rufus](#su-dung-rufus)
+  * Dựa trên GUI, cách đơn giản nhất
+  * Đối với USB có dung lượng lớn hơn(16GB+)
+* [Sử dụng diskpart](#su-dung-diskpart)
+  * Dựa trên command, ít công việc hơn
+  * Bắt buộc đối với các máy legacy(VD:non-UEFI, pre-2012)
 
-### Disk Management method
+### Sử dụng Disk Management
 
-Simply open up Disk Management, and format your USB as FAT32:
+Chỉ cần mở Disk Management và format USB của bạn thành FAT32:
 
-1. Right click the Start Button on your task bar and select Disk Management.
-2. You should see all of your partitions and disks. On the bottom half, you'll see your devices. Find your USB.
-3. You'll want to format the USB to have a FAT32 partition.
+1. Nhấp chuột phải vào nút Start trên thanh tác vụ của bạn và chọn Disk Management.
+2. Bạn sẽ thấy tất cả các partitions và ổ đĩa của mình. Ở phần dưới, bạn sẽ tìm thấy USB của mình.
+3. Bạn sẽ muốn format USB thành FAT32.
 
-* If you have multiple partitions on the USB, right click each partition and click Delete Volume for your USB (This will remove data, make sure you have backups and only remove partitions from your USB)
-  * Right click the unallocated space and create a new simple volume. Make sure it is FAT32 and at least a gigabyte or two big. Name it "EFI".
-* Otherwise, right click the partition on the USB and click Format and set it to FAT32.
+* Nếu bạn có nhiều phân vùng trên USB, hãy nhấp chuột phải vào từng phân vùng và nhấp vào Delete Volume cho USB của bạn (Thao tác này sẽ xóa dữ liệu, đảm bảo bạn có bản sao lưu và chỉ xóa phân vùng khỏi USB của bạn)
+  * Nhấp chuột phải vào unallocated space và tạo một volume mới. Đảm bảo rằng nó là FAT32 và ít nhất là một hoặc hai gigabyte. Đặt tên nó là "EFI".
+* Nếu không, hãy nhấp chuột phải vào phân vùng trên USB và format nó thành FAT32.
 
 ![](../images/installer-guide/winblows-install-md/DiskManagement.jpg)
 
-Next, go to the root of this USB drive and create a folder called `com.apple.recovery.boot`. Then move the downloaded BaseSystem or RecoveryImage files. Please ensure you copy over both the .dmg and .chunklist files to this folder:
+Tiếp theo, truy cập root của USB này và tạo một thư mục có tên là `com.apple.recovery.boot`. Sau đó, di chuyển các tệp BaseSystem hoặc RecoveryImage đã tải xuống. Hãy đảm bảo bạn sao chép cả tệp .dmg và .chunklist vào thư mục này:
 
 ![](../images/installer-guide/winblows-install-md/com-recovery.png)
 
-Now grab OpenCorePkg you downloaded earlier and open it:
+Bây giờ hãy mở OpenCorePkg mà bạn đã tải xuống trước đó:
 
 ![](../images/installer-guide/winblows-install-md/base-oc-folder.png)
 
-Here we see both IA32(32 Bit CPUs) and X64(64 Bit CPUs) folders, choose the one that's most appropriate to your hardware and open it. Next grab the EFI folder inside and place this on the root of the USB drive along side com.apple.recovery.boot. Once done it should look like this:
+Ở đây chúng ta có thể thấy cả hai thư mục IA32 (32 Bit CPU) và X64 (64 Bit CPU), hãy chọn thư mục phù hợp nhất với phần cứng của bạn và mở nó. Tiếp theo, lấy thư mục EFI bên trong và đặt nó vàoroot của USB bên cạnh com.apple.recovery.boot. Sau khi hoàn thành, nó sẽ trông như thế này:
 
 ![](../images/installer-guide/winblows-install-md/com-efi-done.png)
 
-### Rufus method
+### Sử dụng Rufus
 
-1. Download [Rufus](https://rufus.ie/)
-2. Set the BOOT selection as not bootable
-3. Set File System as Large FAT32
-4. Click Start
-5. Delete all file autorun in USB Drive partition
+1. Tải [Rufus](https://rufus.ie/) xuống
+2. Đặt BOOT selection là not bootable
+3. Đặt File System là Large FAT32
+4. Nhấp Start
+5. Xóa tất cả file autorun trong USB
 
 ![](../images/installer-guide/winblows-install-md/format-usb-rufus.png)
 
-Next, go to the root of this USB drive and create a folder called `com.apple.recovery.boot`. Then move the downloaded BaseSystem or RecoveryImage files. Please ensure you copy over both the .dmg and .chunklist files to this folder:
+Tiếp theo, truy cập root của USB này và tạo một thư mục có tên là `com.apple.recovery.boot`. Sau đó, di chuyển các tệp BaseSystem hoặc RecoveryImage đã tải xuống. Hãy đảm bảo bạn sao chép cả tệp .dmg và .chunklist vào thư mục này:
 
 ![](../images/installer-guide/winblows-install-md/com-recovery.png)
 
-Now grab OpenCorePkg you downloaded earlier and open it:
+Bây giờ hãy mở OpenCorePkg mà bạn đã tải xuống trước đó:
 
 ![](../images/installer-guide/winblows-install-md/base-oc-folder.png)
 
-Here we see both IA32(32 Bit CPUs) and X64(64 Bit CPUs) folders, choose the one that's most appropriate to your hardware and open it. Next grab the EFI folder inside and place this on the root of the USB drive along side com.apple.recovery.boot. Once done it should look like this:
+Ở đây chúng ta có thể thấy cả hai thư mục IA32 (32 Bit CPU) và X64 (64 Bit CPU), hãy chọn thư mục phù hợp nhất với phần cứng của bạn và mở nó. Tiếp theo, lấy thư mục EFI bên trong và đặt nó vàoroot của USB bên cạnh com.apple.recovery.boot. Sau khi hoàn thành, nó sẽ trông như thế này:
 
 ![](../images/installer-guide/winblows-install-md/com-efi-done.png)
 
-### diskpart method
+### Sử dụng diskpart
 
-::: details diskpart method
+::: details Sử dụng diskpart
 
-Press Windows + R and enter `diskpart`.
+Nhấn Windows + R và gõ `diskpart`.
 
-Now run the following:
+Bây giờ thì chạy các lệnh sau:
 
 ```sh
 # List available disks
@@ -167,48 +167,48 @@ format fs=fat32 quick
 ASSIGN LETTER=E
 ```
 
-Next, go to the root of this USB drive and create a folder called `com.apple.recovery.boot`. Then move the downloaded BaseSystem or RecoveryImage files. Please ensure you copy over both the .dmg and .chunklist files to this folder:
+Tiếp theo, truy cập root của USB này và tạo một thư mục có tên là `com.apple.recovery.boot`. Sau đó, di chuyển các tệp BaseSystem hoặc RecoveryImage đã tải xuống. Hãy đảm bảo bạn sao chép cả tệp .dmg và .chunklist vào thư mục này:
 
 ![](../images/installer-guide/winblows-install-md/com-recovery.png)
 
-Now grab OpenCorePkg you downloaded earlier and open it:
+Bây giờ hãy mở OpenCorePkg mà bạn đã tải xuống trước đó:
 
 ![](../images/installer-guide/winblows-install-md/base-oc-folder.png)
 
-Here we see both IA32(32 Bit CPUs) and X64(64 Bit CPUs) folders, choose the one that's most appropriate to your hardware and open it. Next grab the EFI folder inside and place this on the root of the USB drive along side com.apple.recovery.boot. Once done it should look like this:
+Ở đây chúng ta có thể thấy cả hai thư mục IA32 (32 Bit CPU) và X64 (64 Bit CPU), hãy chọn thư mục phù hợp nhất với phần cứng của bạn và mở nó. Tiếp theo, lấy thư mục EFI bên trong và đặt nó vàoroot của USB bên cạnh com.apple.recovery.boot. Sau khi hoàn thành, nó sẽ trông như thế này:
 
 ![](../images/installer-guide/winblows-install-md/com-efi-done.png)
 
-::: details Legacy Install Setup
+::: details Thiết lập Legacy Install
 
-If your firmware does not support UEFI, see below instructions:
+Nếu firmware của bạn không hỗ trợ UEFI, hãy xem hướng dẫn bên dưới:
 
-To start, you'll need the following:
+Để bắt đầu, bạn sẽ cần những thứ sau:
 
 * [7-Zip](https://www.7-zip.org)
 * [BOOTICE](https://www.majorgeeks.com/files/details/bootice_64_bit.html)
 * [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases)
 
-Next, open up BOOTICE and ensure you've selected the right drive.
+Tiếp theo, mở BOOTICE và đảm bảo bạn đã chọn đúng USB của bạn.
 
 ![](../images/installer-guide/winblows-install-md/bootice.png)
 
-Next, enter "Process MBR" then select "Restore MBR" and select the **boot0** file from `Utilities/LegacyBoot/` in OpenCorePkg:
+Tiếp theo, nhập "Process MBR" rồi chọn "Restore MBR" và chọn tệp **boot0** từ `Utilities/LegacyBoot/` trong OpenCorePkg:
 
 | Restore MBR | Restore boot0 file |
 | :--- | :--- |
 | ![](../images/installer-guide/winblows-install-md/restore-mbr.png) | ![](../images/installer-guide/winblows-install-md/restore-mbr-file.png) |
 
-Then head back to the main screen and select "Process PBR" then "Restore PBR". From here, choose the **Boot1f32** file from `Utilities/LegacyBoot/` in OpenCorePkg:
+Sau đó quay lại màn hình chính và chọn "Process PBR" rồi chọn "Restore PBR". Từ đây, hãy chọn tệp **Boot1f32** từ `Utilities/LegacyBoot/` trong OpenCorePkg:
 
 | Restore PBR | Restore boot1f32 file |
 | :--- | :--- |
 | ![](../images/installer-guide/winblows-install-md/restore-pbr.png) | ![](../images/installer-guide/winblows-install-md/restore-pbr-file.png) |
 
-Once this is done, head back to your USB and do 1 final thing. Grab either the **bootx64**(64 Bit CPUs) or **bootia32**(32 Bit CPUs) file from `Utilities/LegacyBoot/` and place it on the root of your drive. **Rename this file to boot** to ensure DuetPkg can properly:
+Sau khi hoàn tất, hãy quay lại USB của bạn và thực hiện 1 việc cuối cùng. Lấy tệp **bootx64** (64 Bit CPU) hoặc **bootia32** (32 Bit CPU) từ `Utilities/LegacyBoot/ 'và đặt nó vào root của USB. **Đổi tên tệp này thành boot** để đảm bảo DuetPkg có thể hoạt động bình thường:
 
 ![](../images/installer-guide/winblows-install-md/final-boot-file.png)
 
 :::
 
-## Now with all this done, head to [Setting up the EFI](./opencore-efi.md) to finish up your work
+## Bây giờ khi mọi thứ đã hoàn thành, hãy truy cập [Thiết lập EFI](./opencore-efi.md) để hoàn thành công việc của mình

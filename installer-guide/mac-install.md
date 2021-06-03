@@ -1,9 +1,9 @@
 
 # Tạo bộ cài trong macOS
 
-Trong khi bạn không cần phải có macOS mới có thể sử dụng OpenCore, một số người prefer having a fresh slate with their boot manager upgrades.
+Trong khi bạn không cần phải có macOS mới có thể sử dụng OpenCore, một số người lại thích có fresh slate và update boot manager của họ.
 
-Để bắt đầu, chúng tôi sẽ tải xuống một bộ cài macOS. Bạn có thể bỏ qua bước này và chuyển sang format USB nếu bạn chỉ tạo một bootable OpenCore USB chứ không phải là USB cài đặt. Đối với những người khác, bạn có thể tải xuống macOS từ App Store hoặc với  bằng tập lệnh của Munki.
+Để bắt đầu, chúng ta sẽ tải xuống một bộ cài macOS. Bạn có thể bỏ qua bước này và chuyển sang format USB nếu bạn chỉ tạo một bootable OpenCore USB chứ không phải là USB cài đặt. Đối với những người khác, bạn có thể tải xuống macOS từ App Store hoặc với  bằng tập lệnh của Munki.
 
 ## Tải bộ cài macOS: Modern OS
 
@@ -26,7 +26,7 @@ Như bạn có thể thấy, chúng tôi nhận được một danh sách các b
 ![](../images/installer-guide/mac-install-md/munki-process.png)
 
 * **Lưu ý cho macOS 11, Big Sur**: Vì bản macOS này còn khá mới nên vẫn còn một số vấn đề với một số hệ thống cần giải quyết. Để biết thêm thông tin, hãy xem tại đây: [OpenCore và macOS 11: Big Sur](../extras/big-sur/README.md)
-  * Đối với người mới, chúng tôi khuyên dùng macOS 10.15, Catalina
+  * Đối với newbie, chúng tôi khuyên dùng macOS 10.15, Catalina
 * **Lưu ý đối với Nvidia GPU**: Chắc chắn rằng  bạn đã xác minh xem phần cứng của bạn có hỗ trợ các bản macOS mới hơn hay không, hãy xem [Hardware Limitations](../macos-limits.md)
 
 Quá trình tải xuống sẽ mất một lúc vì chúng ta đang tải xuống một bộ cài macOS 8GB +, vì vậy bạn nên đọc phần còn lại của guide trong khi chờ đợi.

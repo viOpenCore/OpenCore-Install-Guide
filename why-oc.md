@@ -2,11 +2,11 @@
 
 Phần này tóm tắt ngắn gọn về lý do tại sao cộng đồng lại chuyển đổi sang OpenCore và nhằm mục đích xóa tan một vài lầm tưởng phổ biến trong cộng đồng. Ai không cần thì có thể bỏ qua trang này.
 
-* [Tại sao nên chọn OpenCore](#tai-sao-nen-chon-openCore)
+* [Tại sao nên chọn OpenCore](#tai-sao-nen-chon-opencore)
   * Các tính năng của OpenCore
   * Nhiều phần mềm hỗ trợ
   * Kext injection
-* [Khiếm khuyết của OpenCore](#opencore-s-shortcomings)
+* [Khiếm khuyết của OpenCore](#khiem-khuyet-cua-opencore)
 * [Lầm tưởng chung](#common-myths)
   * Có phải OpenCore không ổn định vì nó là bản không?
   * Có phải OpenCore luôn inject SMBIOS và ACPI vào các hệ điều hành (OSes) khác phải không?
