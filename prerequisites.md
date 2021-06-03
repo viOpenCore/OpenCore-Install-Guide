@@ -1,34 +1,34 @@
-# Getting started with OpenCore
+# Bắt đầu với OpenCore
 
-Before we can jump head first into making an OpenCore based system, we need to go over a few things.
+Trước khi chúng ta nhảy vào làm hệ thống dựa trên OpenCore, chúng ta cần phải trải qua một số thứ.
 
-## Prerequisites
+## Điều kiện cần thiết
 
-1. <span style="color:red">_**[CRUCIAL]**_</span> Time and patience.
-   * Don't start working on this if you have deadlines or important work. Hackintoshes are not something you should be relying on as a work machine.
-2. <span style="color:red">_**[CRUCIAL]**_</span> **KNOW YOUR HARDWARE**
-   * Your CPU name and its generation
-   * Your GPUs
+1. <span style="color:red">_**[QUAN TRỌNG]**_</span> Thời gian và sự kiên nhẫn.
+   * Không bắt đầu việc này nếu bạn đang có deadline hoặc là có công việc quan trọng. Hackintosh không phải là thứ mà bạn dựa lên như là thiết bị có thể hoạt động.
+2. <span style="color:red">_**[QUAN TRỌNG]**_</span> **HIỂU BIẾT VỀ PHẦN CỨNG CỦA BẠN**
+   * Tên CPU của bạn và thế hệ của nó
+   * GPU của bạn
    * Your storage devices (HDD/SSD, NVMe/AHCI/RAID/IDE configuration)
-   * Your laptop/desktop model if from an OEM
-   * Your **Ethernet chipset**
-   * Your WLAN/Bluetooth chipset
-3. <span style="color:red">_**[CRUCIAL]**_</span> **A BASIC KNOWLEDGE OF COMMAND LINES AND HOW TO USE A TERMINAL/COMMAND PROMPT**
-   * This is not just [CRUCIAL], this is the basis of this whole guide. We can't help you if you don't know how to `cd` to a directory or delete a file.
-4. <span style="color:red">_**[CRUCIAL]**_</span> A machine that is compatible as seen in the _**Compatibility**_ section.
+   * Tên model của Máy tính để bàn/Laptop nếu nó tới từ OEM
+   * **Chipset Ethernet** của bạn
+   * Chipset WLAN/Bluetooth của bạn
+3. <span style="color:red">_**[QUAN TRỌNG]**_</span> **MỘT ÍT KIẾN THỨC VỀ SỬ DỤNG CÁC DÒNG LỆNH VÀ CÁCH SỬ DỤNG TERMINAL/COMMAND PROMPT**
+   * Nó không chỉ [QUAN TRỌNG], nó chính là phần căn bản của guide này. Chúng tôi không thể giúp bạn nếu bạn không biết `cd` tới một thư mục hoặc xoá tệp.
+4. <span style="color:red">_**[QUAN TRỌNG]**_</span> Một chiếc máy mà tương thích như trong phần _**Compatibility**_.
    * [Hardware Limitations page](macos-limits.md)
-5. <span style="color:red">_**[CRUCIAL]**_</span> A minimum of:
-   * 16GB USB if you're going to use macOS to create the USB
-   * 4GB USB if you're going to use Windows or Linux for USB creation
-6. <span style="color:red">_**[CRUCIAL]**_</span> An **Ethernet connection** (no WiFi dongles, Ethernet USB adapter may work depending on macOS support) and you must know your LAN card's model
-   * You must either have a physical Ethernet port, or a compatible macOS Ethernet dongle/adapter. In case you have a [compatible WiFi card](https://viopencore.github.io/Wireless-Buyers-Guide/), you can also use that.
-     * Note the majority of WiFi cards are not supported by macOS
-   * For people who can't use ethernet but have an Android phone, you can connect your Android phone to WiFi and then tether it using USB with [HoRNDIS](https://joshuawise.com/horndis#available_versions).
-7. <span style="color:red">_**[CRUCIAL]**_</span> **Proper OS Installation:**
-   * Be it:
-     * macOS (a fairly recent one would be better)
-     * Windows (Windows 10, 1703 or newer)
-     * Linux (Clean and properly functioning, with Python 2.7 or later)
-   * For Windows or Linux users, **15GB** of free space on the drive you're working on. On Windows, your OS disk (C:) must have at least **15GB** of free space.
-   * For macOS users, **30GB** of free space on the system's drive.
-   * Most tools used in this guide will also require [Python installed](https://www.python.org/downloads/)
+5. <span style="color:red">_**[QUAN TRỌNG]**_</span> Cần có tối thiểu:
+   * 16GB USB nếu bạn đang định dung macOS để tạo USB
+   * 4GB USB nếu bạn đang định dung Windows hoặc Linux để tạo USB
+6. <span style="color:red">_**[QUAN TRỌNG]**_</span> Cần có **kết nối Ethernet** (không WiFi dongles, adapter Ethernet USB có thể hoạt động tuỳ vào sự hỗ trợ của macOS) và bạn cần biết model card LAN của bạn 
+   * Bạn cũng cần có một cổng Ethernet vật lí, hoặc là dongle/adapter Ethernet tương thích với macOS. Trong trường hợp bạn có [compatible WiFi card](https://viopencore.github.io/Wireless-Buyers-Guide/), bạn cũng có thể dùng nó.
+     * Luư ý lá có hàng loạt card WiFi không tương thích với macOS
+   * Với những người không thể sử dụng Ethenet nhưng có điện thoại Android, bạn có thể kết nối điện thoại Android tới WiFi truyền nó thông qua USB với [HoRNDIS](https://joshuawise.com/horndis#available_versions).
+7. <span style="color:red">_**[QUAN TRỌNG]**_</span> **Thích hợp để cài đặt OS:**
+   * Hãy có:
+     * macOS (Những phiên bản gần đây sẽ tốt hơn)
+     * Windows (Windows 10, 1703 hoặc mới hơn)
+     * Linux (Sạch và hoạt động ổn định, với Python 2.7 hoặc mới hơn)
+   * Với người dùng Windows hoặc Linux, **15GB** khả dụng trên ổ đĩa mà bạn đang làm trên. Trên Windows, ổ đĩa chứa OS của bạn (C:) cần có tôi thiểu **15GB** khả dụng.
+   * Với người dùng macOS, **30GB** khả dụng trên ổ đĩa hệ thống của bạn.
+   * Đa số các công cụ trong guide này sẽ cần có [Python được cài đặt](https://www.python.org/downloads/)
