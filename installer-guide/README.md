@@ -1,23 +1,23 @@
-# Creating the USB
+# Tạo ra USB
 
-Requirements:
+Yêu cầu:
 
-* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), highly recommend running the debug version to show more info
-* [ProperTree](https://github.com/corpnewt/ProperTree) to edit .plist files (OpenCore Configurator is another tool but is heavily outdated and the Mackie version is known for corruption. **Please avoid these kinds of tools at all costs!**).
-* You must remove Clover from your system entirely if you wish to use OpenCore as your main boot-loader. Keep a backup of your Clover based EFI. See here on what needs to be cleaned: [Clover Conversion](https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion)
+* [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg/releases), rất khuyến khích sử dụng phiên bản debug để hiển thị thêm nhiều thông tin
+* [ProperTree](https://github.com/corpnewt/ProperTree) dùng để chỉnh sửa tệp .plist (OpenCore Configurator là một loại công cụ khác nhưng nó cực kì lỗi thời và phiên bản của Mackie thường được biết đến là có sự hư hỏng. **Hãy tránh xa các loại công cụ này bằng mọi giá!**).
+* Bạn cần phải bỏ hết Clover ra khỏi hệ thống của bạn nếu bạn muốn sử dụng OpenCore như là boot-loader chính của bạn. Giữ lại bản sao lưu EFI dựa trên Clover của bạn. Xem những ì mà bạn cần phả xoá tại đây: [Clover Conversion](https://github.com/dortania/OpenCore-Install-Guide/tree/master/clover-conversion)
 
-### Online vs Offline Installer
+### Bộ cài Online vs Offline
 
-Offline installers have a complete copy of macOS, while online installers are only a recovery image (~500MB) which then download macOS from Apple servers once booted.
+Bộ cài Offline có đầy đủ bản sao của macOS, trong khi bộ cài Online chỉ chứa ảnh Khôi phục (~500MB) mà sẽ tải về macOS từ Apple servers một khi khởi động lên.
 
 * Offline
-  * Can only be made in macOS
-  * Windows/Linux do not have the APFS/HFS drivers needed to assemble a full installer
+  * Chỉ có thể làm trong macOS
+  * Windows/Linux không có driver APFS/HFS dùng để tạo ra bộ cài đầy đủ
 * Online
-  * Can be made in macOS/Linux/Windows
-  * Requires a working internet connection via a macOS supported network adapter on the target machine
+  * Có thể làm trong macOS/Linux/Windows
+  * Cần có kết nối mạng thông qua adapter mạng được Apple hỗ trợ trên máy đích
 
-### Making the Installer
+### Tạo ra bộ cài
 
 Depending on which OS you're on, see your specific section on making the USB:
 
