@@ -1,4 +1,7 @@
 ---
+
+[![Join the chat at https://gitter.im/viOpenCore/OpenCore-Install-Guide](https://badges.gitter.im/viOpenCore/OpenCore-Install-Guide.svg)](https://gitter.im/viOpenCore/OpenCore-Install-Guide?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 home: true
 heroImage: /dortania-logo-clear.png
 heroText: OpenCore Install Guide
