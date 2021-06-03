@@ -4,8 +4,8 @@ Mục này chỉ là một hướng dẫn nhỏ cho việc bạn đang sử dụ
 
 Trước hết, chúng ta sẽ xem bạn đang sử dụng Windows hay Linux:
 
-* [Nếu bạn đang sử dụng Windows](#neu-ban-dang-su-dung-windows)
-* [Nếu bạn đang sử dụng Linux](#neu-ban-dang-su-dung-linux)
+* [Nếu bạn đang sử dụng Windows](#nếu-bạn-đang-sử-dụng-windows)
+* [Nếu bạn đang sử dụng Linux](#nếu-bạn-đang-sử-dụng-linux)
 
 ## Nếu bạn đang sử dụng Windows
 
