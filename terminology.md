@@ -2,12 +2,12 @@
 
 Term | Description
 --- | ---
-**macOS**        | Apple's own UNIX based OS used for Mac machines and "What makes a Mac a Mac".  
-**Windows**      | Microsoft's proprietary OS that is used and supported on a wide range of devices (stay with this OS if you don't want headaches)  
-**Linux**        | Family of open source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991, by Linus Torvalds. Linux is typically packaged in a Linux distribution. Note that while macOS and Linux may be UNIX-based, they're vastly different.
+**macOS**        | OS dựa trên UNIX của Apple dành cho các máy Mac và "Thứ làm cho Mac trở nên Mac".  
+**Windows**      | Microsoft's proprietary OS that is used and supported on a wide range of devices (Hãy ở lại với OS này nếu bạn không muốn đau đầu)  
+**Linux**        | Family of open source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991, by Linus Torvalds. Linux is typically packaged in a Linux distribution. Lưu ý rằng tuy macOS và Linux đều dựa trên UNIX, chúng vẫn có rất nhiều diểm khác biệt.
 **Distros**      | Viết tắt của chữ Distributions. Linux distros are how Linux is distributed. Tuy nhiên, khi nói đến macOS, distros là các bộ cài macOS được mod bằng một số tool không phải của Apple. **Đừng sử dụng các macOS Distro.**  
 **Hackintosh**   | Là quá trình cài đặt macOS trên PC, lưu ý rằng **Hackintosh KHÔNG PHẢI LÀ một HỆ ĐIỀU HÀNH**, nó có thể được hiểu như là máy tính bị "hack" để macOS có thể chạy được. VD: *Ta cài macOS trên máy Windows, chính bởi vậy ta có Hackintosh. Nhưng ta đã KHÔNG cài "Hackintosh".*  
-**Bootloader**   | Piece of phần mềm that loads an OS, thường được viết bởi những người viết ra hệ điều hành. OpenCore is technically not a bootloader per se (see boot manager explanation down below). Boot.efi của Apple would be the actual boot loader của Mac hoavự Hackintosh.
+**Bootloader**   | Một phần của phần mềm dùng để chạy OS, thường được viết bởi những người viết ra hệ điều hành. OpenCore is technically not a bootloader per se (see boot manager explanation down below). Boot.efi của Apple mới sẽ là boot loader thực sự của Mac hoặc Hackintosh.
 **Boot Manager** | Piece of software that manages bootloaders – we have many of these: Clover, systemd-boot, OpenCore, rEFInd, rEFIt... These are generally seen as prepping the system for the actual boot loader.
 ---
 Term | Description
