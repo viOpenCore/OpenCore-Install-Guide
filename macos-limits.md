@@ -1,6 +1,6 @@
 # Hardware Limitations
 
-macOS là một hệ điều hành vô cùng kén phần cứng do Apple giới hạn, cho nên một số phần cứng có thể có (hoặc không hoạt động)
+Với macOS, có rất nhiều hạn chế về phần cứng mà bạn cần nhận biết trước khi bước chân vào phần cài đặt. Đấy là do có số lượng hạn chế về phần cứng được Apple hỗ trợ, cho nên một số phần cứng có thể có (hoặc không hoạt động)
 
 Có một số phần mà chúng ta cần để ý:
 
@@ -15,7 +15,7 @@ Có một số phần mà chúng ta cần để ý:
 Và để chi tiết hơn, bạn hãy truy cập:
 
 * [Hướng dẫn chọn GPU](https://viopencore.github.io/GPU-Buyers-Guide/)
-  * Kiểm tra xem nếu GPU của bạn được hỗ trợ và máy của bạn có thể chạy version macOS nào.
+  * Kiểm tra xem nếu GPU của bạn được hỗ trợ và máy của bạn có thể chạy phiên bản macOS nào.
 * [Hướng dẫn chọn card Wi-Fi](https://viopencore.github.io/Wireless-Buyers-Guide/)
   * Kiểm tra nếu card Wi-Fi của bạn được hỗ trợ.
 * [Hướng dẫn chọn phần cứng anti Hackintosh](https://viopencore.github.io/Anti-Hackintosh-Buyers-Guide/)
@@ -33,7 +33,7 @@ Với CPU chúng ta cần lưu ý:
   * Từ Nehalem đến Cascade Lake X đều được hỗ trợ trong guide này.
 * CPU Intel Core "i" và Xeon dành cho Laptop
   * Từ Arrendale đến Ice Lake đều được hỗ trợ.
-  * Chú ý rằng CPU Atoms, Celeron và Pentium cho Laptop đều không được hỗ trợ.
+  * Chú ý rằng CPU di động Atoms, Celeron và Pentium đều không được hỗ trợ.
 * CPU dành cho Máy tính để bàn của AMD (Bulldozer (15h), Jaguar (16h) và Ryzen (17h))
   * CPU dành cho Laptop đều **KHÔNG ĐƯỢC** hỗ trợ
   * Chú ý rằng không phải tất cả tính năng của macOS đều được hỗ trợ trên AMD, chi tiết hãy xem bên dưới
@@ -42,7 +42,7 @@ Với CPU chúng ta cần lưu ý:
 
 ::: details Yêu cầu dành cho CPU
 
-Yêu cầu về mặt cấu trúc
+Yêu cầu về bộ hướng dẫn
 
 * CPU 32-bit được hỗ trợ từ OS X 10.4.1 đến 10.6.8
   * Chú ý rằng 10.7.x cần userspace 64-bit, cho nên CPU 32-bit bị giới hạn ở 10.6
@@ -134,27 +134,27 @@ Có vô cùng nhiều tính năng của macOS không hỗ trợ với CPU AMD, n
 
 :::
 
-## GPU Support
+## Hỗ trợ GPU
 
 GPU support becomes much more complicated due to the near-infinite amount of GPUs on the market, but the general breakdown is as follows:
 
 * AMD's GCN based GPUs are supported in the latest versions of macOS
-  * AMD APUs are not supported however
+  * Tuy nhiên APU không được hỗ trợ
   * AMD's [Lexa based cores](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) from the Polaris series are also not supported
   * Special note for MSI Navi users: [Installer not working with 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901)
-    * This issue is no longer present in macOS 11 (Big Sur).
+    * Vấn đề này đã không còn xuất hiện trên macOS 11 (Big Sur).
 * Nvidia's GPU support is complicated:
-  * [Maxwell(9XX)](https://en.wikipedia.org/wiki/GeForce_900_series) and [Pascal(10XX)](https://en.wikipedia.org/wiki/GeForce_10_series) GPUs are limited to macOS 10.13: High Sierra
-  * [Nvidia's Turing(20XX,](https://en.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://en.wikipedia.org/wiki/GeForce_16_series) GPUs are **not supported in any version of macOS**
-  * [Nvidia's Ampere(30XX)](https://en.wikipedia.org/wiki/GeForce_30_series) GPUs are **not supported in any version of macOS**
-  * [Nvidia's Kepler(6XX,](https://en.wikipedia.org/wiki/GeForce_600_series)[7XX)](https://en.wikipedia.org/wiki/GeForce_700_series) GPUs are supported in the latest versions of macOS (including macOS 11 Big Sur)
-    * This is due to Apple still supporting a few [MacBook Pros with Nvidia GPUs](https://viopencore.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html)
+  * [Maxwell(9XX)](https://en.wikipedia.org/wiki/GeForce_900_series) and [Pascal(10XX)](https://en.wikipedia.org/wiki/GeForce_10_series) GPU chỉ hỗ trợ tới macOS 10.13: High Sierra
+  * [Nvidia's Turing(20XX,](https://en.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://en.wikipedia.org/wiki/GeForce_16_series) GPU **không được hỗ trợ với bất kì phiên bản nào của macOS**
+  * [Nvidia's Ampere(30XX)](https://en.wikipedia.org/wiki/GeForce_30_series) GPU **không được hỗ trợ với bất kì phiên bản nào của macOS**
+  * [Nvidia's Kepler(6XX,](https://en.wikipedia.org/wiki/GeForce_600_series)[7XX)](https://en.wikipedia.org/wiki/GeForce_700_series) GPU được hỗ trợ tới phiên bản mới nhất của macOS (bao gồm macOS 11 Big Sur)
+    * Đó là do Apple vẫn hỗ trợ một số ít [MacBook Pro với GPU của Nvidia](https://viopencore.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html)
 * Intel's [GT2+ tier](https://en.wikipedia.org/wiki/Intel_Graphics_Technology) series iGPUs
   * Ivy Bridge through Ice Lake iGPU support is covered in this guide
     * Info on GMA series iGPUs can be found here: [GMA Patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
   * Note GT2 refers to the tier of iGPU, low-end GT1 iGPUs found on Pentiums, Celerons and Atoms are not supported in macOS
 
-And an important note for **Laptops with discrete GPUs**:
+Và lưu ý quan trọng về **Laptop với GPU rời**:
 
 * 90% of discrete GPUs will not work because they are wired in a configuration that macOS doesn't support (switchable graphics). With NVIDIA discrete GPUs, this is usually called Optimus. It is not possible to utilize these discrete GPUs for the internal display, so it is generally advised to disable them and power them off (will be covered later in this guide).
 * However, in some cases, the discrete GPU powers any external outputs (HDMI, mini DisplayPort, etc.), which may or may not work; in the case that it will work, you will have to keep the card on and running.
@@ -265,8 +265,8 @@ Note: Intel WiFi is unofficially (3rd party driver) supported on macOS, check [W
 
 ## Miscellaneous
 
-* **Fingerprint sensors**
-  * There is currently no way to emulate the Touch ID sensor, so fingerprint sensors will not work.
+* **Cảm biến vân tay**
+  * Tại thời điểm hiện tại không có cách nào để giả lập lại cảm biến Touch ID, cho nên cảm biến vân tay sẽ không hoạt động.
 * **Windows Hello Face Recognition**
   * Some laptops come with WHFR that is I2C connected (and used through your iGPU), those will not work.
   * Some laptops come with WHFR that is USB connected, if you're lucky, you may get camera functionality, but nothing else.
