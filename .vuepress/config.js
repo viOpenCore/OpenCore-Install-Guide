@@ -23,8 +23,45 @@ module.exports = {
         },],
         ['link', {
           rel: "shortcut icon",
-          href: "/assets/favicons/favicon.ico"
+          href: "/favicon.ico"
         },],
+        ['link', {
+            rel: "apple-touch-icon",
+            sizes: "180x180",
+            href: "/apple-touch-icon.png"
+        },],
+        ['link', {
+            rel: "apple-touch-icon",
+            sizes: "32x32",
+            type: "image/png",
+            href: "/favicon-32x32.png"
+        },],
+        ['link', {
+            rel: "apple-touch-icon",
+            sizes: "16x16",
+            type: "image/png",
+            href: "/favicon-16x16.png"
+        },],
+        ['link', {
+            rel: "mask-icon",
+            color: "#5bbad5",
+            href: "/safari-pinned-tab.svg"
+        },],
+        ['link', {
+            rel: "icon",
+            sizes: "16x16",
+            type: "image/png",
+            href: "/favicon-16x16.png"
+        },],
+        ['link', {
+            rel: "manifest",
+            href: "/site.webmanifest"
+        },],
+        ['link', {
+            name: "msapplication-TileColor",
+            href: "#da532c"
+        },],
+
     ],
     base: '/OpenCore-Install-Guide/',
 
