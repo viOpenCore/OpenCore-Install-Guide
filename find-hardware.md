@@ -1,166 +1,165 @@
-# Finding your hardware
+# Tìm hiểu phần cứng (cấu hình của bạn)
 
-This section is mostly a mini-guide on how to find what hardware you're currently running; this is mainly relevant for laptop and prebuilt users as hardware specs are a bit more difficult to obtain. You can skip this page and head to [Creating the USB](./installer-guide/) if you already know what hardware you have.
+Mục này chỉ là một hướng dẫn nhỏ cho việc bạn đang sử dụng phần cứng như thế nào. Nếu bạn đã biết thì bạn hãy chuyển qua mục [Tạo USB](./installer-guide/).
 
-For this, we'll assume you have Windows or Linux installed:
+Trước hết, chúng ta sẽ xem bạn đang sử dụng Windows hay Linux:
+* [Nếu bạn đang sử dụng Microsoft Windows](#finding-hardware-using-windows)
+* [Nếu bạn đang sử dụng Linux](#finding-hardware-using-linux)
 
-* [Finding hardware using Windows](#finding-hardware-using-windows)
-* [Finding hardware using Linux](#finding-hardware-using-linux)
+## Nếu bạn đang sử dụng Windows
 
-## Finding Hardware using Windows
+Chúng ta sẽ có 2 lựa chọn:
 
-For this we mainly have 2 options:
-
-* Windows' built-in Device Manager
+* Device Manager trên Windows (devmgmt.msc)
 * [AIDA64](https://www.aida64.com/downloads)
 
-Due to the easier to use GUI, we recommend downloading AIDA64 and running this as it's much easier to grab specs. However we'll show you both methods for obtaining hardware specs.
+Bởi vì AIDA64 dễ sử dụng hơn và tìm được chi tiết hơn cho nên khuyến cáo các bạn sử dụng. Tuy nhiên chúng tôi cũng sẽ chỉ cho bạn cả 2 cách.
 
-### CPU Model
+### Loại CPU
 
 | AIDA64 | Device Manager|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/cpu-model-aida64.png) | ![](./images/finding-hardware-md/cpu-model-devicemanager.png) |
 
-### GPU Model
+### Loại GPU
 
 | AIDA64 | DeviceManager|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/GPU-model-aida64.png) | ![](./images/finding-hardware-md/GPU-model-devicemanager.png) |
 
-### Chipset Model
+### Loại Chipset
 
 | AIDA64 | DeviceManager|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/chipset-model-aida64.png) | ![](./images/finding-hardware-md/chipset-model-devicemanager.png) |
 
-* Note: Intel SOC based CPUs will have the chipset and other features already on the same die instead of being dedicated chips. This means trying to detect the exact chipset is a bit more difficult
+* Note: Một số loại chip Intel kiểu SoC (System on Chip) sẽ có chipset và một số thứ khác đã tích hợp sẵn trong một nhân thay vì riêng một số bộ phận, cho nên việc xác định chipset sẽ khó hơn.
 
-### Keyboard, Trackpad and Touchscreen Connection Type
+### Cổng kết nối bàn phím, trackpad, màn hình cảm ứng
 
 | DeviceManager |
 | :--- |
 | ![](./images/finding-hardware-md/trackpad-model-devicemanager.png) |
 
-AIDA64 unfortunately doesn't provide any useful info regarding pointer devices, so we recommend using DeviceManager for this.
+AIDA64 sẽ không cho bạn biết thông tin hữu ích liên quan tới những cái này, cho nên chúng tôi khuyến khích sử dụng DeviceManager
 
-* You can find these devices under the following:
+* Bạn có thể tìm thấy tại:
   * `Human Interface Devices`
   * `Keyboards`
   * `Mice and other Pointer Devices`
 
-* To view the exact connection type of the device, select the pointer device then enter `View -> Device by Connection`. This will clarify whether it's over PS2, I2C, SMBus, USB, etc
+* Để xem một cách chính xác hơn, bạn trỏ vào thiết bị của bạn và chọn `View -> Device by Connection`. Nó sẽ cho bạn biết là bạn đang sử dụng kiểu kết nối nào (PS2, I2C, SMBus, USB,...)
 
-Depending on the device, it may show up under multiple names and connections. The main ones to keep an eye on:
+Tùy vào thiết bị thì chúng ta sẽ có thể thấy nhiều thiết bị và kiểu kết nối. Những thứ bạn cần để ý tới:
   
 ::: details SMBus
   
-These will show up as a straight PCI device such as `Synaptics SMBus Driver` or `ELAN SMBus Driver`
+Nó sẽ hiện lên thiết bị PCI như `Synaptics SMBus Driver` hay `ELAN SMBus Driver`
 
-* Synaptics devices will show up under both PS2 under `Synaptics PS2 device`/`Synaptics Pointing Device` and PCI as `Synaptics SMBus Driver`
+* Với các thiết bị của Synaptics thì nó sẽ hiện PS2 dưới mục `Synaptics PS2 device`/`Synaptics Pointing Device` và PCI dưới tên `Synaptics SMBus Driver`
 
 ![](./images/finding-hardware-md/Windows-SMBus-Device.png)
 
-As you can see, we get 2 Synaptics devices in the left image, however if we take a closer look we'll see the top device is PS2, while the bottom one is SMBus. While you can use the trackpad in either mode, SMBus generally provides better gesture support and accuracy.
+Như bạn có thể thấy, chúng ta có 2 thiết bị Synaptics ở hình trái, nhưng nếu chúng ta tìm hiểu kĩ thì sẽ thấy thiết bị trên sử dụng PS2, còn ở dưới là SMBus. Bạn có thể sử dụng một trong hai kiểu kết nối, nhưng SMBus sẽ có khả năng sử dụng cử chỉ tốt hơn và chính xác hơn.
 
 :::
 
 ::: details USB
 
-| Device by Type | Device by Connection |
+| Theo loại | Theo kiểu kết nối |
 | :--- | :--- |
 | ![](./images/finding-hardware-md/USB-trackpad-normal.png) | ![](./images/finding-hardware-md/USB-trackpad-by-connection.png)
 
-These will show up as a `PS2 Compliant Trackpad`, as well under USB when we switch our connection view to `Device by Connection`
+Nó sẽ hiện lên dưới dạng `PS2 Compliant Trackpad`, bên dưới mục USB chúng ta có thể xem dưới dạng `Theo kiểu kết nối`
 
 :::
 
 ::: details I2C
 
 ![](./images/finding-hardware-md/i2c-trackpad.png)
-These will almost always show up as a Microsoft HID device, though can appear as other trackpads as well. They will always show up under I2C though.
+Đa phần sẽ hiện là Microsoft HID device, nhưng chúng cũng có thể hiện kiểu trackpad khác. Chúng sẽ luôn hiện dưới thiết bị I2C.
 
 :::
   
-### Audio Codec
+### Audio Codec (Codec âm thanh)
 
 | AIDA64 | DeviceManager|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/audio-controller-aida64.png) | ![](./images/finding-hardware-md/audio-controller-aida64.png.png) |
 
-Due to how certain OEMs present device names, the most accurate info you can get with DeviceManager is via the PCI ID(ie. pci 14F1,50F4). This means you'll need to google the ID and figure out the exact device ID, however AIDA64 can present the name properly which is quite a bit easier on the end user.
+Tùy vào các nhà sản xuất đặt tên, thông tin chính xác nhất bạn có thể tìm ở Device Manager là tìm ở dưới PCI ID (VD: pci 14F1,50F4), bạn sẽ phải tra Google để biết loại audio codec. Tuy nhiên, bạn cũng có thể tìm ở AIDA64, sẽ dễ hơn rất nhiều.
 
-### Network Controller models
+### Network Controller models (Thiết bị kết nối mạng)
 
 | AIDA64 | Device Manager|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/nic-model-aida64.png) | ![](./images/finding-hardware-md/nic-model-devicemanager.png) |
 
-Due to how certain OEMs present device names, the most accurate info you can get with Device Manager is via the PCI ID (ie. `PCI\VEN_14E4&DEV_43A0` corresponds to a vendor ID of `14E4` and a device ID of `43A0`). This means you'll need to Google the ID and figure out the exact device ID; however, AIDA64 can present the name properly which can be quite a bit easier.
+Cũng như audio codec, bạn cũng sẽ tìm thấy thông tin mạng ở Device Manager qua PCI ID (VD. `PCI\VEN_14E4&DEV_43A0` sẽ cho chúng ta biết vendor ID là `14E4` và device ID là `43A0`). Bạn sẽ phải tra Google để biết. Tuy nhiên, bạn cũng có thể tìm ở AIDA64, sẽ dễ hơn rất nhiều.
 
-### Drive Model
+### Thiết bị lưu trữ (Ổ cứng, USB, ổ đĩa,...)
 
 | AIDA64 | Device Manager|
 | :--- | :--- |
 | ![](./images/finding-hardware-md/disk-model-aida64.png) | ![](./images/finding-hardware-md/disk-model-devicemanager.png) |
 
-Due to OEMs not providing much details about the drive, you'll need to Google a bit which drive matches up with the displayed name.
+Bởi vì nhà sản xuất không cho chúng ta nhiều thông tin về mục này cho nên bạn sẽ phải tra Google để xem.
 
-## Finding Hardware using Linux
+## Nếu bạn đang sử dụng Linux
 
-For finding hardware using Linux, we'll be using a few tools:
+Chúng ta sẽ sử dụng một vài lệnh như bên dưới:
 
 * `cat`
 * `pciutils`
 * `dmidecode`
 
-Below you'll find a list of commands to run in the terminal, thankfully most Linux distros will come with these tools already installed. If not, you will likely find them in your distro's package manager.
+Thường thì bạn sẽ có những thứ này được cài đặt sẵn trong hệ điều hành, nhưng nếu không có thì bạn có thể cài đặt chúng.
 
-### CPU Model
+### Loại CPU
 
 ```sh
 cat /proc/cpuinfo | grep -i "model name"
 ```
 
-### GPU Model
+### Loại GPU
 
 ```sh
 lspci | grep -i --color "vga\|3d\|2d"
 ```
 
-### Chipset Model
+### Loại Chipset
 
 ```sh
 dmidecode -t baseboard
 ```
 
-### Keyboard, Trackpad and  Touchscreen Connection Type
+### Cổng kết nối bàn phím, trackpad, màn hình cảm ứng
 
 ```sh
 dmesg | grep -i input
 ```
 
-### Audio Codec
+### Audio Codec (Codec âm thanh)
 
 ```sh
 aplay -l
 ```
 
-### Network Controller models
+### Network Controller models (Thiết bị kết nối mạng)
 
-Basic info:
+Thông tin cơ bản:
 
 ```sh
 lspci | grep -i network
 ```
 
-More in-depth info:
+Thông tin chi tiết:
 
 ```sh
 lshw -class network
 ```
 
-### Drive Model
+### Thiết bị lưu trữ (Ổ cứng, USB, ổ đĩa,...)
 
 ```sh
 lshw -class disk -class storage
