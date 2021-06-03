@@ -9,7 +9,7 @@ Trước khi chúng ta nhảy vào làm hệ thống dựa trên OpenCore, chún
 2. <span style="color:red">_**[QUAN TRỌNG]**_</span> **HIỂU BIẾT VỀ PHẦN CỨNG CỦA BẠN**
    * Tên CPU của bạn và thế hệ của nó
    * GPU của bạn
-   * Your storage devices (HDD/SSD, NVMe/AHCI/RAID/IDE configuration)
+   * Tên thiết bị lưu trữ của bạn (HDD/SSD, cấu hình NVMe/AHCI/RAID/IDE)
    * Tên model của Máy tính để bàn/Laptop nếu nó tới từ OEM
    * **Chipset Ethernet** của bạn
    * Chipset WLAN/Bluetooth của bạn
