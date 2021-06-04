@@ -1,6 +1,6 @@
-const {
-    description
-} = require('../package')
+// const {
+//     description
+// } = require('../package')
 
 module.exports = {
     title: 'OpenCore Install Guide',
@@ -89,7 +89,7 @@ module.exports = {
 		}
 	},
 
-    theme: 'vuepress-theme-succinct',
+    theme: 'succinct',
     globalUIComponents: [
         'ThemeManager'
     ],
@@ -338,9 +338,9 @@ module.exports = {
         ],
     },
     plugins: [
-        '@vuepress/plugin-back-to-top',
-        'vuepress-plugin-smooth-scroll',
-        ['vuepress-plugin-medium-zoom',
+        '@vuepress/back-to-top',
+        'smooth-scroll',
+        ['medium-zoom',
             {
                 selector: "img",
                 options: {
