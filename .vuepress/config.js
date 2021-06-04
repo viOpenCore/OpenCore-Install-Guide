@@ -89,6 +89,11 @@ module.exports = {
 		}
 	},
 
+    // algolia: {
+    //     apiKey: '<API_KEY>',
+    //     indexName: '<INDEX_NAME>'
+    //   },
+ 
     theme: 'succinct',
     globalUIComponents: [
         'ThemeManager'
@@ -340,6 +345,10 @@ module.exports = {
     plugins: [
         '@vuepress/back-to-top',
         'smooth-scroll',
+        ['@vuepress/search', {
+            searchMaxSuggestions: 10,
+            // searchHotkeys: ""
+        }]
         ['medium-zoom',
             {
                 selector: "img",
