@@ -1,27 +1,27 @@
 # Laptop Haswell
 
-| Support | Version |
+| Hỗ trợ | Phiên bản |
 | :--- | :--- |
-| Initial macOS Support | OS X 10.8, Mountain Lion |
+| Phiên bản macOS đầu tiên được hỗ trợ | OS X 10.8, Mountain Lion |
 
-## Starting Point
+## Bắt đầu
 
-So making a config.plist may seem hard, it's not. It just takes some time but this guide will tell you how to configure everything, you won't be left in the cold. This also means if you have issues, review your config settings to make sure they're correct. Main things to note with OpenCore:
+Làm file config.plist trông có vẻ khó, nhưng thật ra không. Nó chỉ mất thời gian thôi nhưng bài hướng dẫn này sẽ giúp bạn cấu hình mọi thứ. Điều này cũng có nghĩa là nếu như bạn có vấn đề, hay xem lại file config để chắc chắn rằng bạn đã làm đúng. Những điều cần chú ý với OpenCore:
 
-* **All properties must be defined**, there are no default OpenCore will fall back on so **do not delete sections unless told explicitly so**. If the guide doesn't mention the option, leave it at default.
-* **The Sample.plist cannot be used As-Is**, you must configure it to your system
-* **DO NOT USE CONFIGURATORS**, these rarely respect OpenCore's configuration and even some like Mackie's will add Clover properties and corrupt plists!
+* **Mọi thuộc tính đều phải được đặt, OpenCore không có tùy chọn mặc định nên **đừng xóa phần nào trừ khi được nhắc đến**. Nếu bài hướng dẫn không nhắc đến tùy chọn đó, để yên nó như vậy
+* **file sample.plist không thể được dùng nguyên trạng**, bạn phải chỉnh sửa nó cho máy tính của bạn
+* **ĐỪNG DÙNG CONFIGURATORS**, chúng hiếm khi quan tâm đến các cấu hình của OpenCore và một số như của Mackie sẽ thêm các thuộc tính của Clover làm lỗi file plist
 
-Now with all that, a quick reminder of the tools we need
+Với tất cả những điều trên, một lời nhắc nhở về những thứ mà chúng ta cần:
 
 * [ProperTree](https://github.com/corpnewt/ProperTree)
-  * Universal plist editor
+  * Phần mềm edit file plist
 * [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
-  * For generating our SMBIOS data
+  * Dùng để tạo dữ liệu SMBIOS
 * [Sample/config.plist](https://github.com/acidanthera/OpenCorePkg/releases)
-  * See previous section on how to obtain: [config.plist Setup](../config.plist/README.md)
+  * Xem phần trước để biết cách lấy: [config.plist Setup](../config.plist/README.md)
 
-**And read this guide more than once before setting up OpenCore and make sure you have it set up correctly. Do note that images will not always be the most up-to-date so please read the text below them, if nothing's mentioned then leave as default.**
+**Đọc phần này nhiều hơn một lần trước khi thiết lập OpenCore và chắc chắn rằng bạn đã làm đúng. Nên nhớ rằng các hình ảnh không phải lúc nào cũng được cập nhật nên xin hay đọc phần chữ ở bên dưới, nếu không được nhắc đến thì hãy để như mặc định**
 
 ## ACPI
 
@@ -29,20 +29,20 @@ Now with all that, a quick reminder of the tools we need
 
 ### Add
 
-::: tip Info
+::: tip Thông tin
 
-This is where you'll add SSDTs for your system, these are very important to **booting macOS** and have many uses like [USB maps](https://viopencore.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs](../extras/spoof.md) and such. And with our system, **it's even required to boot**. Guide on making them found here: [**Getting started with ACPI**](https://viopencore.github.io/Getting-Started-With-ACPI/)
+Đây là nơi mà bạn sẽ thêm các SSDT cho máy bạn, chúng rất quan trọng để **có thể boot được vào macOS** và có nhiều chức năng như để [map USB](https://viopencore.github.io/OpenCore-Post-Install/usb/), [tắt GPU rời](../extras/spoof.md), ... Và trong trường hợp của chúng ta, **cần phải có SSDT mới có thể boot được**. Hướng dẫn cách tạo SSDT ở đây: [**Bắt đầu với ACPI**](https://viopencore.github.io/Getting-Started-With-ACPI/)
 
-For us we'll need a couple of SSDTs to bring back functionality that Clover provided:
+Chúng ta cần một vài SSDT để mang lại các chức năng mà Clover có sẵn:
 
-| Required_SSDTs | Description |
+| SSDT_Cần_thiết | Mô tả |
 | :--- | :--- |
-| **[SSDT-PLUG](https://viopencore.github.io/Getting-Started-With-ACPI/)** | Allows for native CPU power management on Haswell and newer, see [Getting Started With ACPI Guide](https://viopencore.github.io/Getting-Started-With-ACPI/) for more details. |
-| **[SSDT-EC](https://viopencore.github.io/Getting-Started-With-ACPI/)** | Fixes the embedded controller, see [Getting Started With ACPI Guide](https://viopencore.github.io/Getting-Started-With-ACPI/) for more details. |
-| **[SSDT-GPIO](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPI0.dsl.zip)** | Creates a stub so VoodooI2C can connect, for those having troubles getting VoodooI2C working can try [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml) instead. Note that Intel NUCs do not need this |
-| **[SSDT-PNLF](https://viopencore.github.io/Getting-Started-With-ACPI/)** | Fixes brightness control, see [Getting Started With ACPI Guide](https://viopencore.github.io/Getting-Started-With-ACPI/) for more details. Note that Intel NUCs do not need this |
+| **[SSDT-PLUG](https://viopencore.github.io/Getting-Started-With-ACPI/)** | Cho phép quản lí điện năng trên các dòng chip Haswell hoặc mới hơn, xem [Hướng dẫn bắt đầu với ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/) để biết thêm chi tiết. |
+| **[SSDT-EC](https://viopencore.github.io/Getting-Started-With-ACPI/)** | Sửa bộ điều khiển tích hợp, xem [Hướng dẫn bắt đầu với ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/) để biết thêm chi tiết. |
+| **[SSDT-GPIO](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPI0.dsl.zip)** | Tạo ra một điểm mà VoodooI2C có thể kết nối đến, ai đang gặp khó khăn trong việc setup VoodooI2C có thể thử [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml) instead. Các dòng Intel NUC không cần SSDT này |
+| **[SSDT-PNLF](https://viopencore.github.io/Getting-Started-With-ACPI/)** | Sửa phần chỉnh độ sáng, xem [Hướng dẫn bắt đầu với ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/) để biết thêm chi tiết. Các dòng Intel NUC không cần SSDT này |
 
-Note that you **should not** add your generated `DSDT.aml` here, it is already in your firmware. So if present, remove the entry for it in your `config.plist` and under EFI/OC/ACPI.
+Lưu ý là bạn **không nên** thêm file DSDT.aml vào đây, nó đã có sẵn trong firmware. Nếu đã thêm thì hay loại bỏ nó trong config.plist và trong thư mục EFI/OC/ACPI 
 
 For those wanting a deeper dive into dumping your DSDT, how to make these SSDTs, and compiling them, please see the [**Getting started with ACPI**](https://viopencore.github.io/Getting-Started-With-ACPI/) **page.** Compiled SSDTs have a **.aml** extension(Assembled) and will go into the `EFI/OC/ACPI` folder and **must** be specified in your config under `ACPI -> Add` as well.
 
@@ -50,18 +50,18 @@ For those wanting a deeper dive into dumping your DSDT, how to make these SSDTs,
 
 ### Delete
 
-This blocks certain ACPI tables from loading, for us we can ignore this.
+Phần này chặn một số bảng ACPI chạy, có thể bỏ qua
 
 ### Patch
 
-::: tip Info
+::: tip Thông tin
 
-This section allows us to dynamically modify parts of the ACPI (DSDT, SSDT, etc.) via OpenCore. For us, we'll need the following:
+Phần này cho phép chúng ta chỉnh sửa các phần của ACPI (DSDT, SSDT, ...) trực tiếp qua OpenCore. Chúng ta cần
 
-* OSI rename
-  * This is required when using SSDT-XOSI as we redirect all OSI calls to this SSDT, **this is not needed if you're using SSDT-GPIO**
+* Đổi tên OSI
+  * Cần thiết khi dùng SSDT-XOSI vì ta điều hướng mọi OSI calls đến SSDT này, **không cần thiết nếu bạn dùng SSDT-GPIO**
 
-| Comment | String | Change _OSI to XOSI |
+| Comment | String | Chuyển _OSI thành XOSI |
 | :--- | :--- | :--- |
 | Enabled | Boolean | YES |
 | Count | Number | 0 |
@@ -73,13 +73,13 @@ This section allows us to dynamically modify parts of the ACPI (DSDT, SSDT, etc.
 
 ### Quirks
 
-Settings relating to ACPI, leave everything here as default as we have no use for these quirks.
+Các cài đặt liên quan đến ACPI, để mọi thứ ở đây như mặc định vì chúng ta không dùng đến chúng
 
 ## Booter
 
 ![Booter](../images/config/config-universal/aptio-iv-booter.png)
 
-This section is dedicated to quirks relating to boot.efi patching with OpenRuntime, the replacement for AptioMemoryFix.efi
+Phần này dành cho những cài đặt liên quan đến patching boot.efi với OpenRuntime, thay thế cho AptioMemoryFix.efi
 
 ### MmioWhitelist
 
@@ -87,10 +87,10 @@ This section is allowing spaces to be pass-through to macOS that are generally i
 
 ### Quirks
 
-::: tip Info
-Settings relating to boot.efi patching and firmware fixes, for us, we leave it as default
+::: tip Thông tin
+Cài đặt liên quan đến patching boot.efi và sửa đổi về firmware, chúng ta không cần đến nên để mặc định
 :::
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
 * **AvoidRuntimeDefrag**: YES
   * Fixes UEFI runtime services like date, time, NVRAM, power control, etc
