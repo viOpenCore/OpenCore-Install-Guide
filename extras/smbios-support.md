@@ -1,23 +1,23 @@
 # Chọn đúng loại SMBIOS
 
-Khi bạn chọn SMBIOS cho máy của bạn, bạn hiểu ra rằng nó chỉ là chọn đúng loại CPU tương thích. Rất nhiều thứ sẽ ảnh hưởng đến cách làm việc của máy bạn như là SMBIOS của bạn xác định về quản lý điện năng của CPU, cấu hình GPU, USB map và nhiều thứ khác.
+Khi bạn chọn SMBIOS cho máy của bạn, bạn cần hiểu rằng nó không chỉ là chọn đúng loại CPU tương thích. Rất nhiều thứ sẽ ảnh hưởng đến cách làm việc của máy bạn bởi SMBIOS của bạn xác định về quản lý điện năng của CPU, cấu hình GPU, USB map và nhiều thứ khác.
 
 Những thứ chính dùng để xem xét khi lựa chọn SMBIOS:
 
 * Loại CPU
-  * Chủ yếu là di động và desktop và server, ví nó rất là ảnh hưởng tới chế độ ngủ và tính ổn định của hệ thống
+  * Chủ yếu là di động và desktop và server, vì nó ảnh hưởng rất lớn tới chế độ sleep và tính ổn định của hệ thống
   * This also determines whether or not you can use Apple's XCPM and what profiles you get
-    * Cả 2 đều đã đa phần khắc phục với CPUFriend: [Fixing Power management](https://viopencore.github.io/OpenCore-Post-Install/universal/pm.html)
+    * Cả 2 đều đã đa phần được khắc phục bằng CPUFriend: [Fixing Power management](https://viopencore.github.io/OpenCore-Post-Install/universal/pm.html)
   * Lưu ý rằng CPU AMD không liên quan gì về vấn đề này cả
 * Loại GPU
-  * Có rất nhiều thứ bị ảnh hưởng tại đây, như quản lý điện năng GPU(AGPM), hỗ trợ xuất màn hình ngoài(AGDP), ngủ(AGDC) và. nhiều thứ .
+  * Có rất nhiều thứ bị ảnh hưởng tại đây, như quản lý điện năng GPU(AGPM), hỗ trợ xuất màn hình ngoài(AGDP), ngủ(AGDC) và nhiều thứ khác.
     * This is especially relevant when we look to the [Mac Mini](#mac-mini) SMBIOS that only uses mobile hardware, which doesn't match well with desktop hardware. This is the reason we highly discourage them unless used for [Intel's NUC series](https://www.intel.ca/content/www/ca/en/products/boards-kits/nuc.html) and such which are based off mobile hardware.
     * Laptops should also pay very close attention, as Apple always assumes that when a dGPU is present for the SMBIOS, all display outs will be routed through it. This can become an issue when an Optimus laptop has its external displays wired through the iGPU instead, causing black screen issues which would require more patching.
-  * CPU không có iGPU cần phải nhìn rõ về vấn đề này, như là các tính năng như Xem nhanh và nhiều thứ khác sẽ bị hỏng khi SMBIOS đợi iGPU(VD. Các loại SMBIOS iMac )
-    * Với những trường hợp đó, nhìn kỹ vào iMac Pro và Mac Pro SMBIOS
+  * CPU không có iGPU cần chú ý về vấn đề này, bởi vì các tính năng như Quicklook và nhiều thứ khác sẽ không chạy khi SMBIOS có iGPU(VD. Mọi iMac SMBIOS)
+    * Với những trường hợp đó, hãy xem iMac Pro và Mac Pro SMBIOS
   * DRM is also tied in here as well however this is mostly resolved here: [Fixing DRM](https://viopencore.github.io/OpenCore-Post-Install/universal/drm.html)
   
-* Hỗ trợ
+* OS được hỗ trợ
   * Mainly relevant for older hardware, as macOS may still have support for the CPU however no longer supports SMBIOS from that era
     * CPU Arrandale là một ví dụ tuyệt vời, vì chúng vẫn có sự hỗ trợ OS kể cả trong macOS 11, Big Sur(Tuy nhiên không hỗ trợ iGPU từ 10.13.6)
 * Thiết bị USB
@@ -71,7 +71,7 @@ Và cũng có một ít các lưu ý đặc biệt dành cho SMBIOS:
 * [iMac Pro](#mac-pro)
 * [Mac Pro](#mac-pro)
 * [Xserve](#xserve)
-* [Các SMBIOS lộn xộn](#các-smbios-lộn-xộn)
+* [Các SMBIOS khác](#cac-smbios-khac)
 
 Thông tin được kéo ra từ [EveryMac](https://everymac.com) và [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg)
 
@@ -89,7 +89,7 @@ Thông tin được kéo ra từ [EveryMac](https://everymac.com) và [OpenCoreP
 
 ### MacBook
 
-| SMBIOS | Gia đình CPU | GPU | board-id | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời CPU | GPU | board-id | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | MacBook1,1     | Yonah(M)        | GMA 950                       | Mac-F4208CC8       | 10.4.6 (8I2025) | 10.6.8 |
 | MacBook2,1     | Merom(M)        | GMA 950                       | Mac-F4208CA9   | 10.4.8 (8N1108) | 10.7.5 |
@@ -105,7 +105,7 @@ Thông tin được kéo ra từ [EveryMac](https://everymac.com) và [OpenCoreP
 
 ### MacBook Air
 
-| SMBIOS | Gia đình CPU | GPU | board-id | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời CPU | GPU | board-id | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | MacBookAir1,1  | Merom(M)        | GMA X3100     (11")                | Mac-F42C8CC8 | 10.5.1 (9B2324) | 10.7.5 |
 | MacBookAir2,1  | Penryn(M)       | GeForce 9400M (13")                | Mac-F42D88C8 | 10.5.5 | 10.11.6 |
@@ -125,7 +125,7 @@ Thông tin được kéo ra từ [EveryMac](https://everymac.com) và [OpenCoreP
 
 ### MacBook Pro
 
-| SMBIOS | Gia đình CPU | GPU | board-id | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời CPU | GPU | board-id | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | MacBookPro1,1  | Yonah(M)        | Radeon X1600 (15")                 | Mac-F425BEC8 | 10.4.5 (8G1453) | 10.6.8 |
 | MacBookPro1,2  | Yonah(M)        | Radeon X1600 (17")                 | Mac-F42DBEC8 | 10.4.6 (8I2032) | ^^ |
@@ -171,7 +171,7 @@ Thông tin được kéo ra từ [EveryMac](https://everymac.com) và [OpenCoreP
 
 ### Mac Mini
 
-| SMBIOS | Gia đình CPU | GPU | board-id | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời CPU | GPU | board-id | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Macmini1,1     | Yonah(M)        | GMA 950                       | Mac-F4208EC8           | 10.4.5 (8H1619) | 10.6.8 |
 | Macmini2,1     | Merom(M)        | GMA 950                       | Mac-F4208EAA           | 10.4.10 (8R3014) | 10.7.5 |
@@ -187,7 +187,7 @@ Thông tin được kéo ra từ [EveryMac](https://everymac.com) và [OpenCoreP
 
 ### iMac
 
-| SMBIOS | Gia đình CPU | GPU | board-id | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời CPU | GPU | board-id | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | iMac4,1        | Yonah(M)        | Radeon X1600                  | Mac-F42786C8   | 10.4.4 (8G1165)      | 10.6.8 |
 | iMac4,2        | Yonah(M)        | GMA 950                       | Mac-F4218EC8   | 10.4.7 (8I2057)      | ^^ |
@@ -226,13 +226,13 @@ Thông tin được kéo ra từ [EveryMac](https://everymac.com) và [OpenCoreP
 
 ### iMac Pro
 
-| SMBIOS | Gia đình CPU | GPU | board-id | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời CPU | GPU | board-id | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | iMacPro1,1     | Skylake-W    | Vega 56                       | Mac-7BA5B2D9E42DDD94       | 10.13.2 (17C2111) | Current |
 
 ### Mac Pro
 
-| SMBIOS | Gia đình CPU | GPU | board-id | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời CPU | GPU | board-id | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | MacPro1,1      | Woodcrest     | GeForce 7300 GT               | Mac-F4208DC8           | 10.4.7 (8K1079) | 10.7.5 |
 | MacPro2,1      | Clovertown    | ^^                            | Mac-F4208DA9           | 10.4.9 (8P4037) | ^^ |
@@ -245,13 +245,13 @@ Thông tin được kéo ra từ [EveryMac](https://everymac.com) và [OpenCoreP
 
 ### Xserve
 
-| SMBIOS | Gia đình CPU | GPU | board-id | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời CPU | GPU | board-id | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Xserve1,1      | Woodcrest    | Radeon X1300                  | Mac-F4208AC8           | Server 10.4.8 (8N1215) | Server 10.7.5 |
 | Xserve2,1      | Harpertown   | ^^                            | Mac-F42289C8           | Server 10.5 (9B2117) | ^^ |
 | Xserve3,1      | Nehalem EP   | GeForce GT 120                | Mac-F223BEC8           | Server 10.5.6 | 10.11.6 |
 
-### Các SMBIOS lộn xộn
+### Các SMBIOS khác
 
 Tất cả các kiểu máy bên dưới đều không được hỗ trợ bởi OpenCore tuy  are documented here for ease of reference.
 
@@ -285,26 +285,26 @@ Thông tin thêm dành cho CPU của Apple:
 
 #### Developer Transition Kit
 
-| SMBIOS | Đời | Gia đình CPU | Product Identifier | Phiên bản hỗ trợ ban đầu |
+| SMBIOS | Đời | Đời CPU | Product Identifier | Phiên bản tối thiểu |
 | :--- | :--- | :--- | :--- | :--- |
 | ADP2,1 | Mid 2005 | Intel Prescott | N/A | 10.4.1 (8B1025) |
 | ADP3,2 | Mid 2020 | Apple A12Z | J273 | 11.0.0 (20A5299w) |
 
 #### Mac Mini - Apple Silicon
 
-| SMBIOS | Đời | Gia đình CPU | Product Identifier | Phiên bản hỗ trợ ban đầu |
+| SMBIOS | Đời | Đời CPU | Product Identifier | Phiên bản tối thiểu |
 | :--- | :--- | :--- | :--- | :--- |
 | MacMini9,1 | Late 2020 |  Apple M1 | J274 | 11.0.0 (20A2411) |
 
 #### MacBook Air - Apple Silicon
 
-| SMBIOS | Đời | Gia đình CPU | Product Identifier | Phiên bản hỗ trợ ban đầu |
+| SMBIOS | Đời | Đời CPU | Product Identifier | Phiên bản tối thiểu |
 | :--- | :--- | :--- | :--- | :--- |
 | MacBookAir10,1 | Late 2020 |  Apple M1 | J313 | 11.0.0 (20A2411) |
 
 #### MacBook Pro - Apple Silicon
 
-| SMBIOS | Đời | Gia đình CPU | Product Identifier | Phiên bản hỗ trợ ban đầu |
+| SMBIOS | Đời | Đời CPU | Product Identifier | Phiên bản tối thiểu |
 | :--- | :--- | :--- | :--- | :--- |
 | MacBookPro17,1 | Late 2020 | Apple M1 | J293 | 11.0.0 (20A2411) |
 
@@ -314,7 +314,7 @@ Thông tin thêm dành cho CPU của Apple:
 
 #### iMac - Apple Silicon
 
-| SMBIOS | Đời | Gia đình CPU | Product Identifier | Phiên bản hỗ trợ ban đầu |
+| SMBIOS | Đời | Đời CPU | Product Identifier | Phiên bản tối thiểu |
 | :--- | :--- | :--- | :--- | :--- |
 | iMac21,1 | Mid 2021 | Apple M1 | J256 | 11.3 (20E232?) |
 | iMac21,2 | Mid 2021 | Apple M1 | J257 | 11.3 (20E232?) |
@@ -323,7 +323,7 @@ Thông tin thêm dành cho CPU của Apple:
 
 #### PowerBook - PowerPC
 
-| SMBIOS | Đời | Gia đình CPU | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời | Đời CPU | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- |
 | PowerBook1,1 | Mid-1999 | PowerPC 750 (G3) | 8.6 | 10.3.9 |
 | PowerBook3,1 | Early 2000 | ^^ | 9.0.2 | 10.4.11 |
@@ -347,7 +347,7 @@ Thông tin thêm dành cho CPU của Apple:
 
 #### iBook - PowerPC
 
-| SMBIOS | Đời | Gia đình CPU | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời | Đời CPU | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- |
 | PowerBook2,1 | Mid-1999 | PowerPC 750 (G3) | 8.6 | 10.3.9 |
 | PowerBook2,2 | Late 20000 | PowerPC 750cx (G3) | 9.0.4 | 10.4.11 |
@@ -360,7 +360,7 @@ Thông tin thêm dành cho CPU của Apple:
 
 #### PowerMac - PowerPC
 
-| SMBIOS | Đời | Gia đình CPU | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời | Đời CPU | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- |
 | PowerMac1,1 | Early 1999 | PowerPC 750 (G3) | 8.5.1 | 10.4.11 |
 | PowerMac1,2 | Mid 1999 | PowerPC 7400 (G4) | 8.6 | ^^ |
@@ -377,7 +377,7 @@ Thông tin thêm dành cho CPU của Apple:
 
 #### iMac - PowerPC
 
-| SMBIOS | Đời | Gia đình CPU | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời | Đời CPU | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- |
 | iMac,1 | Mid 1998 | PowerPC 750 (G3) | 8.1 | 10.3.9 |
 | PowerMac2,1 | Late 1999 | ^^ | 8.6 | 10.4.11 |
@@ -393,28 +393,28 @@ Thông tin thêm dành cho CPU của Apple:
 
 #### eMac - PowerPC
 
-| SMBIOS | Đời | Gia đình CPU | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời | Đời CPU | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- |
 | PowerMac4,4 | Mid-2003 | PowerPC 7445 (G4 | 9.2.2 | 10.5.8 |
 | PowerMac6,4 | Early 2004 | PowerPC 7447a (G4) | 10.3.3 | ^^ |
 
 #### Cube - PowerPC
 
-| SMBIOS | Đời | Gia đình CPU | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời | Đời CPU | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- |
 | PowerMac5,1 | Mid-2000 | PowerPC 7400 (G4) | 9.0.4 | 10.4.11 |
 | PowerMac5,2 | ^^ | ^^ | ^^ | ^^ |
 
 #### Mac Mini - PowerPC
 
-| SMBIOS | Đờir | Gia đình CPU | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đờir | Đời CPU | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- |
 | PowerMac10,1 | Early 2005 | PowerPC 7447a (G4) | 10.3.7 (7T11) | 10.5.8 |
 | PowerMac10,2 | Late 2005 | ^^ | 10.4.2 (8D40) | ^^ |
 
 #### Xserve - PowerPC
 
-| SMBIOS | Đời | Gia đình CPU | Phiên bản hỗ trợ ban đầu | Phiên bản hỗ trợ mới nhất |
+| SMBIOS | Đời | Đời CPU | Phiên bản tối thiểu |Phiên bản tối đa |
 | :--- | :--- | :--- | :--- | :--- |
 | RackMac1,1 | Mid-2002 | PowerPC 7455 (G4) | 10.1.5 (6C115) | Server 10.5.8 |
 | RackMac1,2 | Early 2003 | ^^ | 10.2.4 (6I34) | ^^ |

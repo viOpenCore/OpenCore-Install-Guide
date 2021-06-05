@@ -91,7 +91,7 @@ Notes:
 
 Dựa theo Vanilla Kernels (không chỉnh sửa):
 
-| Thế hệ CPU | Phiên bản hỗ trợ tối thiểu | Phiên bản hỗ trợ cuối cùng | Ghi chú | CPUID |
+| Đời CPU | Phiên bản tối thiểu | Phiên bản tối đa | Ghi chú | CPUID |
 | :--- | :--- | :--- | :--- | :--- |
 | [Pentium 4](https://en.wikipedia.org/wiki/Pentium_4) | 10.4.1 | 10.5.8 | Chỉ được sử dụng cho những bộ dev kits | 0x0F41 |
 | [Yonah](https://en.wikipedia.org/wiki/Yonah_(microprocessor)) | 10.4.4 | 10.6.8 | 32-Bit | 0x0006E6 |

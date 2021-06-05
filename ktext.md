@@ -1,8 +1,8 @@
 # Các file cần thiết
 
-Đây chính là phần mà dùng dể hướng dẫn thu thập các tệp lộn xộn dùng đê khởi động macOS, chúng tôi mong chờ bạn đê biết về phần cứng của bạn kỹ càng trước khi bắt đầu và hy vọng làm ra Hackintosh trước khi chúng ta không bị chìm sâu tại đây.
+Đây chính là phần hướng dẫn bạn tải các file cần thiết để khởi động macOS, chúng tôi chắc rằng bạn đã nắm rõ về phần cứng của bạn trước khi bắt đầu nghiên cứu sâu hơn tại đây.
 
-> Cách nào tốt nhất để chỉ ra rằng phần cứng của tôi có được hỗ trợ?
+> Cách nào tốt nhất để biết được rằng phần cứng của bạn được hỗ trợ?
 
 Xem [**Hardware Limitations page**](macos-limits.md) để có cái nhìn tốt hơn về việc macOS cần gì để khởi động, Hỗ trợ phần cứng giữa Clover và OpenCore khá giống nhau.
 
@@ -16,111 +16,111 @@ Firmware drivers are drivers used by OpenCore in the UEFI environment. They're m
 
 * **Location Note**: These files **must** be placed under `EFI/OC/Drivers/`
 
-### Phần chung
+### Phần chung cho mọi máy
 
 ::: tip Required Drivers
 
-Cho hàng loạt các hệ thông, bạn sẽ chỉ cần 2 driver `.efi`  để chạy:
+Cho hầu hết các máy tính, bạn sẽ chỉ cần 2 driver `.efi`  để chạy:
 
-* [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi)(<span style="color:red">Cần có</span>)
-  * Cần có để nhìn phân vùng HFS(VD. macOS Installers và phân vùng Khôi phục/ảnh đĩa). **Không được hoà trộn với các driver HFS khác**
-  * Dành cho Sandy Bridge and older(Và cả dòng Ivy Bridge tầm thấp(i3 and Celerons), xem phần legacy bên dưới
-* [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases)(<span style="color:red">Cân có</span>)
-  * Thay thế cho [AptioMemoryFix.efi](https://github.com/acidanthera/AptioFixPkg), dùng như là phần mở rộng cho OpenCore để giúp patch boot.efi cho fix NVRAM và giúp quản lý pin tốt hơn.
-  * Nhắc nhở là nó được bao gồm trong OpenCorePkg mà chúng ta download ở trước
+* [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi)(<span style="color:red">Bắt buộc</span>)
+  * Cần có để read phân vùng HFS(VD. macOS Installers và Recovery partitions/images). **Không được hoà trộn với các driver HFS khác**
+  * Còn đối với Sandy Bridge và các CPU đời cũ hơn(Và cả dòng  low end Ivy Bridge(i3 and Celerons), xem phần legacy bên dưới
+* [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases)(<span style="color:red">Bắt buộc</span>)
+  * Thay thế cho [AptioMemoryFix.efi](https://github.com/acidanthera/AptioFixPkg), dùng như là extension của OpenCore để giúp patch boot.efi nhằm fix NVRAM và giúp quản lý pin tốt hơn.
+  * Lưu là nó nằm trong thư mục OpenCorePkg mà chúng ta download ở trước (không phải tải lại).
 
 :::
 
 ### Người dùng Legacy
 
-In addition to the above, nếu phân cứng của bạn không hỗ trợ UEFI(2011 và trở về trước) thì bạn sẽ cần thứ tiếp theo. Nhìn kĩ vào từng entry vì có thể bạn không cần cả 4:
+In addition to the above, nếu phần cứng của bạn không hỗ trợ UEFI(2011 và trở về trước) thì bạn sẽ cần thứ tiếp theo. Nhìn kĩ vào từng entry vì có thể bạn không cần cả 4:
 
 * [OpenUsbKbDxe.efi](https://github.com/acidanthera/OpenCorePkg/releases)
-  * Used for OpenCore picker on **legacy systems running DuetPkg**, [not recommended and even harmful on UEFI(Ivy Bridge and newer)](https://applelife.ru/threads/opencore-obsuzhdenie-i-ustanovka.2944066/page-176#post-856653)
+  * Dùng cho OpenCore picker trên **các máy legacy sử dụng DuetPkg**, [không được khuyến khích và đôi khi còn gây hại cho máy UEFI(Ivy Bridge và đời mới hơn)](https://applelife.ru/threads/opencore-obsuzhdenie-i-ustanovka.2944066/page-176#post-856653)
 * [HfsPlusLegacy.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlusLegacy.efi)
   * Legacy variant of HfsPlus, used for systems that lack RDRAND instruction support. This is generally seen on Sandy Bridge and older(as well as low end Ivy Bridge(i3 and Celerons))
   * Không hoà trộn nó với HfsPlus.efi, chọn một hoặc là cái khác tuỳ theo phần cứng của bạn
 * [OpenPartitionDxe](https://github.com/acidanthera/OpenCorePkg/releases)
-  * Cần có để khởi động vào chế độ khôi phục trên OS X 10.7 tới 10.9
+  * Cần có để khởi động vào recovery trên OS X 10.7 tới 10.9
     * Tệp được bao gồm trong OpenCorePkg phần EFI/OC/Drivers
-    * Lưu ý: Người dùng OpenDuet(VD. không UEFI) sẽ có driver này được thích hợp sắn, không yêu cầu nó
+    * Lưu ý: Người dùng OpenDuet(VD: không UEFI) sẽ có driver này được thích hợp sẵn, không cần nó
   * Không cần thiết cho OS X 10.10, Yosemite và mới hơn
 
-Những tệp này sẽ được lưu trữ trong thư mục Drivers trong EFI của bạn
+Những tệp này sẽ nằm trong thư mục Drivers trong EFI của bạn
 
-::: Chi tiết cụ thể về 32-Bit
+::: Chi tiết cụ thể về Driver cho 32-Bit
 
-Với những CPU 32-Bit, bạn cũng sẽ muốn chụp các tệp này
+Với những CPU 32-Bit, bạn cũng sẽ cần tải các tệp này
 
 * [HfsPlus32](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus32.efi)
-  * Thay thế HfsPlusLegacy nhưng dành cho CPU 32-bit, không hoà trộn với driver HFS .efi khác
+  * Thay thế HfsPlusLegacy nhưng dành cho CPU 32-bit, không dùng chung với driver HFS .efi khác
 
 :::
 
 ## Kexts
 
-Kext là viết tắt của **k**ernel **ext**ension, bạn có thể nghĩ đây là driver cho macOS, những tệp này sẽ được chứa tại thư mục Kexts ở trong EFI của bạn.
+Kext là viết tắt của **k**ernel **ext**ension, bạn có thể xem nó như là là driver cho macOS, những file này sẽ được đặt tại thư mục Kexts ở trong EFI của bạn.
 
-* **Lưu ý về Windows và Linux**: Kexts sẽ nhìn như là thư mục bình thường trong OS của bạn, **kiểm tra lại** thư mục mà bạn đang cài đặt phải có phần mở rộng .kext có thể nhìn thấy được (và không được thêm bằng tay nếu nó bị thiếu).
-  * Nếu một số kext bao gồm cả tập `.dSYM`, bạn đơn giản là xoá nó đi. Nó chỉ cần trong việc gỡ lỗi.
-* **Location Note**: These files **must** be placed under `EFI/OC/Kexts/`.
+* **Lưu ý về Windows và Linux**: File kexts sẽ trông như những thư mục bình thường trong OS của bạn, **kiểm tra lại** thư mục mà bạn đang sử dụng phải có extension là .kext (và không được thêm vào nếu nó bị thiếu).
+  * Nếu một số kext bao gồm cả tập `.dSYM`, bạn chỉ cần xoá nó đi. Nó chỉ cần trong việc debug.
+* **Location Note**: Những file này **phải** được nằm trong thư mục `EFI/OC/Kexts/`.
 
-All kext listed below can be found **pre-compiled** in the [Kext Repo](http://kexts.goldfish64.com/). Kexts here are compiled each time there's a new commit.
+Tất cả kext được nêu dưới đây đều được **pre-compiled** trong [Kext Repo](http://kexts.goldfish64.com/). Kexts ở đây được compiled mỗi khi có một commit mới.
 
-### Must haves
+### Buộc phải có
 
-::: Kexts cần có
+::: Kexts bắt buộc phải có
 
-Nếu không có hai thứ bên dưới, không có hệ thống nào có thể khởi động được:
+Nếu không có kext bên dưới, không có máy nào có thể boot được:
 
-* [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)(<span style="color:red">Cần có</span>)
-  * Giả lập lại chip SMC chip có trên máy Mac thật, không có thì macOS sẽ không thể khởi động
-  * Sự thay thế là FakeSMC có thể có sự hỗ trợ tốt hơn hoặc kem hơn, được sử dụng rộng rãi trong các kiểu phần cứng legacy.
+* [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)(<span style="color:red">Bắt buộc</span>)
+  * Giả lập lại chip SMC chip có trên real Mac, không có thì macOS sẽ không thể boot
+  * Có thể được thay bằng FakeSMC (có thể hỗ trợ tốt hơn hoặc kém hơn), được sử dụng rộng rãi trong các phần cứng legacy.
   * Yêu  OS X 10.6 hoặc mới hơn
-* [Lilu](https://github.com/acidanthera/Lilu/releases)(<span style="color:red">Required</span>)
-  * Một kext dung để patch nhiều quá trình, cần có cho AppleALC, WhateverGreen, VirtualSMC và nhiều kext khác. Không có Lilu, chúng sẽ không thể hoạt động được.
-  * Lưu ý rằng Lilu và các plugin cần có OS X 10.8 hoặc mới hơn để hoạt động
+* [Lilu](https://github.com/acidanthera/Lilu/releases)(<span style="color:red">Bắt buộc</span>)
+  * Một kext dung để patch nhiều process, cần có cho AppleALC, WhateverGreen, VirtualSMC và nhiều kext khác. Không có Lilu, chúng sẽ không thể hoạt động được.
+  * Lưu ý rằng Lilu và các plugin cần OS X 10.8 hoặc mới hơn để hoạt động
   
-::: Chi tiết  Legacy "Must haves" kexts
+::: Chi tiết  Những kexts buộc phải có cho Legacy
 
-For those planning to boot OS X 10.7 and older on 32 bit hardware, you'll want to use the below instead of VirtualSMC:
+Dành cho những ai định boot OS X 10.7 và các bản cũ hơn trên 32 bit hardware, bạn sẽ phải sử dụng kext sau thay cho VirtualSMC:
 
 * [FakeSMC-32](https://github.com/khronokernel/Legacy-Kexts/blob/master/32Bit-only/Zip/FakeSMC-32.kext.zip?raw=true)
 
-Reminder if you don't plan to boot these older OSes, you can ignore this kext.
+Lưu ý rằng nếu bạn định boot những OS cũ như vậy, bạn có thể không cần kext.
 
 * **OS X 10.4 and 10.5 note**: Even on 64-bit CPUs, OS X's kernel space is still 32-bit. So we recommend using FakeSMC-32 in tandem with VirtualSMC, specifically by setting FakeSMC-32's `Arch` entry to `i386` and VirtualSMC's to `x86_64`. This is discussed further on in the guide.
 
 :::
 
-### Các Plugin VirtualSMC
+### Các Plugin của VirtualSMC
 
-Các Plugin bên dưới đều không cần thiết để khởi động, và đơn thuần thêm các chức năng cho hệ thống như theo dõi phần cứng (Lưu ý tuy VirtualSMC hỗ trợ 10.6, plugin có thể cân phải có 10.8+):
+Các Plugin bên dưới đều không cần thiết để khởi động, và đơn thuần thêm các chức năng cho hệ thống như hardware monitoring (Lưu ý tuy VirtualSMC hỗ trợ 10.6, plugin có thể cần phải có 10.8+):
 
 * SMCProcessor.kext
-  * Dùng để theo dõi nhiệt độ CPU, **không hoạt động trên hệ thống dựa trên CPU AMD**
+  * Dùng để theo dõi nhiệt độ CPU, **không hoạt động trên CPU AMD**
 * SMCSuperIO.kext
-  * Used for monitoring fan speed, **doesn't work on AMD CPU based systems**
+  * Dùng để theo dõi fan speed, **không hoạt động trên CPU AMD**
 * SMCLightSensor.kext
-  * Dùng cho cảm biến đo ánh sáng trên laptop, **máy tính đê bàn có thể bỏ qua**
-  * Không dùng nếu bạn không có cảm biến đo ánh sáng, có thể gây ra nhiều vấn đề khác
+  * Dùng cho cảm biến ánh sáng trên Laptop, **Desktop có thể bỏ qua**
+  * Không dùng nếu bạn không có cảm biến ánh sáng, có thể gây ra nhiều lỗi khác
 * SMCBatteryManager.kext
-  * Dùng để đo và hiển thị thông tin pin trên Laptop, **máy tính để bản có thể bỏ qua**
+  * Dùng để đo và hiển thị thông tin pin trên Laptop, **Desktop có thể bỏ qua**
 * SMCDellSensors.kext
   * Cho phép theo dõi tốt hơn và quản lý tốc độ quạt trên các máy Dell hỗ trợ System Management Mode(SMM)
-  * **Không sử dụng nếu bạn không có máy Dell được hỗ trợ**, chủ yếu các máy Dell được lợi từ kext này
+  * **Không sử dụng nếu bạn không có máy Dell được hỗ trợ**, chủ yếu các máy Dell sẽ cần kext này
 
-### Đồ hoạ
+### Graphics
 
-* [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases)(<span style="color:red">Cần có</span>)
-  * Dùng đề patch đồ hoạ DRM, boardID, framebuffer fixes, v.v, tất cả GPUs đều được hưởng lợi từu kext này.
+* [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases)(<span style="color:red">Bắt buộc</span>)
+  * Dùng đề patch đồ hoạ DRM, boardID, framebuffer fixes, v.v, tất cả GPUs đều cần kext này.
   * Lưu ý rằng tệp SSDT-PNLF.dsl được bao gồm chỉ cần thiết cho laptop và AIO, xem [Getting started with ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/) để biết thêm thông
-  * Yêu cầu  OS X 10.8 hoặc mới hơn
+  * Yêu cầu OS X 10.8 hoặc mới hơn
 
 ### Âm thanh
 
 * [AppleALC](https://github.com/acidanthera/AppleALC/releases)
-  * Dùng cho patch AppleHDA, cho phép sự hỗ trợ hàng loạt các bộ điều khiển âm thanh on-board (trên bo mạch chủ)
+  * Dùng cho patch AppleHDA, cho phép sự hỗ trợ hầu hết các bộ điều khiển âm thanh on-board (trên bo mạch chủ)
   * AMD 15h/16h có thể sẽ gặp vấn đề về nó và hệ thống Ryzen/Threadripper ít hỗ trợ mic
   * Yêu cầu OS X 10.8 hoặc mới hơn
   
@@ -132,7 +132,7 @@ Dành cho những người dự định khởi động từ 10.7 và cũ hơn c�
   * Yêu cầu OS X 10.6 hoặc mới hơn
   
 * [VoodooHDA-FAT](https://github.com/khronokernel/Legacy-Kexts/blob/master/FAT/Zip/VoodooHDA.kext.zip)
-  * Giống như trên, tuy nhiên hỗ trợ kernel 32 và 64-Bit quá hoàn hảo cho việc khởi động OS X 10.4-5 và CPU 32-Bit
+  * Giống như trên, tuy nhiên hỗ trợ kernel 32 và 64-Bit nên quá hoàn hảo cho việc khởi động OS X 10.4-5 và CPU 32-Bit
 
 :::
 

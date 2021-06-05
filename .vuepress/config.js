@@ -105,7 +105,7 @@ module.exports = {
 		editLinks: true,
         docsBranch: 'vietnamese',
 		editLinkText: 'Dịch page này hộ chúng tôi!',
-        logo: 'homepage.png',
+        logo: 'logo.png',
         nav: [{
             text: 'viOpenCore Guides',
             ariaLabel: 'Language Menu',
