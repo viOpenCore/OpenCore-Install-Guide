@@ -1,92 +1,92 @@
-# Adding The Base OpenCore Files
+# Thêm các tệp OpenCore cơ sở
 
-To setup OpenCore’s folder structure, you’ll want to grab the EFI folder found in [OpenCorePkg's releases](https://github.com/acidanthera/OpenCorePkg/releases/). Note that they will be under either the IA32 or X64 folders, the former for 32-bit Firmwares and the latter for 64-bit Firmwares:
+Để thiết lập cấu trúc thư mục OpenCore, bạn sẽ cần thư mục EFI được tìm thấy trong [OpenCorePkg's releases](https://github.com/acidanthera/OpenCorePkg/releases/). Lưu ý rằng chúng sẽ xuất hiện dưới dạng thư mục IA32 hoặc X64, cái trước là dành cho Firmware 32-bit và cái sau là dành cho Firmware 64-bit:
 
 ![](../images/installer-guide/opencore-efi-md/ia32-x64.png)
 
-Regarding DEBUG versus RELEASE version:
+Về phiên bản DEBUG so với RELEASE:
 
-* **DEBUG**: Can greatly help with debugging boot issues, however can add some noticeable delay to boot times(ie. 3-5 seconds to get to the picker). Once installed you can easily transition to RELEASE
-* **RELEASE**: Much snappier boot times, however virtually no useful DEBUG info is provided in OpenCore making troubleshooting much more difficult.
+* **DEBUG**: Cực kỳ hữu ích trong việc sửa lỗi khởi động, tuy nhiên sẽ gây ra một chút chậm trễ về thời gian khởi dộng(VD. Mất 3-5 giây để tới mục picker). Một khi đã cài bạn có thê dễ dàng chuyển đổi sang RELEASE
+* **RELEASE**: Có tốc độ khởi động nhanh hơn, tuy nhiên không có thông tin DEBUG hữu ích được cung cấp trong OpenCore khiến việc xử lý sự cố khó hơn.
 
-And once downloaded, place the EFI folder(from OpenCorePkg) on the root of your EFI partition:
+Và một khi đã tải về, đặt thư mục EFI(từ OpenCorePkg) trong phân vùng EFI của USB bạn:
 
 ![](../images/installer-guide/opencore-efi-md/efi-moved.png)
 
-**Note**:
+**Lưu ý**:
 
-* **Windows users:** you'll want to place the EFI folder on the root of the USB drive you made earlier
-* **Linux users:** This is the `OPENCORE` partition we created earlier
-  * Note that Method 1 only creates 1 partition, while Method 2 creates 2 partitions
+* **Người dùng Windows:** bạn sẽ cân phải đặt thư mục EFI ở trong USB mà bạn tạo từ trước
+* **Người dùng Linux:** Đấy chính là phân vùng `OPENCORE` mà chúng ta đã tạo từ trước
+  * Lưu ý rằng Phương pháp 1 chỉ tạo ra 1 phân vùng, trong khi Phương pháp 2 tạo ra 2 phân vùng
 
-Now lets open up our EFI folder and see what's inside:
+Bây giờ hãy mở thư mục EFI và xem có những gì bên trong:
 
 ![base EFI folder](../images/installer-guide/opencore-efi-md/base-efi.png)
 
-Now something you'll notice is that it comes with a bunch of files in `Drivers` and `Tools` folder, we don't want most of these:
+Bây giờ bạn sẽ thấy rằng nó đi kèm với rất nhiều tệp trong thư mục `Drivers` và `Tools`, chúng tôi không cần đa phần những thứ này:
 
-* **Keep the following from Drivers**(if applicable):
+* **Hãy giữ lại từ thư mục Drivers**(nếu có thể):
 
-| Driver | Status | Description |
+| Drivers | Trạng thái | Mô tả |
 | :--- | :--- | :--- |
-| OpenUsbKbDxe.efi | <span style="color:#30BCD5"> Optional </span> | Required for non-UEFI systems(pre-2012) |
-| OpenPartitionDxe.efi | ^^ | Required to boot macOS 10.7-10.9 recovery |
-| OpenRuntime.efi | <span style="color:red"> Required </span> | Required for proper operation |
+| OpenUsbKbDxe.efi | <span style="color:#30BCD5"> Tuỳ vào </span> | Cần có cho hệ thống không có UEFI(trước-2012) |
+| OpenPartitionDxe.efi | ^^ | Cần có để khởi động vào chế độ Khôi phục của macOS 10.7-10.9 |
+| OpenRuntime.efi | <span style="color:red"> Cần có </span> | Cần có để hoạt động bình thường |
 
-::: details More info on provided drivers
+::: details Thông tin thêm về driver được cung cấp
 
 * AudioDxe.efi
-  * Unrelated to Audio support in macOS
+  * Không liên quan đến hỗ trợ âm thanh trong macOS
 * CrScreenshotDxe.efi
-  * Used for taking screenshots in UEFI, not needed by us
+  * Dùng để chụp ảnh màn hình trong UEFI, chúng ta không cần thứ này
 * HiiDatabase.efi
-  * Used for fixing GUI support like OpenShell.efi on Sandy Bridge and older
-  * Not required for booting
+  * Dùng để sửa phần hỗ trợ GUI như OpenShell.efi trên Sandy Bridge and và cũ hơn
+  * Không cần thiết khi khởi động
 * NvmExpressDxe.efi
-  * Used for Haswell and older when no NVMe driver is built into the firmware
-  * Don't use unless you know what you're doing
+  * Dùng cho Haswell và cũ hơn khi không có driver cho NVMe được gắn sẵn trong firmware
+  * Không dùng khi bạn không biết bạn đang làm gì
 * OpenCanopy.efi
-  * This is OpenCore's optional GUI, we'll be going over how to set this up in [Post Install](https://viopencore.github.io/OpenCore-Post-Install/cosmetic/gui.html) so remove this for now
+  * Đây là lựa chọn GUI thêm cho OpenCore, chúng ta sẽ đi tìm hiểu cách thiết lập nó trong [Post Install](https://viopencore.github.io/OpenCore-Post-Install/cosmetic/gui.html) nên tạm thời chúng ta hãy bỏ nó
 * OpenHfsPlus.efi
-  * Open sourced HFS Plus driver, quite slow so we recommend not using unless you know what you're doing.
+  * Driver HFS Plus mã nguồn mở, khá chậm nên chúng tôi khuyến khích không dùng trừ khi bạn biết bạn đang làm gì.
 * OpenPartitionDxe.efi
-  * Required to boot recovery on OS X 10.7 through 10.9
-    * Note: OpenDuet users(ie. without UEFI) will have this driver built-in, not requiring it
+  * Cần có để khởi động vào chế độ Khôi phục của OS X 10.7 tới 10.9
+    * Lưu ý: Ngươi dùng OpenDuet(VD. không có UEFI) sẽ có driver này được gắn sẵn, không cần có nó
 * OpenUsbKbDxe.efi
-  * Used for OpenCore picker on **legacy systems running DuetPkg**, [not recommended and even harmful on Ivy Bridge and newer](https://applelife.ru/threads/opencore-obsuzhdenie-i-ustanovka.2944066/page-176#post-856653)
+  * Dùng cho OpenCore picker trên **hệ thống legacy dùng DuetPkg**, [không khuyến khích và thậm chí có hại trên Ivy Bridge và mới hơn](https://applelife.ru/threads/opencore-obsuzhdenie-i-ustanovka.2944066/page-176#post-856653)
 * Ps2KeyboardDxe.efi + Ps2MouseDxe.efi
-  * Pretty obvious when you need this, USB keyboard and mouse users don't need it
-  * Reminder: PS2 ≠ USB
+  * Khá là hiển nhiên khi bạn cần tới thứ này, người dùng bàn phím và chuột USB không cần nó
+  * Nhắc nhở: PS2 ≠ USB
 * UsbMouseDxe.efi
-  * similar idea to OpenUsbKbDxe, should only be needed on legacy systems using DuetPkg
+  * Ý tưởng giống với OpenUsbKbDxe, chỉ nên dùng trên hệ thống legacy dùng DuetPkg
 * XhciDxe.efi
-  * Used for Sandy Bridge and older when no XHCI driver is built into the firmware
-  * Only needed if you're using a USB 3.0 expansion card in an older machine
+  * Dùng cho Sandy Bridge và cũ hơn khi không có driver XHCI được gắn sẵn trong firmware
+  * Chỉ cần thiết khi bạn đang sử dụng card mở rộng USB 3.0 ở những kiểu máy cũ hơn
 
 :::
 
-* **Keep the following from Tools:**
+* **Hãy giữ lại từ thư mục Tools:**
 
-| Tool | Status | Description |
+| Tools | Trạng thái | Mô tả |
 | :--- | :--- | :--- |
-| OpenShell.efi | <span style="color:#30BCD5"> Optional </span> | Recommended for easier debugging |
+| OpenShell.efi | <span style="color:#30BCD5"> Tuỳ vào </span> | Khuyến khích để gỡ lỗi dễ dàng hơn |
 
-A cleaned up EFI:
+EFI sau khi dọn dẹp:
 
 ![Clean EFI](../images/installer-guide/opencore-efi-md/clean-efi.png)
 
-Now you can place **your** necessary firmware drivers(.efi) into the _Drivers_ folder and Kexts/ACPI into their respective folders. See [Gathering Files](../ktext.md) for more info on which files you should be using.
+Bây giờ bạn có thể đặt những driver firmware(.efi) cần thiết **của bạn** vào trong thư mục _Drivers_ và thư mục Kexts/ACPI tới từng vị trí tương ứng với chúng. Xem [Gathering Files](../ktext.md) để biết thêm thông tin về những tệp mà bạn nên dùng
 
-* Please note that UEFI drivers from Clover are not supported with OpenCore!(EmuVariableUEFI, AptioMemoryFix, OsxAptioFixDrv, etc). Please see the [Clover firmware driver conversion](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md) for more info on supported drivers and those merged into OpenCore.
+* Lưu ý rằng driver UEFI từ Clover không được hỗ trợ bởi OpenCore!(EmuVariableUEFI, AptioMemoryFix, OsxAptioFixDrv, v.v). Hãy xem [Clover firmware driver conversion](https://github.com/dortania/OpenCore-Install-Guide/blob/master/clover-conversion/clover-efi.md) để biết thêm thông tin về những driver được hỗ trợ và những thứ được nhập với OpenCore.
 
-Here's what a populated EFI ***can*** look like (yours will be different):
+Đây là những EFI phổ biến ***có thể*** nhìn như thế nào (của bạn sẽ trông khác so với hình ảnh):
 
 ![Populated EFI folder](../images/installer-guide/opencore-efi-md/populated-efi.png)
 
-**Reminder**:
+**Nhắc nhở**:
 
-* SSDTs and custom DSDTs(`.aml`) go in ACPI folder
-* Kexts(`.kext`) go in Kexts folder
-* Firmware drivers(`.efi`) go in the Drivers folder
+* SSDT và DSDT tuỷ chỉnh(`.aml`) được chứa trong thư mục ACPI
+* Kexts(`.kext`) được chứa trong thư mục Kexts
+* Firmware drivers(`.efi`) được chứa trong thư mục Drivers
 
-# Now with all this done, head to [Gathering Files](../ktext.md) to get the needed kexts and firmware drivers
+# Và sau khi hoàn thành, đi tới [Gathering Files](../ktext.md) để tìm hiểu những kext và driver firmware mà bạn cần
