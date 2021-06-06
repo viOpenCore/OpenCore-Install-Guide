@@ -1,24 +1,24 @@
-# Making the installer in Linux
+# Tạo bộ cài trong Linux
 
-While you don't need a fresh install of macOS to use OpenCore, some users prefer having a fresh slate with their boot manager upgrades.
+Trong khi bạn không cần phải có macOS mới có thể sử dụng OpenCore, một số người lại thích có fresh slate và update boot manager của họ.
 
-To start you'll need the following:
+Để bắt đầu bạn cần những thứ sau:
 
-* 4GB USB Stick
+* Một USB 4GB
 * [macrecovery.py](https://github.com/acidanthera/OpenCorePkg/releases)
   
-## Downloading macOS
+## Tải macOS
 
-Now to start, first cd into [macrecovery's folder](https://github.com/acidanthera/OpenCorePkg/releases) and run one of the following commands:
+Để bắt đầu, đầu tiên cd vào [thư mục chứa macrecovery](https://github.com/acidanthera/OpenCorePkg/releases) và chạy các lệnh sau đây:
 
 ![](../images/installer-guide/legacy-mac-install-md/macrecovery.png)
 
 ```sh
-# Adjust below command to the correct folder
+# Điều chỉnh lệnh bên dưới cho phù hợp
 cd ~/Downloads/OpenCore-0/Utilities/macrecovery/
 ```
 
-Next, run one of the following commands depending on the OS you'd like to boot:
+Tiếp theo, chạy một trong những lệnh sau đây tùy vào bản macOS mà bạn muốn cài:
 
 ```sh
 # Lion(10.7):
@@ -59,7 +59,7 @@ From here, run one of those commands in terminal and once finished you'll get an
 
 ![](../images/installer-guide/legacy-mac-install-md/download-done.png)
 
-* **Note**: Depending on the OS, you'll either get BaseSystem or RecoveryImage files. They both act in the same manner so when we reference BaseSystem the same info apples to RecoveryImage
+* **Lưu ý**: Tùy thuộc vào bản macOS, bạn sẽ thấy tệp BaseSystem hoặc RecoveryImage. Chúng đều có chức năng giống nhau nên mỗi khi chúng tôi nhắc đến BaseSystem thì They both act in the same manner so when we reference BaseSystem the same info apples to RecoveryImage
 
 * **macOS 11, Big Sur Note**: As this OS is quite new, there's still some issues with certain systems to resolve. For more information, see here: [OpenCore and macOS 11: Big Sur](../extras/big-sur/README.md)
   * For first time users, we recommend macOS 10.15, Catalina
