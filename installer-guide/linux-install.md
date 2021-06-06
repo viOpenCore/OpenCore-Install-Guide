@@ -61,44 +61,44 @@ From here, run one of those commands in terminal and once finished you'll get an
 
 * **Lưu ý**: Tùy thuộc vào bản macOS, bạn sẽ thấy tệp BaseSystem hoặc RecoveryImage. Chúng đều có chức năng giống nhau nên mỗi khi chúng tôi nhắc đến BaseSystem thì They both act in the same manner so when we reference BaseSystem the same info apples to RecoveryImage
 
-* **macOS 11, Big Sur Note**: As this OS is quite new, there's still some issues with certain systems to resolve. For more information, see here: [OpenCore and macOS 11: Big Sur](../extras/big-sur/README.md)
-  * For first time users, we recommend macOS 10.15, Catalina
-* **Nvidia GPU Note**: Reminder to verify whether your hardware support newer OSes, see [Hardware Limitations](../macos-limits.md)
+* **Lưu ý cho macOS 11, Big Sur**: Vì bản macOS này còn khá mới nên vẫn còn một số vấn đề với một số hệ thống cần giải quyết. Để biết thêm thông tin, hãy xem tại đây: [OpenCore và macOS 11: Big Sur](../extras/big-sur/README.md)
+  * Đối với newbie, chúng tôi khuyên dùng macOS 10.15, Catalina
+* **Lưu ý đối với Nvidia GPU**: Chắc chắn rằng  bạn đã xác minh xem phần cứng của bạn có hỗ trợ các bản macOS mới hơn hay không, hãy xem [Hardware Limitations](../macos-limits.md)
 
-## Making the installer
+## Tạo bộ cài
 
-This section will target making the necessary partitions in the USB device. You can use your favorite program be it `gdisk` `fdisk` `parted` `gparted` or `gnome-disks`. This guide will focus on `gdisk` as it's nice and can change the partition type later on, as we need it so that macOS Recovery HD can boot. (the distro used here is Ubuntu 18.04, other versions or distros may work)
+Phần này dành cho việc làm các phân vùng cần thiết cho ổ USB. Bạn có thể dùng phần mềm yêu thích của mình ví dụ như `gdisk` `fdisk` `parted` `gparted` hoặc `gnome-disks`. Bài hướng dẫn này sẽ chú trọng vào `gdisk` vì nó khá tốt và bạn có thể thay đổi hệ thống tệp (file system) sau đó, bởi vì chúng ta cần nó để macOS Recovery HD có thể boot. (distro được dùng ở đây là Ubuntu 18.04, các phiên bản hoặc distro khác có thể được dùng)
 
-Credit to [midi1996](https://github.com/midi1996) for his work on the [Internet Install Guide](https://midi1996.github.io/hackintosh-internet-install-gitbook/) guide which this is based off of.
+Cảm ơn đến [midi1996](https://github.com/midi1996) với bài hướng dẫn [Internet Install Guide](https://midi1996.github.io/hackintosh-internet-install-gitbook/) mà bài này dựa trên
 
-### Method 1
+### Cách 1
 
-In terminal:
+Tại terminal:
 
-1. run `lsblk` and determine your USB device block
+1. chạy `lsblk` và xác định USB block của bạn
   ![lsblk](../images/installer-guide/linux-install-md/unknown-5.png)
-2. run `sudo gdisk /dev/<your USB block>`
-   1. if you're asked what partition table to use, select GPT.
+2. chạy `sudo gdisk /dev/USB block của bạn>`
+   1. nếu được hỏi về bảng phân vùng muốn sử dụng, chọn GPT.
       ![Select GPT](../images/installer-guide/linux-install-md/unknown-6.png)
-   2. send `p` to print your block's partitions \(and verify it's the one needed\)
+   2. chọn `p` để xem các phân vùng của usb block của bạn \(và chắc chắn rằng đó là cái bạn cần\)
       ![](../images/installer-guide/linux-install-md/unknown-13.png)
-   3. send `o` to clear the partition table and make a new GPT one (if not empty)
-      1. confirm with `y`
+   3. chọn `o` để xóa bảng phân vùng và làm một bảng GPT mới (nếu không trống)
+      1. xác nhận với `y`
          ![](../images/installer-guide/linux-install-md/unknown-8.png)
-   4. send `n`
-      1. `partition number`: keep blank for default
-      2. `first sector`: keep blank for default
-      3. `last sector`: keep blank for whole disk
-      4. `Hex code or GUID`: `0700` for Microsoft basic data partition type
-   5. send `w`
-      * Confirm with `y`
+   4. chọn `n`
+      1. `partition number`: giữ nguyên
+      2. `first sector`: giữ nguyên
+      3. `last sector`: giữ nguyên
+      4. `Hex code or GUID`: `0700` để chọn FAT32
+   5. chọn `w`
+      * Xác nhận với `y`
       ![](../images/installer-guide/linux-install-md/unknown-9.png)
-      * In some cases a reboot is needed, but rarely, if you want to be sure, reboot your computer. You can also try re-plugging your USB key.
-   6. Close `gdisk` by sending `q` (normally it should quit on its own)
-3. Use `lsblk` to determine your partition's identifiers
-4. run `sudo mkfs.vfat -F 32 -n "OPENCORE" /dev/<your USB partition block>` to format your USB to FAT32 and named OPENCORE
-5. then `cd` to `/OpenCore/Utilities/macrecovery/` and you should get to a `.dmg` and `.chunklist` files
-   1. mount your USB partition with `udisksctl` (`udisksctl mount -b /dev/<your USB partition block>`, no sudo required in most cases) or with `mount` (`sudo mount /dev/<your USB partition block> /where/your/mount/stuff`, sudo is required)
+      * Hiếm khi bạn cần khởi động lại máy tính, nhưng để chắc chắn, khởi động lại. Bạn cũng có thể thử cắm lại ổ USB
+   6. Thoát `gdisk` bằng cách chọn `q` (thường nó sẽ tự thoát)
+3. Dùng `lsblk` để xác định mã định danh của phân vùng
+4. chạy `sudo mkfs.vfat -F 32 -n "OPENCORE" /dev/<block phân vùng USB của bạn>` để định dạng USB của bạn thành FAT32 và đặt tên cho nó là OPENCORE
+5. sau đó `cd` đến `/OpenCore/Utilities/macrecovery/` và bạn sẽ thấy file `.dmg` và `.chunklist`
+   1. gắn phân vùng USB của bạn với `udisksctl` (`udisksctl mount -b /dev/<block phân vùng USB của bạn>`, thường không cần sudo) hoặc với`mount` (`sudo mount /dev/<block phân vùng USB của bạn> /nơi/bạn/muốn/gắn`, cần sudo)
    2. `cd` to your USB drive and `mkdir com.apple.recovery.boot` in the root of your FAT32 USB partition
    3. now `cp` or `rsync` both `BaseSystem.dmg` and `BaseSystem.chunklist` into `com.apple.recovery.boot` folder.
 

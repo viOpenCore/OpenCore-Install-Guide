@@ -78,7 +78,7 @@ Bây giờ sau khi chúng ta đã tải bộ cài xuống, tiếp theo chúng ta
 
 ## Tạo bộ cài
 
-Here we'll be formatting our USB and adding macOS onto it, we have 2 options:
+Ở đây chúng ta sẽ định dạng USB và thêm macOS vào, chúng ta có 2 lựa chọn:
 
 * [Sử dụng Disk Management](#su-dung-disk-management)
   * Dựa trên GUI, cách đơn giản nhất
