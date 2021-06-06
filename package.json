@@ -1,47 +1,47 @@
 {
-   "name": "vietnamese-opencore-install-guide",
-   "version": "0.6.9",
-   "description": "Bản tiếng Việt của Dortania's OpenCore Install Guide",
-   "main": "",
-   "author": {
-      "name": "viOpenCore",
-      "url": "https://github.com/viopencore"
-   },
-   "repository": {
-      "type": "git",
-      "url": "git+https://github.com/viopencore/OpenCore-Install-Guide.git"
-   },
-   "scripts": {
-      "dev": "vuepress dev",
-      "build": "vuepress build",
-      "fix-lint": "run-script-os",
-      "fix-lint:default": "(echo Attempting to fix lint... && markdownlint -c .markdownlint.json -p .markdownlintignore '**/*.md' -f && echo Fixed successfully, please commit.) || (echo Fix failed! && exit 1)",
-      "fix-lint:win32": "(echo Attempting to fix lint... && markdownlint -c .markdownlint.json -p .markdownlintignore **/*.md -f && echo Fixed successfully, please commit.) || (echo Fix failed! && exit 1)",
-      "lint": "run-script-os",
-      "lint:default": "(echo Linting... && markdownlint -c .markdownlint.json -p .markdownlintignore '**/*.md' && echo Lint passed.) || (echo Lint failed! Please review and fix errors. && exit 1)",
-      "lint:win32": "(echo Linting... && markdownlint -c .markdownlint.json -p .markdownlintignore **/*.md && echo Lint passed.) || (echo Lint failed! Please review and fix errors. && exit 1)",
-      "lint-ci": "run-script-os",
-      "lint-ci:default": "(echo Linting... && markdownlint -c .markdownlint.json -p .markdownlintignore '**/*.md' && echo Lint passed.) || ((echo Lint failed, attempting fix... && markdownlint -c .markdownlint.json -p .markdownlintignore '**/*.md' -f && echo Fix generated successfully. Please apply the following diff using git apply && git diff) || echo Fix failed! && exit 1)",
-      "lint-ci:win32": "(echo Linting... && markdownlint -c .markdownlint.json -p .markdownlintignore **/*.md && echo Lint passed.) || ((echo Lint failed, attempting fix... && markdownlint -c .markdownlint.json -p .markdownlintignore **/*.md -f && echo Fix generated successfully. Please apply the following diff using git apply && git diff) || echo Fix failed! && exit 1)",
-      "sort-dict": "node ./scripts/sortDict.js",
-      "spellcheck": "run-script-os",
-      "spellcheck:default": "(spellchecker --plugins spell repeated-words syntax-urls --language en-US vi --dictionaries dictionary/dictionary.txt dictionary/opencorekeys.txt --files '**/*.md' --reports errors/spellcheck.json  && echo Spellcheck passed.) || (echo Spellcheck failed! Please review and fix errors/add words to dictionary as needed. && exit 1)",
-      "spellcheck:win32": "(spellchecker --plugins spell repeated-words syntax-urls --dictionaries dictionary/dictionary.txt dictionary/opencorekeys.txt --files **/*.md --reports errors/spellcheck.json && echo Spellcheck passed.) || (echo Spellcheck failed! Please review and fix errors/add words to dictionary as needed. && exit 1)",
-      "test": "run-script-os",
-      "test:default": "yarn lint --silent; yarn spellcheck --silent",
-      "test:win32": "yarn lint --silent & yarn spellcheck --silent"
-   },
-   "license": "CC-BY-NC-SA-4.0",
-   "devDependencies": {
-      "@vuepress/plugin-back-to-top": "^1.8.2",
-      "markdown-it-multimd-table": "^4.1.0",
-      "markdown-link-check": "^3.8.7",
-      "markdownlint-cli": "^0.27.1",
-      "run-script-os": "^1.1.6",
-      "spellchecker-cli": "^4.5.0",
-      "vuepress": "^1.8.2",
-      "vuepress-plugin-medium-zoom": "^1.1.9",
-      "vuepress-theme-succinct": "^1.7.2"
-   },
-   "homepage": "https://viopencore.github.io/OpenCore-Install-Guide/"
+  "name": "vietnamese-opencore-install-guide",
+  "version": "0.6.9",
+  "description": "Bản tiếng Việt của Dortania's OpenCore Install Guide",
+  "main": "",
+  "author": {
+    "name": "viOpenCore",
+    "url": "https://github.com/viopencore"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viopencore/OpenCore-Install-Guide.git"
+  },
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build",
+    "fix-lint": "run-script-os",
+    "fix-lint:default": "(echo Attempting to fix lint... && markdownlint -c .markdownlint.json -p .markdownlintignore '**/*.md' -f && echo Fixed successfully, please commit.) || (echo Fix failed! && exit 1)",
+    "fix-lint:win32": "(echo Attempting to fix lint... && markdownlint -c .markdownlint.json -p .markdownlintignore **/*.md -f && echo Fixed successfully, please commit.) || (echo Fix failed! && exit 1)",
+    "lint": "run-script-os",
+    "lint:default": "(echo Linting... && markdownlint -c .markdownlint.json -p .markdownlintignore '**/*.md' && echo Lint passed.) || (echo Lint failed! Please review and fix errors. && exit 1)",
+    "lint:win32": "(echo Linting... && markdownlint -c .markdownlint.json -p .markdownlintignore **/*.md && echo Lint passed.) || (echo Lint failed! Please review and fix errors. && exit 1)",
+    "lint-ci": "run-script-os",
+    "lint-ci:default": "(echo Linting... && markdownlint -c .markdownlint.json -p .markdownlintignore '**/*.md' && echo Lint passed.) || ((echo Lint failed, attempting fix... && markdownlint -c .markdownlint.json -p .markdownlintignore '**/*.md' -f && echo Fix generated successfully. Please apply the following diff using git apply && git diff) || echo Fix failed! && exit 1)",
+    "lint-ci:win32": "(echo Linting... && markdownlint -c .markdownlint.json -p .markdownlintignore **/*.md && echo Lint passed.) || ((echo Lint failed, attempting fix... && markdownlint -c .markdownlint.json -p .markdownlintignore **/*.md -f && echo Fix generated successfully. Please apply the following diff using git apply && git diff) || echo Fix failed! && exit 1)",
+    "sort-dict": "node ./scripts/sortDict.js",
+    "spellcheck": "run-script-os",
+    "spellcheck:default": "(spellchecker --no-suggestions -q --plugins spell repeated-words syntax-urls --language en-US vi --dictionaries dictionary/dictionary.txt dictionary/opencorekeys.txt --files '**/*.md' --reports errors/spellcheck.json  && echo Spellcheck passed.) || (echo Spellcheck failed! Please review and fix errors/add words to dictionary as needed. && exit 1)",
+    "spellcheck:win32": "(spellchecker --no-suggestions -q --plugins spell repeated-words syntax-urls --dictionaries dictionary/dictionary.txt dictionary/opencorekeys.txt --files **/*.md --reports errors/spellcheck.json && echo Spellcheck passed.) || (echo Spellcheck failed! Please review and fix errors/add words to dictionary as needed. && exit 1)",
+    "test": "run-script-os",
+    "test:default": "yarn lint --silent; yarn spellcheck --silent",
+    "test:win32": "yarn lint --silent & yarn spellcheck --silent"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.8.2",
+    "markdown-it-multimd-table": "^4.1.0",
+    "markdown-link-check": "^3.8.7",
+    "markdownlint-cli": "^0.27.1",
+    "run-script-os": "^1.1.6",
+    "spellchecker-cli": "^4.5.0",
+    "vuepress": "^1.8.2",
+    "vuepress-plugin-medium-zoom": "^1.1.9",
+    "vuepress-theme-succinct": "^1.7.2"
+  },
+  "homepage": "https://viopencore.github.io/OpenCore-Install-Guide/"
 }

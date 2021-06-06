@@ -15,6 +15,7 @@
     "ms-vscode.vscode-typescript-tslint-plugin",
     "visualstudioexptteam.vscodeintellicode",
     "formulahendry.code-runner",
-    "eg2.vscode-npm-script"
+    "eg2.vscode-npm-script",
+    "editorconfig.editorconfig"
   ]
 }
