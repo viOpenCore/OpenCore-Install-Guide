@@ -11,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/viopencore/OpenCore-Install-Guide.git"
   },
+  "private": true,
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build",
@@ -29,11 +30,15 @@
     "spellcheck:win32": "(spellchecker --no-suggestions -q --plugins spell repeated-words syntax-urls --dictionaries dictionary/dictionary.txt dictionary/opencorekeys.txt --files **/*.md --reports errors/spellcheck.json && echo Spellcheck passed.) || (echo Spellcheck failed! Please review and fix errors/add words to dictionary as needed. && exit 1)",
     "test": "run-script-os",
     "test:default": "yarn lint --silent; yarn spellcheck --silent",
-    "test:win32": "yarn lint --silent & yarn spellcheck --silent"
+    "test:win32": "yarn lint --silent & yarn spellcheck --silent",
+    "postinstall": "husky install"
   },
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@vuepress/plugin-back-to-top": "^1.8.2",
+    "husky": "^6.0.0",
     "markdown-it-multimd-table": "^4.1.0",
     "markdown-link-check": "^3.8.7",
     "markdownlint-cli": "^0.27.1",
