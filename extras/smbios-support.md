@@ -253,7 +253,7 @@ Thông tin được kéo ra từ [EveryMac](https://everymac.com) và [OpenCoreP
 
 ### Các SMBIOS khác
 
-Tất cả các kiểu máy bên dưới đều không được hỗ trợ bởi OpenCore tuy  are documented here for ease of reference.
+Tất cả các kiểu máy bên dưới đều không được hỗ trợ bởi OpenCore.
 
 * Apple Development Platforms
   * [Developer Transition Kit](#developer-transition-kit)

@@ -1,27 +1,27 @@
-# Desktop Haswell and Broadwell
+# Máy tính bàn Haswell and Broadwell
 
-| Support | Version |
+| Hỗ trợ | Phiên bản |
 | :--- | :--- |
-| Initial macOS Support | OS X 10.8, Mountain Lion |
+| Phiên bản macOS đầu tiên được hỗ trợ | OS X 10.8, Mountain Lion |
 
-## Starting Point
+## Bắt đầu
 
-So making a config.plist may seem hard, it's not. It just takes some time but this guide will tell you how to configure everything, you won't be left in the cold. This also means if you have issues, review your config settings to make sure they're correct. Main things to note with OpenCore:
+Làm file config.plist trông có vẻ khó, nhưng thật ra không. Nó chỉ mất thời gian thôi nhưng bài hướng dẫn này sẽ giúp bạn cấu hình mọi thứ. Điều này cũng có nghĩa là nếu như bạn có vấn đề, hay xem lại file config để chắc chắn rằng bạn đã làm đúng. Những điều cần chú ý với OpenCore:
 
-* **All properties must be defined**, there are no default OpenCore will fall back on so **do not delete sections unless told explicitly so**. If the guide doesn't mention the option, leave it at default.
-* **The Sample.plist cannot be used As-Is**, you must configure it to your system
-* **DO NOT USE CONFIGURATORS**, these rarely respect OpenCore's configuration and even some like Mackie's will add Clover properties and corrupt plists!
+* **Mọi thuộc tính đều phải được đặt, OpenCore không có tùy chọn mặc định nên **đừng xóa phần nào trừ khi được nhắc đến**. Nếu bài hướng dẫn không nhắc đến tùy chọn đó, để yên nó như vậy
+* **file sample.plist không thể được dùng nguyên trạng**, bạn phải chỉnh sửa nó cho máy tính của bạn
+* **ĐỪNG DÙNG CONFIGURATORS**, chúng hiếm khi quan tâm đến các cấu hình của OpenCore và một số như của Mackie sẽ thêm các thuộc tính của Clover làm lỗi file plist
 
-Now with all that, a quick reminder of the tools we need
+Với tất cả những điều trên, một lời nhắc nhở về những thứ mà chúng ta cần:
 
 * [ProperTree](https://github.com/corpnewt/ProperTree)
-  * Universal plist editor
+  * Phần mềm edit file plist
 * [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
-  * For generating our SMBIOS data
+  * Dùng để tạo dữ liệu SMBIOS
 * [Sample/config.plist](https://github.com/acidanthera/OpenCorePkg/releases)
-  * See previous section on how to obtain: [config.plist Setup](../config.plist/README.md)
+  * Xem phần trước để biết cách lấy: [config.plist Setup](../config.plist/README.md)
 
-**And read this guide more than once before setting up OpenCore and make sure you have it set up correctly. Do note that images will not always be the most up-to-date so please read the text below them, if nothing's mentioned then leave as default.**
+**Đọc phần này nhiều hơn một lần trước khi thiết lập OpenCore và chắc chắn rằng bạn đã làm đúng. Nên nhớ rằng các hình ảnh không phải lúc nào cũng được cập nhật nên xin hay đọc phần chữ ở bên dưới, nếu không được nhắc đến thì hãy để như mặc định**
 
 ## ACPI
 
@@ -29,26 +29,26 @@ Now with all that, a quick reminder of the tools we need
 
 ### Add
 
-::: tip Info
+::: tip Thông tin
 
-This is where you'll add SSDTs for your system, these are very important to **booting macOS** and have many uses like [USB maps](https://viopencore.github.io/OpenCore-Post-Install/usb/), [disabling unsupported GPUs](../extras/spoof.md) and such. And with our system, **it's even required to boot**. Guide on making them found here: [**Getting started with ACPI**](https://viopencore.github.io/Getting-Started-With-ACPI/)
+Đây là nơi mà bạn sẽ thêm các SSDT cho máy bạn, chúng rất quan trọng để **có thể boot được vào macOS** và có nhiều chức năng như để [map USB](https://viopencore.github.io/OpenCore-Post-Install/usb/), [tắt GPU rời](../extras/spoof.md), ... Và trong trường hợp của chúng ta, **cần phải có SSDT mới có thể boot được**. Hướng dẫn cách tạo SSDT ở đây: [**Bắt đầu với ACPI**](https://viopencore.github.io/Getting-Started-With-ACPI/)
 
-For us we'll need a couple of SSDTs to bring back functionality that Clover provided:
+Chúng ta cần một vài SSDT để mang lại các chức năng mà Clover có sẵn:
 
-| Required_SSDTs | Description |
+| SSDT_Cần_thiết | Mô tả |
 | :--- | :--- |
-| **[SSDT-PLUG](https://viopencore.github.io/Getting-Started-With-ACPI/)** | Allows for native CPU power management on Haswell and newer, see [Getting Started With ACPI Guide](https://viopencore.github.io/Getting-Started-With-ACPI/) for more details. |
-| **[SSDT-EC](https://viopencore.github.io/Getting-Started-With-ACPI/)** | Fixes the embedded controller, see [Getting Started With ACPI Guide](https://viopencore.github.io/Getting-Started-With-ACPI/) for more details. |
+| **[SSDT-PLUG](https://viopencore.github.io/Getting-Started-With-ACPI/)** | Cho phép quản lí điện năng trên các dòng chip Haswell hoặc mới hơn, xem [Hướng dẫn bắt đầu với ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/) để biết thêm chi tiết. |
+| **[SSDT-EC](https://viopencore.github.io/Getting-Started-With-ACPI/)** | Sửa bộ điều khiển tích hợp, xem [Hướng dẫn bắt đầu với ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/) để biết thêm chi tiết. |
 
-Note that you **should not** add your generated `DSDT.aml` here, it is already in your firmware. So if present, remove the entry for it in your `config.plist` and under EFI/OC/ACPI.
+Lưu ý là bạn **không nên** thêm file DSDT.aml vào đây, nó đã có sẵn trong firmware. Nếu đã thêm thì hay loại bỏ nó trong config.plist và trong thư mục EFI/OC/ACPI.
 
-For those wanting a deeper dive into dumping your DSDT, how to make these SSDTs, and compiling them, please see the [**Getting started with ACPI**](https://viopencore.github.io/Getting-Started-With-ACPI/) **page.** Compiled SSDTs have a **.aml** extension(Assembled) and will go into the `EFI/OC/ACPI` folder and **must** be specified in your config under `ACPI -> Add` as well.
+Những ai muốn đi sâu hơn vào việc dump DSDT, cách làm DSDT và compile chúng, xin hãy xem trang [**Bắt đầu với ACPI**](https://viopencore.github.io/Getting-Started-With-ACPI/). Các SSDT đã được compile sẽ có phần mở rộng **.aml**, được thêm vào thư muacj `EFI/OC/ACPI` và **bắt buộc** phải được thêm vào trong file config.plist ở `ACPI -> Add`
 
 :::
 
 ### Delete
 
-This blocks certain ACPI tables from loading, for us we can ignore this.
+Phần này chặn một số bảng ACPI chạy, có thể bỏ qua
 
 ### Patch
 
@@ -56,13 +56,13 @@ This section allows us to dynamically modify parts of the ACPI (DSDT, SSDT, etc.
 
 ### Quirks
 
-Settings relating to ACPI, leave everything here as default as we have no use for these quirks.
+Các cài đặt liên quan đến ACPI, để mọi thứ ở đây như mặc định vì chúng ta không dùng đến chúng
 
 ## Booter
 
 ![Booter](../images/config/config-universal/aptio-iv-booter.png)
 
-This section is dedicated to quirks relating to boot.efi patching with OpenRuntime, the replacement for AptioMemoryFix.efi
+Phần này dành cho những cài đặt liên quan đến patching boot.efi với OpenRuntime, sự thay thế cho AptioMemoryFix.efi
 
 ### MmioWhitelist
 
@@ -70,21 +70,21 @@ This section is allowing spaces to be passthrough to macOS that are generally ig
 
 ### Quirks
 
-::: tip Info
-Settings relating to boot.efi patching and firmware fixes, for us, we leave it as default
+::: tip Thông tin
+Cài đặt liên quan đến việc patch boot.efi và sửa đổi về firmware, chúng ta không cần đến nên để mặc định
 :::
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
 * **AvoidRuntimeDefrag**: YES
-  * Fixes UEFI runtime services like date, time, NVRAM, power control, etc.
+  * Sửa những dịch vụ của UEFI như thời gian, NVRAM, quản lí điện năng, vân vân 
 * **EnableSafeModeSlide**: YES
-  * Enables slide variables to be used in safe mode, however this quirk is only applicable to UEFI platforms.
+  * Enables slide variables to be used in safe mode.
 * **EnableWriteUnprotector**: YES
-  * Needed to remove write protection from CR0 register.
+  * Cần để loại bỏ giới hạn ghi của CR0.
 * **ProvideCustomSlide**: YES
-  * Used for Slide variable calculation. However the necessity of this quirk is determined by `OCABC: Only N/256 slide values are usable!` message in the debug log. If the message `OCABC: All slides are usable! You can disable ProvideCustomSlide!` is present in your log, you can disable `ProvideCustomSlide`.
+  * Dùng để tính toán biến Slide. Nhưng sự cần thiết của cài đặt này phụ thuộc vào `OCABC: Only N/256 slide values are usable!` trong log debug. Nếu thông báo `OCABC: All slides are usable! You can disable ProvideCustomSlide!` có trong log thì hãy tắt `ProvideCustomSlide`.
 * **SetupVirtualMap**: YES
-  * Fixes SetVirtualAddresses calls to virtual addresses, required for Gigabyte boards to resolve early kernel panics.
+  * Sửa các phần gọi của SetVirtualAddresses đến các địa chỉ ảo, cần thiết cho các board Gigabyte để tránh kernel panic
   
 :::
 
@@ -94,11 +94,11 @@ Settings relating to boot.efi patching and firmware fixes, for us, we leave it a
 
 ### Add
 
-Sets device properties from a map.
+Đặt thuộc tính của thiết bị qua bảng:
 
 ::: tip PciRoot(0x0)/Pci(0x2,0x0)
 
-This section is set up via WhateverGreen's [Framebuffer Patching Guide](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md) and is used for setting important iGPU properties.
+Phần này được đặt qua bài [Framebuffer Patching Guide](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md) của WhateverGreen và được dùng để đặt các thuộc tính quan trong cho iGPU.
 
 `AAPL,ig-platform-id` is what macOS uses to determine how the iGPU drivers interact with our system, and the two values choose between are as follows:
 
@@ -152,7 +152,7 @@ For us, we'll be using the boot-arg `alcid=xxx` instead to accomplish this. `alc
 
 ### Delete
 
-Removes device properties from the map, for us we can ignore this
+Loại bỏ các thuộc tính thiết bị khỏi bảng, chúng ta không cần đến phần này
 
 ## Kernel
 
@@ -160,42 +160,42 @@ Removes device properties from the map, for us we can ignore this
 
 ### Add
 
-Here's where we specify which kexts to load, in what specific order to load, and what architectures each kext is meant for. By default we recommend leaving what ProperTree has done, however for 32-bit CPUs please see below:
+Tại đây chúng ta xác định các kext để load, thứ tự load và kiến trúc mà mỗi kext hướng đến. Khuyến khích để mắc định nhưng đối với các CPU 32-bit xem bên dưới: 
 
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
-The main thing you need to keep in mind is:
+Đáng chú ý nhất là:
 
-* Load order
-  * Remember that any plugins should load *after* its dependencies
-  * This means kexts like Lilu **must** come before VirtualSMC, AppleALC, WhateverGreen, etc
+* Thứ tự load: 
+  * Nên nhớ rằng mọi plugin cần được load *sau* các thành phần phụ thuộc của nó
+  * Điều này có nghĩa là các kext như Lilu **phải** được load trước VirtualSMC, AppleALC, WhateverGreen, vân vân
 
-A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can run **Cmd/Ctrl + Shift + R** to add all their kexts in the correct order without manually typing each kext out.
+Người dùng ProperTree có thể dùng **Cmd/Ctrl + Shift + R** để tự động thêm các kext theo đúng thứ tự mà không cần phải nhập thủ công
 
 * **Arch**
-  * Architectures supported by this kext
-  * Currently supported values are `Any`, `i386` (32-bit), and `x86_64` (64-bit)
+  * Kiến trúc CPU được hỗ trợ bởi kext
+  * Các giá trị được hỗ trợ là `Any`(bất kì) , `i386` (32-bit) và `x86_64` (64bit)
 * **BundlePath**
-  * Name of the kext
-  * ex: `Lilu.kext`
+  * Tên của kext
+  * Ví dụ: `Lilu.kext`
 * **Enabled**
-  * Self-explanatory, either enables or disables the kext
+  * Kích hoạt hoặc vô hiệu hóa kext
 * **ExecutablePath**
-  * Path to the actual executable is hidden within the kext, you can see what path your kext has by right-clicking and selecting `Show Package Contents`. Generally, they'll be `Contents/MacOS/Kext` but some have kexts hidden within under `Plugin` folder. Do note that plist only kexts do not need this filled in.
-  * ex: `Contents/MacOS/Lilu`
+  * Đường dẫn đến đến file thực thi được giấu trong kext, bạn có thể xem đường dẫn này bằng cách nhấn chuột phải và chọn `Show Package Contents`. Thông thường chúng sẽ ở trong `Contents/MacOS/kext` nhưng một số kext được giấu trong thư mục `Plugin`. Lưu ý rằng các kext chỉ có file plist không cần điền phần này vào.
+  * Ví dụ: `Contents/MacOS/Lilu`
 * **MinKernel**
-  * Lowest kernel version your kext will be injected into, see below table for possible values
-  * ex. `12.00.00` for OS X 10.8
+  * Kernel thấp nhất mà kext hỗ trợ, xem bảng bên dưới về các giá trị được dùng.
+  * Ví dụ. `12.00.00` for OS X 10.8
 * **MaxKernel**
-  * Highest kernel version your kext will be injected into, see below table for possible values
-  * ex. `11.99.99` for OS X 10.7
+  * Kernel thấp nhất mà kext hỗ trợ, xem bảng bên dưới về các giá trị được dùng.
+  * Ví dụ. `11.99.99` for OS X 10.7
 * **PlistPath**
-  * Path to the `info.plist` hidden within the kext
-  * ex: `Contents/Info.plist`
+  * Đường dẫn đến `info.plist` được giấu trong kext
+  * Ví dụ: `Contents/Info.plist`
   
-::: details Kernel Support Table
+::: details Bảng các Kernel được hỗ trợ
 
-| OS X Version | MinKernel | MaxKernel |
+| Phiên bản OSX | MinKernel | MaxKernel |
 | :--- | :--- | :--- |
 | 10.4 | 8.0.0 | 8.99.99 |
 | 10.5 | 9.0.0 | 9.99.99 |
@@ -215,37 +215,37 @@ A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can r
 
 ### Emulate
 
-Needed for spoofing unsupported CPUs like Pentiums and Celerons
+Dùng để spoof các CPU Celeron và Pentium
 
-* **CpuidMask**: Leave this blank
-* **CpuidData**: Leave this blank
+* **CpuidMask**: Để trống
+* **CpuidData**: Để trống
 
 ### Force
 
-Used for loading kexts off system volume, only relevant for older operating systems where certain kexts are not present in the cache(ie. IONetworkingFamily in 10.6).
+Dùng để load kext từ phân vùng hệ thống, chỉ liên quan đến các bản macOS cũ hơn mà có một vài kext không có sẵn trong cache (Ví dụ. IONetworkingFamily trong 10.6)
 
-For us, we can ignore.
+Phần này có thể bỏ qua
 
 ### Block
 
-Blocks certain kexts from loading. Not relevant for us.
+Chặn load một số kext, không cần quan tâm đến phần này
 
 ### Patch
 
-Patches both the kernel and kexts.
+Patch cả kernel và các kext
 
 ### Quirks
 
-::: tip Info
+::: tip Thông tin
 
-Settings relating to the kernel, for us we'll be enabling the following:
+Các cài đặt liên quan đến kernel, chúng ta sẽ kích hoạt những thứ sau đây: 
 
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
-| AppleCpuPmCfgLock | NO | Need if running 10.10 or older and cannot disable `CFG-Lock` in the BIOS |
-| AppleXcpmCfgLock | YES | Not needed if `CFG-Lock` is disabled in the BIOS |
-| DisableIOMapper | YES | Not needed if `VT-D` is disabled in the BIOS |
-| LapicKernelPanic | NO | HP Machines will require this quirk |
+| AppleCpuPmCfgLock | NO | Cần thiết nếu chạy 10.10 hoặc cũ hơn và không thể tắt `CFG-Lock` trong BIOS |
+| AppleXcpmCfgLock | YES | Không cần thiết nếu CFG-Lock được tắt trong BIOS |
+| DisableIOMapper | YES | Không cần thiết nếu VT-d được tắt trong BIOS |
+| LapicKernelPanic | NO | Các máy HP cần cài đặt này |
 | PanicNoKextDump | YES | |
 | PowerTimeoutKernelPanic | YES | |
 | XhciPortLimit | YES | |
@@ -292,9 +292,9 @@ The reason being is that UsbInjectAll reimplements builtin macOS functionality w
 
 ### Scheme
 
-Settings related to legacy booting(ie. 10.4-10.6), for majority you can skip however for those planning to boot legacy OSes you can see below:
+Các cài đặt liên quan đến boot các bản macOS cũ (10.4-10.6), hầu hết có thể bỏ qua nhưng đối với nhứng người muốn boot các bản cũ xem bên dưới:
 
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
 * **FuzzyMatch**: True
   * Used for ignoring checksums with kernelcache, instead opting for the latest cache available. Can help improve boot performance on many machines in 10.6
@@ -309,7 +309,7 @@ Settings related to legacy booting(ie. 10.4-10.6), for majority you can skip how
     * 10.8 or newer — `x86_64`
 
 * **KernelCache**: Auto
-  * Set kernel cache type, mainly useful for debugging and so we recommend `Auto` for best support
+  * Đặt kiểu kernel cache, hữu dụng trong việc gỡ lỗi nên nên đặt thành `Auto`
 
 :::
 
@@ -319,13 +319,13 @@ Settings related to legacy booting(ie. 10.4-10.6), for majority you can skip how
 
 ### Boot
 
-Settings for boot screen (Leave everything as default).
+Các cài đặt cho màn hình boot (để mọi thứ theo mặc định)
 
 ### Debug
 
-::: tip Info
+::: tip Thông tin
 
-Helpful for debugging OpenCore boot issues(We'll be changing everything *but* `DisplayDelay`):
+Giúp ích trong việc gỡ lỗi các sự cố boot (Chúng ta sẽ thay đổi mọi thứ *trừ* `DisplayDelay`):
 
 | Quirk | Enabled |
 | :--- | :--- |
@@ -336,33 +336,33 @@ Helpful for debugging OpenCore boot issues(We'll be changing everything *but* `D
 
 :::
 
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
 * **AppleDebug**: YES
-  * Enables boot.efi logging, useful for debugging. Note this is only supported on 10.15.4 and newer
+  * Kích hoạt log boot.efi, giúp ích cho việc gỡ lỗi, chỉ hỗ trợ từ bản 10.15.4
 * **ApplePanic**: YES
-  * Attempts to log kernel panics to disk
+  * Log lại kernel panic vào ổ
 * **DisableWatchDog**: YES
-  * Disables the UEFI watchdog, can help with early boot issues
+  * Tắt watchdog UEFI, giúp cho việc gỡ lỗi
 * **DisplayLevel**: `2147483650`
-  * Shows even more debug information, requires debug version of OpenCore
+  * Hiện thêm nhiều thông tin gỡ lỗi, chỉ có trong bản DEBUG của OpenCore
 * **SerialInit**: NO
-  * Needed for setting up serial output with OpenCore
+  * Cần thiết cho việc gỡ lỗi qua serial
 * **SysReport**: NO
-  * Helpful for debugging such as dumping ACPI tables
-  * Note that this is limited to DEBUG versions of OpenCore
+  * Giúp ích trong việc gỡ lỗi như dump các bảng ACPI, vân vân
+  * Chỉ bản DEBUG của OpenCore mới có tùy chọn này
 * **Target**: `67`
-  * Shows more debug information, requires debug version of OpenCore
+  * Hiện thêm nhiều thông tin gỡ lỗi, chỉ có trong bản DEBUG của OpenCore
 
-These values are based of those calculated in [OpenCore debugging](../troubleshooting/debug.md)
+Các giá trị này được tính toán dựa trên [Gỡ lỗi OpenCore](../troubleshooting/debug.md)
 
 :::
 
 ### Security
 
-::: tip Info
+::: tip Thông tin
 
-Security is pretty self-explanatory, **do not skip**. We'll be changing the following:
+**Không được bỏ qua phần này**, chúng ta sẽ thay đổi những điều sau:
 
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
@@ -370,12 +370,12 @@ Security is pretty self-explanatory, **do not skip**. We'll be changing the foll
 | AllowSetDefault | YES | |
 | BlacklistAppleUpdate | YES | |
 | ScanPolicy | 0 | |
-| SecureBootModel | Default |  This is a word and is case-sensitive, set to `Disabled` if you do not want secure boot(ie. you require Nvidia's Web Drivers) |
-| Vault | Optional | This is a word, it is not optional to omit this setting. You will regret it if you don't set it to Optional, note that it is case-sensitive |
+| SecureBootModel | Default |  Đây là một từ và có phân biệt chữ hoa/thường, đặt thành `Disabled` nếu bạn không muốn Secure Boot (ví dụ như bạn cần Nvidia Web Driver) |
+| Vault | Optional | Đây là một tự, bạn không được bỏ quên tùy chọn này, lưu ý là nó có phân biệt chữ hoa/thường. |
 
 :::
 
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
 * **AllowNvramReset**: YES
   * Allows for NVRAM reset both in the boot picker and when pressing `Cmd+Opt+P+R`
@@ -405,13 +405,13 @@ Security is pretty self-explanatory, **do not skip**. We'll be changing the foll
 
 ### Tools
 
-Used for running OC debugging tools like the shell, ProperTree's snapshot function will add these for you.
+Dùng để chạy các phân mềm gỡ lỗi của OpenCore như UEFI shell, chức năng snapshot của ProperTree sẽ tự động thêm chúng
 
 ### Entries
 
-Used for specifying irregular boot paths that can't be found naturally with OpenCore.
+Dùng để xác định các đường dẫn boot mà OpenCore không thể tự tìm
 
-Won't be covered here, see 8.6 of [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) for more info
+Sẽ không được hướng dẫn ở đây, xem phần 8.6 của [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf) để biết thêm chi tiết
 
 ## NVRAM
 
@@ -421,35 +421,35 @@ Won't be covered here, see 8.6 of [Configuration.pdf](https://github.com/acidant
 
 ::: tip 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14
 
-Used for OpenCore's UI scaling, default will work for us. See in-depth section for more info
+Dùng cho cài đặt scale UI của OpenCore, mặc định thường là đủ. Xem phần thông tin chi tiết để biết thêm.
 
 :::
 
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
 Booter Path, mainly used for UI Scaling
 
 * **UIScale**:
-  * `01`: Standard resolution
-  * `02`: HiDPI (generally required for FileVault to function correctly on smaller displays)
+  * `01`: Độ phân giải mặc định
+  * `02`: HiDPI (Cần để FileVault hoạt động đúng trên các màn hình nhỏ)
 
-* **DefaultBackgroundColor**: Background color used by boot.efi
-  * `00000000`: Syrah Black
-  * `BFBFBF00`: Light Gray
+* **DefaultBackgroundColor**: Màu nền được dùng bởi boot.efi
+  * `00000000`: Đen Syrah
+  * `BFBFBF00`: Xám nhạt
 
 :::
 
 ::: tip 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102
 
-OpenCore's NVRAM GUID, mainly relevant for RTCMemoryFixup users
+NVRAM GUID của OpenCore, chủ yếu dành cho người dùng RTCMemoryFixup
 
 :::
 
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
 * **rtc-blacklist**: <>
-  * To be used in conjunction with RTCMemoryFixup, see here for more info: [Fixing RTC write issues](https://viopencore.github.io/OpenCore-Post-Install/misc/rtc.html#finding-our-bad-rtc-region)
-  * Most users can ignore this section
+  * Được dùng song song với RTCMemoryFixup, thông tin chi tiết có trong: [Fixing RTC write issues](https://viopencore.github.io/OpenCore-Post-Install/misc/rtc.html#finding-our-bad-rtc-region)
+  * Hầu hết người dùng có thể bỏ qua phần này
 
 :::
 
@@ -457,35 +457,35 @@ OpenCore's NVRAM GUID, mainly relevant for RTCMemoryFixup users
 
 System Integrity Protection bitmask
 
-* **General Purpose boot-args**:
+* **Các boot-args dùng chung**:
 
 | boot-args | Description |
 | :--- | :--- |
-| **-v** | This enables verbose mode, which shows all the behind-the-scenes text that scrolls by as you're booting instead of the Apple logo and progress bar. It's invaluable to any Hackintosher, as it gives you an inside look at the boot process, and can help you identify issues, problem kexts, etc. |
-| **debug=0x100** | This disables macOS's watchdog which helps prevents a reboot on a kernel panic. That way you can *hopefully* glean some useful info and follow the breadcrumbs to get past the issues. |
-| **keepsyms=1** | This is a companion setting to debug=0x100 that tells the OS to also print the symbols on a kernel panic. That can give some more helpful insight as to what's causing the panic itself. |
-| **alcid=1** | Used for setting layout-id for AppleALC, see [supported codecs](https://github.com/acidanthera/applealc/wiki/supported-codecs) to figure out which layout to use for your specific system. More info on this is covered in the [Post-Install Page](https://viopencore.github.io/OpenCore-Post-Install/) |
+| **-v** | Kích hoạt verbose mode (cho chúng ta thấy tiến trình boot chi tiết thay vì logo Apple và thanh tiến trình), là thứ mà Hackintosher nào cũng cần, bởi vì nó giúp ta nhìn thấy chi tiết quá trình boot và giúp bạn xác định lỗi. |
+| **debug=0x100** | Vô hiệu hóa watchdog của macOS, ngăn reboot khi có kernel panic, *mong là nó có thể* giúp bạn thấy một vài thông tin giúp ích để bạn vượt qua lỗi. |
+| **keepsyms=1** | Đây là cài đặt đi đôi với debug=0x100 để buộc macOS in các ký hiểu trong kernel panic, giúp ích trong việc thấy các thông tin về nguyên nhân panic. |
+| **alcid=1** | Dùng để set layout-id cho AppleALC, xem [supported codecs](https://github.com/acidanthera/applealc/wiki/supported-codecs) để biết được layout cần dùng cho build của bạn. Thông tin chi tiết có trong [Post-Install Page](https://viopencore.github.io/OpenCore-Post-Install/) |
 
-* **GPU-Specific boot-args**:
+* **Các boot-args dành riêng cho từng GPU**:
 
 | boot-args | Description |
 | :--- | :--- |
 | **agdpmod=pikera** | Used for disabling boardID on Navi GPUs(RX 5000 series), without this you'll get a black screen. **Don't use if you don't have Navi**(ie. Polaris and Vega cards shouldn't use this) |
 | **nvda_drv_vrl=1** | Used for enabling Nvidia's Web Drivers on Maxwell and Pascal cards in Sierra and HighSierra |
-| **-wegnoegpu** | Used for disabling all other GPUs than the integrated Intel iGPU, useful for those wanting to run newer versions of macOS where their dGPU isn't supported |
+| **-wegnoegpu** | Vô hiệu hóa mọi GPU trừ iGPU của Intel |
 
 * **csr-active-config**: `00000000`
-  * Settings for 'System Integrity Protection' (SIP). It is generally recommended to change this with `csrutil` via the recovery partition.
-  * csr-active-config by default is set to `00000000` which enables System Integrity Protection. You can choose a number of different values but overall we recommend keeping this enabled for best security practices. More info can be found in our troubleshooting page: [Disabling SIP](../troubleshooting/extended/post-issues.md#disabling-sip)
+  * Cài đặt cho 'System Integrity Protection' (SIP). Khuyến khích thay đổi cài đặt này qua `csrutil` tại recovery.
+  * mặc định có giá trị `00000000` tức là bật SIP. Bạn có thể chọn các giá trị khác nhưng khuyến khích để nguyên vì các lí do bảo mật. Thông tin thêm có thể được tìm thấy tại: [Tắt SIP](../troubleshooting/extended/post-issues.md#disabling-sip)
 
 * **run-efi-updater**: `No`
-  * This is used to prevent Apple's firmware update packages from installing and breaking boot order; this is important as these firmware updates (meant for Macs) will not work.
+  * Dùng để chặn các bản cập nhất firmware của Apple làm hỏng thứ tự boot vì chúng dành cho các máy Mac thật.
 
 * **prev-lang:kbd**: <>
-  * Needed for non-latin keyboards in the format of `lang-COUNTRY:keyboard`, recommended to keep blank though you can specify it(**Default in Sample config is Russian**):
-  * American: `en-US:0`(`656e2d55533a30` in HEX)
-  * Full list can be found in [AppleKeyboardLayouts.txt](https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/AppleKeyboardLayouts/AppleKeyboardLayouts.txt)
-  * Hint: `prev-lang:kbd` can be changed into a String so you can input `en-US:0` directly instead of converting to HEX
+  * Cần thiết đối với các bàn phím không phải latin với định dạng `lang-COUNTRY:keyboard`, khuyến khích để trống nhưng bạn vẫn có thể đổi(**Mặc định là tiếng Nga**):
+  * Mĩ: `en-US:0`(`656e2d55533a30` trong HEX)
+  * Danh sách đầy đủ có trong [AppleKeyboardLayouts.txt](https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/AppleKeyboardLayouts/AppleKeyboardLayouts.txt)
+  * Gợi ý: `prev-lang:kbd` có thể được đổi thành dạng String để bạn điền `en-US:0` trực tiếp thay vì phải chuyển sang HEX
 
 | Key | Type | Value |
 | :--- | :--- | :--- |
@@ -497,7 +497,7 @@ System Integrity Protection bitmask
 
 ::: tip Info
 
-Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** values already present in NVRAM so values like `boot-args` should be left alone. For us, we'll be changing the following:
+Cưỡng bức ghi đè các biến NVRAM, lưu ý rằng `Add` **sẽ không ghi đè** các giá trị đã có sắn trong NVRAM nên các giá trị như `boot-args` nên được để nguyên.
 
 | Quirk | Enabled |
 | :--- | :--- |
@@ -505,19 +505,19 @@ Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** val
 
 :::
 
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
 * **LegacyEnable**: NO
-  * Allows for NVRAM to be stored on nvram.plist, needed for systems without native NVRAM
+  * Cho phép NVRAM được lưu trong nvram.plist, cần thiết cho các máy không có NVRAM
 
 * **LegacyOverwrite**: NO
-  * Permits overwriting firmware variables from nvram.plist, only needed for systems without native NVRAM
+  * Cho phép ghi đè các biên trong firmware từ nvram.plist, chỉ cần thiết cho các máy không có NVRAM
 
 * **LegacySchema**
-  * Used for assigning NVRAM variables, used with LegacyEnable set to YES
+  * Dùng để chỉ định các biến NVRAM, dùng với LegacyEnable được đặt thành YES
 
 * **WriteFlash**: YES
-  * Enables writing to flash memory for all added variables.
+  * Cho phép ghi vào bộ nhớ flash cho tất cả các biến được thêm.
 
 :::
 
@@ -525,11 +525,11 @@ Forcibly rewrites NVRAM variables, do note that `Add` **will not overwrite** val
 
 ![PlatformInfo](../images/config/config.plist/haswell/smbios.png)
 
-::: tip Info
+::: tip Thông tin
 
-For setting up the SMBIOS info, we'll use CorpNewt's [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) application.
+Để lấy thông tin SMBIOS, chúng ta sẽ dùng [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) của CorpNewt.
 
-For this Haswell example, we chose the iMac15,1 SMBIOS. The typical breakdown is as follows:
+Trong ví dụ dành cho máy Haswell, chúng ta chọn SMBIOS của MacBookPro11,1. Điển hình như:
 
 | SMBIOS | Hardware |
 | :--- | :--- |
@@ -537,7 +537,7 @@ For this Haswell example, we chose the iMac15,1 SMBIOS. The typical breakdown is
 | iMac15,1 | Haswell with dGPU |
 | iMac16,2 | Broadwell |
 
-Run GenSMBIOS, pick option 1 for downloading MacSerial and Option 3 for selecting out SMBIOS.  This will give us an output similar to the following:
+Chạy GenSMBIOS, chọn 1 để tải MacSerial và chọn 3 để tạo SMBIOS. Nó sẽ hiện như sau:
 
 ```sh
   #######################################################
@@ -550,29 +550,29 @@ Board Serial: C02408101J9G2Y7A8
 SmUUID:       7B227BEC-660D-405F-8E60-411B3E4EF055
 ```
 
-The `Type` part gets copied to Generic -> SystemProductName.
+Phần `Type` được copy vào Generic -> SystemProductName.
 
-The `Serial` part gets copied to Generic -> SystemSerialNumber.
+Phần `Serial` được copy vào Generic -> SystemSerialNumber.
 
-The `Board Serial` part gets copied to Generic -> MLB.
+Phần `Board Serial` được copy vào Generic -> MLB.
 
-The `SmUUID` part gets copied to Generic -> SystemUUID.
+Phần `SmUUID` được copy vào -> SystemUUID.
 
-We set Generic -> ROM to either an Apple ROM (dumped from a real Mac), your NIC MAC address, or any random MAC address (could be just 6 random bytes, for this guide we'll use `11223300 0000`. After install follow the [Fixing iServices](https://viopencore.github.io/OpenCore-Post-Install/universal/iservices.html) page on how to find your real MAC Address)
+Chúng ta đặt phần Generic -> ROM thành một ROM của Apple (được lấy từ một máy Mac thật), địa chỉ MAC của NIC, hoặc một địa chỉ MAC bất kì (chỉ cần 6 byte bất kì), trong bài này chúng tôi dùng 112233000000. Sau khi cài đặt làm theo [Fixing iServices](https://viopencore.github.io/OpenCore-Post-Install/universal/iservices.html) để tìm địa chỉ MAC thật của bạn
 
-**Reminder that you want either an invalid serial or valid serial numbers but those not in use, you want to get a message back like: "Invalid Serial" or "Purchase Date not Validated"**
+**Nên nhớ là bạn cân một số serial không hợp lệ hoặc một số serial hợp lệ nhưng không được sử dụng, bạn muốn có thông báo kiểu: "Invalid Serial" hoặc "Purchace Date not Validated"**
 
-[Apple Check Coverage page](https://checkcoverage.apple.com)
+[Trang web Apple Check Coverage](https://checkcoverage.apple.com)
 
 **Automatic**: YES
 
-* Generates PlatformInfo based on Generic section instead of DataHub, NVRAM, and SMBIOS sections
+* Tạo ra PlatformInfo từ phần Generic thay vì từ DataHub, NVRAM, và phần SMBIOS
 
 :::
 
 ### Generic
 
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
 * **AdviseWindows**: NO
   * Used for when the EFI partition isn't first on the Windows drive
@@ -610,52 +610,52 @@ We set Generic -> ROM to either an Apple ROM (dumped from a real Mac), your NIC 
 
 **ConnectDrivers**: YES
 
-* Forces .efi drivers, change to NO will automatically connect added UEFI drivers. This can make booting slightly faster, but not all drivers connect themselves. E.g. certain file system drivers may not load.
+* Ép load các driver .efi, thay đổi thành NO sẽ tự động load các driver UEFI. Điểu này có thế giảm thời gian boot một chút nhưng không phải tất cả driver sẽ tự động load (Ví dụ như một số hệ thông tệp sẽ không truy cập được).
 
 ### Drivers
 
-Add your .efi drivers here.
+Thêm các driver .efi vào đây
 
-Only drivers present here should be:
+Chỉ có 2 driver ở đây:
 
 * HfsPlus.efi
 * OpenRuntime.efi
 
 ### APFS
 
-Settings related to the APFS driver, leave everything here as default.
+Các cài đặt liên quan đến driver APFS, để mọi thứ ở đây như mặc định.
 
 ### Audio
 
-Related to AudioDxe settings, for us we'll be ignoring(leave as default). This is unrelated to audio support in macOS.
+Liên quan đến các cài đặt của AudioDxe, để mọi thứ ở đây như mặc định vì chúng ta không cần đến chúng.
 
-* For further use of AudioDxe and the Audio section, please see the Post Install page: [Add GUI and Boot-chime](https://viopencore.github.io/OpenCore-Post-Install/)
+* Nếu muốn dùng AudioDxe và phần Audio, xem trang Post Install (Sau khi cài): [Thêm GUI và âm boot](https://viopencore.github.io/OpenCore-Post-Install/)
 
 ### Input
 
-Related to boot.efi keyboard passthrough used for FileVault and Hotkey support, leave everything here as default as we have no use for these quirks. See here for more details: [Security and FileVault](https://viopencore.github.io/OpenCore-Post-Install/)
+Liên quan đến passthrough bàn phím dành cho FileVault và Hotkey, để mọi thứ ở đây như mặc định vì chúng ta không cần đến chúng. Thông tin chi tiết có trong: [Bảo mật và FileVault](https://viopencore.github.io/OpenCore-Post-Install/)
 
 ### Output
 
-Relating to OpenCore's visual output,  leave everything here as default as we have no use for these quirks.
+Để mọi thứ ở đây như mặc định
 
 ### ProtocolOverrides
 
-Mainly relevant for Virtual machines, legacy macs and FileVault users. See here for more details: [Security and FileVault](https://viopencore.github.io/OpenCore-Post-Install/)
+Chủ yếu dành cho máy ảo (VM), máy Mac cũ và người dùng FileVault. Thông tin chi tiết có trong: [Bảo mật và FileVault](https://viopencore.github.io/OpenCore-Post-Install/)
 
 ### Quirks
 
-::: tip Info
-Relating to quirks with the UEFI environment, for us we'll be changing the following:
+::: tip Thông tin
+Liên quan đến các cài đặt dành cho môi trường UEFI, chúng ta thay đổi những thứ sau đây: 
 
 | Quirk | Enabled | Comment |
 | :--- | :--- | :--- |
 | IgnoreInvalidFlexRatio | YES | |
-| UnblockFsConnect | NO | Needed mainly by HP motherboards |
+| UnblockFsConnect | NO | Thường các board HP mới cần |
 
 :::
 
-::: details More in-depth Info
+::: details Thông tin chi tiết
 
 * **IgnoreInvalidFlexRatio**: YES
   * Fix for when MSR_FLEX_RATIO (0x194) can't be disabled in the BIOS, required for all pre-Skylake based systems
@@ -674,44 +674,44 @@ Relating to quirks with the UEFI environment, for us we'll be changing the follo
 
 ### ReservedMemory
 
-Used for exempting certain memory regions from OSes to use, mainly relevant for Sandy Bridge iGPUs or systems with faulty memory. Use of this quirk is not covered in this guide
+Dùng để miễn trừ một phần RAM nhất định dành cho các HĐH để sử dụng, chủ yếu dành cho các iGPU Sandy Bridge hay những máy với RAM hỏng. Phần này sẽ không được hướng dẫn trong bài này
 
-## Cleaning up
+## Dọn dẹp
 
-And now you're ready to save and place it into your EFI under EFI/OC.
+Bây giờ bạn đã sẵn sàng để lưu và đặt file config.plist vào EFI/OC
 
-For those having booting issues, please make sure to read the [Troubleshooting section](../troubleshooting/troubleshooting.md) first and if your questions are still unanswered we have plenty of resources at your disposal:
+Nếu bạn có vấn đề, vui lòng đọc phần [Gỡ lỗi](../troubleshooting/troubleshooting.md) trước tiên và nếu câu hỏi của bạn vẫn chưa được giải đáp, chúng tôi có nhiều chỗ bạn có thể hỏi (chỉ tiếng Anh): 
 
 * [r/Hackintosh Subreddit](https://www.reddit.com/r/hackintosh/)
 * [r/Hackintosh Discord](https://discord.gg/2QYd7ZT)
 
-**Sanity check**:
-
-So thanks to the efforts of Ramus, we also have an amazing tool to help verify your config for those who may have missed something:
+**Kiểm tra lại**:
 
 * [**Sanity Checker**](https://opencore.slowgeek.com)
 
-Note that this tool is neither made nor maintained by Dortania, any and all issues with this site should be sent here: [Sanity Checker Repo](https://github.com/rlerdorf/OCSanity)
+Công cụ này không phải của Dortania, mọi vấn đề với trang xin hãy gửi về đây: [Sanity Checker Repo](https://github.com/rlerdorf/OCSanity)
 
-## Intel BIOS settings
+*Sanity Checker chưa được update từ bản OpenCore 0.6.6, nếu bạn ở bản mới hơn thì không nên dùng*
 
-* Note: Most of these options may not be present in your firmware, we recommend matching up as closely as possible but don't be too concerned if many of these options are not available in your BIOS
+## Thiết đặt BIOS dành cho các máy Intel
 
-### Disable
+* Note: Hầu hết các tùy chọn này có thể không có trong firmware của bạn, chúng tôi khuyến khích làm giống nhất có thể nhưng nếu tùy chọn đó không có trong BIOS của bạn thì cũng đừng quá lo lắng
+
+### Vô hiệu hóa
 
 * Fast Boot
 * Secure Boot
 * Serial/COM Port
 * Parallel Port
-* VT-d (can be enabled if you set `DisableIoMapper` to YES)
+* VT-d (có thể được bật nếu bạn đặt `DisableIoMapper` thành YES)
 * CSM
-* Thunderbolt(For initial install, as Thunderbolt can cause issues if not setup correctly)
+* Thunderbolt(Trong lúc cài, Thunderbolt có thể gây ra vấn đề nều không được thiết đặt đúng)
 * Intel SGX
 * Intel Platform Trust
-* CFG Lock (MSR 0xE2 write protection)(**This must be off, if you can't find the option then enable `AppleXcpmCfgLock` under Kernel -> Quirks. Your hack will not boot with CFG-Lock enabled**)
-  * For 10.10 and older, you'll need to enable AppleCpuPmCfgLock as well
+* CFG Lock (MSR 0xE2 write protection)(**Bắt buộc phải tắt, nếu bạn không thấy tùy chọn này thì bật `AppleXcpmCfgLock` tại Kernel -> Quirks. macOS sẽ không boot nếu CFG-Lock được bật**)
+  * Nếu bạn chạy bản 10.10 hoặc cũ hơn, AppleCpuPmCfgLock cũng cần được bật
 
-### Enable
+### Kích hoạt
 
 * VT-x
 * Above 4G decoding
@@ -722,4 +722,4 @@ Note that this tool is neither made nor maintained by Dortania, any and all issu
 * DVMT Pre-Allocated(iGPU Memory): 64MB
 * SATA Mode: AHCI
 
-# Now with all this done, head to the [Installation Page](../installation/installation-process.md)
+# Tiếp theo, hãy đến phần [Cài đặt macOS](../installation/installation-process.md)

@@ -1,59 +1,57 @@
 # Installation Process
 
-Now that you've finished setting up OpenCore, you're finally able to boot, main things to keep in mind:
+Bây giờ bạn đã hoàn thành thiết lập OpenCore, bạn đã sẵn sàng boot, hãy chú ý những điều sau đây:
 
-* Enable BIOS settings optimal for macOS
-* Read up on the [OpenCore Multiboot Guide](https://viopencore.github.io/OpenCore-Multiboot/) as well as [Setting up LauncherOption](https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootstrap)
-  * Mainly relevant for those running a single drive for multiple OSes
-* And a copy of the [General Troubleshooting](../troubleshooting/troubleshooting.md) page
-* Read up on the [macOS Boot Process](../troubleshooting/boot.md)
-  * Can help first time installers better understand where they may be getting stuck
-* And a ton of patience
+* Cài đặt BIOS sao cho thích hợp với macOS
+* Đọc phần [Hướng dẫn Multiboot](https://viopencore.github.io/OpenCore-Multiboot/) và [Setting up LauncherOption](https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootstrap)
+  * Dành cho ai muốn chạy nhiều OS trên một ổ cứng
+* Một bản [Gỡ lỗi chung](../troubleshooting/troubleshooting.md)
+* Đọc phần [Quá trình boot của macOS](../troubleshooting/boot.md)
+  * Giúp newbie hiểu rõ hơn về phần mà họ đang bị kẹt
+* Và rất nhiều sự kiên nhẫn
 
-## Double checking your work
+## Xem lại USB
 
-One last thing we should go over before booting is how your EFI is setup:
+Chúng ta nên xem lại lần cuối EFI của mình trước khi boot: 
 
-Good EFI          |  Bad EFI
+EFI tốt          |  EFI tệ
 :-------------------------:|:-------------------------:
 ![](../images/installation/install-md/good-efi.png)  |  ![](../images/installation/install-md/bad-efi.png)
-EFI folder found on EFI partition | EFI folder missing
-ACPI Files are compiled(.aml) | ACPI Files are not compiled(.dsl)
-DSDT is not included |* DSDT is included
-Removed unneeded Drivers(.efi) | Leaves default Drivers
-Removed unneeded Tools(.efi) | Leaves default Tools
-All files in the Kexts folder end in .kext | Includes source code and folders
-config.plist found under EFI/OC | Neither renamed or placed the .plist in right location
-Only uses kexts that are needed | Downloaded every kext listed
+Thư mục EFI nằm trong phân vùng EFI | Thiếu thư mục EFI
+Các file ACPI đã được compile(.aml) | Các file ACPI chưa được compile(.dsl)
+Không có DSDT |* Có DSDT
+Xóa các driver không cần thiết(.efi) | Để nguyên các driver đã cho
+Xóa các công cụ không cần thiết(.efi) | Để nguyên các công cụ đã cho
+Mọi file ở trong thư mục Kexts có đuôi .kext | Đi kèm mã nguồn và các thư mục
+Có file config.plist tại EFI/OC | Chưa đổi tên hoặc chưa có file config.plist
+Chỉ dùng những kext cần thiết | Sử dụng mọi kext
 
-And a reminder that slowgeek site is your friend:
+*[Sanity Checker](https://opencore.slowgeek.com) chưa được update từ bản OpenCore 0.6.6, nếu bạn ở bản mới hơn thì không nên dùng*
 
-* [**Sanity Checker**](https://opencore.slowgeek.com)
+## Boot USB OpenCore
 
-## Booting the OpenCore USB
+Bây giờ bạn đã bắt đầu cắm USB vào máy và bắt đầu boot. Nên nhớ rằng hầu hết laptop và một số desktop vẫn sẽ mặc định vào ổ cứng gắn trong với Windows, bạn cần phải chọn thủ công OpenCore trong boot menu. Bạn sẽ phải tự tìm cách vào boot menu và BIOS cho máy của bạn.
 
-So you're now ready to finally put the USB stick into your computer and boot off of it. Remember that most laptops and some desktops will still default to the internal drive with Windows, and you'll need to manually select OpenCore in the BIOS boot options. You'll need to check in the user manual or use a bit of google to find out what Fn key accesses the BIOS and boot menu(ie. Esc, F2, F10 or F12)
-
-Once you boot the USB, you'll likely be greeted to the following boot options:
+Một khi bạn đã boot vào USB, thường là một trong những tùy chọn sau đây sẽ hiện ra:
 
 1. Windows
 2. macOS Base System (External) / Install macOS Catalina (External)
 3. OpenShell.efi
 4. Reset NVRAM
 
-For us, **Option 2.** is the one we want. Depending how the installer was made, it may report as either **"macOS Base System (External)"** if created in Linux or Windows and **"Install macOS Catalina (External)"** if created in macOS.
+**Tùy chọn 2** là thứ chúng ta cần. Tùy thuộc vào cách mà bộ cài được tạo, nó sẽ có tùy chọn **"macOS Base System (External)"** nếu bộ cài được tạo ở Windows/Linux và **"Install macOS Catalina (External)"** nếu được tạo ở macOS 
 
 ## macOS Installer
 
-So you've finally got the installer booted, got through the verbose and hit the installer! Now that you've gotten this far,  the main things to keep in mind:
+Bây giờ bộ cài đã boot thành công, vượt qua được màn hình verbose và vào được trình cài đặt, đây là những điều bạn cần chú ý:
 
-* Drives you wish to install macOS on **must** be both of GUID partition Scheme **and** APFS
-  * High Sierra on HDD and all Sierra users will need to use macOS Journaled(HFS+)
-* The drive **must** also have a 200MB partition
-  * By default, macOS will setup freshly formatted drives with 200MB
-  * See the [Multiboot Guide](https://viopencore.github.io/OpenCore-Multiboot/) for more info on partitioning a Windows Drive
+* Ổ gắn trong mà bạn muốn cài macOS **phải** đều có kiểu phần vùng GUID **và** là APFS
+  * Nếu bạn muốn cài bản High Sierra trên HDD và tất cả các bản macOS dươi Sierra thì phải dùng macOS Journaled(HFS+)
+* Ổ gắn trong **cần phải có** một phân vùng 200MB
+  * Theo mặc định, macOS sẽ tự động tạo một phân vùng 200MB trên các ổ trống hoàn toàn
+  * Xem phần [Hướng dẫn Multiboot](https://viopencore.github.io/OpenCore-Multiboot/) để có thêm thông tin về cách phân vùng ổ đã cài Windows
 
-Once you start the installation, you will want to wait until the system restarts. You will once again want to boot into OpenCore, but rather than selecting your USB installer/recovery - you will want to select the macOS installer on the hard drive to continue installation. You should get an apple logo, and after a few minutes you should get a timer at the bottom saying "x minutes remaining". This may be a good time to get a drink or snack as this will take a while. It may restart a couple more times, but if all goes well, it should finally plop you at the "Setup your Mac screen"
+Một khi bạn bắt đầu cài đặt, bạn sẽ muốn đợi cho đến khi máy khởi động lại. Một lần nữa bạn sẽ muốn boot vào OpenCore, nhưng thay vì chọn phân vùng recovery trên USB thì bạn sẽ chọn macOS Installer ở trên ổ gắn trong. Bạn sẽ thấy logo Apple, và sau vài phút bạn sẽ thấy phần thời gian còn lại "x minutes remaining". Máy sẽ tự khởi dộng lại một vài lần, nhưng nếu mọi chuyện đều suôn sẻ, cuối cùng bạn sẽ thấy màn hình "Set up your Mac"
 
-You're in! 🎉
-You will want to go through the Post-Installation pages to finish setting up your system.
+Bạn đã cài xong! 🎉
+Bạn sẽ muốn đọc phần Post-Installation (Sau khi cài) để hoàn tất.

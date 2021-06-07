@@ -99,51 +99,50 @@ Tại terminal:
 4. chạy `sudo mkfs.vfat -F 32 -n "OPENCORE" /dev/<block phân vùng USB của bạn>` để định dạng USB của bạn thành FAT32 và đặt tên cho nó là OPENCORE
 5. sau đó `cd` đến `/OpenCore/Utilities/macrecovery/` và bạn sẽ thấy file `.dmg` và `.chunklist`
    1. gắn phân vùng USB của bạn với `udisksctl` (`udisksctl mount -b /dev/<block phân vùng USB của bạn>`, thường không cần sudo) hoặc với`mount` (`sudo mount /dev/<block phân vùng USB của bạn> /nơi/bạn/muốn/gắn`, cần sudo)
-   2. `cd` to your USB drive and `mkdir com.apple.recovery.boot` in the root of your FAT32 USB partition
-   3. now `cp` or `rsync` both `BaseSystem.dmg` and `BaseSystem.chunklist` into `com.apple.recovery.boot` folder.
+   2. `cd` đến ổ USB của bạn và chạy `mkdir com.apple.recovery.boot` ở trong thư mục gốc của phân vùng FAT32
+   3. bây giờ chạy `cp` hoặc `rsync` cả `BaseSystem.dmg` và `BaseSystem.chunklist` vào thư mục `com.apple.recovery.boot`.
 
-### Method 2 (in case 1 didn't work)
+### Cách 2 (trong trường hợp cách 1 không dùng được)
 
-In terminal:
+Tại terminal:
 
-1. run `lsblk` and determine your USB device block
+1. chạy `lsblk` và xác định USB block của bạn
    ![](../images/installer-guide/linux-install-md/unknown-11.png)
-2. run `sudo gdisk /dev/<your USB block>`
-   1. if you're asked what partition table to use, select GPT.
+2. chạy `sudo gdisk /dev/USB block của bạn>`
+   1. nếu được hỏi về bảng phân vùng muốn sử dụng, chọn GPT.
       ![](../images/installer-guide/linux-install-md/unknown-12.png)
-   2. send `p` to print your block's partitions \(and verify it's the one needed\)
+   2. chọn `p` để xem các phân vùng của usb block của bạn \(và chắc chắn rằng đó là cái bạn cần\)
       ![](../images/installer-guide/linux-install-md/unknown-13.png)
-   3. send `o` to clear the partition table and make a new GPT one (if not empty)
-      1. confirm with `y`
+   3. chọn `o` để xóa bảng phân vùng và làm một bảng GPT mới (nếu không trống)
+      1. xác nhận với `y`
          ![](../images/installer-guide/linux-install-md/unknown-14.png)
-   4. send `n`
-      1. partition number: keep blank for default
-      2. first sector: keep blank for default
-      3. last sector: `+200M` to create a 200MB partition that will be named later on OPENCORE
-      4. Hex code or GUID: `0700` for Microsoft basic data partition type
+   4. chọn `n`
+      1. partition number: giữ nguyên
+      2. first sector: giữ nguyên
+      3. last sector: `+200M` để tạo phân vùng 200mb mà sau đó sẽ được đặt tên là OPENCORE
+      4. Hex code or GUID: `0700` để chọn FAT32
       ![](../images/installer-guide/linux-install-md/unknown-15.png)
-   5. send `n`
-      1. partition number: keep blank for default
-      2. first sector: keep blank for default
-      3. last sector: keep black for default \(or you can make it `+3G` if you want to partition further the rest of the USB\)
-      4. Hex code or GUID: `af00` for Apple HFS/HFS+ partition type
+   5. chọn `n`
+      1. partition number: giữ nguyên
+      2. first sector: giữ nguyên
+      3. last sector: giữ nguyên \(hoặc bạn có thể đặt`+3G` nếu bạn muốn phân vùng tiếp ổ USB\)
+      4. Hex code or GUID: `af00` để chọn Apple HFS/HFS+
       ![](../images/installer-guide/linux-install-md/unknown-16.png)
-   6. send `w`
-      * Confirm with `y`
+   6. chọn `w`
+      * xác nhận với `y`
       ![](../images/installer-guide/linux-install-md/unknown-17.png)
-      * In some cases a reboot is needed, but rarely, if you want to be sure, reboot your computer. You can also try re-plugging your USB key.
-   7. Close `gdisk` by sending `q` (normally it should quit on its own)
-3. Use `lsblk` again to determine the 200MB drive and the other partition
+      * Hiếm khi bạn cần khởi động lại máy tính, nhưng để chắc chắn, khởi động lại. Bạn cũng có thể thử cắm lại ổ USB.
+   7. Thoát `gdisk` bằng cách chọn `q` (thường nó sẽ tự thoát)
+3. Chạy `lsblk` một lần nữa to để xác định phân vùng 200mb và phân vùng còn lại
    ![](../images/installer-guide/linux-install-md/unknown-18.png)
-4. run `sudo mkfs.vfat -F 32 -n "OPENCORE" /dev/<your 200MB partition block>` to format the 200MB partition to FAT32, named OPENCORE
-5. then `cd` to `/OpenCore/Utilities/macrecovery/` and you should get to a `.dmg` and `.chunklist` files
-   1. mount your USB partition with `udisksctl` (`udisksctl mount -b /dev/<your USB partition block>`, no sudo required in most cases) or with `mount` (`sudo mount /dev/<your USB partition block> /where/your/mount/stuff`, sudo is required)
-   2. `cd` to your USB drive and `mkdir com.apple.recovery.boot` in the root of your FAT32 USB partition
-   3. download `dmg2img` (available on most distros)
-   4. run `dmg2img -l BaseSystem.dmg` and determine which partition has `disk image` property
+4. chạy `sudo mkfs.vfat -F 32 -n "OPENCORE" /dev/<your 200MB partition block>` để định dạng phân vùng này thành FAT32 và đặt tên nó là OPENCORE
+5. sau đó `cd` đến `/OpenCore/Utilities/macrecovery/` và bạn sẽ thấy file `.dmg` and `.chunklist`
+   1. gắn phân vùng USB của bạn với `udisksctl` (`udisksctl mount -b /dev/<block phân vùng USB của bạn>`, thường không cần sudo) hoặc với`mount` (`sudo mount /dev/<block phân vùng USB của bạn> /nơi/bạn/muốn/gắn`, cần sudo)
+   2. `cd` đến ổ USB của bạn và chạy `mkdir com.apple.recovery.boot` ở trong thư mục gốc của phân vùng FAT32
+   3. tải `dmg2img` (có sẵn trong hầu hết distro)
+   4. chạy `dmg2img -l BaseSystem.dmg` và chọn phân vùng có thuộc tính `disk image`
       ![](../images/installer-guide/linux-install-md/unknown-20.png)
-   5. run `dmg2img -p <the partition number> -i BaseSystem.dmg -o <your 3GB+ partition block>` to extract and write the recovery image to the partition disk
-      * It will take some time. A LOT if you're using a slow USB (took me about less than 5 minutes with a fast USB2.0 drive).
+   5. chạy `dmg2img -p <the partition number> -i BaseSystem.dmg -o <block phân vùng 3GB+>` để giải nén và ghi ảnh recovery đến phân vùng
+      * Nó sẽ mất khá nhiều thời gian, RẤT NHIỀU nếu bạn dùng ổ USB chậm (tôi mất khoảng 5p với một ổ USB 2.0 khá nhanh).
       ![](../images/installer-guide/linux-install-md/unknown-21.png)
-
-## Now with all this done, head to [Setting up the EFI](./opencore-efi.md) to finish up your work
+## Tiếp theo, hãy đi đến [Setting up the EFI](./opencore-efi.md) để tiếp tục
