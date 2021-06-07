@@ -37,6 +37,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@mr-hope/vuepress-plugin-sitemap": "^1.18.0",
     "@vuepress/plugin-back-to-top": "^1.8.2",
     "husky": "^6.0.0",
     "markdown-it-multimd-table": "^4.1.0",
