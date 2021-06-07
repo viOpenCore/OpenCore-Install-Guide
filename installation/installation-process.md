@@ -5,9 +5,9 @@ Sau khi bạn thiết lập OpenCore, bạn đã có thể boot, và bạn cần
 * Kích hoạt cài đặt BIOS tối ưu cho macOS
 * Đọc bài [OpenCore Multiboot Guide](https://viopencore.github.io/OpenCore-Multiboot/) với là [Setting up LauncherOption](https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootstrap)
   * Chủ yếu dành cho những người muốn dùng một ổ đĩa với đa hệ điều hành
-* Và cả bản sao bài [General Troubleshooting](../troubleshooting/troubleshooting.md) 
+* Và cả bản sao bài [General Troubleshooting](../troubleshooting/troubleshooting.md)
 * Đọc bài [macOS Boot Process](../troubleshooting/boot.md)
-  * Có thể giúp những người mới cài lần đầu hiểu hơn nơi mà có thể họ bị mắc kẹt lại 
+  * Có thể giúp những người mới cài lần đầu hiểu hơn nơi mà có thể họ bị mắc kẹt lại
 * Và cả tấn tính kiên nhẫn
 
 ## Kiểm tra lại công việc của bạn
@@ -22,7 +22,7 @@ Tệp ACPI được compiled(.aml) | Tệp ACPI không được compiled(.dsl)
 DSDT không được bao gồm |* DSDT được bao gồm
 Bỏ các Driver(.efi) không cần thiết | Để Driver mặc định
 Bỏ các Tools(.efi) không cần thiết | Để Tool mặc định
-Tất cả tệp trong thư mục Kexts đều kết thúc với .kext | Bao gồm thư mục và mã nguồn 
+Tất cả tệp trong thư mục Kexts đều kết thúc với .kext | Bao gồm thư mục và mã nguồn
 config.plist được thấy ở EFI/OC | Chưa đổi tên và đặt tệp .plist không đúng vị trí
 Chỉ dùng những kext cần thiết | Tải về hết những kext được liệt ra
 
