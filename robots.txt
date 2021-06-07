@@ -1,0 +1,2 @@
+
+Sitemap: http://viopencore.github.io/OpenCore-Install-Guide/OpenCore-Install-Guide/sitemap.xml
