@@ -443,16 +443,18 @@ module.exports = {
     [
       "@mr-hope/sitemap",
       {
-        domain: "http://viopencore.github.io/OpenCore-Install-Guide",
+        // domain: "http://viopencore.github.io/OpenCore-Install-Guide",
         hostname: "http://viopencore.github.io/OpenCore-Install-Guide"
       }
-    ][
+    ],
+    [
       ("@vuepress/search",
       {
         searchMaxSuggestions: 10
         // searchHotkeys: ""
       })
-    ][
+    ],
+    [
       ("medium-zoom",
       {
         selector: "img",
