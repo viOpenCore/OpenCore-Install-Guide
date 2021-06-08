@@ -1,13 +1,21 @@
 {
     "cSpell.language": "en,vi,en-US,en-GB",
     "cSpell.enableFiletypes": [
-        "!css",
-        "!javascript",
-        "!markdown"
+      "!css",
+      "!html",
+      "!javascript",
+      "!javascriptreact",
+      "!less",
+      "!markdown",
+      "!typescript",
+      "!yaml",
+      "!yml",
+      "ignore"
     ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "git.ignoreLimitWarning": true
 }

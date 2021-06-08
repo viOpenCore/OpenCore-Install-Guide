@@ -12,22 +12,22 @@ jobs:
     steps:
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: '0'
+          fetch-depth: "0"
           persist-credentials: false
-          submodules: 'recursive'
+          submodules: "recursive"
       - name: Install
         run: yarn install
       - name: Build
         run: yarn build
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.3
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/vietnamese'}}
         with:
-#          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: .vuepress/dist/
           CLEAN: true
@@ -37,12 +37,12 @@ jobs:
     steps:
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: '0'
-          submodules: 'recursive'
+          fetch-depth: "0"
+          submodules: "recursive"
       - name: Install
         run: yarn install
       - name: Lint
@@ -53,18 +53,19 @@ jobs:
     steps:
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: '0'
-          submodules: 'recursive'
+          fetch-depth: "0"
+          submodules: "recursive"
       - name: Install
         run: yarn install
       - name: Spellcheck
         run: yarn spellcheck
+        continue-on-error: true
       - name: Upload errors
-        uses: JamesIves/github-pages-deploy-action@4.1.3
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           BRANCH: errors
           FOLDER: errors
