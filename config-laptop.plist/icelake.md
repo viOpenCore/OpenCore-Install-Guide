@@ -4,24 +4,24 @@
 | :--- | :--- |
 | Initial macOS Support | macOS 10.15, Catalina |
 
-## Starting Point
+## Bắt đầu
 
-So making a config.plist may seem hard, it's not. It just takes some time but this guide will tell you how to configure everything, you won't be left in the cold. This also means if you have issues, review your config settings to make sure they're correct. Main things to note with OpenCore:
+Làm file config.plist trông có vẻ khó, nhưng thật ra không. Nó chỉ mất thời gian thôi nhưng bài hướng dẫn này sẽ giúp bạn cấu hình mọi thứ. Điều này cũng có nghĩa là nếu như bạn có vấn đề, hay xem lại file config để chắc chắn rằng bạn đã làm đúng. Những điều cần chú ý với OpenCore:
 
-* **All properties must be defined**, there are no default OpenCore will fall back on so **do not delete sections unless told explicitly so**. If the guide doesn't mention the option, leave it at default.
-* **The Sample.plist cannot be used As-Is**, you must configure it to your system
-* **DO NOT USE CONFIGURATORS**, these rarely respect OpenCore's configuration and even some like Mackie's will add Clover properties and corrupt plists!
+* **Mọi thuộc tính đều phải được đặt, OpenCore không có tùy chọn mặc định nên **đừng xóa phần nào trừ khi được nhắc đến**. Nếu bài hướng dẫn không nhắc đến tùy chọn đó, để yên nó như vậy
+* **file sample.plist không thể được dùng nguyên trạng**, bạn phải chỉnh sửa nó cho máy tính của bạn
+* **ĐỪNG DÙNG CONFIGURATORS**, chúng hiếm khi quan tâm đến các cấu hình của OpenCore và một số như của Mackie sẽ thêm các thuộc tính của Clover làm lỗi file plist
 
-Now with all that, a quick reminder of the tools we need
+Với tất cả những điều trên, một lời nhắc nhở về những thứ mà chúng ta cần:
 
 * [ProperTree](https://github.com/corpnewt/ProperTree)
-  * Universal plist editor
+  * Phần mềm edit file plist
 * [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
-  * For generating our SMBIOS data
+  * Dùng để tạo dữ liệu SMBIOS
 * [Sample/config.plist](https://github.com/acidanthera/OpenCorePkg/releases)
-  * See previous section on how to obtain: [config.plist Setup](../config.plist/README.md)
+  * Xem phần trước để biết cách lấy: [config.plist Setup](../config.plist/README.md)
 
-**And read this guide more than once before setting up OpenCore and make sure you have it set up correctly. Do note that images will not always be the most up-to-date so please read the text below them, if nothing's mentioned then leave as default.**
+**Đọc phần này nhiều hơn một lần trước khi thiết lập OpenCore và chắc chắn rằng bạn đã làm đúng. Nên nhớ rằng các hình ảnh không phải lúc nào cũng được cập nhật nên xin hay đọc phần chữ ở bên dưới, nếu không được nhắc đến thì hãy để như mặc định**
 
 ## ACPI
 
