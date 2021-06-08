@@ -12,13 +12,13 @@ Nhìn vào trang trước: [Tìm hiểu cấu hình](./find-hardware.md)
 
 ## Driver Firmware
 
-Firmware drivers are drivers used by OpenCore in the UEFI environment. They're mainly required to boot a machine, either by extending OpenCore's patching ability or showing you different types of drives in the OpenCore picker(ie. HFS drives).
+Driver Firmware là những driver dùng bởi OpenCore trong môi trường UEFI. Chúng chủ yếu cần để boot máy lên, với cả kéo dài khả năng patch của OpenCore hoặc hiển thị cho bạn những loại ổ đĩa khác nhau trong OpenCore picker(VD. ổ đĩa HFS)
 
-* **Location Note**: These files **must** be placed under `EFI/OC/Drivers/`
+* **Lưu ý địa điểm**: Những tệp **cần** phải được để dưới `EFI/OC/Drivers/`
 
 ### Phần chung cho mọi máy
 
-::: tip Required Drivers
+::: tip Những driver được yêu cầu
 
 Cho hầu hết các máy tính, bạn sẽ chỉ cần 2 driver `.efi`  để chạy:
 
@@ -61,35 +61,35 @@ Với những CPU 32-Bit, bạn cũng sẽ cần tải các tệp này
 
 Kext là viết tắt của **k**ernel **ext**ension, bạn có thể xem nó như là là driver cho macOS, những file này sẽ được đặt tại thư mục Kexts ở trong EFI của bạn.
 
-* **Lưu ý về Windows và Linux**: File kexts sẽ trông như những thư mục bình thường trong OS của bạn, **kiểm tra lại** thư mục mà bạn đang sử dụng phải có extension là .kext (và không được thêm vào nếu nó bị thiếu).
+* **Lưu ý cho Windows và Linux**: File kexts sẽ trông như những thư mục bình thường trong OS của bạn, **kiểm tra lại** thư mục mà bạn đang sử dụng phải có extension là .kext (và không được thêm vào nếu nó bị thiếu).
   * Nếu một số kext bao gồm cả tập `.dSYM`, bạn chỉ cần xoá nó đi. Nó chỉ cần trong việc debug.
-* **Location Note**: Những file này **phải** được nằm trong thư mục `EFI/OC/Kexts/`.
+* **Lưu ý về địa điểm**: Những file này **phải** được nằm trong thư mục `EFI/OC/Kexts/`.
 
-Tất cả kext được nêu dưới đây đều được **pre-compiled** trong [Kext Repo](http://kexts.goldfish64.com/). Kexts ở đây được compiled mỗi khi có một commit mới.
+Tất cả kext được nêu dưới đây đều được **compile sẵn** trong [Kext Repo](http://kexts.goldfish64.com/). Kexts ở đây được compiled mỗi khi có một commit mới.
 
 ### Buộc phải có
 
-::: Kexts bắt buộc phải có
+::: Kext bắt buộc phải có
 
 Nếu không có kext bên dưới, không có máy nào có thể boot được:
 
 * [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases)(<span style="color:red">Bắt buộc</span>)
   * Giả lập lại chip SMC chip có trên real Mac, không có thì macOS sẽ không thể boot
   * Có thể được thay bằng FakeSMC (có thể hỗ trợ tốt hơn hoặc kém hơn), được sử dụng rộng rãi trong các phần cứng legacy.
-  * Yêu  OS X 10.6 hoặc mới hơn
+  * Yêu cầu OS X 10.6 hoặc mới hơn
 * [Lilu](https://github.com/acidanthera/Lilu/releases)(<span style="color:red">Bắt buộc</span>)
   * Một kext dung để patch nhiều process, cần có cho AppleALC, WhateverGreen, VirtualSMC và nhiều kext khác. Không có Lilu, chúng sẽ không thể hoạt động được.
   * Lưu ý rằng Lilu và các plugin cần OS X 10.8 hoặc mới hơn để hoạt động
   
 ::: Chi tiết  Những kexts buộc phải có cho Legacy
 
-Dành cho những ai định boot OS X 10.7 và các bản cũ hơn trên 32 bit hardware, bạn sẽ phải sử dụng kext sau thay cho VirtualSMC:
+Dành cho những ai định boot OS X 10.7 và các bản cũ hơn trên phần cứng 32 bit, bạn sẽ phải sử dụng kext sau thay cho VirtualSMC:
 
 * [FakeSMC-32](https://github.com/khronokernel/Legacy-Kexts/blob/master/32Bit-only/Zip/FakeSMC-32.kext.zip?raw=true)
 
 Lưu ý rằng nếu bạn định boot những OS cũ như vậy, bạn có thể không cần kext.
 
-* **OS X 10.4 and 10.5 note**: Even on 64-bit CPUs, OS X's kernel space is still 32-bit. So we recommend using FakeSMC-32 in tandem with VirtualSMC, specifically by setting FakeSMC-32's `Arch` entry to `i386` and VirtualSMC's to `x86_64`. This is discussed further on in the guide.
+* **Lưu ý cho OS X 10.4 và 10.5**: Ngay cả trên CPU 64-bit, nhân của OS X vẫn là 32-bit. Nên chúng tôi khuyên bạn sử dụng FakeSMC-32 song song với VirtualSMC, đặc biệt là thiết lập entry FakeSMC-32 `Arch` thành `i386` và VirtualSMC thành `x86_64`. Chúng ta sẽ thảo luận sâu hơn về việc này trong guide này
 
 :::
 
@@ -110,7 +110,7 @@ Các Plugin bên dưới đều không cần thiết để khởi động, và �
   * Cho phép theo dõi tốt hơn và quản lý tốc độ quạt trên các máy Dell hỗ trợ System Management Mode(SMM)
   * **Không sử dụng nếu bạn không có máy Dell được hỗ trợ**, chủ yếu các máy Dell sẽ cần kext này
 
-### Graphics
+### Đồ hoạ
 
 * [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases)(<span style="color:red">Bắt buộc</span>)
   * Dùng đề patch đồ hoạ DRM, boardID, framebuffer fixes, v.v, tất cả GPUs đều cần kext này.
@@ -138,45 +138,45 @@ Dành cho những người dự định khởi động từ 10.7 và cũ hơn c�
 
 ### Ethernet
 
-Here we're going to assume you know what ethernet card your system has, reminder that product spec pages will most likely list the type of network card.
+Tại đây chúng ta sẽ cùng nhau tim hiểu về card ethernet mà hệ thống của bạn là gì, nhắc nhở rẳng trang thông số của sản phẩm sẽ gần như liệt ra tên của loại card Ethernet.
 
 * [IntelMausi](https://github.com/acidanthera/IntelMausi/releases)
   * Required for the majority of Intel NICs, chipsets that are based off of I211 will need the SmallTreeIntel82576 kext
   * Intel's 82578, 82579, I217, I218 and I219 NICs are officially supported
   * Requires OS X 10.9 or newer, 10.6-10.8 users can use the IntelSnowMausi instead for older OSes
 * [SmallTreeIntel82576 kext](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases)
-  * Required for I211 NICs, based off of the SmallTree kext but patched to support I211
-  * Required for most AMD boards running Intel NICs
-  * Requires OS X 10.9-12(v1.0.6), macOS 10.13-14(v1.2.5), macOS 10.15+(v1.3.0)
+  * Yêu cầu cho I211 NIC, dựa trên kext SmallTree nhỏ nhưng được patch để hỗ trợ I211
+  * Yêu cầu cho đa số bo mạch chủ AMD dùng Intel NIC
+  * Yêu cầu OS X 10.9-12(v1.0.6), macOS 10.13-14(v1.2.5), macOS 10.15+(v1.3.0)
 * [AtherosE2200Ethernet](https://github.com/Mieze/AtherosE2200Ethernet/releases)
   * Required for Atheros and Killer NICs
-  * Requires OS X 10.8 or newer
+  * Yêu cầu OS X 10.8 or newer
   * Note: Atheros Killer E2500 models are actually Realtek based, for these systems please use [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) instead
 * [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
-  * For Realtek's Gigabit Ethernet
-  * Requires OS X 10.8 and up for versions v2.2.0 and below, macOS 10.12 and up for versions v2.2.2 through v2.3.0 (inclusive), macOS 10.14 and up for versions v2.4.0 and up
+  * Dành cho Realtek's Gigabit Ethernet
+  * Yêu cầu OS X 10.8 and up for versions v2.2.0 and below, macOS 10.12 and up for versions v2.2.2 through v2.3.0 (inclusive), macOS 10.14 and up for versions v2.4.0 and up
   * **NOTE:** Sometimes the latest version of the kext might not work properly with your Ethernet. If you see this issue, try older versions.
 * [LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/)
-  * For Realtek's 2.5Gb Ethernet
-  * Requires macOS 10.15 or newer
-* For Intel's I225-V NICs, patches are mentioned in the desktop [Comet Lake DeviceProperties](config.plist/comet-lake.md#deviceproperties) section. No kext is required.
-  * Requires macOS 10.15 or newer
-* For Intel's I350 NICs, patches are mentioned in the HEDT [Sandy and Ivy Bridge-E DeviceProperties](config-HEDT/ivy-bridge-e.md#deviceproperties) section. No kext is required.
-  * Requires OS X 10.10 or newer
+  * Cho Realtek's 2.5Gb Ethernet
+  * Yêu cầu macOS 10.15 và mới hơn
+* Cho Intel I225-V NIC, những patch đều được nhắc đến trong phần desktop [Comet Lake DeviceProperties](config.plist/comet-lake.md#deviceproperties). Không có kext được yêu cầu.
+  * Yêu cầu macOS 10.15 và mới hơn
+* Cho Intel I350 NIC, những patch đêu được nhắc đến trong phần HEDT [Sandy and Ivy Bridge-E DeviceProperties](config-HEDT/ivy-bridge-e.md#deviceproperties). Không có kext được yêu cầu.
+  * Yêu cầu OS X 10.10 và mới hơn
 
-::: details Legacy Ethernet Kexts
+::: details Kext Ethernet Legacy
 
 Relevant for either legacy macOS installs or older PC hardware.
 
 * [AppleIntele1000e](https://github.com/chris1111/AppleIntelE1000e/releases)
   * Mainly relevant for 10/100MBe based Intel Ethernet controllers
-  * Requires 10.6 or newer
+  * Yêu cầu 10.6 or newer
 * [RealtekRTL8100](https://www.insanelymac.com/forum/files/file/259-realtekrtl8100-binary/)
   * Mainly relevant for 10/100MBe based Realtek Ethernet controllers
-  * Requires macOS 10.12 or newer with v2.0.0+
+  * Yêu cầu macOS 10.12 và mới hơn với v2.0.0+
 * [BCM5722D](https://github.com/chris1111/BCM5722D/releases)
   * Mainly relevant for BCM5722 based Broadcom Ethernet controllers
-  * Requires OS X 10.6 or newer
+  * Dành cho OS X 10.6 và mới hơn
 
 :::
 
@@ -184,7 +184,7 @@ And also keep in mind certain NICs are actually natively supported in macOS:
 
 ::: details Native Ethernet Controllers
 
-#### Aquantia Series
+#### Series Aquantia
 
 ```md
 # AppleEthernetAquantiaAqtion.kext
@@ -201,9 +201,9 @@ pci1d6a,c0   = Aquantia AQC113
 pci1d6a,4c0  = Aquantia AQC113
 ```
 
-**Note**: Due to some outdated firmware shipped on many Aquantia NICs, you may need to update the firmware in Linux/Windows to ensure it's macOS-compatible.
+**Lưu ý**: Vì có một số firmware lỗi thời được kèm theo trong nhiều Aquantia NIC, bạn có thể cân phải cập nhật firmware trong Linux/Windows để chắc chắn rằng nó tương thích với macOS.
 
-#### Intel Series
+#### Series Intel
 
 ```md
 # AppleIntel8254XEthernet.kext
@@ -221,7 +221,7 @@ pci8086,10f6 = Intel 82574L
 
 ```
 
-#### Broadcom Series
+#### Series Broadcom
 
 ```md
 # AppleBCM5701Ethernet.kext
@@ -239,42 +239,42 @@ pci14e4,1686 = Broadcom BCM57766
 * [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/)
   * Used for injecting Intel USB controllers on systems without defined USB ports in ACPI
   * Shouldn't be needed on Desktop Skylake and newer
-    * AsRock rất ngớ ngẩn và cần cái này
+    * AsRock rất ngớ ngẩn và phải cần cái này
     * Coffee Lake và các laptop cũ hơn được khuyến khích sử dụng kext này
   * Không hoạt động trên CPU AMD **chút nào**
   * Yêu cầu OS X 10.11 hoặc mới hơn
 
 * [XHCI-unsupported](https://github.com/RehabMan/OS-X-USB-Inject-All)
-  * Needed for non-native USB controllers
-  * AMD CPU based systems don't need this
-  * Common chipsets needing this:
+  * Cần cho bộ điều khiển USB không native
+  * Hệ thống dựa trên CPU AMD không cần thứ này
+  * Những chipset phổ biến cần thứ này:
     * H370
     * B360
     * H310
-    * Z390(Not needed on Mojave and newer)
+    * Z390(Không cần trên Mojave và mới hơn)
     * X79
     * X99
-    * AsRock boards(On Intel motherboards specifically, B460/Z490+ boards do not need it however)
+    * Bo mạch chủ AsRock(Đặc biệt trên bo mạch chủ Intel, bo B460/Z490 và mới hơn không cần nó)
 
-### WiFi  Bluetooth
+### WiFi và Bluetooth
 
 #### Intel
 
 * [AirportItlwm](https://github.com/OpenIntelWireless/itlwm/releases)
   * Adds support for a large variety of Intel wireless cards and works natively in recovery thanks to IO80211Family integration
-  * Requires macOS 10.13 or newer and requires Apple's Secure Boot to function correctly
+  * Yêu cầu macOS 10.13 hoặc mới hơn và yêu cầu Apple Secure Boot được hoạt động đúng cách
 * [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
   * Adds Bluetooth support to macOS when paired with an Intel wireless card
   * Requires macOS 10.13 or newer
 
-::: details More info on enabling AirportItlwm
+::: details Thêm thông tin trong việc kích hoạt AirportItlwm
 
-To enable AirportItlwm support with OpenCore, you'll need to either:
+Để kích hoạt hỗ trợ AirportItlwm với OpenCore, bạn sẽ phải cần:
 
-* Enable `Misc -> Security -> SecureBootModel` by either setting it as `Default` or some other valid value
+* Kích hoạt `Misc -> Security -> SecureBootModel` bằng cách thiết lập nó là `Default` hoặc những giá trị khác thích hợp
   * This is discussed both later on in this guide and in the post-install guide: [Apple Secure Boot](https://viopencore.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html)
 * If you cannot enable SecureBootModel, you can still force inject IO80211Family(**Highly discouraged**)
-  * Set the following under `Kernel -> Force` in your config.plist(discussed later in this guide):
+  * Thiết lập dưới phần `Kernel -> Force` trong config.plist của bạn(sẽ thảo luận sau trong suide này):
   
 ![](./images/ktext-md/force-io80211.png)
 
@@ -283,25 +283,25 @@ To enable AirportItlwm support with OpenCore, you'll need to either:
 #### Broadcom
 
 * [AirportBrcmFixup](https://github.com/acidanthera/AirportBrcmFixup/releases)
-  * Used for patching non-Apple/non-Fenvi Broadcom cards, **will not work on Intel, Killer, Realtek, etc**
-  * Requires OS X 10.10 or newer
-  * For Big Sur see [Big Sur Known Issues](./extras/big-sur#known-issues) for extra steps regarding AirPortBrcm4360 drivers.
+  * Dùng để patch card không tới từ Apple/Fenvi Broadcom , **sẽ không hoạt động trên Intel, Killer, Realtek, v.v**
+  * Yêu cầu OS X 10.10 và mới hơn
+  * Dành cho Big Sur xem [Big Sur Known Issues](./extras/big-sur#known-issues) for extra steps regarding AirPortBrcm4360 drivers.
 * [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM/releases)
-  * Used for uploading firmware on Broadcom Bluetooth chipset, required for all non-Apple/non-Fenvi Airport cards.
-  * To be paired with BrcmFirmwareData.kext
+  * Dùng để tải lên firmware trên chipset Broadcom Bluetooth, bắt buộc dành cho tất cả card Airport không phải đến từ Apple/Fenvi.
+  * Những kext sẽ đi đôi với BrcmFirmwareData.kext
     * BrcmPatchRAM3 for 10.15+ (must be paired with BrcmBluetoothInjector)
     * BrcmPatchRAM2 for 10.11-10.14
     * BrcmPatchRAM for 10.8-10.10
 
-::: details BrcmPatchRAM Load order
+::: details Thứ tự load BrcmPatchRAM
 
-The order in `Kernel -> Add` should be:
+Thứ tự trong `Kernel -> Add` phải là:
 
 1. BrcmBluetoothInjector
 2. BrcmFirmwareData
 3. BrcmPatchRAM3
 
-However ProperTree will handle this for you, so you need not concern yourself
+Tuy nhiên ProperTree sẽ giúp bạn việc này, nên bạn sẽ không phải lo lắng điều này
 
 :::
 
@@ -312,9 +312,9 @@ However ProperTree will handle this for you, so you need not concern yourself
   * Requires macOS 10.13 or newer
 * [VoodooHDA](https://sourceforge.net/projects/voodoohda/)
   * Audio for FX systems and front panel Mic+Audio support for Ryzen system, do not mix with AppleALC. Audio quality is noticeably worse than AppleALC on Zen CPUs
-  * Requires OS X 10.6 or newer
+  * Yêu cầu OS X 10.6 và mới hơn
 
-### Extras
+### Thêm
 
 * [AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip)
   * Useful starting with Catalina to disable the AppleMCEReporter kext which will cause kernel panics on AMD CPUs and dual-socket systems
@@ -324,18 +324,18 @@ However ProperTree will handle this for you, so you need not concern yourself
     * iMacPro1,1
   * Requires macOS 10.15 or newer
 * [CpuTscSync](https://github.com/lvs1974/CpuTscSync/releases)
-  * Needed for syncing TSC on some of Intel's HEDT and server motherboards, without this macOS may be extremely slow or even unbootable.
-  * **Does not work on AMD CPUs**
-  * Requires OS X 10.8 or newer
+  * Cần có để truyền TSC trên một số bo mạch Intel HEDT và server, không có cái này macOS sẽ cực kỳ chậm và thậm chí không thể boot được.
+  * **Không hoạt động trên CPU AMD**
+  * Yêu cầu OS X 10.8 hoặc mới hơn
 * [NVMeFix](https://github.com/acidanthera/NVMeFix/releases)
-  * Used for fixing power management and initialization on non-Apple NVMe
-  * Requires macOS 10.14 or newer
+  * Dùng để sửa lỗi quản lý điện năng và thiết lập trên NVMe không đên từ Apple
+  * Yêu cầu macOS 10.14 và mới hơn
 * [SATA-Unsupported](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/SATA-unsupported.kext.zip)
-  * Adds support for a large variety of SATA controllers, mainly relevant for laptops which have issues seeing the SATA drive in macOS. We recommend testing without this first.
-  * macOS Big Sur Note: [CtlnaAHCIPort](https://github.com/viopencore/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip) will need to be used instead due to numerous controllers being dropped from the binary itself
-    * Catalina and older need not concern
+  * Thêm hỗ trợ cho nhiêu bộ điều khiển SATA, chủ yếu dành cho laptop gặp vấn đề về việc thấy ổ đĩa SATA trong macOS. Chúng tôi khuyên thử với không có kext này trước.
+  * Lưu ý cho macOS Big Sur: [CtlnaAHCIPort](https://github.com/viopencore/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip) sẽ phần phải dùng cái này thay vì rất nhiều bộ điều khiển đã bị bỏ khỏi binary
+    * Catalina và cũ hơn không cần lo lắng vê điều này
 
-::: details Legacy SATA Kexts
+::: details Kext SATA Legacy
 
 * [AHCIPortInjector](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/AHCIPortInjector.kext.zip)
   * Legacy SATA/AHCI injector, mainly relevant for older machines of the Penryn era
@@ -344,33 +344,33 @@ However ProperTree will handle this for you, so you need not concern yourself
   
 :::
 
-### Laptop Specifics
+### Đặc biệt cho laptop
 
-To figure out what kind of keyboard and trackpad you have, check Device Manager in Windows or `dmesg | grep -i input` in Linux
+Để tìm hiểu loại bàn phím và trackpad mà bạn có, kiêm tra Device Manager trong Windows hoặc `dmesg | grep -i input` trong Linux
 
-#### Input drivers
+#### Input driver
 
 * [VoodooPS2](https://github.com/acidanthera/VoodooPS2/releases)
-  * For systems with PS2 keyboards, mice, and trackpads
-  * Requires macOS 10.11 or newer for MT2 (Magic Trackpad 2) functions
+  * Dành cho hệ thống với bàn phím, chuột và trackpad PS2
+  * Yêu cầu macOS 10.11 hoặc mới hơn cho chức năng của MT2 (Magic Trackpad 2)
 * [RehabMan's VoodooPS2](https://bitbucket.org/RehabMan/os-x-voodoo-ps2-controller/downloads/)
-  * For older systems with PS2 keyboards, mice, and trackpads, or when you don't want to use VoodooInput
-  * Supports macOS 10.6+ support
+  * Dành cho hệ thống cũ hơn với bàn phím, chuột, trackpad PS2, hoặc khi bạn không muốn sử dụng VoodooInput
+  * Hỗ trợ cho macOS 10.6 trở lên
 * [VoodooRMI](https://github.com/VoodooSMBus/VoodooRMI/releases/)
-  * For systems with Synaptics SMBus-based devices, mainly for trackpads and trackpoints.
-  * Requires macOS 10.11 or newer for MT2 functions
-* [VoodooSMBus](https://github.com/VoodooSMBus/VoodooSMBus/releases)
-  * For systems with ELAN SMBus-based devices, mainly for trackpads and trackpoints.
-  * Supports macOS 10.14 or newer currently
+  * Dành cho hệ thống với thiết bị dựa trên Synaptics SMBus, chủ yếu cho trackpad và trackpoint.
+  * Yêu cầu macOS 10.11 hoặc mới hơn cho chức năng của MT2
+* [VoodooSMBus](https://github.com/VoodooSMBus/VoodooSMBus/releases/)
+  * Dành cho hệ thống với thiết bị dựa trên ELAN SMBus, chủ yếu cho trackpad và trackpoint.
+  * Hiện tại hỗ trợ macOS 10.14 hoặc mới hơn
 * [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases)
-  * Used for fixing I2C devices, found with some fancier touchpads and touchscreen machines
-  * Requires macOS 10.11 or newer for MT2 functions
-::: details VoodooI2C Plugins
-| Connection type | Plugin | Notes |
+  * Dùng để sửa lỗi thiêt bị I2C, found with some fancier touchpads and touchscreen machines
+  * Yêu cầu macOS 10.11 và mới hơn cho chức năng của MT2
+::: details Plugin VoodooI2C
+| Loại kết nối | Plugin | Lưu ý |
 | :--- | :--- | :--- |
 | Microsoft HID | VoodooI2CHID | Can be used to support some USB touchscreens as well |
 | ELAN Proprietary | VoodooI2CElan | ELAN1200+ require VoodooI2CHID instead |
-| Synaptics Proprietary | VoodooI2CSynaptics | Synaptics F12 protocol require VoodooI2CHID instead |
+| Synaptics Proprietary | VoodooI2CSynaptics | Synaptics F12 protocol yêu cầu VoodooI2CHID |
 | ^^ | VoodooRMI | Supports Synaptics protocols F12/F3A - These generally support Microsoft's HID standard so you should attempt using VoodooI2CHID first |
 | FTE1001 touchpad | VoodooI2CFTE | |
 | Atmel Multitouch Protocol | VoodooI2CAtmelMXT | |
@@ -379,9 +379,9 @@ To figure out what kind of keyboard and trackpad you have, check Device Manager 
 #### Misc
 
 * [ECEnabler](https://github.com/1Revenger1/ECEnabler/releases)
-  * Fixes reading battery status on many devices (Allows reading EC fields over 8 bits long)
+  * Sửa lỗi đọc tình trạng pin trên nhiều thiết bị (Cho phép đọc khu vực EC dài hơn 8 bit)
 * [BrightnessKeys](https://github.com/acidanthera/BrightnessKeys/releases)
-  * Fixes brightness keys automatically
+  * Tự động sửa lỗi đèn nền bàn phím
 
 Please refer to [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) for a full list of supported kexts
 
@@ -395,10 +395,10 @@ A quick TL;DR of needed SSDTs(This is source code, you will have to compile them
 
 ### Desktop
 
-| Platforms | **CPU** | **EC** | **AWAC** | **NVRAM** | **USB** |
+| Nền tảng | **CPU** | **EC** | **AWAC** | **NVRAM** | **USB** |
 | :-------: | :-----: | :----: | :------: | :-------: | :-----: |
 | Penryn | N/A | [SSDT-EC](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | N/A | N/A | N/A |
-| Lynnfield and Clarkdale | ^^ | ^^ | ^^ | ^^ | ^^ |
+| Lynnfield và Clarkdale | ^^ | ^^ | ^^ | ^^ | ^^ |
 | SandyBridge | [CPU-PM](https://viopencore.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Run in Post-Install) | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Haswell | [SSDT-PLUG](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/plug.html) | ^^ | ^^ | ^^ | ^^ |
@@ -408,13 +408,13 @@ A quick TL;DR of needed SSDTs(This is source code, you will have to compile them
 | Coffee Lake | ^^ | ^^ | [SSDT-AWAC](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/awac.html) | [SSDT-PMC](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/nvram.html) | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | N/A | [SSDT-RHUB](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/rhub.html) |
 | AMD (15/16h) | N/A | ^^ | N/A | ^^ | N/A |
-| AMD (17/19h) | [SSDT-CPUR for B550 and A520](https://github.com/viopencore/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
+| AMD (17/19h) | [SSDT-CPUR cho B550 và A520](https://github.com/viopencore/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
 
 ### High End Desktop
 
-| Platforms | **CPU** | **EC** | **RTC** | **PCI** |
+| Nền tảng | **CPU** | **EC** | **RTC** | **PCI** |
 | :-------: | :-----: | :----: | :-----: | :-----: |
-| Nehalem and Westmere | N/A | [SSDT-EC](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | N/A | N/A |
+| Nehalem và Westmere | N/A | [SSDT-EC](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | N/A | N/A |
 | Sandy Bridge-E | ^^ | ^^ | ^^ | [SSDT-UNC](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/unc0) |
 | Ivy Bridge-E | ^^ | ^^ | ^^ | ^^ |
 | Haswell-E | [SSDT-PLUG](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/plug.html) | [SSDT-EC-USBX](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-RTC0-RANGE](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/awac.html) | ^^ |
@@ -423,9 +423,9 @@ A quick TL;DR of needed SSDTs(This is source code, you will have to compile them
 
 ### Laptop
 
-| Platforms | **CPU** | **EC** | **Backlight** | **I2C Trackpad** | **AWAC** | **USB** | **IRQ** |
+| Nền tảng | **CPU** | **EC** | **Backlight** | **I2C Trackpad** | **AWAC** | **USB** | **IRQ** |
 | :-------: | :-----: | :----: | :-----------: | :--------------: | :------: | :-----: | :-----: |
-| Clarksfield and Arrandale | N/A | [SSDT-EC](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-PNLF](https://viopencore.github.io/Getting-Started-With-ACPI/Laptops/backlight.html) | N/A | N/A | N/A | [IRQ SSDT](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/irq.html) |
+| Clarksfield và Arrandale | N/A | [SSDT-EC](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/ec-fix.html) | [SSDT-PNLF](https://viopencore.github.io/Getting-Started-With-ACPI/Laptops/backlight.html) | N/A | N/A | N/A | [IRQ SSDT](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/irq.html) |
 | SandyBridge | [CPU-PM](https://viopencore.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Run in Post-Install) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Haswell | [SSDT-PLUG](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/plug.html) | ^^ | ^^ | [SSDT-GPI0](https://viopencore.github.io/Getting-Started-With-ACPI/Laptops/trackpad.html) | ^^ | ^^ | ^^ |
@@ -439,7 +439,7 @@ A quick TL;DR of needed SSDTs(This is source code, you will have to compile them
 
 Continuing:
 
-| Platforms | **NVRAM** | **IMEI** |
+| Nền tảng | **NVRAM** | **IMEI** |
 | :-------: | :-------: | :------: |
 |  Clarksfield and Arrandale | N/A | N/A |
 | Sandy Bridge | ^^| [SSDT-IMEI](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/imei.html) |
@@ -448,9 +448,9 @@ Continuing:
 | Broadwell | ^^ | ^^ |
 | Skylake | ^^ | ^^ |
 | Kaby Lake | ^^ | ^^ |
-| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ |
-| Coffee Lake (9th Gen) | [SSDT-PMC](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/nvram.html) | ^^ |
+| Coffee Lake (Thế hệ thứ 8) and Whiskey Lake | ^^ | ^^ |
+| Coffee Lake (Thế hệ thứ 9) | [SSDT-PMC](https://viopencore.github.io/Getting-Started-With-ACPI/Universal/nvram.html) | ^^ |
 | Comet Lake | N/A | ^^ |
 | Ice Lake | ^^ | ^^ |
 
-# Now with all this done, head to [Getting Started With ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/)
+# Và sau khi hoàn thành, đi tới [Getting Started With ACPI](https://viopencore.github.io/Getting-Started-With-ACPI/)
