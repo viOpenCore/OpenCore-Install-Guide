@@ -149,13 +149,13 @@ Tại đây chúng ta sẽ cùng nhau tim hiểu về card ethernet mà hệ th�
   * Yêu cầu cho đa số bo mạch chủ AMD dùng Intel NIC
   * Yêu cầu OS X 10.9-12(v1.0.6), macOS 10.13-14(v1.2.5), macOS 10.15+(v1.3.0)
 * [AtherosE2200Ethernet](https://github.com/Mieze/AtherosE2200Ethernet/releases)
-  * Required for Atheros and Killer NICs
-  * Yêu cầu OS X 10.8 or newer
+  * Yêu cầu cho Atheros và NIC Killer
+  * Yêu cầu OS X 10.8 hoạc mới hơn
   * Note: Atheros Killer E2500 models are actually Realtek based, for these systems please use [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) instead
 * [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases)
   * Dành cho Realtek's Gigabit Ethernet
   * Yêu cầu OS X 10.8 and up for versions v2.2.0 and below, macOS 10.12 and up for versions v2.2.2 through v2.3.0 (inclusive), macOS 10.14 and up for versions v2.4.0 and up
-  * **NOTE:** Sometimes the latest version of the kext might not work properly with your Ethernet. If you see this issue, try older versions.
+  * **Lưu ý:** Thỉnh thoảng phiên bản mới nhất của kext sẽ không hoạt động đúng cách với Ethernet của bạn. Nếu bạn gặp vấn đề này, thử phiên bản cũ hơn.
 * [LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/)
   * Cho Realtek's 2.5Gb Ethernet
   * Yêu cầu macOS 10.15 và mới hơn
@@ -166,23 +166,23 @@ Tại đây chúng ta sẽ cùng nhau tim hiểu về card ethernet mà hệ th�
 
 ::: details Kext Ethernet Legacy
 
-Relevant for either legacy macOS installs or older PC hardware.
+Chủ yếu dành cho cài macOS legacy và phần cứng PC cũ hơn.
 
 * [AppleIntele1000e](https://github.com/chris1111/AppleIntelE1000e/releases)
-  * Mainly relevant for 10/100MBe based Intel Ethernet controllers
-  * Yêu cầu 10.6 or newer
+  * Chủ yếu thích hợp cho bộ điều khiển Ethernet của Intel dựa trên 10/100MBe
+  * Yêu cầu 10.6 hoặc mới hơn
 * [RealtekRTL8100](https://www.insanelymac.com/forum/files/file/259-realtekrtl8100-binary/)
-  * Mainly relevant for 10/100MBe based Realtek Ethernet controllers
+  * Chủ yếu thích hợp cho bộ điều khiển Ethernet của Realtek dựa trên 10/100MBe
   * Yêu cầu macOS 10.12 và mới hơn với v2.0.0+
 * [BCM5722D](https://github.com/chris1111/BCM5722D/releases)
-  * Mainly relevant for BCM5722 based Broadcom Ethernet controllers
+  * Chủ yếu thích hợp cho bộ điều khiển Ethernet của Broadcom dựa trên BCM5722
   * Dành cho OS X 10.6 và mới hơn
 
 :::
 
-And also keep in mind certain NICs are actually natively supported in macOS:
+Và cũng nên biết những NIC dưới đây đều được hỗ trợ native trong macOS:
 
-::: details Native Ethernet Controllers
+::: details Bộ điều khiển Ethernet native
 
 #### Series Aquantia
 
@@ -272,9 +272,9 @@ pci14e4,1686 = Broadcom BCM57766
 Để kích hoạt hỗ trợ AirportItlwm với OpenCore, bạn sẽ phải cần:
 
 * Kích hoạt `Misc -> Security -> SecureBootModel` bằng cách thiết lập nó là `Default` hoặc những giá trị khác thích hợp
-  * This is discussed both later on in this guide and in the post-install guide: [Apple Secure Boot](https://viopencore.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html)
-* If you cannot enable SecureBootModel, you can still force inject IO80211Family(**Highly discouraged**)
-  * Thiết lập dưới phần `Kernel -> Force` trong config.plist của bạn(sẽ thảo luận sau trong suide này):
+  * Thứ này sẽ được thảo luận sau trong guide này và trong guide post-install: [Apple Secure Boot](https://viopencore.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html)
+* Nếu bạn không thể kích hoạt SecureBootModel, bạn vẫn có thể buộc inject IO80211Family(**Không hề được khuyến khích**)
+  * Thiết lập dưới phần `Kernel -> Force` trong config.plist của bạn(sẽ thảo luận sau trong guide này):
   
 ![](./images/ktext-md/force-io80211.png)
 
@@ -308,21 +308,21 @@ Tuy nhiên ProperTree sẽ giúp bạn việc này, nên bạn sẽ không phả
 ### AMD CPU Specific kexts
 
 * [XLNCUSBFIX](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip)
-  * USB fix for AMD FX systems, not recommended for Ryzen
-  * Requires macOS 10.13 or newer
+  * Fix USB cho hệ thống AMD FX, không khuyến khích cho Ryzen
+  * Yêu cầu macOS 10.13 hoặc mới hơn
 * [VoodooHDA](https://sourceforge.net/projects/voodoohda/)
-  * Audio for FX systems and front panel Mic+Audio support for Ryzen system, do not mix with AppleALC. Audio quality is noticeably worse than AppleALC on Zen CPUs
-  * Yêu cầu OS X 10.6 và mới hơn
+  * Âm thanh cho hệ thống FX và hỗ trợ Mic+Audio mặt trước case cho hệ thống Ryzen, không hoà trộn với AppleALC. Chất lượng âm thanh tệ hơn rất nhiều so với AppleALC trên CPU Zen
+  * Yêu cầu OS X 10.6 hoặc mới hơn
 
 ### Thêm
 
 * [AppleMCEReporterDisabler](https://github.com/acidanthera/bugtracker/files/3703498/AppleMCEReporterDisabler.kext.zip)
-  * Useful starting with Catalina to disable the AppleMCEReporter kext which will cause kernel panics on AMD CPUs and dual-socket systems
-  * Affected SMBIOS:
+  * Hữu ích trong việc khởi động Catalina để disable kext AppleMCEReporter sẽ gây kernel panic trên CPU AMD và hệ thống với dual-socket
+  * SMBIOS bị ảnh hưởng:
     * MacPro6,1
     * MacPro7,1
     * iMacPro1,1
-  * Requires macOS 10.15 or newer
+  * Yêu cầu macOS 10.15 hoặc mới hơn
 * [CpuTscSync](https://github.com/lvs1974/CpuTscSync/releases)
   * Cần có để truyền TSC trên một số bo mạch Intel HEDT và server, không có cái này macOS sẽ cực kỳ chậm và thậm chí không thể boot được.
   * **Không hoạt động trên CPU AMD**
@@ -333,7 +333,7 @@ Tuy nhiên ProperTree sẽ giúp bạn việc này, nên bạn sẽ không phả
 * [SATA-Unsupported](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/SATA-unsupported.kext.zip)
   * Thêm hỗ trợ cho nhiêu bộ điều khiển SATA, chủ yếu dành cho laptop gặp vấn đề về việc thấy ổ đĩa SATA trong macOS. Chúng tôi khuyên thử với không có kext này trước.
   * Lưu ý cho macOS Big Sur: [CtlnaAHCIPort](https://github.com/viopencore/OpenCore-Install-Guide/blob/master/extra-files/CtlnaAHCIPort.kext.zip) sẽ phần phải dùng cái này thay vì rất nhiều bộ điều khiển đã bị bỏ khỏi binary
-    * Catalina và cũ hơn không cần lo lắng vê điều này
+    * Catalina và cũ hơn không cần lo lắng về điều này
 
 ::: details Kext SATA Legacy
 
@@ -383,7 +383,7 @@ Tuy nhiên ProperTree sẽ giúp bạn việc này, nên bạn sẽ không phả
 * [BrightnessKeys](https://github.com/acidanthera/BrightnessKeys/releases)
   * Tự động sửa lỗi đèn nền bàn phím
 
-Please refer to [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) for a full list of supported kexts
+Hãy đọc [Kexts.md](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Kexts.md) cho danh sách các kext được hỗ trợ
 
 ## SSDTs
 
