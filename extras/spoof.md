@@ -1,9 +1,9 @@
-# Disabling GPU
+# Tắt GPU
 
-So you need to hide your unsupported GPU? Well with OpenCore things are slightly different, specifically that we need to specify to which exact device we want to spoof. There are 3 ways we can do this:
+Vậy bạn cần tắt unsupported GPU của bạn? Well đối với OpenCore thì cách làm có thể hơi khác, specifically that we need to specify to which exact device we want to spoof. Hiện tại có 3 phương pháp để tắt GPU:
 
 * Boot Flag
-  * Disables all GPUs except the iGPU
+  * Tắt tất cả GPU ngoại trừ iGPU
 * DeviceProperties
   * Disables GPU on a per-slot basis
 * SSDT
@@ -13,11 +13,11 @@ So you need to hide your unsupported GPU? Well with OpenCore things are slightly
 
 ### Boot Flag
 
-By far the simplest way, all you need to do is add the following boot-arg:
+Đây là cách dễ nhất, tất cả những gì bạn cần làm là thêm dòng sau vào boot-arg:
 
 `-wegnoegpu`
 
-Do note that this will disable all GPUs excluding the iGPU.
+Chú ý rằng phương pháp này sẽ tắt tất cả GPU ngoại trừ iGPU.
 
 ### DeviceProperties Method
 

@@ -15,7 +15,7 @@ So making a config.plist may seem hard, it's not. It just takes some time but th
 * **The Sample.plist cannot be used As-Is**, you must configure it to your system
 * **DO NOT USE CONFIGURATORS**, these rarely respect OpenCore's configuration and even some like Mackie's will add Clover properties and corrupt plists!
 
-Now with all that, a quick reminder of the tools we need
+Now with all that, một lưu ý nhỏ về những tool mà chúng ta cần
 
 * [ProperTree](https://github.com/corpnewt/ProperTree)
   * Universal plist editor
@@ -44,7 +44,7 @@ For us we'll need a couple of SSDTs to bring back functionality that Clover prov
 
 Note that you **should not** add your generated `DSDT.aml` here, it is already in your firmware. So if present, remove the entry for it in your `config.plist` and under EFI/OC/ACPI.
 
-For those wanting a deeper dive into dumping your DSDT, how to make these SSDTs, and compiling them, please see the [**Getting started with ACPI**](https://viopencore.github.io/Getting-Started-With-ACPI/) **page.** Compiled SSDTs have a **.aml** extension(Assembled) and will go into the `EFI/OC/ACPI` folder and **must** be specified in your config under `ACPI -> Add` as well.
+Dành cho những ai muốn tìm hiểu sâu hơn về dumping DSDT,  và cách để how to make những SSDTs này, và compile chúng, hãy xem **bài** [**Getting started with ACPI**](https://viopencore.github.io/Getting-Started-With-ACPI/) . Compiled SSDTs sẽ có đuôi **.aml** (Assembled) và được đặt trong folder `EFI/OC/ACPI` và **bắt buộc** be specified in your config under `ACPI -> Add` as well.
 
 :::
 
@@ -167,7 +167,7 @@ A reminder that [ProperTree](https://github.com/corpnewt/ProperTree) users can r
 * **PlistPath**
   * Path to the `info.plist` hidden within the kext
   * ex: `Contents/Info.plist`
-  
+
 ::: details Kernel Support Table
 
 | OS X Version | MinKernel | MaxKernel |
@@ -646,7 +646,7 @@ Relating to quirks with the UEFI environment, for us we'll be changing the follo
 
 * **UnblockFsConnect**: NO
   * Some firmware block partition handles by opening them in By Driver mode, which results in File System protocols being unable to install. Mainly relevant for HP systems when no drives are listed
-  
+
 :::
 
 ### ReservedMemory
