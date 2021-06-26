@@ -1,6 +1,6 @@
 # Tắt GPU
 
-Vậy bạn cần tắt unsupported GPU của bạn? Well đối với OpenCore thì cách làm có thể hơi khác, specifically that we need to specify to which exact device we want to spoof. Hiện tại có 3 phương pháp để tắt GPU:
+Vậy nếu bạn cần tắt GPU không được hỗ trợ của bạn? Well đối với OpenCore thì cách làm có thể hơi khác, specifically that we need to specify to which exact device we want to spoof. Hiện tại có 3 phương pháp để tắt GPU:
 
 * Boot Flag
   * Tắt tất cả GPU ngoại trừ iGPU
@@ -9,7 +9,7 @@ Vậy bạn cần tắt unsupported GPU của bạn? Well đối với OpenCore 
 * SSDT
   * Disables GPU on a per-slot basis
 
-**CSM must be off in the BIOS for the spoofing to work correctly, especially on AMD CPU based systems.**
+**CSM cân phải được tắt trong BIOS để nó có thể hoạt động đúng cách, đặc biệt trên hệ thống dựa trên CPU AMD CPU.**
 
 ### Boot Flag
 
