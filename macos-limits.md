@@ -1,4 +1,4 @@
-# Hardware Limitations
+# Các hạn chế về phần cứng
 
 Với macOS, có rất nhiều hạn chế về phần cứng mà bạn cần nhận biết trước khi bước chân vào phần cài đặt. Đấy là do có số lượng hạn chế về phần cứng được Apple hỗ trợ, cho nên một số phần cứng có thể có (hoặc không hoạt động)
 
@@ -48,7 +48,7 @@ Yêu cầu về mặt cấu trúc
   * Chú ý rằng 10.7.x cần userspace 64-bit, cho nên CPU 32-bit bị giới hạn ở 10.6
 * CPU 64-bit được hỗ trợ từ OS X 10.4.1 đến bản mới nhất
 
-SEE Requirements:
+Yêu cầu về SEE:
 
 * SSE3 **BẮT BUỘC PHẢI CÓ**
 * SSSE3 phải có cho mọi phiên bản 64-bit của OS X/macOS
@@ -189,7 +189,7 @@ Note: Apple has kept Ivy Bridge's iGPU drivers present in macOS 11, Big Sur, how
 
 ::: details AMD GPU Support Chart
 
-| GPU Generation | Initial support | Last supported version | Notes |
+| GPU Generation | Phiên bản tối thiểu | Phiên bản cuối cùng | Lưu ý |
 | :--- | :--- | :--- | :--- |
 | [X800](https://en.wikipedia.org/wiki/Radeon_X800_series) | 10.3.x | 10.7.5 | Requires 32 bit kernel |
 | [X1000](https://en.wikipedia.org/wiki/Radeon_X1000_series) | 10.4.x | ^^ | N/A |
@@ -207,7 +207,7 @@ Note: Apple has kept Ivy Bridge's iGPU drivers present in macOS 11, Big Sur, how
 
 ::: details Nvidia GPU Support Chart
 
-| GPU Generation | Initial support | Last supported version | Notes |
+| GPU Generation | Phiên bản tối thiểu | Phiên bản cuối cùng | Lưu ý |
 | :--- | :--- | :--- | :--- |
 | [GeForce 6](https://en.wikipedia.org/wiki/GeForce_6_series) | 10.2.x | 10.7.5 | Requires 32 bit kernel and [NVCAP patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/nvidia-patching/) |
 | [GeForce 7](https://en.wikipedia.org/wiki/GeForce_7_series) | 10.4.x | ^^ | [Requires NVCAP patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/nvidia-patching/) |
@@ -235,7 +235,7 @@ Tuy nhiên, nhờ những phát triển gần đây, chipset B550 hiện có th�
 
 Hầu hết các tất cả các ổ đĩa chuẩn SATA đều được hỗ trợ và phần lớn các ổ đĩa NVMe cũng vậy. Chỉ có một số trường hợp ngoại lệ:
 
-* **Samsung PM981, PM991 and Micron 2200S NVMe SSDs**
+* **Samsung PM981, PM991 và Micron 2200S NVMe SSDs**
   * Các SSD này không tương thích out of the box (gây ra kernel panic) và do đó bạn cần [NVMeFix.kext](https://github.com/acidanthera/NVMeFix/releases) để fix các kernel panic này. Lưu ý rằng những ổ đĩa này vẫn có thể gây ra sự cố khi khởi động ngay cả khi bạn sử dụng NVMeFix.kext.
   * Một lưu ý nữa là SSD Samsung 970 EVO Plus NVMe cũng gặp sự cố tương tự nhưng nó đã được khắc phục trong bản firmware update; tải bản update (Windows thông qua Samsung Magician hoặc bootable ISO) [tại đây](https://www.samsung.com/semiconductor/minisite/ssd/download/tools/).
   * Cũng cần lưu ý rằng laptop sử dụng [Intel Optane Memory](https://www.intel.com/content/www/us/en/architecture-and-technology/optane-memory.html) hoặc [Micron 3D XPoint](https://www.micron.com/products/advanced-solutions/3d-xpoint-technology) để tăng tốc HDD không được hỗ trợ trong macOS. Một số người dùng đã thành công trong Catalina và thậm chí còn hỗ trợ đọc và ghi nhưng chúng tôi thực sự khuyên bạn nên sử dụng ổ đĩa khác để ngăn chặn bất kỳ sự cố tiềm ẩn nào.
@@ -245,7 +245,7 @@ Hầu hết các tất cả các ổ đĩa chuẩn SATA đều được hỗ tr�
 
 ## Mạng có dây
 
-Hầu như tất cả cácwired network adapters đều được hỗ trợ trong macOS, bởi các built-in drivers hoặc các kexts của cộng đồng tạo ra. Các trường hợp ngoại lệ chính:
+Hầu như tất cả các wired network adapters đều được hỗ trợ trong macOS, bởi các driver được thích hợp sẵn hoặc các kext của cộng đồng tạo ra. Các trường hợp ngoại lệ chính:
 
 * Intel I225 2.5Gb NIC
   * Tìm thấy trên các high-end Desktop Comet Lake board
