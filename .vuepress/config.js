@@ -124,10 +124,10 @@ module.exports = {
     }
   },
 
-  // algolia: {
-  //     apiKey: '<API_KEY>',
-  //     indexName: '<INDEX_NAME>'
-  //   },
+  algolia: {
+    apiKey: "c02d8b88b0dec97abb9175dba0c8d26a",
+    indexName: "opencore"
+  },
 
   theme: "succinct",
   globalUIComponents: ["ThemeManager"],
@@ -447,13 +447,13 @@ module.exports = {
         hostname: "http://viopencore.github.io/OpenCore-Install-Guide"
       }
     ],
-    [
-      ("@vuepress/search",
-      {
-        searchMaxSuggestions: 10
-        // searchHotkeys: ""
-      })
-    ],
+    // [
+    //   ("@vuepress/search",
+    //   {
+    //     searchMaxSuggestions: 10
+    //     // searchHotkeys: ""
+    //   })
+    // ],
     [
       ("medium-zoom",
       {
