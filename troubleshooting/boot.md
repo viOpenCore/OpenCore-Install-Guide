@@ -1,33 +1,33 @@
-# Understanding the macOS Boot Process
+# Hiểu được quá trình boot của macOS
 
-So with troubleshooting a hackintosh, it can be a bit difficult to really understand *where* you're getting stuck as the exact keyword you're trying to search for may not match anything on google. While this page won't solve all your issues, it should at least help better understand where in the macOS boot-process you're getting stuck and hopefully give some ideas as to why you're stuck.
+Với việc khắc phục sự cố hackintosh, nó sẽ có một chút khó khăn để hiểu được *nơi* mà bạn đang bị mắc kẹt lại khi từng những từ khoá mà bạn đang cố gắng tìm kiếm có thể không trùng với kết quả gì trên google. Tuy trang này sẽ không giúp bạn khắc phục tất cả các sự cố, ít nhất nó sẽ giúp bạn hiểu tốt hơn nơi mà quuas trình boot của macOS mà bạn đang mắc kẹt và hy vọng nó sẽ cho bạn thêm ý tưởng về việc sại sao bạn bị mắc kẹt.
 
-## OpenCore Booting
+## Quá trình boot OpenCore
 
-This section will be brief, as OpenCore boot issues are fairly rare and usually simple user error:
+Phần này sẽ ngắn gọn, vì vấn đề boot của OpenCore thường như hiếm và thường là các lỗi đơn giản:
 
-* System powers on and searches for boot devices
-* System locates BOOTx64.efi on your OpenCore USB under EFI/BOOT/
-* BOOTx64.efi is loaded which then chain-loads OpenCore.efi from EFI/OC/
-* NVRAM Properties are applied
-* EFI drivers are loaded from EFI/OC/Drivers
-* Graphics Output Protocol(GOP) is installed
-* ACPI Tables are loaded from EFI/OC/ACPI
-* SMBIOS Data is applied
-* OpenCore loads and shows you all possible boot options
-* You now boot your macOS installer
+* Hệ thống khởi động lên và tìm kiếm thiết bị boot
+* Hệ thống xác định BOOTx64.efi trên USB OpenCore của bạn tại EFI/BOOT/
+* BOOTx64.efi được khởi chạy và sẽ chạy OpenCore.efi từ EFI/OC/
+* Tính chất của NVRAM được áp dụng
+* Driver EFI được khởi chạy từ EFI/OC/Drivers
+* Graphics Output Protocol(GOP) được cài đặt
+* Bảng ACPI được khởi chạy từ EFI/OC/ACPI
+* Thông tin SMBIOS được áp dụng
+* OpenCore chạy và hiển thị cho bạn tất cả thiết bị để boot
+* Bây giờ bạn có thể khởi chạy bộ cài đặt macOS của bạn
 
-If you're having issues booting at this point, main things to check for:
+Nếu bạn gặp quá trình về boot tại thời điểm này, những thứ chính cần kiểm tra:
 
-* [Stuck on `no vault provided!`](./extended/opencore-issues.md#stuck-on-no-vault-provided)
-* [Can't see macOS partitions](./extended/opencore-issues.md#can-t-see-macos-partitions)
-* [Booting OpenCore reboots to BIOS](./extended/opencore-issues.md#booting-opencore-reboots-to-bios)
+* [Mắc kẹt tại `no vault provided!`](./extended/opencore-issues.md#stuck-on-no-vault-provided)
+* [Không thể nhìn thất phân vùng macOS](./extended/opencore-issues.md#can-t-see-macos-partitions)
+* [Boot OpenCore khởi động lại về BIOS](./extended/opencore-issues.md#booting-opencore-reboots-to-bios)
 
-For the rest of the possible issues, see here:
+Cho những vấn đề có thể xảy ra còn lại, xem:
 
 * [OpenCore booting issues](./extended/opencore-issues.md)
 
-## boot.efi Handoff
+## Handoff boot.efi
 
 ![](../images/troubleshooting/boot-md/1-boot-efi.png)
 
