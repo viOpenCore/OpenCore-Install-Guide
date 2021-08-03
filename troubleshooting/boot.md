@@ -37,13 +37,13 @@ This is where macOS's bootloader(boot.efi) comes onto the scene, specifically wh
 * [Stuck on `[EB|#LOG:EXITBS:START]`](./extended/kernel-issues.md#stuck-on-eb-log-exitbs-start)
 * [`Couldn't allocate runtime area` errors](./extended/kernel-issues.md#couldn-t-allocate-runtime-area-errors)
 
-For the rest of the possible issues, see here:
+Cho những vấn đề có thể xảy ra còn lại, xem:
 
 * [Kernel Issues](./extended/kernel-issues.md)
 
-**Note**: In macOS 10.15.4, Apple changed the boot.efi debugging protocol, so things will look quite a bit different from before but all the same rules still apply
+**Lưu ý**: Trong macOS 10.15.4, Apple đã đổi phương thức sửa lỗi trong boot.efi, cho nên nó sẽ trông khác biệt chút so với trước nhưng chung quy là nó đều theo cùng một quy luật
 
-## XNU/Kernel Handoff
+## Handoff XNU/Kernel
 
 Now that boot.efi has setup everything for us, we now get to watch the kernel do it's thing. This section is commonly referred as the [Rooting phase](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/KernelProgramming/booting/booting.html):
 
@@ -51,7 +51,7 @@ Now that boot.efi has setup everything for us, we now get to watch the kernel do
 
 This section is where SMBIOS data is verified, ACPI tables/Kexts are loaded and macOS tries to get everything in order. Failures here are generally a result of:
 
-* Corrupted SSDTs
+* SSDT bị 
 * Corrupted kexts(or incorrectly setup under your config.plist -> Kernel -> Add)
 * Messed up memory map
 
@@ -98,13 +98,22 @@ but found his hardware declined.
 Please don't steal Mac OS!
 Really, that's way uncool.
 (C) Apple Computer, Inc.
+Tạm dịch:
+Kiểm tra công việc của bạn hôm nay cho thấy:
+Đã từng có người dùng than vãn rằng
+hệ điều hành của anh ấy quá chậm chạp
+anh ấy tốt hơn là trộm một hệ điều hành tuyệt vời
+nhưng rồi phát hiện ra phần cứng bị từ chối.
+Xin đừng ăn trộm Mac OS!
+Thật đó, nó không thoải mái chút nào.
+(C) Apple Computer, Inc.
 ```
 
-Source: Dont Steal Mac OS X.kext
+Nguồn: Dont Steal Mac OS X.kext
 
 ![](../images/troubleshooting/boot-md/9-audio.png)
 
-This is where Apple's audio driver comes in, and where AppleALC shines. Generally rare to see issues here but if you do, try disabling AppleALC and any other audio related kexts.
+Đây là nơi mà driver âm thanh của Apple vào, nơi sẽ làm AppleALC "sáng" lên. Chung là khá hiếm để thấy vấn đề ở đây nhưng nếu bạn gặp phải, thử huỷ kích hoạt AppleALC và những kext khác liên quan đến âm .
 
 ![](../images/troubleshooting/boot-md/10-GPU.png)
 
