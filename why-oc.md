@@ -8,20 +8,20 @@ Phần này tóm tắt ngắn gọn về lý do tại sao cộng đồng lại c
   * Kext injection
 * [Khiếm khuyết của OpenCore](#khiem-khuyet-cua-opencore)
 * [Lầm tưởng chung](#common-myths)
-  * Có phải OpenCore không ổn định vì nó là bản không?
-  * Có phải OpenCore luôn inject SMBIOS và ACPI vào các hệ điều hành (OSes) khác phải không?
+  * Có phải OpenCore không ổn định vì nó là bản beta?
+  * Có phải OpenCore luôn inject SMBIOS và ACPI vào các hệ điều hành (OS) khác phải không?
   * Có phải OpenCore yêu cầu phải cài mới, cài vanilla không?
-  * Có OpenCore chỉ hỗ trợ rất ít phiên bản (versions) macOS?
+  * Có OpenCore chỉ hỗ trợ rất ít phiên bản (version) macOS?
 
 ## Tính năng của OpenCore
 
-* Hỗ trợ nhiều OSes hơn!
-  * OpenCore hiện hỗ trợ nhiều versions của OS X and macOS một cách tự nhiên mà không cần các vụ hack khó khăn của Clover và Chameleon
-  * OpenCore hỗ trợ các OSes từ 10.4, Tiger trở lại đây, thâm chs là phiên bản mới nhất 11, Big Sur!
+* Hỗ trợ nhiều OS hơn!
+  * OpenCore hiện hỗ trợ nhiều version của OS X và macOS một cách tự nhiên mà không cần các vụ hack khó khăn của Clover và Chameleon
+  * OpenCore hỗ trợ các OS từ 10.4, Tiger trở lại đây, thâm chí là phiên bản mới nhất 11, Big Sur!
 * Trung bình, các hệ thống chạy OpenCore boot nhanh hơn Clover vì ít các patch không cần thiết hơn
-* Tính ổn định tổng thể tốt hơn vì các bản patches chính xác hơn nhiều
+* Tính ổn định tổng thể tốt hơn vì các bản patch chính xác hơn nhiều
   * [macOS 10.15.4 update](https://www.reddit.com/r/hackintosh/comments/fo9bfv/macos_10154_update/)
-  * AMD OSX patches không cần phải được cập với mọi bản Secủity update nhỏ
+  * AMD OSX patches không cần phải được cập với mọi bản Security update nhỏ
 * Tổng quan thì bảo mật tốt hơn ở nhiều mặt:
   * Không cần tắt System Integrity Protection (SIP)
   * Hỗ trợ FileVault 2
@@ -76,7 +76,7 @@ Những điều cần lưu ý với phương pháp của OpenCore:
 
 # Khiếm khuyết của OpenCore
 
-Hầu hết các Clover's functionality is actually supported in OpenCore in the form of some quirk, however when transitioning you should pay close attention to OpenCore's missing features as this may or may not affect yourself:
+Hầu hết các chức năng của Clover được hỗ trợ trong OpenCore in the form of some quirk, tuy nhiên khi chuyển đổi bạn hãy chú ý cẩn thận về những tính năng bị thiếu của OpenCore vì nó có hoặc không ảnh hưởng tới bạn:
 
 * Does not support booting MBR-based operating systems
   * Work around is to chain-load rEFInd once in OpenCore
@@ -101,13 +101,13 @@ Hầu hết các Clover's functionality is actually supported in OpenCore in the
 
 # Common Myths
 
-## Is OpenCore unstable as it's a beta
+## Có phải OpenCore không ổn định vì nó là bản beta?
 
-Short Answer: No
+Câu trả lời ngắn: Không
 
-Long Answer: No
+Câu trả lời dài: Không
 
-OpenCore's version number does not represent the quality of the project. Instead, it's more of a way to see the stepping stones of the project. Acidanthera still has much they'd like to do with the project including overall refinement and more feature support.
+Số phiên bản của OpenCore không tái hiện lại chất lượng của dự án. Thay vào đó, it's more of a way to see the stepping stones of the project. Acidanthera still has much they'd like to do with the project including overall refinement and more feature support.
 
 For example, OpenCore goes through proper security audits to ensure it complies with UEFI Secure Boot, and is the only Hackintosh bootloader to undergo these rigorous reviews and have such support.
 
@@ -138,7 +138,7 @@ Not at all in the event you have a "Vanilla" installation – what this refers t
 
 Special note for Clover users: please reset your NVRAM when installing with OpenCore. Many of Clover variables can conflict with OpenCore and macOS.
 
-* Note: Thinkpad laptops are known to be semi-bricked after an NVRAM reset in OpenCore, we recommend resetting NVRAM by updating the BIOS on these machines.
+* Lưu ý: Laptop Thinkpad được biết có thể bị semi-bricked sau khi reset NVRAM trong OpenCore, chúng tôi khuyến khích hãy reset NVRAM thông qua việc update BIOS trên những chiếc máy .
 
 ## Does OpenCore only support limited versions of macOS
 
@@ -194,7 +194,7 @@ While the EULA states that macOS should only be installed on real Macs or virtua
 
 * **Note**: This is not legal advice, so please make the proper assessments yourself and discuss with your lawyers if you have any concerns.
 
-## Does macOS support Nvidia GPUs
+## macOS có hỗ trợ GPU của Nvidia không?
 
 Due to issues revolving around Nvidia support in newer versions of macOS, many users have somehow come to the conclusion that macOS never supported Nvidia GPUs and don't at this point. However, Apple actually still maintains and supports Macs with Nvidia GPUs in their latest OS, like the 2013 MacBook Pro models with Kepler GPUs.
 
