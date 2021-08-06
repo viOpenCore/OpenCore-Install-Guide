@@ -50,7 +50,7 @@ Yêu cầu về mặt cấu trúc
 
 Yêu cầu về SEE:
 
-* SSE3 **BẮT BUỘC PHẢI CÓ**
+* **BẮT BUỘC PHẢI CÓ** SSE3
 * SSSE3 phải có cho mọi phiên bản 64-bit của OS X/macOS
   * Với CPU thiếu SSSE3 (VD: CPU Pentium 64-bit), nên chạy OS X/macOS 32-bit (`i386-user32`)
 * SSE4 cần cho macOS 10.12 Sierra trở lên
@@ -65,7 +65,7 @@ Yêu cầu Firmware:
 * OS X 10.8 và các bản mới hơn cần EFI64 (Nói cách khác là phiên bản x64 (64-bit) của OpenCore)
 * OS X 10.7 tới 10.9 cần OpenPartitionDxe.efi để boot vào phân vùng Recovery.
 
-Yêu cầu Kernel (Kexts):
+Yêu cầu Kernel (Kext):
 
 * OS X 10.4 và 10.5 yêu cầu kext 32-bit do chúng chỉ hỗ trợ kernelspace 32-bit
   * OS X 10.6 và 10.7 hỗ trợ cà kernelspace 32 và 64-bit
@@ -141,11 +141,11 @@ Có rất nhiều tính năng của macOS không được hỗ trợ với CPU A
 GPU support becomes much more complicated due to the near-infinite amount of GPUs on the market, but the general breakdown is as follows:
 
 * AMD's GCN based GPUs are supported in the latest versions of macOS
-  * AMD APUs are not supported however
+  * APU AMD đều không được hỗ trợ
   * AMD's [Lexa based cores](https://www.techpowerup.com/gpu-specs/amd-lexa.g806) from the Polaris series are also not supported
-  * Special note for MSI Navi users: [Installer not working with 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901)
+  * Lưu ý đặc biệt cho người dùng MSI Navi: [Installer not working with 5700XT #901](https://github.com/acidanthera/bugtracker/issues/901)
     * Vấn đề này không còn xuất hiện trên macOS 11 (Big Sur).
-* Nvidia's GPU support is complicated:
+* Hỗ trợ cho GPU của Nvidia sẽ phức tạp hơn:
   * [Maxwell(9XX)](https://en.wikipedia.org/wiki/GeForce_900_series)và [Pascal(10XX)](https://en.wikipedia.org/wiki/GeForce_10_series) GPU chỉ được hỗ trợ tới macOS 10.13: High Sierra
   * [Nvidia's Turing(20XX,](https://en.wikipedia.org/wiki/GeForce_20_series)[16XX)](https://en.wikipedia.org/wiki/GeForce_16_series) GPU **không được hỗ trợ với bất kì phiên bản nào của macOS**
   * [Nvidia's Ampere(30XX)](https://en.wikipedia.org/wiki/GeForce_30_series) GPU **không được hỗ trợ với bất kì phiên bản nào của macOS**
@@ -153,8 +153,8 @@ GPU support becomes much more complicated due to the near-infinite amount of GPU
     * Đó là do Apple vẫn hỗ trợ một vài [MacBook Pro với Nvidia GPU](https://viopencore.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html)
 * Intel's [GT2+ tier](https://en.wikipedia.org/wiki/Intel_Graphics_Technology) series iGPUs
   * Từ Ivy Bridge đến Ice Lake iGPU đều được hỗ trợ trong guide này
-    * Info on GMA series iGPUs can be found here: [GMA Patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
-  * Chú ý rằng GT2 đề cập đến tier của iGPU, low-end GT1 iGPUs trên Pentiums, Celerons and Atoms đều không được hỗ trợ trong macOS
+    * Thông tin cho series iGPUs GMA có thể tìm thấy tại: [GMA Patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
+  * Chú ý rằng GT2 đề cập đến tier của iGPU,  low-end GT1 trên Pentium, Celeron và Atom đều không được hỗ trợ trong macOS
 
 Và một lưu ý quan trọng đối với **Laptop có dGPU (GPU rời)**:
 
