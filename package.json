@@ -42,7 +42,7 @@
     "husky": "^6.0.0",
     "markdown-it-multimd-table": "^4.1.0",
     "markdown-link-check": "^3.8.7",
-    "markdownlint-cli": "^0.27.1",
+    "markdownlint-cli": "^0.28.1",
     "run-script-os": "^1.1.6",
     "spellchecker-cli": "^4.8.0",
     "vuepress": "^1.8.2",
