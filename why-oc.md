@@ -2,47 +2,47 @@
 
 Phần này tóm tắt ngắn gọn về lý do tại sao cộng đồng lại chuyển đổi sang OpenCore và nhằm mục đích xóa tan một vài lầm tưởng phổ biến trong cộng đồng. Ai không cần thì có thể bỏ qua trang này.
 
-* [Tại sao nên chọn OpenCore](#tai-sao-nen-chon-opencore)
-  * Các tính năng của OpenCore
-  * Nhiều phần mềm hỗ trợ
-  * Kext injection
-* [Khiếm khuyết của OpenCore](#khiem-khuyet-cua-opencore)
-* [Lầm tưởng chung](#common-myths)
-  * Có phải OpenCore không ổn định vì nó là bản beta?
-  * Có phải OpenCore luôn inject SMBIOS và ACPI vào các hệ điều hành (OS) khác phải không?
-  * Có phải OpenCore yêu cầu phải cài mới, cài vanilla không?
-  * Có OpenCore chỉ hỗ trợ rất ít phiên bản (version) macOS?
+- [Tại sao nên chọn OpenCore](#tai-sao-nen-chon-opencore)
+  - Các tính năng của OpenCore
+  - Nhiều phần mềm hỗ trợ
+  - Kext injection
+- [Khiếm khuyết của OpenCore](#khiem-khuyet-cua-opencore)
+- [Lầm tưởng chung](#common-myths)
+  - Có phải OpenCore không ổn định vì nó là bản beta?
+  - Có phải OpenCore luôn inject SMBIOS và ACPI vào các hệ điều hành (OS) khác phải không?
+  - Có phải OpenCore yêu cầu phải cài mới, cài vanilla không?
+  - Có OpenCore chỉ hỗ trợ rất ít phiên bản (version) macOS?
 
 ## Tính năng của OpenCore
 
-* Hỗ trợ nhiều OS hơn!
-  * OpenCore hiện hỗ trợ nhiều version của OS X và macOS một cách tự nhiên mà không cần các vụ hack khó khăn của Clover và Chameleon
-  * OpenCore hỗ trợ các OS từ 10.4, Tiger trở lại đây, thâm chí là phiên bản mới nhất 11, Big Sur!
-* Trung bình, các hệ thống chạy OpenCore boot nhanh hơn Clover vì ít các patch không cần thiết hơn
-* Tính ổn định tổng thể tốt hơn vì các bản patch chính xác hơn nhiều
-  * [macOS 10.15.4 update](https://www.reddit.com/r/hackintosh/comments/fo9bfv/macos_10154_update/)
-  * AMD OSX patches không cần phải được cập với mọi bản Security update nhỏ
-* Tổng quan thì bảo mật tốt hơn ở nhiều mặt:
-  * Không cần tắt System Integrity Protection (SIP)
-  * Hỗ trợ FileVault 2
-  * [Vaulting](https://viopencore.github.io/OpenCore-Post-Install/universal/security.html#Vault) giúp tạo "ảnh chụp" của EFI để ngăn những sửa đổi không mong muốn
-  * Thực sư hỗ trợ secure-boot
-    * Both UEFI and Apple's variant
-* BootCamp switching and boot device selection are supported by reading NVRAM variables set by Startup Disk, just like a real Mac.
-* Supports boot hotkey via `boot.efi` - hold `Option` or `ESC` at startup to choose a boot device, `Cmd+R` to enter Recovery or `Cmd+Opt+P+R` to reset NVRAM.
+- Hỗ trợ nhiều OS hơn!
+  - OpenCore hiện hỗ trợ nhiều version của OS X và macOS một cách tự nhiên mà không cần các vụ hack khó khăn của Clover và Chameleon
+  - OpenCore hỗ trợ các OS từ 10.4, Tiger trở lại đây, thâm chí là phiên bản mới nhất 11, Big Sur!
+- Trung bình, các hệ thống chạy OpenCore boot nhanh hơn Clover vì ít các patch không cần thiết hơn
+- Tính ổn định tổng thể tốt hơn vì các bản patch chính xác hơn nhiều
+  - [macOS 10.15.4 update](https://www.reddit.com/r/hackintosh/comments/fo9bfv/macos_10154_update/)
+  - AMD OSX patches không cần phải được cập với mọi bản Security update nhỏ
+- Tổng quan thì bảo mật tốt hơn ở nhiều mặt:
+  - Không cần tắt System Integrity Protection (SIP)
+  - Hỗ trợ FileVault 2
+  - [Vaulting](https://viopencore.github.io/OpenCore-Post-Install/universal/security.html#Vault) giúp tạo "ảnh chụp" của EFI để ngăn những sửa đổi không mong muốn
+  - Thực sư hỗ trợ secure-boot
+    - Both UEFI and Apple's variant
+- BootCamp switching and boot device selection are supported by reading NVRAM variables set by Startup Disk, just like a real Mac.
+- Supports boot hotkey via `boot.efi` - hold `Option` or `ESC` at startup to choose a boot device, `Cmd+R` to enter Recovery or `Cmd+Opt+P+R` to reset NVRAM.
 
 ## Nhiều phần mềm hỗ trợ
 
 Đây chính là nguyên nhân chính làm cho ai đó chuyển qua OpenCore từ các bootloaders khác chính là vì OpenCore có nhiều phần mềm hỗ trợ hơn:
 
-* Kexts không còn được test cho Clover:
-  * Gặp lỗi với 1 kext? Một developers bao gồm nhóm [Acidanthera](https://github.com/acidanthera) (người viết hầu hết những kexts yêu thích nhất của bạn) sẽ không hỗ trợ trừ khi bạn sử dụng OpenCore
-* Một số firmware drivers đã được gộp vào OpenCore:
-  * [APFS Support](https://github.com/acidanthera/AppleSupportPkg)
-  * [FileVault support](https://github.com/acidanthera/AppleSupportPkg)
-  * [Firmware patches](https://github.com/acidanthera/AptioFixPkg)
-* [AMD OSX patches](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore):
-  * Bạn đang sử máy chạy AMD? The kernel patches phục vụ việc boot macOS không còn hỗ trợ Clover – chúng chỉ còn hỗ trợ OpenCore.
+- Kexts không còn được test cho Clover:
+  - Gặp lỗi với 1 kext? Một developers bao gồm nhóm [Acidanthera](https://github.com/acidanthera) (người viết hầu hết những kexts yêu thích nhất của bạn) sẽ không hỗ trợ trừ khi bạn sử dụng OpenCore
+- Một số firmware drivers đã được gộp vào OpenCore:
+  - [APFS Support](https://github.com/acidanthera/AppleSupportPkg)
+  - [FileVault support](https://github.com/acidanthera/AppleSupportPkg)
+  - [Firmware patches](https://github.com/acidanthera/AptioFixPkg)
+- [AMD OSX patches](https://github.com/AMD-OSX/AMD_Vanilla/tree/opencore):
+  - Bạn đang sử máy chạy AMD? The kernel patches phục vụ việc boot macOS không còn hỗ trợ Clover – chúng chỉ còn hỗ trợ OpenCore.
 
 ## Kext Injection
 
@@ -54,13 +54,12 @@ Phần này tóm tắt ngắn gọn về lý do tại sao cộng đồng lại c
 4. Injects kexts
 5. Patches SIP mở trở lại
 
-Things to note with Clover's method:
+Những thứ phải ghi nhớ nếu bạn dùng Clover:
 
-* Sử dụng zombie code của XNU (đã không được sử dụng từ 10.7, điều này thật là ấn tượng khi Apple đã không loại bỏ code này
-  * OS updates thường phá vỡ patch này, gần nhất là 10.14.4 và 10.15
-* Tắt SIP and attempts to mở nỏ lại, don't think much needs to be said
-* Likely to bị thất bại bại macOS 11.0 (Big Sur)
-* Hỗ trợ tất cả OS X đến 10.5
+- Sử dụng code "zombie" (kiểu siêu cũ) của XNU (đã không được sử dụng từ 10.7, điều này thật là ấn tượng khi Apple đã không loại bỏ code này
+  - Những bản cập nhật macOS thường phá vỡ patch này, gần nhất là 10.14.4 và 10.15
+- Tắt SIP and cố gắng tự mở nỏ lại, don't think much needs to be said
+- Hỗ trợ tất cả OS X đến 10.5
 
 Bây giờ thì hãy xem phương pháp của OpenCore:
 
@@ -70,38 +69,36 @@ Bây giờ thì hãy xem phương pháp của OpenCore:
 
 Những điều cần lưu ý với phương pháp của OpenCore:
 
-* OS agnostic as the prelinked kernel format has stayed the same since 10.6 (v2), far harder to break support.
-  * OpenCore also supports prelinked kernel (v1, found in 10.4 and 10.5), cacheless, Mkext and KernelCollections, meaning it also has proper support for all Intel versions of OS X/macOS
-* Far better stability as there is far less patching involved
+- OS agnostic as the prelinked kernel format has stayed the same since 10.6 (v2), far harder to break support.
+  - OpenCore also supports prelinked kernel (v1, found in 10.4 and 10.5), cacheless, Mkext and KernelCollections, meaning it also has proper support for all Intel versions of OS X/macOS
+- Far better stability as there is far less patching involved
 
 # Khiếm khuyết của OpenCore
 
 Hầu hết các chức năng của Clover được hỗ trợ trong OpenCore in the form of some quirk, tuy nhiên khi chuyển đổi bạn hãy chú ý cẩn thận về những tính năng bị thiếu của OpenCore vì nó có hoặc không ảnh hưởng tới bạn:
 
-* Does not support booting MBR-based operating systems
-  * Work around is to chain-load rEFInd once in OpenCore
-* Does not support UEFI-based VBIOS patching
-  * This can be done in macOS however
-* Does not support automatic DeviceProperty injection for legacy GPUs
-  * ie. InjectIntel, InjectNvidia and InjectAti
-  * This can be done manually however: [GPU patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
-* Does not support IRQ conflict patching
-  * Can be resolved with [SSDTTime](https://github.com/corpnewt/SSDTTime)
-* Does not support P and C state generation for older CPUs
-* Does not support Target Bridge ACPI patching
-* Does not support Hardware UUID Injection
-* Does not support auto-detection for many Linux bootloader
-  * Can be resolved by adding an entry in `BlessOverride`
-* Does not support many of Clover's XCPM patches
-  * ie. Ivy Bridge XCPM patches
-* Does not support hiding specific drives
-* Does not support changing settings within OpenCore's menu
-* Does not patch PCIRoot UID value
-* Does not support macOS-only ACPI injection and patching
+- Không hỗ trợ những hệ điều hành boot dựa trên MBR (ý chỉ không hỗ trợ MBR)
+  - Điều này có thể sửa bằng cách cài đặt rEFInd bên cạnh OpenCore
+- Không hỗ trợ patch VBIOS của UEFI
+  - Nhưng cái này có thể được sửa trong macOS
+- Không hỗ trợ tự động inject DeviceProperty cho GPU cũ
+  - VD. InjectIntel, InjectNvidia và InjectAti
+  - Nhưng cái này có thể làm thủ công: [GPU patching](https://viopencore.github.io/OpenCore-Post-Install/gpu-patching/)
+- Không hỗ trợ patch IRQ
+  - Có thể sửa bằng cách sử dụng [SSDTTime](https://github.com/corpnewt/SSDTTime)
+- Không hỗ trợ state P và C cho các CPU đời cũ
+- Không hỗ trợ patch Target Bridge ACPI
+- Không hỗ trợ inject UUID phần cứng
+- Không hỗ trợ tự động phát hiện bootloader Linux (tuy nhiên do guide này đã cũ aka outdate, từ những phiên bản gần đây đã có sự xuất hiện của OpenLinuxBoot)
+- Không hỗ trợ nhiều patch XCPM của Clover (VD: Patch XCPM của Ivy Bridge)
+- Không hỗ trợ ẩn ổ cứng cụ thể
+- Không hỗ trợ thay đổi cài đặt trong menu boot OpenCore (VD: tắt/bật kext, thay đổi giá trị boot của iGPU...)
+- Không hỗ trợ patch UID value của PCIRoot
+- Không hỗ trợ patch và inject ACPI chỉ của macOS (bản gốc: Does not support macOS-only ACPI injection and patching)
 
-# Common Myths
+# Những câu hỏi và đồn đoán
 
-## Có phải OpenCore không ổn định vì nó là bản beta?
+## Có phải OpenCore không ổn định vì nó là beta?
 
 Câu trả lời ngắn: Không
 
@@ -115,9 +112,9 @@ Version 0.6.1 was originally designed to be the official release of OpenCore as 
 
 Current road map:
 
-* 2019: Year of Beta
-* 2020: Year of Secure Boot
-* 2021: Year of Refinement
+- 2019: Year of Beta
+- 2020: Year of Secure Boot
+- 2021: Year of Refinement
 
 So please do not see the version number as a hindrance, instead as something to look forward to.
 
@@ -125,10 +122,10 @@ So please do not see the version number as a hindrance, instead as something to 
 
 By default, OpenCore will assume that all OSes should be treated equally in regards to ACPI and SMBIOS information. The reason for this thinking consists of three parts:
 
-* This allows for proper multiboot support, like with [BootCamp](https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
-* Avoids poorly made DSDTs and encourages proper ACPI practices
-* Avoids edge cases where info is injected several times, commonly seen with Clover
-  * i.e. How would you handle SMBIOS and ACPI data injection once you booted boot.efi, but then get kicked out? The changes are already in memory and so trying to undo them can be quite dangerous. This is why Clover's method is frowned upon.
+- This allows for proper multiboot support, like with [BootCamp](https://viopencore.github.io/OpenCore-Post-Install/multiboot/bootcamp.html)
+- Avoids poorly made DSDTs and encourages proper ACPI practices
+- Avoids edge cases where info is injected several times, commonly seen with Clover
+  - i.e. How would you handle SMBIOS and ACPI data injection once you booted boot.efi, but then get kicked out? The changes are already in memory and so trying to undo them can be quite dangerous. This is why Clover's method is frowned upon.
 
 However, there are quirks in OpenCore that allow for SMBIOS injection to be macOS-limited by patching where macOS reads SMBIOS info from. The `CustomSMIOSGuid` quirk with `CustomSMBIOSMode` set to `Custom` can break in the future and so we only recommend this option in the event of certain software breaking in other OSes. For best stability, please disable these quirks.
 
@@ -138,7 +135,7 @@ Not at all in the event you have a "Vanilla" installation – what this refers t
 
 Special note for Clover users: please reset your NVRAM when installing with OpenCore. Many of Clover variables can conflict with OpenCore and macOS.
 
-* Lưu ý: Laptop Thinkpad được biết có thể bị semi-bricked sau khi reset NVRAM trong OpenCore, chúng tôi khuyến khích hãy reset NVRAM thông qua việc update BIOS trên những chiếc máy .
+- Lưu ý: Laptop Thinkpad được biết có thể bị semi-bricked sau khi reset NVRAM trong OpenCore, chúng tôi khuyến khích hãy reset NVRAM thông qua việc update BIOS trên những chiếc máy .
 
 ## Does OpenCore only support limited versions of macOS
 
@@ -186,13 +183,13 @@ OpenCore works in the same fashion as any other boot loader, so it respects othe
 
 Where hackintoshing sits is in a legal grey area, mainly that while this is not illegal we are in fact breaking the EULA. The reason this is not illegal:
 
-* We are downloading macOS from [Apple's servers directly](https://github.com/acidanthera/OpenCorePkg/blob/0.6.9/Utilities/macrecovery/macrecovery.py#L125)
-* We are doing this as a non-profit origination for teaching and personal use
-  * People who plan to use their Hackintosh for work or want to resell them should refer to the [Psystar case](https://en.wikipedia.org/wiki/Psystar_Corporation) and their regional laws
+- We are downloading macOS from [Apple's servers directly](https://github.com/acidanthera/OpenCorePkg/blob/0.6.9/Utilities/macrecovery/macrecovery.py#L125)
+- We are doing this as a non-profit origination for teaching and personal use
+  - People who plan to use their Hackintosh for work or want to resell them should refer to the [Psystar case](https://en.wikipedia.org/wiki/Psystar_Corporation) and their regional laws
 
 While the EULA states that macOS should only be installed on real Macs or virtual machines running on genuine Macs ([sections 2B-i and 2B-iii](https://www.apple.com/legal/sla/docs/macOSBigSur.pdf)), there is no enforceable law that outright bans this. However, sites that repackage and modify macOS installers do potentially risk the issue of [DMCA takedowns](https://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act) and such.
 
-* **Note**: This is not legal advice, so please make the proper assessments yourself and discuss with your lawyers if you have any concerns.
+- **Note**: This is not legal advice, so please make the proper assessments yourself and discuss with your lawyers if you have any concerns.
 
 ## macOS có hỗ trợ GPU của Nvidia không?
 
