@@ -36,7 +36,7 @@
   "license": "CC-BY-NC-SA-4.0",
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
-    "@commitlint/config-conventional": "^14.1.0",
+    "@commitlint/config-conventional": "^15.0.0",
     "@mr-hope/vuepress-plugin-sitemap": "^1.21.0",
     "@vuepress/plugin-back-to-top": "^1.8.3",
     "husky": "^7.0.4",
