@@ -934,25 +934,25 @@
     ts-node "^9"
     tslib "^2"
 
-"@mr-hope/vuepress-plugin-sitemap@^1.20.4":
-  version "1.20.4"
-  resolved "https://registry.yarnpkg.com/@mr-hope/vuepress-plugin-sitemap/-/vuepress-plugin-sitemap-1.20.4.tgz#140ac5c94ced120cc7faf637d1af8cec17548780"
+"@mr-hope/vuepress-plugin-sitemap@^1.21.0":
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/@mr-hope/vuepress-plugin-sitemap/-/vuepress-plugin-sitemap-1.21.0.tgz#6444cd4b91c164a732f5f53de99c2ebcb2178ebf"
   dependencies:
-    "@mr-hope/vuepress-types" "1.20.4"
+    "@mr-hope/vuepress-types" "1.21.0"
     "@types/fs-extra" "^9.0.13"
     chalk "^4.1.2"
     fs-extra "^10.0.0"
     sitemap "^7.0.0"
 
-"@mr-hope/vuepress-types@1.20.4":
-  version "1.20.4"
-  resolved "https://registry.yarnpkg.com/@mr-hope/vuepress-types/-/vuepress-types-1.20.4.tgz#ceaae18c38c4979ba86c99d3c4127b3e1dd576ae"
+"@mr-hope/vuepress-types@1.21.0":
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/@mr-hope/vuepress-types/-/vuepress-types-1.21.0.tgz#ae46182c9999366387a92009af6bcb3ce392a4e9"
   dependencies:
     "@types/express" "^4.17.13"
     "@types/markdown-it" "^10.0.3"
     "@types/markdown-it-anchor" "^7.0.0"
     "@types/webpack-dev-server" "^3.11.6"
-    cac "^6.7.11"
+    cac "^6.7.12"
     vue "^2.6.14"
     webpack-chain "^6.5.1"
 
@@ -2180,9 +2180,13 @@ bytes@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.0.tgz#f6cf7933a360e0588fa9fde85651cdc7f805d1f6"
 
-cac@^6.5.6, cac@^6.7.11:
+cac@^6.5.6:
   version "6.7.11"
   resolved "https://registry.yarnpkg.com/cac/-/cac-6.7.11.tgz#8828e0874e578b60d839a7591567d7d5bdc7cbce"
+
+cac@^6.7.12:
+  version "6.7.12"
+  resolved "https://registry.yarnpkg.com/cac/-/cac-6.7.12.tgz#6fb5ea2ff50bd01490dbda497f4ae75a99415193"
 
 cacache@^12.0.2, cacache@^12.0.3:
   version "12.0.4"
