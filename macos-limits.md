@@ -269,7 +269,7 @@ Lưu ý: Intel WiFi không được hỗ trợ chính thức (3rd party driver) 
 
 * **Cảm biến vân tay**
   * Tại thời điểm hiện tại không có cách nào để giả lập lại cảm biến Touch ID, cho nên cảm biến vân tay sẽ không hoạt động.
-* **Windows Hello Face Recognition**
+* **Nhận diện khuôn mặt Windows Hello**
   * Một số laptop có WHFR với kết nối I2C (và được sử dụng thông qua iGPU của bạn), những laptop đó sẽ không hoạt động.
   * Một số laptop có WHFR được kết nối bằng USB, nếu may mắn, bạn có thể có máy ảnh (webcam), nhưng không có gì hơn nữa.
 * **Intel Smart Sound Technology**
