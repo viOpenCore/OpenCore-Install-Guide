@@ -41,7 +41,7 @@
     "@vuepress/plugin-back-to-top": "^1.8.3",
     "husky": "^7.0.4",
     "markdown-it-multimd-table": "^4.1.1",
-    "markdown-link-check": "^3.8.7",
+    "markdown-link-check": "^3.9.0",
     "markdownlint-cli": "^0.30.0",
     "run-script-os": "^1.1.6",
     "spellchecker-cli": "^4.8.1",
