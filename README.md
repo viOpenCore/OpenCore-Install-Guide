@@ -7,7 +7,7 @@ actionLink: prerequisites.md
 
 meta:
 - name: description
-  content: Hỗ trợ version 0.7.5
+  content: Hỗ trợ version 0.7.2
 ---
 
 # OpenCore là gì và guide này dành cho ai
@@ -21,6 +21,6 @@ Hướng dẫn này tập trung vào 2 điều chính
 
 Chính bởi vì vậy, bạn sẽ phải đọc, nghiên cứu và thậm chí sử dụng Google. Việc cài đặt này không dễ, nhanh gọn lẹ như "mì ăn liền".
 
-Nên nhớ rằng OpenCore vẫn còn rất mới vẫn còn là bản beta. Dù đã khá là ổn định, và được cho là ổn định hơn rất nhiều so với Clover trong rất nhiều phương diện, nó vẫn được update thường xuyên, nên các thiết lập thay đổi khá thường xuyên(tức là các quirks mới thay thế những cái cũ).
+Nên nhớ rằng OpenCore vẫn còn rất mới vẫn còn là bản beta. Dù đã khá là ổn định, và được cho là ổn định hơn rất nhiều so với Clover trong rất nhiều phương diện, nó vẫn được update thường xuyên, nên các thiết lập thay đổi khá thường xuyên(tức là các quirk mới thay thế những cái cũ).
 
-Cuối cùng, những ai gặp vấn đề có thể tham gia subreddit [r/Hackintosh subreddit](https://www.reddit.com/r/hackintosh/) và Discord [r/Hackintosh Discord](https://discord.gg/u8V7N5C) để được hỗ trợ nhiều hơn
+Cuối cùng, những ai gặp vấn đề có thể tham gia subreddit [r/Hackintosh subreddit](https://www.reddit.com/r/hackintosh/) và Discord [r/Hackintosh Discord](https://discord.gg/u8V7N5C) để được hỗ trợ nhiều hơn.
