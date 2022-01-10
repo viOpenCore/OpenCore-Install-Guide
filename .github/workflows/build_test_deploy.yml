@@ -24,7 +24,7 @@ jobs:
       - name: Build
         run: yarn build
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.8
+        uses: JamesIves/github-pages-deploy-action@4.2.1
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/vietnamese'}}
         with:
           #          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -65,7 +65,7 @@ jobs:
         run: yarn spellcheck
         continue-on-error: true
       - name: Upload errors
-        uses: JamesIves/github-pages-deploy-action@4.1.8
+        uses: JamesIves/github-pages-deploy-action@4.2.1
         with:
           BRANCH: errors
           FOLDER: errors
