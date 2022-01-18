@@ -38,7 +38,7 @@
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@mr-hope/vuepress-plugin-sitemap": "^1.21.0",
-    "@vuepress/plugin-back-to-top": "^1.8.3",
+    "@vuepress/plugin-back-to-top": "^1.9.6",
     "husky": "^7.0.4",
     "markdown-it-multimd-table": "^4.1.1",
     "markdown-link-check": "^3.9.0",
