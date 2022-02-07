@@ -2549,9 +2549,9 @@ commander@~2.19.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
-commander@~8.3.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-8.3.0.tgz#4837ea1b2da67b9c616a67afbb0fafee567bca66"
+commander@~9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-9.0.0.tgz#86d58f24ee98126568936bd1d3574e0308a99a40"
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -3880,9 +3880,9 @@ get-intrinsic@^1.0.2, get-intrinsic@^1.1.0, get-intrinsic@^1.1.1:
     has "^1.0.3"
     has-symbols "^1.0.1"
 
-get-stdin@~8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-8.0.0.tgz#cbad6a73feb75f6eeb22ba9e01f89aa28aa97a53"
+get-stdin@~9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-9.0.0.tgz#3983ff82e03d56f1b2ea0d3e60325f39d703a575"
 
 get-stream@^4.0.0, get-stream@^4.1.0:
   version "4.1.0"
@@ -4355,9 +4355,9 @@ ignore@^4.0.3:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
 
-ignore@^5.1.4, ignore@~5.1.9:
-  version "5.1.9"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.9.tgz#9ec1a5cbe8e1446ec60d4420060d43aa6e7382fb"
+ignore@^5.1.4, ignore@~5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.0.tgz#6d3bac8fa7fe0d45d9f9be7bac2fc279577e345a"
 
 immediate@^3.2.3:
   version "3.3.0"
@@ -5082,14 +5082,6 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
-lodash.differencewith@~4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.differencewith/-/lodash.differencewith-4.5.0.tgz#bafafbc918b55154e179176a00bb0aefaac854b7"
-
-lodash.flatten@~4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/lodash.flatten/-/lodash.flatten-4.4.0.tgz#f31c22225a9632d2bbf8e4addbef240aa765a61f"
-
 lodash.get@^4:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
@@ -5237,9 +5229,9 @@ markdown-it-table-of-contents@^0.4.0:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/markdown-it-table-of-contents/-/markdown-it-table-of-contents-0.4.4.tgz#3dc7ce8b8fc17e5981c77cc398d1782319f37fbc"
 
-markdown-it@12.2.0:
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-12.2.0.tgz#091f720fd5db206f80de7a8d1f1a7035fd0d38db"
+markdown-it@12.3.2:
+  version "12.3.2"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-12.3.2.tgz#bf92ac92283fe983fe4de8ff8abfb5ad72cd0c90"
   dependencies:
     argparse "^2.0.1"
     entities "~2.1.0"
@@ -5286,34 +5278,30 @@ markdown-link-extractor@^1.3.0:
   dependencies:
     marked "^2.0.5"
 
-markdownlint-cli@^0.30.0:
-  version "0.30.0"
-  resolved "https://registry.yarnpkg.com/markdownlint-cli/-/markdownlint-cli-0.30.0.tgz#4ec0ab85a491eb161182e5c26eff308bf90f18f3"
+markdownlint-cli@^0.31.0:
+  version "0.31.0"
+  resolved "https://registry.yarnpkg.com/markdownlint-cli/-/markdownlint-cli-0.31.0.tgz#a44264a71066475228292b7af19d3d18b827676d"
   dependencies:
-    commander "~8.3.0"
-    deep-extend "~0.6.0"
-    get-stdin "~8.0.0"
+    commander "~9.0.0"
+    get-stdin "~9.0.0"
     glob "~7.2.0"
-    ignore "~5.1.9"
+    ignore "~5.2.0"
     js-yaml "^4.1.0"
     jsonc-parser "~3.0.0"
-    lodash.differencewith "~4.5.0"
-    lodash.flatten "~4.4.0"
-    markdownlint "~0.24.0"
-    markdownlint-rule-helpers "~0.15.0"
+    markdownlint "~0.25.1"
+    markdownlint-rule-helpers "~0.16.0"
     minimatch "~3.0.4"
-    minimist "~1.2.5"
     run-con "~1.2.10"
 
-markdownlint-rule-helpers@~0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/markdownlint-rule-helpers/-/markdownlint-rule-helpers-0.15.0.tgz#11434c573649b9235ae70b967314f5711f7d8fa8"
+markdownlint-rule-helpers@~0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/markdownlint-rule-helpers/-/markdownlint-rule-helpers-0.16.0.tgz#c327f72782bd2b9475127a240508231f0413a25e"
 
-markdownlint@~0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/markdownlint/-/markdownlint-0.24.0.tgz#224b53f671367a237d40c8be1745c7be9a322671"
+markdownlint@~0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/markdownlint/-/markdownlint-0.25.1.tgz#df04536607ebeeda5ccd5e4f38138823ed623788"
   dependencies:
-    markdown-it "12.2.0"
+    markdown-it "12.3.2"
 
 marked@^2.0.5:
   version "2.1.3"
@@ -5551,7 +5539,7 @@ minimist-options@4.1.0:
     is-plain-obj "^1.1.0"
     kind-of "^6.0.3"
 
-minimist@^1.2.0, minimist@^1.2.5, minimist@~1.2.5:
+minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
 
