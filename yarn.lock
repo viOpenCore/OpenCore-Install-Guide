@@ -934,19 +934,19 @@
     ts-node "^9"
     tslib "^2"
 
-"@mr-hope/vuepress-plugin-sitemap@^1.21.0":
-  version "1.21.0"
-  resolved "https://registry.yarnpkg.com/@mr-hope/vuepress-plugin-sitemap/-/vuepress-plugin-sitemap-1.21.0.tgz#6444cd4b91c164a732f5f53de99c2ebcb2178ebf"
+"@mr-hope/vuepress-plugin-sitemap@^1.28.2":
+  version "1.28.2"
+  resolved "https://registry.yarnpkg.com/@mr-hope/vuepress-plugin-sitemap/-/vuepress-plugin-sitemap-1.28.2.tgz#ce6bcdb1fc035587aab55d3d516d1f7a031f1757"
   dependencies:
-    "@mr-hope/vuepress-types" "1.21.0"
+    "@mr-hope/vuepress-types" "1.28.1"
     "@types/fs-extra" "^9.0.13"
     chalk "^4.1.2"
-    fs-extra "^10.0.0"
-    sitemap "^7.0.0"
+    fs-extra "^10.0.1"
+    sitemap "^7.1.1"
 
-"@mr-hope/vuepress-types@1.21.0":
-  version "1.21.0"
-  resolved "https://registry.yarnpkg.com/@mr-hope/vuepress-types/-/vuepress-types-1.21.0.tgz#ae46182c9999366387a92009af6bcb3ce392a4e9"
+"@mr-hope/vuepress-types@1.28.1":
+  version "1.28.1"
+  resolved "https://registry.yarnpkg.com/@mr-hope/vuepress-types/-/vuepress-types-1.28.1.tgz#36d3abb85ead923ed7c49dd3e36378259e684bcc"
   dependencies:
     "@types/express" "^4.17.13"
     "@types/markdown-it" "^10.0.3"
@@ -1104,9 +1104,9 @@
   version "16.4.13"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.13.tgz#7dfd9c14661edc65cccd43a29eb454174642370d"
 
-"@types/node@^15.0.1":
-  version "15.14.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.14.7.tgz#29fea9a5b14e2b75c19028e1c7a32edd1e89fe92"
+"@types/node@^17.0.5":
+  version "17.0.21"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.21.tgz#864b987c0c68d07b4345845c3e63b75edd143644"
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -3808,9 +3808,9 @@ from2@^2.1.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
-fs-extra@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.0.0.tgz#9ff61b655dde53fb34a82df84bb214ce802e17c1"
+fs-extra@^10.0.0, fs-extra@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-10.0.1.tgz#27de43b4320e833f6867cc044bfce29fdf0ef3b8"
   dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"
@@ -7286,11 +7286,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sitemap@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/sitemap/-/sitemap-7.0.0.tgz#022bef4df8cba42e38e1fe77039f234cab0372b6"
+sitemap@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/sitemap/-/sitemap-7.1.1.tgz#eeed9ad6d95499161a3eadc60f8c6dce4bea2bef"
   dependencies:
-    "@types/node" "^15.0.1"
+    "@types/node" "^17.0.5"
     "@types/sax" "^1.2.1"
     arg "^5.0.0"
     sax "^1.2.4"
