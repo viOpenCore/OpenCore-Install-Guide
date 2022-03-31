@@ -1871,9 +1871,9 @@ async@^2.6.2:
   dependencies:
     lodash "^4.17.14"
 
-async@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/async/-/async-3.2.2.tgz#2eb7671034bb2194d45d30e31e24ec7e7f9670cd"
+async@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.2.3.tgz#ac53dafd3f4720ee9e8a160628f18ea91df196c9"
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -5010,9 +5010,9 @@ lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
 
-link-check@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/link-check/-/link-check-5.0.1.tgz#f6c779f2b771bfe9229fdb5f847d54e0d376421f"
+link-check@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/link-check/-/link-check-5.1.0.tgz#2e61363124db32484d6ef5b00eb7eda15e60ba7c"
   dependencies:
     is-relative-url "^3.0.0"
     isemail "^3.2.0"
@@ -5276,24 +5276,24 @@ markdown-it@^8.4.1:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-markdown-link-check@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/markdown-link-check/-/markdown-link-check-3.9.0.tgz#aea9083f0c2383665e8d8f37dfba722bd96eb94e"
+markdown-link-check@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/markdown-link-check/-/markdown-link-check-3.10.0.tgz#9b5892257f56d5546e341c482341c081786ecf30"
   dependencies:
-    async "^3.2.2"
+    async "^3.2.3"
     chalk "^4.1.2"
     commander "^6.2.0"
-    link-check "^5.0.1"
+    link-check "^5.1.0"
     lodash "^4.17.21"
-    markdown-link-extractor "^1.3.0"
+    markdown-link-extractor "^2.0.1"
     needle "^3.0.0"
     progress "^2.0.3"
 
-markdown-link-extractor@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/markdown-link-extractor/-/markdown-link-extractor-1.3.0.tgz#a11954f683134f23edecd74ba35ae7bf7ad3d874"
+markdown-link-extractor@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/markdown-link-extractor/-/markdown-link-extractor-2.0.1.tgz#10184cd6892ea657a724d1835b783cfb2520f9f9"
   dependencies:
-    marked "^2.0.5"
+    marked "^4.0.12"
 
 markdownlint-cli@^0.30.0:
   version "0.30.0"
@@ -5324,9 +5324,9 @@ markdownlint@~0.24.0:
   dependencies:
     markdown-it "12.2.0"
 
-marked@^2.0.5:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-2.1.3.tgz#bd017cef6431724fd4b27e0657f5ceb14bff3753"
+marked@^4.0.12:
+  version "4.0.12"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-4.0.12.tgz#2262a4e6fd1afd2f13557726238b69a48b982f7d"
 
 md5.js@^1.3.4:
   version "1.3.5"
