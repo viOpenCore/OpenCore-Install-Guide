@@ -10,7 +10,7 @@ meta:
   content: Hỗ trợ version 0.7.2
 ---
 
-# OpenCore là gì và guide này dành cho a
+# OpenCore là gì và guide này dành cho ai
 
 OpenCore là một "bootloader" – nó là một phần mềm phức tạp mà chúng ta sử dụng để chuẩn bị máy của chúng ta cho macOS – cụ thể là bằng cách inject các thông tin cho macOS như SMBIOS, ACPI tables và kexts. Điểm khác biệt của OpenCore khi so sánh với các bootloader khác như Clover là nó được thiết kế với sự quan tâm rất lớn về bảo mật và chất lượng, cho phép ta sử dụng tính năng bảo mật trên real Macs, như là [System Integrity Protection](https://support.apple.com/en-ca/HT204899) và [FileVault](https://support.apple.com/en-ca/HT204837). Bạn có thể tìm hiểu sâu hơn ở đây: [Why OpenCore over Clover and others](why-oc.md)
 
