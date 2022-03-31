@@ -1069,7 +1069,7 @@
   dependencies:
     markdown-it-anchor "*"
 
-"@types/markdown-it@^10.0.3":
+"@types/markdown-it@^10.0.0", "@types/markdown-it@^10.0.3":
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/@types/markdown-it/-/markdown-it-10.0.3.tgz#a9800d14b112c17f1de76ec33eff864a4815eec7"
   dependencies:
@@ -1159,7 +1159,7 @@
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.6.tgz#250a7b16c3b91f672a24552ec64678eeb1d3a08d"
 
-"@types/webpack-dev-server@^3.11.6":
+"@types/webpack-dev-server@^3", "@types/webpack-dev-server@^3.11.6":
   version "3.11.6"
   resolved "https://registry.yarnpkg.com/@types/webpack-dev-server/-/webpack-dev-server-3.11.6.tgz#d8888cfd2f0630203e13d3ed7833a4d11b8a34dc"
   dependencies:
@@ -1388,10 +1388,11 @@
   dependencies:
     lodash.debounce "^4.0.8"
 
-"@vuepress/plugin-back-to-top@^1.8.3":
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.8.3.tgz#eb978469896bdaa56628c089c64b7775289b5e46"
+"@vuepress/plugin-back-to-top@^1.9.7":
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.9.7.tgz#249a76d79f1e0c8c71a2804485ad0245837e6bfd"
   dependencies:
+    "@vuepress/types" "1.9.7"
     lodash.debounce "^4.0.8"
 
 "@vuepress/plugin-last-updated@1.8.3":
@@ -1467,6 +1468,14 @@
     stylus-loader "^3.0.2"
     vuepress-plugin-container "^2.0.2"
     vuepress-plugin-smooth-scroll "^0.0.3"
+
+"@vuepress/types@1.9.7":
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/@vuepress/types/-/types-1.9.7.tgz#aeb772fd0f7c2a10c6ec1d3c803a2e4b1d756c24"
+  dependencies:
+    "@types/markdown-it" "^10.0.0"
+    "@types/webpack-dev-server" "^3"
+    webpack-chain "^6.0.0"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
