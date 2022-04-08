@@ -1,20 +1,20 @@
-# General Troubleshooting
+# Khắc phục các sự cố thường gặp
 
-This section is for those having issues booting either OpenCore, macOS or having issues inside macOS. If you're confused as to where exactly in the macOS boot process you're stuck, reading the [macOS Boot Process](../troubleshooting/boot.md) page can help clarify things.
+Phần này dành cho những ai có vấn đề liên quan đến khởi động OpenCore, macOS hoặc các vấn đề trong macOS. Nếu bạn đang không biết chính xác mình bị kẹt ở chỗ nào trong quá trình khởi động macOS, đọc mục [Hiểu được quá trình boot của macOS](../troubleshooting/boot.md) sẽ giúp bạn làm rõ mọi thứ.
 
-**And if your issue is not covered, please read the official OpenCore documentation: [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf)**. This document goes into much more technical detail around how OpenCore works and has much more detailed info on all supported quirks.
+**Nếu vấn đề của bạn không được đề cập, hãy đọc tài liệu chính thức của OpenCore:** [Configuration.pdf](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/Configuration.pdf). Tài liệu này đi sâu chi tiết vào các kỹ thuật, về cách OpenCore hoạt động và có nhiều thông tin chi tiết hơn về tất cả các câu hỏi được hỗ trợ.
 
-## Table of Contents
+## Mục lục 
 
-If you're unsure where you're currently stuck, please see here: [Understanding the macOS Boot Process](../troubleshooting/boot.md)
+Nếu bạn đang không rõ mình đang bị kẹt ở đâu, vui lòng xem ở đây: [Hiểu được quá trình boot của macOS(../troubleshooting/boot.md)
 
-* [OpenCore Boot Issues](./extended/opencore-issues.md)
-  * This section refers to booting the actual USB and getting to OpenCore's picker. Anything after the picker, like booting macOS, should see below
-* [Kernelspace Issues](./extended/kernel-issues.md)
-  * Covering everything that many occur in early boot from the moment you select macOS in the OpenCore menu, till the point right before the Apple logo and the installer GUI loads
-* [Userspace Issues](./extended/userspace-issues.md)
-  * Covering the process from loading macOS's GUI to installing macOS on the drive
-* [Post-Install Issues](./extended/post-issues.md)
-  * Covering issues once macOS has been installed and is fully booted
-* [Miscellaneous Issues](./extended/misc-issues.md)
-  * Covering issues after macOS's installation or with other OSes
+* [Các lỗi liên quan đến khởi động OpenCore](./extended/opencore-issues.md)
+  * Mục này đề cập đến các lỗi trong quá trình từ lúc khởi động USB đến phần lựa chọn của OpenCore (có thể hiểu là menu của OpenCore - _người dịch_). Tất cả những gì sau phần menu của OpenCore, như là khởi động macOS, ở bên dưới
+* [Các lỗi liên quan đến KernelSpace](./extended/kernel-issues.md)
+  * Đề cập đến tất cả những lỗi thường xuyên xảy ra trong giai đoạn đầu tiên của quá trình khởi động macOS, từ lúc bạn chọn macOS trong menu của OpenCore, cho đến trước khi logo Apple và giao diện của quá trình cài đặt hiện lên.
+* [Các lỗi liên quan đến Userspace](./extended/userspace-issues.md)
+  * Đề cập đến quá trình từ lúc nạp giao diện macOS đến quá trình cài đặt macOS lên ổ đĩa
+* [Các lỗi sau quá trình cài đặt macOS](./extended/post-issues.md)
+  * Khắc phục các lỗi xảy ra sau khi macOS đã được cài đặt và khởi động hoàn toàn
+* [Các lỗi khác](./extended/misc-issues.md)
+  * Khắc phục các lỗi xảy ra sau quá trình cài đặt macOS hoặc các hệ điều hành khác
