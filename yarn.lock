@@ -1881,9 +1881,9 @@ async@^2.6.2:
   dependencies:
     lodash "^4.17.14"
 
-async@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/async/-/async-3.2.2.tgz#2eb7671034bb2194d45d30e31e24ec7e7f9670cd"
+async@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.2.3.tgz#ac53dafd3f4720ee9e8a160628f18ea91df196c9"
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -2378,6 +2378,28 @@ character-entities@^1.0.0:
 character-reference-invalid@^1.0.0:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/character-reference-invalid/-/character-reference-invalid-1.1.4.tgz#083329cda0eae272ab3dbbf37e9a382c13af1560"
+
+cheerio-select@^1.5.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/cheerio-select/-/cheerio-select-1.6.0.tgz#489f36604112c722afa147dedd0d4609c09e1696"
+  dependencies:
+    css-select "^4.3.0"
+    css-what "^6.0.1"
+    domelementtype "^2.2.0"
+    domhandler "^4.3.1"
+    domutils "^2.8.0"
+
+cheerio@^1.0.0-rc.10:
+  version "1.0.0-rc.10"
+  resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0-rc.10.tgz#2ba3dcdfcc26e7956fc1f440e61d51c643379f3e"
+  dependencies:
+    cheerio-select "^1.5.0"
+    dom-serializer "^1.3.2"
+    domhandler "^4.2.0"
+    htmlparser2 "^6.1.0"
+    parse5 "^6.0.1"
+    parse5-htmlparser2-tree-adapter "^6.0.1"
+    tslib "^2.2.0"
 
 chokidar@^2.0.3, chokidar@^2.1.8:
   version "2.1.8"
@@ -2893,6 +2915,16 @@ css-select@^4.1.3:
     domutils "^2.6.0"
     nth-check "^2.0.0"
 
+css-select@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/css-select/-/css-select-4.3.0.tgz#db7129b2846662fd8628cfc496abb2b59e41529b"
+  dependencies:
+    boolbase "^1.0.0"
+    css-what "^6.0.1"
+    domhandler "^4.3.1"
+    domutils "^2.8.0"
+    nth-check "^2.0.1"
+
 css-tree@1.0.0-alpha.37:
   version "1.0.0-alpha.37"
   resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.0.0-alpha.37.tgz#98bebd62c4c1d9f960ec340cf9f7522e30709a22"
@@ -2914,6 +2946,10 @@ css-what@^3.2.1:
 css-what@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-5.0.1.tgz#3efa820131f4669a8ac2408f9c32e7c7de9f4cad"
+
+css-what@^6.0.1:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/css-what/-/css-what-6.1.0.tgz#fb5effcf76f1ddea2c81bdfaa4de44e79bac70f4"
 
 css@^2.0.0:
   version "2.2.4"
@@ -3251,6 +3287,14 @@ dom-serializer@^1.0.1:
     domhandler "^4.2.0"
     entities "^2.0.0"
 
+dom-serializer@^1.3.2:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-1.4.1.tgz#de5d41b1aea290215dc45a6dae8adcf1d32e2d30"
+  dependencies:
+    domelementtype "^2.0.1"
+    domhandler "^4.2.0"
+    entities "^2.0.0"
+
 dom-walk@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.2.tgz#0c548bef048f4d1f2a97249002236060daa3fd84"
@@ -3273,6 +3317,12 @@ domhandler@^4.0.0, domhandler@^4.2.0:
   dependencies:
     domelementtype "^2.2.0"
 
+domhandler@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/domhandler/-/domhandler-4.3.1.tgz#8d792033416f59d68bc03a5aa7b018c1ca89279c"
+  dependencies:
+    domelementtype "^2.2.0"
+
 domutils@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.7.0.tgz#56ea341e834e06e6748af7a1cb25da67ea9f8c2a"
@@ -3283,6 +3333,14 @@ domutils@^1.7.0:
 domutils@^2.5.2, domutils@^2.6.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/domutils/-/domutils-2.7.0.tgz#8ebaf0c41ebafcf55b0b72ec31c56323712c5442"
+  dependencies:
+    dom-serializer "^1.0.1"
+    domelementtype "^2.2.0"
+    domhandler "^4.2.0"
+
+domutils@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/domutils/-/domutils-2.8.0.tgz#4437def5db6e2d1f5d6ee859bd95ca7d02048135"
   dependencies:
     dom-serializer "^1.0.1"
     domelementtype "^2.2.0"
@@ -4315,6 +4373,12 @@ html-entities@^1.3.1:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.4.0.tgz#cfbd1b01d2afaf9adca1b10ae7dffab98c71d2dc"
 
+html-link-extractor@^1.0.3:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/html-link-extractor/-/html-link-extractor-1.0.5.tgz#a4be345cb13b8c3352d82b28c8b124bb7bf5dd6f"
+  dependencies:
+    cheerio "^1.0.0-rc.10"
+
 html-minifier@^3.2.3:
   version "3.5.21"
   resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.5.21.tgz#d0040e054730e354db008463593194015212d20c"
@@ -4432,11 +4496,17 @@ husky@^7.0.4:
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/husky/-/husky-7.0.4.tgz#242048245dc49c8fb1bf0cc7cfb98dd722531535"
 
-iconv-lite@0.4.24, iconv-lite@^0.4.4:
+iconv-lite@0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
+
+iconv-lite@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.3.tgz#a52f80bf38da1952eb5c681790719871a1a72501"
+  dependencies:
+    safer-buffer ">= 2.1.2 < 3.0.0"
 
 icss-replace-symbols@^1.1.0:
   version "1.1.0"
@@ -5110,9 +5180,9 @@ lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
 
-link-check@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/link-check/-/link-check-5.0.1.tgz#f6c779f2b771bfe9229fdb5f847d54e0d376421f"
+link-check@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/link-check/-/link-check-5.1.0.tgz#2e61363124db32484d6ef5b00eb7eda15e60ba7c"
   dependencies:
     is-relative-url "^3.0.0"
     isemail "^3.2.0"
@@ -5376,24 +5446,25 @@ markdown-it@^8.4.1:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
-markdown-link-check@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/markdown-link-check/-/markdown-link-check-3.9.0.tgz#aea9083f0c2383665e8d8f37dfba722bd96eb94e"
+markdown-link-check@^3.10.2:
+  version "3.10.2"
+  resolved "https://registry.yarnpkg.com/markdown-link-check/-/markdown-link-check-3.10.2.tgz#2b220465020e5fc0ad2adacd1c57ee4db96b00d9"
   dependencies:
-    async "^3.2.2"
+    async "^3.2.3"
     chalk "^4.1.2"
     commander "^6.2.0"
-    link-check "^5.0.1"
+    link-check "^5.1.0"
     lodash "^4.17.21"
-    markdown-link-extractor "^1.3.0"
-    needle "^3.0.0"
+    markdown-link-extractor "^3.0.2"
+    needle "^3.1.0"
     progress "^2.0.3"
 
-markdown-link-extractor@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/markdown-link-extractor/-/markdown-link-extractor-1.3.0.tgz#a11954f683134f23edecd74ba35ae7bf7ad3d874"
+markdown-link-extractor@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/markdown-link-extractor/-/markdown-link-extractor-3.0.2.tgz#56a7c9a74104e8c318716f885e33bf80cc8e12a9"
   dependencies:
-    marked "^2.0.5"
+    html-link-extractor "^1.0.3"
+    marked "^4.0.15"
 
 markdownlint-cli@^0.30.0:
   version "0.30.0"
@@ -5424,9 +5495,9 @@ markdownlint@~0.24.0:
   dependencies:
     markdown-it "12.2.0"
 
-marked@^2.0.5:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-2.1.3.tgz#bd017cef6431724fd4b27e0657f5ceb14bff3753"
+marked@^4.0.15:
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-4.0.15.tgz#0216b7c9d5fcf6ac5042343c41d81a8b1b5e1b4a"
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -5758,12 +5829,12 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-needle@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/needle/-/needle-3.0.0.tgz#5808f20246d69ffd7ebd42109eb58d1442b98e6e"
+needle@^3.0.0, needle@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/needle/-/needle-3.1.0.tgz#3bf5cd090c28eb15644181ab6699e027bd6c53c9"
   dependencies:
     debug "^3.2.6"
-    iconv-lite "^0.4.4"
+    iconv-lite "^0.6.3"
     sax "^1.2.4"
 
 negotiator@0.6.2:
@@ -5915,6 +5986,12 @@ nth-check@^1.0.2:
 nth-check@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-2.0.0.tgz#1bb4f6dac70072fc313e8c9cd1417b5074c0a125"
+  dependencies:
+    boolbase "^1.0.0"
+
+nth-check@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-2.0.1.tgz#2efe162f5c3da06a28959fbd3db75dbeea9f0fc2"
   dependencies:
     boolbase "^1.0.0"
 
@@ -6176,6 +6253,16 @@ parse-latin@^4.0.0:
     nlcst-to-string "^2.0.0"
     unist-util-modify-children "^2.0.0"
     unist-util-visit-children "^1.0.0"
+
+parse5-htmlparser2-tree-adapter@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/parse5-htmlparser2-tree-adapter/-/parse5-htmlparser2-tree-adapter-6.0.1.tgz#2cdf9ad823321140370d4dbf5d3e92c7c8ddc6e6"
+  dependencies:
+    parse5 "^6.0.1"
+
+parse5@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-6.0.1.tgz#e1a1c085c569b3dc08321184f19a39cc27f7c30b"
 
 parseurl@~1.3.2, parseurl@~1.3.3:
   version "1.3.3"
@@ -7209,7 +7296,7 @@ safe-regex@^1.1.0:
   dependencies:
     ret "~0.1.10"
 
-"safer-buffer@>= 2.1.2 < 3", safer-buffer@^2.0.2, safer-buffer@^2.1.0, safer-buffer@^2.1.2, safer-buffer@~2.1.0:
+"safer-buffer@>= 2.1.2 < 3", "safer-buffer@>= 2.1.2 < 3.0.0", safer-buffer@^2.0.2, safer-buffer@^2.1.0, safer-buffer@^2.1.2, safer-buffer@~2.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
@@ -8020,6 +8107,10 @@ ts-node@^9:
 tslib@^2:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
+
+tslib@^2.2.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
 
 tty-browserify@0.0.0:
   version "0.0.0"
