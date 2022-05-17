@@ -7563,9 +7563,9 @@ spdy@^4.0.2:
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
 
-spellchecker-cli@^4.8.1:
-  version "4.8.1"
-  resolved "https://registry.yarnpkg.com/spellchecker-cli/-/spellchecker-cli-4.8.1.tgz#2efa3ff535827b4c0384edae9dbd9acb3aba2736"
+spellchecker-cli@^4.10.1:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/spellchecker-cli/-/spellchecker-cli-4.10.1.tgz#7e6b798692b5966a281b68cd8da1fb07d630787b"
   dependencies:
     app-root-path "^3.0.0"
     chalk "^2.4.2"
