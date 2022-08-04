@@ -44,7 +44,7 @@
     "markdown-link-check": "^3.9.0",
     "markdownlint-cli": "^0.30.0",
     "run-script-os": "^1.1.6",
-    "spellchecker-cli": "^4.8.1",
+    "spellchecker-cli": "^6.0.2",
     "vuepress": "^1.9.7",
     "vuepress-plugin-medium-zoom": "^1.1.9",
     "vuepress-theme-succinct": "^1.7.2"
