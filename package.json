@@ -39,7 +39,7 @@
     "@commitlint/config-conventional": "^15.0.0",
     "@mr-hope/vuepress-plugin-sitemap": "^1.21.0",
     "@vuepress/plugin-back-to-top": "^1.9.7",
-    "husky": "^7.0.4",
+    "husky": "^8.0.2",
     "markdown-it-multimd-table": "^4.1.1",
     "markdown-link-check": "^3.9.0",
     "markdownlint-cli": "^0.30.0",
